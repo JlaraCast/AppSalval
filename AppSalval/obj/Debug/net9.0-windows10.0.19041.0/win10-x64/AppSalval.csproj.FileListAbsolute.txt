@@ -1,3 +1,4 @@
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Internal.FrameworkUdk.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xbf
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\AboutAssets.txt
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\splashSplashScreen.scale-100.png
@@ -69,7 +70,6 @@ C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalv
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.DirectManipulation.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Graphics.Display.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.InputStateManager.dll
-C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Internal.FrameworkUdk.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.UI.Composition.OSSupport.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.UI.dll
 C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.UI.Input.dll

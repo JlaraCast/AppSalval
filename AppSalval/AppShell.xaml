@@ -21,4 +21,9 @@
      Title="GestionRespuestas"
      ContentTemplate="{DataTemplate vista:GestionRespuestas}"
      Route="GestionRespuestas" />
+    <ShellContent
+     Title="CreacionPreguntas"
+     ContentTemplate="{DataTemplate vista:CreacionPreguntas}"
+     Route="CreacionPreguntas" />
+
 </Shell>
