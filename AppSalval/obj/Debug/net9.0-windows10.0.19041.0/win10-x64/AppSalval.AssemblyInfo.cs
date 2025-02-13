@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppSalval")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+b3744d7035335e64ba7c87b220ce8cdc60bb4899")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+8663246dc0b0d65d865ac39762eff17bfb1fb3cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppSalval")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppSalval")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

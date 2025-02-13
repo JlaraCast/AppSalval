@@ -64,4 +64,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="ViewsKevin\Formularios.xaml.cs">
+	    <DependentUpon>Formularios.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
