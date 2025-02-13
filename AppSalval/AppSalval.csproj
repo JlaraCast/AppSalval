@@ -98,7 +98,8 @@
 	<ItemGroup>
 	  <Compile Update="Views\GestionRespuestas.xaml.cs">
 	    <DependentUpon>GestionRespuestas.xaml</DependentUpon>
-	  <Compile Update="ViewsKevin\Formularios.xaml.cs">
+	  </Compile>
+		  <Compile Update="ViewsKevin\Formularios.xaml.cs">
 	    <DependentUpon>Formularios.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
