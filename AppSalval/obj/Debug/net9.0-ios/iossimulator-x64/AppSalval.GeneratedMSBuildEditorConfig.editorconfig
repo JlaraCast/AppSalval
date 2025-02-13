@@ -47,3 +47,15 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Proyecto Lenguajes/AppSalval/AppSalval/Views/GestionFormularios.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.GestionFormularios.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GestionFormularios.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GestionFormularios.xaml
+
+[C:/Proyecto Lenguajes/AppSalval/AppSalval/Views/InicioAdmin.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.InicioAdmin.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\InicioAdmin.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\InicioAdmin.xaml

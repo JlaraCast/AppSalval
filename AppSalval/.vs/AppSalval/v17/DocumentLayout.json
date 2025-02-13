@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appsalval\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appsalval\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appsalval\\views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 18,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Bookmark",
@@ -81,37 +77,16 @@
               "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainPage.xaml.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\MainPage.xaml.cs",
-              "RelativeDocumentMoniker": "MainPage.xaml.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\MainPage.xaml.cs",
-              "RelativeToolTip": "MainPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T04:48:48.981Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainPage.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\MainPage.xaml",
-              "RelativeDocumentMoniker": "MainPage.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\MainPage.xaml",
-              "RelativeToolTip": "MainPage.xaml",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAAANUAAAAiAAAAAAAAAA==",
+              "Title": "InicioAdmin.xaml",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeDocumentMoniker": "Views\\InicioAdmin.xaml",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeToolTip": "Views\\InicioAdmin.xaml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-12T23:53:57.054Z",
+              "WhenOpened": "2025-02-13T21:35:34.109Z",
               "EditorCaption": ""
             }
           ]
