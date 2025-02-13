@@ -1,0 +1,6 @@
+@SavalAPI_HostAddress = http://localhost:5038
+
+GET {{SavalAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
