@@ -1,3 +1,3 @@
 # AppSalval
-proyecto de lenguajes
-kevin es un estupido 
+#proyecto de lenguajes
+#JJ es re gay
