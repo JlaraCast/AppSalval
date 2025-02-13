@@ -34,15 +34,6 @@
                 TextColor="MidnightBlue"
                  Margin="30,20,0,0"/>
 
-            <!-- Botón para salir al menú principal -->
-                <Button Text="Opciones"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    Margin="20,10,0,0">
-                <!--Clicked="OnOpcionesClicked"-->
-                </Button>
                 <!-- Contenido principal de la página -->
             <ContentView Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="Center">
                 <Grid>
@@ -73,7 +64,7 @@
                 
                 
             </ContentView>
-            <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Formularios}">
+            <CollectionView Grid.Row="3" Grid.ColumnSpan="3" ItemsSource="{Binding Formularios}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10" ColumnDefinitions="*,Auto,Auto,Auto">

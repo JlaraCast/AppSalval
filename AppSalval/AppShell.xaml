@@ -17,4 +17,8 @@
     Title="GestionFormularios"
     ContentTemplate="{DataTemplate vista:GestionFormularios}"
     Route="GestionFormularios" />
+    <ShellContent
+     Title="GestionRespuestas"
+     ContentTemplate="{DataTemplate vista:GestionRespuestas}"
+     Route="GestionRespuestas" />
 </Shell>

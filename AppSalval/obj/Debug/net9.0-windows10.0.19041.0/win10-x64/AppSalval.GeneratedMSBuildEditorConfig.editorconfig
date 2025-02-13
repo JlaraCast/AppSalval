@@ -57,3 +57,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.GestionFormularios.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\GestionFormularios.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\GestionFormularios.xaml
+
+[C:/Users/lara3/OneDrive/Documents/Visual Studio 2022/Proyectos/AppSalval/AppSalval/Views/GestionRespuestas.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.GestionRespuestas.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GestionRespuestas.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GestionRespuestas.xaml
