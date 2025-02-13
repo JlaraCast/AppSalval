@@ -1,0 +1,17 @@
+# Archivos de compilación
+bin/
+obj/
+.vs/
+*.suo
+*.user
+*.cache
+*.log
+*.db
+
+# Archivos específicos de .NET MAUI
+*.vsdx
+*.pri
+*.pdb
+*.dll
+*.nuget
+*.designer.cs
