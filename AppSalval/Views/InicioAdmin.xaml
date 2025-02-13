@@ -21,7 +21,7 @@
 
 
 
-                <!-- Botón para salir al menú principal -->
+               
                 <Button 
                     x:Name="s"
                     Text="Cerar sesion"
