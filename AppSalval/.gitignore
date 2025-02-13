@@ -1,0 +1,25 @@
+# Archivos de compilación y caché de .NET y Visual Studio
+bin/
+obj/
+.vs/
+*.vsconfig
+*.csproj.user
+*.cache
+*.log
+*.pdb
+*.dll
+*.nuget
+
+# Archivos de compilación específicos de .NET MAUI
+*.vsdx
+*.pri
+*.designer.cs
+AppSalval/bin/
+AppSalval/obj/
+AppSalval/.vs/
+
+# Carpetas de configuración y caché
+packages/
+project.lock.json
+project.assets.json
+appsettings*.json
