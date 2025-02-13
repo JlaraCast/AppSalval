@@ -1,3 +1,3 @@
 # AppSalval
 proyecto de lenguajes
-kevin es un estupido 
+Parte enfocada en lo que la parte de formulario
