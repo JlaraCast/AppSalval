@@ -1,2 +1,0 @@
-# AppSalval
-proyecto de lenguajes

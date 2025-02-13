@@ -25,5 +25,8 @@
      Title="CreacionPreguntas"
      ContentTemplate="{DataTemplate vista:CreacionPreguntas}"
      Route="CreacionPreguntas" />
-
+    <ShellContent
+    Title="InicioAdmin"
+    ContentTemplate="{DataTemplate vista:InicioAdmin}"
+    Route="InicioAdmin" />
 </Shell>
