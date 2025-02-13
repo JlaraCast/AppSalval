@@ -2,11 +2,13 @@
 bin/
 obj/
 .vs/
+*.db
 *.suo
 *.user
 *.cache
 *.log
-*.db
+*.pdb
+*.dll
 
 # Archivos específicos de .NET MAUI
 *.vsdx
@@ -15,3 +17,6 @@ obj/
 *.dll
 *.nuget
 *.designer.cs
+
+# Archivos de compilación y caché
+
