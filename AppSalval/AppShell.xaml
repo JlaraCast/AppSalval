@@ -5,13 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vista="clr-namespace:AppSalval.Views"
      xmlns:local="clr-namespace:AppSalval"
+    xmlns:views="clr-namespace:AppSalval.Views" 
     Shell.FlyoutBehavior="Flyout"
     Title="AppSalval">
 
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate views:MainPage}" 
         Route="MainPage" />
     <ShellContent
     Title="GestionFormularios"
@@ -29,4 +30,6 @@
     Title="InicioAdmin"
     ContentTemplate="{DataTemplate vista:InicioAdmin}"
     Route="InicioAdmin" />
+</Shell>
+
 </Shell>

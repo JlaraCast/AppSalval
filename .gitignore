@@ -20,3 +20,5 @@ obj/
 
 # Archivos de compilación y caché
 
+/AppSalval/.vs
+/AppSalval/obj
