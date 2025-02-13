@@ -28,7 +28,8 @@ public class Encuestado
     public decimal Peso { get; set; } // En kilogramos
 
         [NotMapped] // No se almacena en la base de datos, se calcula dinámicamente
-        public decimal IMC => Peso / (Altura * Altura); // Cálculo del Índice de Masa Corporal
+        public decimal IMC { get; set; }
+    // Cálculo del Índice de Masa Corporal
 
     [Required]
     [MaxLength(50)]
@@ -40,5 +41,5 @@ public class Encuestado
         public int? IdUsuario { get; set; } // Relación con usuario
         [ForeignKey("IdUsuario")]
         public Usuario? Usuario { get; set; } // Relación con el usuario
-    }
 }
+

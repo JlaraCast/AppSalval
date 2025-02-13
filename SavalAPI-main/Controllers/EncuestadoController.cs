@@ -33,7 +33,7 @@ namespace SavalAPI.Controllers
             }
         }
 
-        // ✅ Obtener un encuestado por ID
+        //  Obtener un encuestado por ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Encuestado>> GetEncuestado(string id)
         {

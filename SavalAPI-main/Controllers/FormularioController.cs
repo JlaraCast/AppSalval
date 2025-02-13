@@ -101,6 +101,59 @@ namespace SavalAPI.Controllers
             }
         }
 
+        [HttpGet("habilitados")]
+        public async Task<ActionResult<IEnumerable<Formulario>>> GetFormulariosHabilitados()
+        {
+            try
+            {
+                var formularios = await _context.Formularios
+                    .Where(f => f.Habilitado) // Filtrar solo los formularios habilitados
+                    .ToListAsync();
+
+                return Ok(formularios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error interno del servidor: {ex.Message}" });
+            }
+        }
+       
+
+        [HttpGet("no-anonimos")]
+        public async Task<ActionResult<IEnumerable<Formulario>>> GetFormulariosNoAnonimos()
+        {
+            try
+            {
+                var formularios = await _context.Formularios
+                    .Where(f => !f.Anonimo) // Filtrar solo los que NO son anónimos
+                    .ToListAsync();
+
+                return Ok(formularios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error interno del servidor: {ex.Message}" });
+            }
+        }
+
+        [HttpGet("anonimos")]
+        public async Task<ActionResult<IEnumerable<Formulario>>> GetFormulariosAnonimos()
+        {
+            try
+            {
+                var formularios = await _context.Formularios
+                    .Where(f => f.Anonimo) // Filtrar solo los formularios anónimos
+                    .ToListAsync();
+
+                return Ok(formularios);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error interno del servidor: {ex.Message}" });
+            }
+        }
+
+
         //  Eliminar un formulario
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteFormulario(int id)
@@ -114,15 +167,17 @@ namespace SavalAPI.Controllers
                     return NotFound(new { message = "Formulario no encontrado." });
                 }
 
-                _context.Formularios.Remove(formulario);
+                // Soft delete: Cambiar el estado en lugar de eliminar el registro
+                formulario.Habilitado = false;
                 await _context.SaveChangesAsync();
 
-                return Ok(new { message = "Formulario eliminado con éxito." });
+                return Ok(new { message = "Formulario deshabilitado con éxito." });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = $"Error interno del servidor: {ex.Message}" });
             }
         }
+
     }
 }
