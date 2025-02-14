@@ -1,4 +1,7 @@
-﻿obj\Debug\net9.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
+﻿obj\Debug\net9.0-android\resizetizer\r\drawable\cerrar_sesion.png
+obj\Debug\net9.0-android\resizetizer\r\drawable\opciones_usuario.png
+obj\Debug\net9.0-android\resizetizer\r\drawable\usuario.png
+obj\Debug\net9.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
 obj\Debug\net9.0-android\resizetizer\r\drawable-mdpi\dotnet_bot.png
 obj\Debug\net9.0-android\resizetizer\r\drawable-xhdpi\dotnet_bot.png
 obj\Debug\net9.0-android\resizetizer\r\drawable-xxhdpi\dotnet_bot.png

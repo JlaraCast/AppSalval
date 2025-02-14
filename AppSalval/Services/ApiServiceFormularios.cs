@@ -7,17 +7,19 @@ using AppSalval.Models_Api;
 
 namespace AppSaval.Services
 {
-    public class ApiService
+    public class ApiServiceFormularios
     {
         // Cliente HTTP para conectar con la API
         private readonly HttpClient _httpClient;
 
         // Constructor: Configura la URL base de la API
-        public ApiService()
+        public ApiServiceFormularios()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("https://localhost:5001/api/Formulario"); // ⚠️ Cambia la URL si es diferente
         }
+
+
 
         // ✅ Método para obtener la lista de formularios desde la API
         public async Task<List<FormularioDto>> GetFormularios()

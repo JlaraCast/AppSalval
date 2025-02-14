@@ -8,12 +8,12 @@ namespace AppSalval.Views // CORREGIDO
 {
     public partial class MainPage : ContentPage
     {
-        private readonly ApiService _apiService; // Servicio para conectar con la API
+        private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
 
         public MainPage()
         {
             InitializeComponent(); // Asegura que la página XAML se inicialice correctamente
-            _apiService = new ApiService();
+            _apiService = new ApiServiceFormularios();
             LoadFormularios(); // Llamamos a la API cuando se carga la página
         }
 
