@@ -211,12 +211,19 @@
 
                 </Grid>
             </Border>
-            
-            <Label 
-                Text="Prueba"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-            
+
+            <Button 
+                 BackgroundColor="Green" 
+                 Grid.Row="6" 
+                 HorizontalOptions="Center" 
+                 Grid.ColumnSpan="4"
+                 Text="Continuar"
+                 FontFamily="Bold"
+                 Margin="0,30,0,50"
+                 WidthRequest="200">
+                
+            </Button>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

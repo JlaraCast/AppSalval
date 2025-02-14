@@ -77,3 +77,9 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.InicioAdmin.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\InicioAdmin.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\InicioAdmin.xaml
+
+[C:/App/AppSalval/AppSalval/Views/ResultadosUsuario.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.Views.ResultadosUsuario.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\ResultadosUsuario.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\ResultadosUsuario.xaml
