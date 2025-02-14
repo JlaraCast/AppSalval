@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              x:Class="AppSalval.Views.InfoPersonal"
              Title="">
     <ScrollView>
@@ -169,7 +170,43 @@
                         BackgroundColor="White"
                     />
 
+                    <Label
+                       Grid.Row="9"
+                       Grid.Column="0"
+                       Text="Peso" 
+                       FontSize="Title"
+                       Margin="0,15,0,15"
+                       TextColor="#5ac1c0"
+                    />
+
+                    <Grid Grid.Row="10" Grid.Column="0">
                         
+                        <inputs:SfNumericEntry Value="0"  
+                            HorizontalOptions="Start" 
+                            UpDownPlacementMode="Inline" 
+                            Minimum="0" />
+
+                    </Grid>
+
+                    <Label
+                       Grid.Row="9"
+                       Grid.Column="1"
+                       Text="Altura" 
+                       FontSize="Title"
+                       Margin="0,15,0,15"
+                       TextColor="#5ac1c0"
+                    />
+
+                    <Grid Grid.Row="10" Grid.Column="1">
+                            
+                        <inputs:SfNumericEntry 
+                            Value="0" 
+                            UpDownPlacementMode="Inline"  
+                            Minimum="0" 
+                            WidthRequest="140"/>
+
+                    </Grid>
+
 
 
                 </Grid>
