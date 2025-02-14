@@ -12,17 +12,10 @@ namespace AppSalval.Views
     {
         private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
 
-        public Command VerCommand { get; }
-        public Command EditarCommand { get; }
-        public Command EliminarCommand { get; }
-
         public GestionFormularios()
         {
             InitializeComponent();
             _apiService = new ApiServiceFormularios();
-            VerCommand = new Command<FormularioDto>(OnVerFormularioClicked);
-            EditarCommand = new Command<FormularioDto>(OnEditarFormularioClicked);
-            EliminarCommand = new Command<FormularioDto>(OnEliminarFormularioClicked);
             LoadFormularios(); // Llamamos a la API cuando se carga la página
         }
 
@@ -37,13 +30,13 @@ namespace AppSalval.Views
                     // Filtramos los formularios habilitados y agregamos un número a cada uno
                     var formulariosConFormato = formularios
                         .Where(f => f.Habilitado)
-                        .Select(f => new
+                        .Select((f, index) => new FormularioViewModel
                         {
-                            f.IdFormulario,
+                            Id = f.IdFormulario,
                             NombreDescripcion = $"{f.TituloFormulario} - {f.DescripcionFormulario}",
-                            VerCommand = VerCommand,
-                            EditarCommand = EditarCommand,
-                            EliminarCommand = EliminarCommand
+                            VerCommand = new Command(() => OnVerFormularioClicked(f)),
+                            EditarCommand = new Command(() => OnEditarFormularioClicked(f)),
+                            EliminarCommand = new Command(() => OnEliminarFormularioClicked(f))
                         })
                         .ToList();
 
@@ -108,5 +101,14 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", "Formulario no encontrado.", "OK");
             }
         }
+    }
+
+    public class FormularioViewModel
+    {
+        public int Id { get; set; }
+        public string NombreDescripcion { get; set; }
+        public Command VerCommand { get; set; }
+        public Command EditarCommand { get; set; }
+        public Command EliminarCommand { get; set; }
     }
 }
