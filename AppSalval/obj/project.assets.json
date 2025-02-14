@@ -26400,24 +26400,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\lara3\\.nuget\\packages\\": {},
+    "C:\\Users\\sehjo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\AppSalval.csproj",
+      "projectUniqueName": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
       "projectName": "AppSalval",
-      "projectPath": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\AppSalval.csproj",
-      "packagesPath": "C:\\Users\\lara3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\obj\\",
+      "projectPath": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
+      "packagesPath": "C:\\Users\\sehjo\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyecto Lenguajes\\AppSalval\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\lara3\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sehjo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

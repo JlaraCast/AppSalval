@@ -30,5 +30,10 @@
     Title="InicioAdmin"
     ContentTemplate="{DataTemplate vista:InicioAdmin}"
     Route="InicioAdmin" />
+    <ShellContent
+    Title="InfoPersonal"
+    ContentTemplate="{DataTemplate vista:InfoPersonal}"
+    Route="InfoPersonal" />
+    
 </Shell>
 
