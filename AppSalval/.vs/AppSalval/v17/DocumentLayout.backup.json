@@ -115,8 +115,7 @@
               "RelativeToolTip": "Views\\GestionRespuestas.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T19:44:49.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T19:44:49.068Z"
             },
             {
               "$type": "Document",
@@ -128,8 +127,7 @@
               "RelativeToolTip": "Views\\Formularios.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T19:21:06.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T19:21:06.966Z"
             },
             {
               "$type": "Document",
@@ -141,8 +139,7 @@
               "RelativeToolTip": "Views\\CreacionPreguntas.xaml",
               "ViewState": "AgIAAJAAAAAAAAAAAAAAAE4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T19:10:05.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T19:10:05.546Z"
             },
             {
               "$type": "Document",
@@ -154,8 +151,7 @@
               "RelativeToolTip": "Views\\ResultadosUsuario.xaml",
               "ViewState": "AgIAAH8AAAAAAAAAAAAEwI8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T17:05:27.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T17:05:27.003Z"
             },
             {
               "$type": "Document",
@@ -167,8 +163,7 @@
               "RelativeToolTip": "Views\\InicioAdmin.xaml",
               "ViewState": "AgIAANIAAAAAAAAAAAAAAOEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T17:07:56.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T17:07:56.766Z"
             },
             {
               "$type": "Document",
@@ -180,8 +175,7 @@
               "RelativeToolTip": "AppShell.xaml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T17:06:11.255Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T17:06:11.255Z"
             }
           ]
         },
