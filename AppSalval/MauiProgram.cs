@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using AppSalval.ViewModels;
 
 namespace AppSalval
 {
