@@ -1,76 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Proyecto Lenguajes\\AppSalval\\",
+  "WorkspaceRootPath": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\infopersonal.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\infopersonal.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionformularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionformularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\formularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\formularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\dtos api\\formulariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:dtos api\\formulariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\services\\apiserviceformularios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:services\\apiserviceformularios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\controllers\\gestionformularioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:controllers\\gestionformularioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\views\\gestionformularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionformularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appsalval.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:appsalval.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\creacionpreguntas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\creacionpreguntas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionrespuestas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\views\\gestionrespuestas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionrespuestas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\views\\gestionrespuestas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionrespuestas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\dtos api\\respuestasdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:dtos api\\respuestasdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Proyecto Lenguajes\\AppSalval\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\users\\lara3\\onedrive\\documents\\visual studio 2022\\proyectos\\appsalval\\appsalval\\views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -79,20 +33,16 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 421,
-          "SelectedChildIndex": 13,
+          "DockedHeight": 348,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Bookmark",
@@ -100,31 +50,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
@@ -132,230 +58,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "InfoPersonal.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InfoPersonal.xaml",
-              "RelativeDocumentMoniker": "Views\\InfoPersonal.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InfoPersonal.xaml",
-              "RelativeToolTip": "Views\\InfoPersonal.xaml",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEwAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T05:13:30.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GestionFormularios.xaml.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml.cs",
-              "RelativeToolTip": "Views\\GestionFormularios.xaml.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAIwAMAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Views",
-              "WhenOpened": "2025-02-14T02:31:02.755Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Microsoft.PackageDependencyResolution.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "RelativeDocumentMoniker": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "RelativeToolTip": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAjwAkBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-02-14T05:09:29.037Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "GestionRespuestas.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionRespuestas.xaml",
-              "RelativeDocumentMoniker": "Views\\GestionRespuestas.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionRespuestas.xaml",
-              "RelativeToolTip": "Views\\GestionRespuestas.xaml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:41:12.783Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GestionFormulariosController.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Controllers\\GestionFormulariosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GestionFormulariosController.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Controllers\\GestionFormulariosController.cs",
-              "RelativeToolTip": "Controllers\\GestionFormulariosController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T02:31:13.066Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBkAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T17:30:14.612Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "InicioAdmin.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
-              "RelativeDocumentMoniker": "Views\\InicioAdmin.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
-              "RelativeToolTip": "Views\\InicioAdmin.xaml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:41:14.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GestionFormularios.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
-              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
-              "RelativeToolTip": "Views\\GestionFormularios.xaml",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:30:51.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CreacionPreguntas.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\CreacionPreguntas.xaml",
-              "RelativeDocumentMoniker": "Views\\CreacionPreguntas.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\CreacionPreguntas.xaml",
-              "RelativeToolTip": "Views\\CreacionPreguntas.xaml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAHEAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:30:14.784Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Formularios.xaml.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\Formularios.xaml.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml.cs",
-              "RelativeToolTip": "Views\\Formularios.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwB4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:33:45.892Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AppSalval.csproj",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
-              "RelativeDocumentMoniker": "AppSalval.csproj",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
-              "RelativeToolTip": "AppSalval.csproj",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAkwGEAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-02-13T15:25:52.463Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FormularioDto.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\DTOS API\\FormularioDto.cs",
-              "RelativeDocumentMoniker": "DTOS API\\FormularioDto.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\DTOS API\\FormularioDto.cs",
-              "RelativeToolTip": "DTOS API\\FormularioDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:29:49.837Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ApiServiceFormularios.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Services\\ApiServiceFormularios.cs",
-              "RelativeDocumentMoniker": "Services\\ApiServiceFormularios.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Services\\ApiServiceFormularios.cs",
-              "RelativeToolTip": "Services\\ApiServiceFormularios.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAUwHgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "OverriddenGroupName": "Services",
-              "WhenOpened": "2025-02-13T15:28:51.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "MauiProgram.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs",
-              "RelativeToolTip": "MauiProgram.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T23:19:34.587Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Formularios.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
-              "RelativeDocumentMoniker": "Views\\Formularios.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
-              "RelativeToolTip": "Views\\Formularios.xaml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T15:32:36.095Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Microsoft.Maui.Resizetizer.After.targets",
-              "DocumentMoniker": "C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
-              "RelativeDocumentMoniker": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
-              "ToolTip": "C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
-              "RelativeToolTip": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
-              "ViewState": "AgIAAEkCAAAAAAAAAAAswO0BAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-02-14T01:36:32.721Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T23:19:33.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "App.g.i.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
-              "RelativeDocumentMoniker": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
-              "RelativeToolTip": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAADwv0UAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T17:57:17.379Z"
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         },
@@ -370,12 +73,90 @@
           ]
         },
         {
-          "DockedHeight": 28,
-          "SelectedChildIndex": -1,
+          "DockedHeight": 101,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GestionFormularios.xaml",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionFormularios.xaml",
+              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionFormularios.xaml",
+              "RelativeToolTip": "Views\\GestionFormularios.xaml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T18:53:48.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GestionFormularios.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionFormularios.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml.cs",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionFormularios.xaml.cs",
+              "RelativeToolTip": "Views\\GestionFormularios.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T18:53:41.329Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GestionRespuestas.xaml",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionRespuestas.xaml",
+              "RelativeDocumentMoniker": "Views\\GestionRespuestas.xaml",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionRespuestas.xaml",
+              "RelativeToolTip": "Views\\GestionRespuestas.xaml",
+              "ViewState": "AgIAAHcAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T17:53:42.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RespuestasDTO.cs",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\DTOS API\\RespuestasDTO.cs",
+              "RelativeDocumentMoniker": "DTOS API\\RespuestasDTO.cs",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\DTOS API\\RespuestasDTO.cs",
+              "RelativeToolTip": "DTOS API\\RespuestasDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T18:25:23.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GestionRespuestas.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionRespuestas.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\GestionRespuestas.xaml.cs",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\GestionRespuestas.xaml.cs",
+              "RelativeToolTip": "Views\\GestionRespuestas.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwCsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T17:53:41.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InicioAdmin.xaml",
+              "DocumentMoniker": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeDocumentMoniker": "Views\\InicioAdmin.xaml",
+              "ToolTip": "C:\\Users\\lara3\\OneDrive\\Documents\\Visual Studio 2022\\Proyectos\\AppSalval\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeToolTip": "Views\\InicioAdmin.xaml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T17:53:38.555Z",
+              "EditorCaption": ""
             }
           ]
         }

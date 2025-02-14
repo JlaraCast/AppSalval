@@ -1876,3 +1876,11 @@ C:\Proyecto Lenguajes\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\p
 C:\Proyecto Lenguajes\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Proyecto Lenguajes\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Proyecto Lenguajes\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\MauiMaterialAssets.ttf
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\d1d2d2222f819e28523de37e83e22aa5_400x400.scale-100.jpeg
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\identificacion.scale-100.png
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\nombre.scale-100.png
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\f\MauiMaterialAssets.ttf
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\d1d2d2222f819e28523de37e83e22aa5_400x400.scale-100.jpeg
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\identificacion.scale-100.png
+C:\Users\lara3\OneDrive\Documents\Visual Studio 2022\Proyectos\AppSalval\AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\nombre.scale-100.png
