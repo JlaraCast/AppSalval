@@ -40,7 +40,7 @@ namespace AppSalval.Views
                         })
                         .ToList();
 
-                    ListaFormularios.ItemsSource = formulariosConFormato;
+                    //ListaFormularios.ItemsSource = formulariosConFormato;
                 }
                 else
                 {
