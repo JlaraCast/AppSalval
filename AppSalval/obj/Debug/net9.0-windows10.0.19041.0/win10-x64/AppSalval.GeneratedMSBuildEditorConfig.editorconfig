@@ -28,6 +28,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
+[C:/Users/lara3/OneDrive/Documents/Visual Studio 2022/Proyectos/AppSalval/AppSalval/AppSalval/obj/Debug/net9.0-windows10.0.19041.0/win10-x64/Platforms/Windows/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.AppSalval.obj.Debug.net9._0_windows10._0._19041._0.win10_x64.Platforms.Windows.App.xaml
+build_metadata.AdditionalFiles.TargetPath = AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+build_metadata.AdditionalFiles.RelativePath = AppSalval\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\Platforms\Windows\App.xaml
+
 [C:/Users/lara3/OneDrive/Documents/Visual Studio 2022/Proyectos/AppSalval/AppSalval/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AppSalval.AppShell.xaml
