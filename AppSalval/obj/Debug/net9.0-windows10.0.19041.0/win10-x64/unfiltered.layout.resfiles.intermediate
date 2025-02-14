@@ -1,5 +1,4 @@
 FluentUI.cs
-MauiMaterialAssets.ttf
 OpenSans-Regular.ttf
 OpenSans-Semibold.ttf
 appicon.ico
@@ -49,7 +48,6 @@ appiconWideTile.scale-150.png
 appiconWideTile.scale-200.png
 appiconWideTile.scale-400.png
 cerrar_sesion.scale-100.png
-d1d2d2222f819e28523de37e83e22aa5_400x400.scale-100.jpeg
 dotnet_bot.scale-100.png
 dotnet_bot.scale-125.png
 dotnet_bot.scale-150.png
@@ -59,7 +57,6 @@ identificacion.scale-100.png
 nombre.scale-100.png
 opciones_usuario.scale-100.png
 usuario.scale-100.png
-usuariobtn.scale-100.png
 splashSplashScreen.scale-100.png
 splashSplashScreen.scale-125.png
 splashSplashScreen.scale-150.png
