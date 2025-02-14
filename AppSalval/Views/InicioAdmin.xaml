@@ -23,8 +23,8 @@
 
                
                 <Button 
-                    x:Name="s"
-                    Text="Cerar sesion"
+                    x:Name="btnOpciones"
+                    Text="Opciones"
                     ImageSource="opciones_usuario.png"
                     Grid.Row="0"
                     Grid.Column="0"
@@ -125,7 +125,7 @@
 
 
                     <Button
-                        x:Name="CounterBtn"
+                        x:Name="btbUsuario"
                         Text="Usuario" 
                         SemanticProperties.Hint="Counts the number of times you click"
                         
@@ -139,7 +139,7 @@
                     />
 
                     <Button
-                        x:Name="btn2"
+                        x:Name="btnParticipante"
                         Text="Participante" 
                         SemanticProperties.Hint="Counts the number of times you click"
                         
@@ -152,7 +152,7 @@
                     />
 
                     <Button
-                        x:Name="btn3"
+                        x:Name="btnPreguntas"
                         Text="Preguntas" 
                         SemanticProperties.Hint="Counts the number of times you click"
                         
@@ -165,10 +165,10 @@
                     />
 
                     <Button
-                        x:Name="btn4"
+                        x:Name="btnFormulario"
                         Text="Formulario" 
                         SemanticProperties.Hint="Counts the number of times you click"
-                       
+                        Clicked="CambioPaginaGestionFormulario"
                         HorizontalOptions="Fill" 
                         Grid.Row="2"
                         Grid.Column="1"
@@ -178,7 +178,7 @@
                     />
 
                     <Button
-                        x:Name="btn5"
+                        x:Name="btnRecomendación"
                         Text="Recomendación" 
                         SemanticProperties.Hint="Counts the number of times you click"
                         
@@ -191,7 +191,7 @@
                     />
 
                     <Button
-                        x:Name="btn6"
+                        x:Name="btnFactorRiesgo"
                         Text="Factor de Riesgo" 
                         SemanticProperties.Hint="Counts the number of times you click"
                         
@@ -209,10 +209,10 @@
             <Grid HorizontalOptions="Center">
 
                 <Button
-                x:Name="btn7"
+                x:Name="btnRespuestas"
                 Text="Respuestas" 
                 SemanticProperties.Hint="Counts the number of times you click"
-                
+                Clicked="CambioPaginaGestionRespuesta"
                 HorizontalOptions="Fill" 
                 Grid.Row="3"
                 Grid.Column="1"

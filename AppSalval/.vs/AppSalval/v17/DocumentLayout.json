@@ -7,6 +7,22 @@
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\infopersonal.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -16,10 +32,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\formularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\formularios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,10 +46,6 @@
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:services\\apiserviceformularios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\gestionformularios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\controllers\\gestionformularioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:controllers\\gestionformularioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -46,16 +54,8 @@
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:appsalval.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\creacionpreguntas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\creacionpreguntas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:views\\inicioadmin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\views\\gestionrespuestas.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -63,10 +63,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|c:\\proyecto lenguajes\\appsalval\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70969FCB-664E-4655-8C52-9B78BDD80D8D}|AppSalval.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Proyecto Lenguajes\\AppSalval\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -80,7 +76,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 421,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Bookmark",
@@ -136,20 +132,72 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InicioAdmin.xaml",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeDocumentMoniker": "Views\\InicioAdmin.xaml",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
+              "RelativeToolTip": "Views\\InicioAdmin.xaml",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAALIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T02:41:14.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs*",
+              "RelativeToolTip": "MauiProgram.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-13T23:19:34.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "InfoPersonal.xaml",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InfoPersonal.xaml",
               "RelativeDocumentMoniker": "Views\\InfoPersonal.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InfoPersonal.xaml",
-              "RelativeToolTip": "Views\\InfoPersonal.xaml",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAEwAAAAnAAAAAAAAAA==",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InfoPersonal.xaml*",
+              "RelativeToolTip": "Views\\InfoPersonal.xaml*",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAAAKwAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-14T05:13:30.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
+              "Title": "Microsoft.PackageDependencyResolution.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeDocumentMoniker": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "RelativeToolTip": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAjwAkBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-02-14T05:09:29.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-13T17:30:14.612Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "GestionFormularios.xaml.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml.cs",
               "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml.cs",
@@ -163,15 +211,28 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GestionFormularios.xaml",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
+              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
+              "RelativeToolTip": "Views\\GestionFormularios.xaml",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-14T02:30:51.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Microsoft.PackageDependencyResolution.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "RelativeDocumentMoniker": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "RelativeToolTip": "..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAjwAkBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-02-14T05:09:29.037Z",
+              "Title": "Formularios.xaml",
+              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
+              "RelativeDocumentMoniker": "Views\\Formularios.xaml",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
+              "RelativeToolTip": "Views\\Formularios.xaml",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-13T15:32:36.095Z",
               "EditorCaption": ""
             },
             {
@@ -182,74 +243,40 @@
               "RelativeDocumentMoniker": "Views\\GestionRespuestas.xaml",
               "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionRespuestas.xaml",
               "RelativeToolTip": "Views\\GestionRespuestas.xaml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:41:12.783Z"
+              "WhenOpened": "2025-02-14T02:41:12.783Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "GestionFormulariosController.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Controllers\\GestionFormulariosController.cs",
               "RelativeDocumentMoniker": "Controllers\\GestionFormulariosController.cs",
               "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Controllers\\GestionFormulariosController.cs",
               "RelativeToolTip": "Controllers\\GestionFormulariosController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAIBJwAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T02:31:13.066Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAYwBkAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T17:30:14.612Z",
+              "WhenOpened": "2025-02-14T02:31:13.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "InicioAdmin.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
-              "RelativeDocumentMoniker": "Views\\InicioAdmin.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\InicioAdmin.xaml",
-              "RelativeToolTip": "Views\\InicioAdmin.xaml",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:41:14.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GestionFormularios.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
-              "RelativeDocumentMoniker": "Views\\GestionFormularios.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\GestionFormularios.xaml",
-              "RelativeToolTip": "Views\\GestionFormularios.xaml",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGMAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:30:51.657Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
               "Title": "CreacionPreguntas.xaml",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\CreacionPreguntas.xaml",
               "RelativeDocumentMoniker": "Views\\CreacionPreguntas.xaml",
               "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\CreacionPreguntas.xaml",
               "RelativeToolTip": "Views\\CreacionPreguntas.xaml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAHEAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAIBJwHEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-14T02:30:14.784Z"
+              "WhenOpened": "2025-02-14T02:30:14.784Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Formularios.xaml.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml.cs",
               "RelativeDocumentMoniker": "Views\\Formularios.xaml.cs",
@@ -257,36 +284,38 @@
               "RelativeToolTip": "Views\\Formularios.xaml.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwB4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:33:45.892Z"
+              "WhenOpened": "2025-02-13T15:33:45.892Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AppSalval.csproj",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
               "RelativeDocumentMoniker": "AppSalval.csproj",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj",
-              "RelativeToolTip": "AppSalval.csproj",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAkwGEAAAANAAAAAAAAAA==",
+              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\AppSalval.csproj*",
+              "RelativeToolTip": "AppSalval.csproj*",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAkwGIAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-02-13T15:25:52.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "FormularioDto.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\DTOS API\\FormularioDto.cs",
               "RelativeDocumentMoniker": "DTOS API\\FormularioDto.cs",
               "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\DTOS API\\FormularioDto.cs",
               "RelativeToolTip": "DTOS API\\FormularioDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T15:29:49.837Z"
+              "WhenOpened": "2025-02-13T15:29:49.837Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "ApiServiceFormularios.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Services\\ApiServiceFormularios.cs",
               "RelativeDocumentMoniker": "Services\\ApiServiceFormularios.cs",
@@ -295,31 +324,8 @@
               "ViewState": "AgIAACIAAAAAAAAAAAAUwHgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "OverriddenGroupName": "Services",
-              "WhenOpened": "2025-02-13T15:28:51.484Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "MauiProgram.cs",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\MauiProgram.cs",
-              "RelativeToolTip": "MauiProgram.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T23:19:34.587Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Formularios.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
-              "RelativeDocumentMoniker": "Views\\Formularios.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\Views\\Formularios.xaml",
-              "RelativeToolTip": "Views\\Formularios.xaml",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T15:32:36.095Z"
+              "WhenOpened": "2025-02-13T15:28:51.484Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -329,25 +335,12 @@
               "RelativeDocumentMoniker": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
               "ToolTip": "C:\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
               "RelativeToolTip": "..\\..\\Users\\User\\.nuget\\packages\\microsoft.maui.resizetizer\\9.0.14\\buildTransitive\\Microsoft.Maui.Resizetizer.After.targets",
-              "ViewState": "AgIAAEkCAAAAAAAAAAAswO0BAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2025-02-14T01:36:32.721Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "C:\\Proyecto Lenguajes\\AppSalval\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-13T23:19:33.843Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "App.g.i.cs",
               "DocumentMoniker": "C:\\Proyecto Lenguajes\\AppSalval\\obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
               "RelativeDocumentMoniker": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
@@ -355,7 +348,8 @@
               "RelativeToolTip": "obj\\Debug\\net9.0-windows10.0.19041.0\\win10-x64\\Platforms\\Windows\\App.g.i.cs",
               "ViewState": "AgIAACUAAAAAAAAAAADwv0UAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-13T17:57:17.379Z"
+              "WhenOpened": "2025-02-13T17:57:17.379Z",
+              "EditorCaption": ""
             }
           ]
         },
