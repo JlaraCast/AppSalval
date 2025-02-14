@@ -3,90 +3,100 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.GestionFormularios"
              Title="GestionFormularios">
-    <VerticalStackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            
-            
-            <!-- Botón para desplegar opciones -->
-            <Button Text="Opciones"
-                Grid.Row="0"
-                Grid.Column="0"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                    Margin="20,10,0,0">
-                <!--Clicked="OnOpcionesClicked"-->
-                </Button>
-            <Label
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="Administrador" 
-                FontSize="Title"
-                HorizontalOptions="Center"
-                VerticalOptions="Start"
-                TextColor="MidnightBlue"
-                 Margin="30,20,0,0"/>
-            <Button Text="Menu"
-                Grid.Row="0"
-                Grid.Column="0"
-                HorizontalOptions="End"
-                VerticalOptions="Start"
-                    Margin="0,10,20,0">
-                <!--Clicked="OnOpcionesClicked"-->
-            </Button>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Contenido principal de la página -->
-            <ContentView Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="Center">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                <!-- Botón para desplegar opciones -->
+                <Button Text="Opciones"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    Margin="20,10,0,0"
+                    Clicked="OnOpcionesClicked" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Administrador" 
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    TextColor="MidnightBlue"
+                    />
+
+                <Button Text="Menu"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    Margin="0,10,20,0"
+                    Clicked="OnMenuPrincipalClicked" />
                     
-                    <Label
-                        Text="Gestión de formularios"
-                        FontSize="Medium"
-                        TextColor="MidnightBlue"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Margin="0,0,0,0"
-                        Grid.Column="0" 
-                        Grid.Row="0"
-                        />
-                        
-                    
-                    <Button
-                        Text="Añadir"
-                        FontSize="Medium"
-                        TextColor="White"
-                        BackgroundColor="#1edb68"
-                        HorizontalOptions="End"
-                        VerticalOptions="Center"
-                        Margin="0,20,30,0"
-                        Grid.Column="1" />
-                </Grid>
+                <!-- Contenido principal de la página -->
+                <ContentView Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="1"
+                            Text="Gestión de formularios"
+                            FontSize="Medium"
+                            TextColor="MidnightBlue"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="0,0,0,0"
+                            Grid.Row="0"/>
+
+                        <Button
+                            
+                            Grid.Column="2"
+                            Text="Añadir"
+                            FontSize="Medium"
+                            TextColor="White"
+                            BackgroundColor="#1edb68"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Margin="0,20,30,0" />
+                    </Grid>
+                </ContentView>
                 
-                
-            </ContentView>
-            <CollectionView Grid.Row="3" Grid.ColumnSpan="3" ItemsSource="{Binding Formularios}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10" ColumnDefinitions="*,Auto,Auto,Auto">
-                            <Label Text="{Binding Nombre}" FontSize="16" VerticalOptions="Center" />
-                            <Button Command="{Binding VerCommand}" WidthRequest="24" HeightRequest="24" />
-                            <Button Command="{Binding EditarCommand}" WidthRequest="24" HeightRequest="24" />
-                            <Button Command="{Binding EliminarCommand}" WidthRequest="24" HeightRequest="24" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
-    </VerticalStackLayout>
+                <CollectionView x:Name="ListaFormularios" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Formularios}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Id}" FontSize="16" VerticalOptions="Center" />
+                                <Label Grid.Column="1" Text="{Binding NombreDescripcion}" FontSize="16" VerticalOptions="Center" />
+                                <Button Grid.Column="2" Command="{Binding VerCommand}" CommandParameter="{Binding Id}" Text="Ver" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
+                                <Button Grid.Column="3" Command="{Binding EditarCommand}" CommandParameter="{Binding Id}" Text="Editar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
+                                <Button Grid.Column="4" Command="{Binding EliminarCommand}" CommandParameter="{Binding Id}" Text="Eliminar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

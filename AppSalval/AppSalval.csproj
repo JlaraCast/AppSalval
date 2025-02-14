@@ -60,23 +60,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="buenas\**" />
 	  <AndroidResource Remove="Models\**" />
-	  <AndroidResource Remove="NewFolder1\**" />
 	  <AndroidResource Remove="NewFolder2\**" />
+	  <Compile Remove="buenas\**" />
 	  <Compile Remove="Models\**" />
-	  <Compile Remove="NewFolder1\**" />
 	  <Compile Remove="NewFolder2\**" />
+	  <EmbeddedResource Remove="buenas\**" />
 	  <EmbeddedResource Remove="Models\**" />
-	  <EmbeddedResource Remove="NewFolder1\**" />
 	  <EmbeddedResource Remove="NewFolder2\**" />
+	  <MauiCss Remove="buenas\**" />
 	  <MauiCss Remove="Models\**" />
-	  <MauiCss Remove="NewFolder1\**" />
 	  <MauiCss Remove="NewFolder2\**" />
+	  <MauiXaml Remove="buenas\**" />
 	  <MauiXaml Remove="Models\**" />
-	  <MauiXaml Remove="NewFolder1\**" />
 	  <MauiXaml Remove="NewFolder2\**" />
+	  <None Remove="buenas\**" />
 	  <None Remove="Models\**" />
-	  <None Remove="NewFolder1\**" />
 	  <None Remove="NewFolder2\**" />
 	</ItemGroup>
 
