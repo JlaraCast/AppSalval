@@ -63,8 +63,6 @@ namespace AppSalval.ViewModels
             set => SetProperty(ref _riesgo3, value);
         }
 
-
-
         public ResultadosUsuarioViewModel()
         {
             //toca cargar las recomendaciones de la API 
