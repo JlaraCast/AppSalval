@@ -1,24 +1,3 @@
-# Archivos de compilación
-bin/
-obj/
-.vs/
-*.db
-*.suo
-*.user
-*.cache
-*.log
-*.pdb
-*.dll
-
-# Archivos específicos de .NET MAUI
-*.vsdx
-*.pri
-*.pdb
-*.dll
-*.nuget
-*.designer.cs
-
-# Archivos de compilación y caché
-
 /AppSalval/.vs
+/AppSalval/bin/Debug
 /AppSalval/obj
