@@ -1,0 +1,31 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSalval.Views.AgregarUsuario"
+             Title="Agregar Usuario">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Correo" FontSize="16" />
+            <Entry x:Name="EntryEmail" Placeholder="Ingrese el correo" />
+
+            <Label Text="Contraseña" FontSize="16" />
+            <Entry x:Name="EntryPassword" Placeholder="Ingrese la contraseña" IsPassword="True"/>
+
+            <Label Text="Seleccionar Rol" FontSize="16" />
+            <Picker x:Name="PickerRole">
+                <Picker.Items>
+                    <x:String>Administrador</x:String>
+                    <x:String>Encuestador</x:String>
+                    <x:String>Moderador</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <HorizontalStackLayout Spacing="20">
+                <Button Text="Agregar" BackgroundColor="Green" TextColor="White" Clicked="OnAddUserClicked"/>
+                <Button Text="Cancelar" BackgroundColor="Red" TextColor="White" Clicked="OnCancelClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
