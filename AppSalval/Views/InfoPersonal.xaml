@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.InfoPersonal"
+             xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
              Title="">
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
@@ -74,9 +74,9 @@
                        Margin="0,40,0,0"  
                        HorizontalOptions="Fill"  
                        BackgroundColor="White"  
-                       MaxLength="40"  
+                       MaxLength="12"  
                        HorizontalTextAlignment="Center"  
-                         
+                       Text="{Binding Cedula}"
                     >
                     </Entry>
 
@@ -107,7 +107,7 @@
                         TextColor="Black"
                         Margin="0,0,0,40"
                         HorizontalOptions="Fill"
-                        BackgroundColor="RosyBrown"                    
+                        BackgroundColor="White"                    
                         HorizontalTextAlignment="Center"
                         MaxLength="40"
                         Text="{Binding Nombre}"
@@ -141,7 +141,8 @@
                         TextColor="Black"
                         Margin="0,0,0,30"
                         HorizontalOptions="Fill"
-                        BackgroundColor="White">
+                        BackgroundColor="White"
+                        SelectedItem="{Binding GeneroSeleccionado}">
                         <Picker.Items>
                             <x:String>Hombre</x:String>
                             <x:String>Mujer</x:String>
@@ -166,8 +167,52 @@
                         Margin="0,10,0,0"
                         HorizontalOptions="Fill"
                         BackgroundColor="White"
+                        Date="{Binding FechaNacimiento}"
+                        MaximumDate="2-14-2025"
+                        MinimumDate="2-14-1905"
+                        
                     />
 
+                    <Label
+                       Grid.Row="9"
+                       Grid.Column="0"
+                       Text="Peso" 
+                       FontSize="Title"
+                       Margin="0,15,0,0"
+                       TextColor="#5ac1c0"
+                    />
+
+                    <inputs:SfNumericEntry 
+                        Value="{Binding Peso}" 
+                        UpDownPlacementMode="Inline"
+                        Margin="0,20,0,0"
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        WidthRequest="200"
+                        HorizontalOptions="Start"
+                        Minimum="0"
+                    />
+
+                    <Label
+                       Grid.Row="9"
+                       Grid.Column="1"
+                       Text="Altura" 
+                       FontSize="Title"
+                       Margin="0,15,0,0"
+                       TextColor="#5ac1c0"
+                        
+                    />
+
+                    <inputs:SfNumericEntry 
+                        Value="{Binding Altura}"                          
+                        UpDownPlacementMode="Inline"
+                        Margin="0,20,0,0"
+                        Grid.Row="10"
+                        Grid.Column="1"
+                        WidthRequest="200"
+                        HorizontalOptions="Start"
+                        Minimum="0"
+                    />
 
 
 
@@ -186,13 +231,10 @@
                 Command="{Binding RegistrarComando}">
             </Button>
 
-            <Label
-                Text="{Binding Etiqueta}"
-                FontSize="Title"
-                TextColor="#5ac1c0"
-                HorizontalOptions="Center"
-                Margin="0,0,0,20">
-            </Label>
+           
+
+            
+
 
         </VerticalStackLayout>
     </ScrollView>
