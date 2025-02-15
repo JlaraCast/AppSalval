@@ -1,47 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AppSalval.Models_Api;
 
-namespace AppSaval.Services
+namespace AppSalval.Services
 {
     public class ApiServiceFormularios
     {
-        // Cliente HTTP para conectar con la API
+        // Cliente HTTP para conectar con la API en la nube (Somee)
         private readonly HttpClient _httpClient;
+        private const string BaseUrl = "http://savalapi.somee.com/api/Formulario"; // 📌 URL de la API en Somee
 
-        // Constructor: Configura la URL base de la API
         public ApiServiceFormularios()
         {
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:5001/api/Formulario"); // ⚠️ Cambia la URL si es diferente
+            _httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(BaseUrl)
+            };
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        // ✅ Método para obtener la lista de formularios desde la API
+        // ✅ Método para obtener la lista de formularios desde la API en Somee
         public async Task<List<FormularioDto>> GetFormularios()
         {
             try
             {
-                var response = await _httpClient.GetAsync("Formulario");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string json = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"📢 Datos de la API: {json}"); // 🔹 Agrega esto para ver los datos en la consola
-
-                    return JsonSerializer.Deserialize<List<FormularioDto>>(json, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-                }
-                else
-                {
-                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
-                    return null;
-                }
+                return await _httpClient.GetFromJsonAsync<List<FormularioDto>>("");
             }
             catch (Exception ex)
             {
@@ -50,28 +39,12 @@ namespace AppSaval.Services
             }
         }
 
-        // ✅ Método para obtener un formulario por su ID
+        // ✅ Método para obtener un formulario por su ID desde Somee
         public async Task<FormularioDto> GetFormularioById(int id)
         {
             try
             {
-                var response = await _httpClient.GetAsync($"Formulario/{id}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string json = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"📢 Datos de la API: {json}"); // 🔹 Agrega esto para ver los datos en la consola
-
-                    return JsonSerializer.Deserialize<FormularioDto>(json, new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-                }
-                else
-                {
-                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
-                    return null;
-                }
+                return await _httpClient.GetFromJsonAsync<FormularioDto>($"{id}");
             }
             catch (Exception ex)
             {
@@ -80,25 +53,14 @@ namespace AppSaval.Services
             }
         }
 
-        // ✅ Método para editar un formulario existente
-        public async Task<bool> EditFormulario( FormularioDto formulario)
+        // ✅ Método para editar un formulario existente en Somee
+        public async Task<bool> EditFormulario(FormularioDto formulario)
         {
             try
             {
-                // Verificar si el formulario existe
-                var existingFormulario = await GetFormularioById(formulario.IdFormulario);
-                if (existingFormulario == null)
-                {
-                    Console.WriteLine($"⚠️ Formulario con ID {formulario.IdFormulario} no encontrado.");
-                    return false;
-                }
+                var jsonContent = new StringContent(JsonSerializer.Serialize(formulario), Encoding.UTF8, "application/json");
 
-                // Convertir el formulario a JSON
-                var json = JsonSerializer.Serialize(formulario);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                // Enviar la solicitud PUT a la API
-                var response = await _httpClient.PutAsync($"Formulario/{formulario.IdFormulario}", content);
+                var response = await _httpClient.PutAsync($"{formulario.IdFormulario}", jsonContent);
 
                 if (response.IsSuccessStatusCode)
                 {

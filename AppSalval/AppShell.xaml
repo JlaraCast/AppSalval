@@ -11,9 +11,9 @@
 
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}" 
-        Route="MainPage" />
+        Title="Formularios"
+        ContentTemplate="{DataTemplate views:Formularios}"
+        Route="Formularios" />
     <ShellContent
     Title="GestionFormularios"
     ContentTemplate="{DataTemplate vista:GestionFormularios}"

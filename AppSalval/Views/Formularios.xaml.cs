@@ -1,51 +1,77 @@
 ﻿using AppSalval.Models_Api;
-using AppSaval.Services;
+using AppSalval.Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
-namespace AppSalval.Views // CORREGIDO
+namespace AppSalval.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class Formularios : ContentPage
     {
-        private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
+        private readonly ApiServiceFormularios _apiService;
+        private List<FormularioDto> _formularios;
 
-        public MainPage()
+        public Formularios()
         {
-            InitializeComponent(); // Asegura que la página XAML se inicialice correctamente
+            InitializeComponent();
             _apiService = new ApiServiceFormularios();
-            LoadFormularios(); // Llamamos a la API cuando se carga la página
+            LoadFormularios();
         }
 
         private async void LoadFormularios()
         {
             try
             {
-                List<FormularioDto> formularios = await _apiService.GetFormularios();
+                _formularios = await _apiService.GetFormularios();
 
-                if (formularios != null && formularios.Count > 0)
+                // 🔹 Filtrar formularios que tienen habilitado = true
+                var formulariosHabilitados = _formularios
+                    .Where(f => f.Habilitado) // Solo los habilitados
+                    .ToList();
+
+                if (formulariosHabilitados != null && formulariosHabilitados.Count > 0)
                 {
-                    // Agregamos un número a cada formulario y concatenamos nombre + descripción
-                    var formulariosConFormato = formularios
-                        .Select((f, index) => new
-                        {
-                            Numero = $"{index + 1}.", // Enumeración
-                            NombreDescripcion = $"{f.TituloFormulario} - {f.DescripcionFormulario}"
-                        })
+                    FormularioPicker.ItemsSource = formulariosHabilitados
+                        .Select(f => f.TituloFormulario)
                         .ToList();
-
-                    ListaFormularios.ItemsSource = formulariosConFormato;
                 }
                 else
                 {
-                    await DisplayAlert("Información", "No hay formularios disponibles", "OK");
+                    await DisplayAlert("Información", "No hay formularios habilitados disponibles", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", $"Ocurrió un error al cargar los formularios: {ex.Message}", "OK");
+                await DisplayAlert("Error", $"Error al cargar formularios: {ex.Message}", "OK");
             }
         }
 
+
+        private void SearchFormularios(object sender, EventArgs e)
+        {
+            string query = SearchBox.Text?.ToLower();
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                FormularioPicker.ItemsSource = _formularios
+                    .Where(f => f.TituloFormulario.ToLower().Contains(query))
+                    .Select(f => f.TituloFormulario)
+                    .ToList();
+            }
+        }
+
+        private void FormularioPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FormularioPicker.SelectedIndex == -1)
+                return;
+
+            string tituloSeleccionado = FormularioPicker.Items[FormularioPicker.SelectedIndex];
+            FormularioDto formulario = _formularios.FirstOrDefault(f => f.TituloFormulario == tituloSeleccionado);
+
+            if (formulario != null)
+            {
+                DisplayAlert("Formulario Seleccionado", $"Seleccionaste: {formulario.TituloFormulario}", "OK");
+            }
+        }
     }
 }
