@@ -142,7 +142,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRecomendacion1"
-                            Placeholder="1. Recomendación">
+                            Placeholder="1. Recomendación"
+                            Text="{Binding Recomendacion1}">
                         </Entry>
 
                         <Entry Grid.Row="2"
@@ -152,7 +153,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRecomendacion2"
-                            Placeholder="2. Recomendación">
+                            Placeholder="2. Recomendación"
+                            Text="{Binding Recomendacion2}">
                         </Entry>
 
                         <Entry Grid.Row="3"
@@ -162,7 +164,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRecomendacion3"
-                            Placeholder="3. Recomendación">
+                            Placeholder="3. Recomendación"
+                            Text="{Binding Recomendacion3}">
                         </Entry>
 
                         <Entry Grid.Row="4"
@@ -172,7 +175,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRecomendacion4"
-                            Placeholder="4. Recomendación">
+                            Placeholder="4. Recomendación"
+                            Text="{Binding Recomendacion4}">
                         </Entry>
 
                         <Entry Grid.Row="5"
@@ -182,7 +186,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRecomendacion5"
-                            Placeholder="5. Recomendación">
+                            Placeholder="5. Recomendación"
+                            Text="{Binding Recomendacion5}">
                         </Entry>
 
 
@@ -224,7 +229,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRiesgo1"
-                            Placeholder="1. Riesgo">
+                            Placeholder="1. Riesgo"
+                            Text="{Binding Riesgo1}">
                         </Entry>
 
                         <Entry Grid.Row="2"
@@ -234,7 +240,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRiesgo2"
-                            Placeholder="2. Riesgo">
+                            Placeholder="2. Riesgo"
+                            Text="{Binding Riesgo2}">
                         </Entry>
 
                         <Entry Grid.Row="3"
@@ -244,7 +251,8 @@
                             Margin="10,10,10,10"
                             IsReadOnly="True"
                             x:Name="txtRiesgo3"
-                            Placeholder="3. Riesgo">
+                            Placeholder="3. Riesgo"
+                            Text="{Binding Riesgo3}">
                         </Entry>
 
                     </Grid>
