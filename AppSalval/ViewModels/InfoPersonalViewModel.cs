@@ -108,7 +108,6 @@ namespace AppSalval.ViewModels
                     return;
                 }
 
-                // Aquí puedes agregar el código para registrar la información
             });
         }
     }
