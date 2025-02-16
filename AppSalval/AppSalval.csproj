@@ -87,6 +87,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\CrearFormulario.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Views\CrearFormulario.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="Views\ResultadosUsuarios.xaml" />
 	</ItemGroup>
 

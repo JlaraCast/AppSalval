@@ -7,7 +7,8 @@
      xmlns:local="clr-namespace:AppSalval"
     xmlns:views="clr-namespace:AppSalval.Views" 
     Shell.FlyoutBehavior="Flyout"
-    Title="AppSalval">
+    Title="AppSalval"
+    >
 
 
     <ShellContent
@@ -42,6 +43,14 @@
     Title="GestionUsuarios"
     ContentTemplate="{DataTemplate vista:GestionUsuarios}"
     Route="GestionUsuarios" />
+    <ShellContent
+    Title="CrearFormulario"
+    ContentTemplate="{DataTemplate vista:CrearFormulario}"
+    Route="CrearFormulario" />
+
+
     
+
+
 </Shell>
 
