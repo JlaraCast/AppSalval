@@ -37,7 +37,7 @@ namespace AppSalval.ViewModels
 
             PestañaGestionResultados = new Command(async () =>
             {
-                await _navigation.PushAsync(new GestionRespuestas());
+                await _navigation.PushAsync(new GestionRespuesta());
             });
 
 //----------------------------------------------------------------------------------------------------------

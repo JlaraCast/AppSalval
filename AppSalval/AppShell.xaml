@@ -42,6 +42,8 @@
     Title="GestionUsuarios"
     ContentTemplate="{DataTemplate vista:GestionUsuarios}"
     Route="GestionUsuarios" />
-
+    <ShellContent
+    Title="InicioDesarrollador"
+    ContentTemplate="{DataTemplate vista:InicioDesarrollador}"
+    Route="InicioDesarrollador" />  
 </Shell>
-

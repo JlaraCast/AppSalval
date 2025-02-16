@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSalval.Views.InicioDesarrollador"
+             Title="InicioDesarrollador">
+    <VerticalStackLayout Padding="20">
+
+        <!-- Encabezado -->
+        <HorizontalStackLayout Spacing="20">
+            <Image Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
+            <Label Text="Desarrollador" FontSize="18" VerticalOptions="Center" TextColor="SteelBlue" />
+        </HorizontalStackLayout>
+
+        <Label Text="Bienvenido" FontSize="26" HorizontalOptions="Center" Padding="15" TextColor="SteelBlue" />
+
+        <Label Text="Gestiones" FontSize="16" HorizontalOptions="Center" Padding="15" TextColor="SteelBlue"/>
+
+        <!-- Botones de gestión -->
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="15" RowSpacing="50">
+
+            <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="question_icon.png" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="Preguntas" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="form_icon.png" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="Formulario" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="recommendation_icon.png" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="Recomendación" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToRecomPageCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Image Source="risk_icon.png" WidthRequest="40" HeightRequest="40"/>
+                    <Label Text="Factor de riesgo" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToRiskPageCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

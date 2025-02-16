@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSalval.Views.RecomEditFormPage"
+             Title="RecomEditFormPage">
+    <VerticalStackLayout Padding="20" HorizontalOptions="Center">
+
+        <HorizontalStackLayout Spacing="20">
+            <Image Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
+            <Label Text="Desarrollador" FontSize="18" VerticalOptions="Center" TextColor="SteelBlue"/>
+        </HorizontalStackLayout>
+
+        <!-- Contenedor del formulario -->
+        <Frame BackgroundColor="White" CornerRadius="25" Padding="20" BorderColor="Black" WidthRequest="350" Margin="50">
+            <VerticalStackLayout>
+
+                <Label Text="Formulario de editar recomendación" FontSize="20" FontAttributes="Bold" TextColor="SteelBlue" HorizontalOptions="Center"/>
+
+                <!-- Campo Descripción -->
+                <HorizontalStackLayout Margin="10">
+                    <Label Text="Descripción:" FontSize="16" TextColor="SteelBlue" VerticalOptions="Center"/>
+                    <Entry Text="{Binding Descripcion, Mode=TwoWay}" WidthRequest="250"/>
+                </HorizontalStackLayout>
+
+                <!-- Campo Estado -->
+                <HorizontalStackLayout Margin="10">
+                    <Label Text="Estado:" FontSize="16" TextColor="SteelBlue" VerticalOptions="Center"/>
+                    <Picker SelectedItem="{Binding Estado, Mode=TwoWay}" WidthRequest="250">
+                        <Picker.Items>
+                            <x:String>Activo</x:String>
+                            <x:String>Inactivo</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </HorizontalStackLayout>
+
+                <!-- Botones -->
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="10">
+                    <Button Text="Volver"
+                        BackgroundColor="MediumSeaGreen"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="100"/>
+
+                    <Button Text="Aceptar"
+                        BackgroundColor="MediumSeaGreen"
+                        TextColor="White"
+                        CornerRadius="10"
+                        WidthRequest="100"
+                        Command="{Binding AceptarCommand}"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>
