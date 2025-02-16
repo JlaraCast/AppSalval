@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppSalval.Views.GestionRespuestas"
-             Title="GestionRespuestas">
+             xmlns:vm="clr-namespace:AppSalval.ViewModels"
+             x:Class="AppSalval.Views.GestionRespuesta"
+             Title="GestionRespuesta">
+
+
     <ScrollView>
         <VerticalStackLayout>
             <Grid>
@@ -54,15 +57,6 @@
                                Margin="30,20,0,0"
                                Grid.Column="0" />
 
-                        <Button Text="Añadir"
-                                FontSize="Medium"
-                                TextColor="White"
-                                BackgroundColor="#1edb68"
-                                HorizontalOptions="End"
-                                VerticalOptions="Center"
-                                Margin="0,20,30,0"
-                                Grid.Column="1"
-                                Clicked="OnAnadirClicked"/>
                     </Grid>
                 </ContentView>
 
@@ -71,11 +65,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        
+
                     </Grid.RowDefinitions>
                     <!-- Encabezados de la tabla -->
                     <Grid  Grid.Row="0" RowDefinitions="Auto"  ColumnDefinitions="*,*,*,*,*,*">
-                       
+
                         <Label Text="id respuesta" 
                                Grid.Column="0" 
                                FontAttributes="Bold" 
@@ -118,9 +112,9 @@
                     </Grid>
 
                     <!-- Lista de elementos -->
-                    <CollectionView x:Name="ListaRespuestas" Grid.Row="1" ItemsSource="{Binding Respuestas}">
+                    <CollectionView x:Name="ListaRespuestas" Grid.Row="1" ItemsSource="{Binding ListaRespuestas}">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                            <DataTemplate >
                                 <Frame BorderColor="LightGray" CornerRadius="0" Padding="5" Margin="0,0,0,10" >
                                     <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="Auto" Padding="0,0,0,0">
                                         <!-- id -->
@@ -146,7 +140,8 @@
                                         <!-- Botón para Editar -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="4" Margin="0,0,5,0">
                                             <Button Text="Editar" 
-                                                    Command="{Binding EditarCommand}" CommandParameter="{Binding .}" 
+                                                    Command="{Binding Path=BindingContext.EditarCommand, Source={x:Reference ListaRespuestas}}" 
+                                                    CommandParameter="{Binding .}" 
                                                     BackgroundColor="#FFA500" TextColor="White"
                                                     FontSize="Small"
                                                     HorizontalOptions="Center" />
@@ -155,7 +150,8 @@
                                         <!-- Botón para Borrar -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="5" Margin="0,0,5,0">
                                             <Button Text="Borrar" 
-                                                    Command="{Binding BorrarCommand}" CommandParameter="{Binding .}" 
+                                                    Command="{Binding Path=BindingContext.BorrarCommand, Source={x:Reference ListaRespuestas}}" 
+                                                    CommandParameter="{Binding .}" 
                                                     BackgroundColor="#FF4500" TextColor="White"
                                                     FontSize="Small"
                                                     HorizontalOptions="Center" VerticalOptions="Center" />

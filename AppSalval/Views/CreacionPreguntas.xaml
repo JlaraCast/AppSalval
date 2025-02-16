@@ -135,7 +135,7 @@
                                Margin="30,0,0,0"/>
                         
                         <!-- Lista de TextFields de respuestas con botones para eliminar -->
-                        <CollectionView x:Name="collectionView" Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding Respuestas}">
+                        <CollectionView x:Name="collectionView" Grid.Row="3" Grid.ColumnSpan="4" ItemsSource="{Binding OpcionesRespuesta}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -143,13 +143,13 @@
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <Entry Text="{Binding Texto}" Grid.Column="0" Placeholder="Ingresa la respuesta"/>
-                                        <Button Text="Eliminar" Grid.Column="1" Command="{Binding Path=BindingContext.EliminarRespuestaCommand, Source={x:Reference collectionView}}" CommandParameter="{Binding .}"/>
+                                        <Entry Text="{Binding NombreOpcion}" Grid.Column="0" Placeholder="Ingresa la opción de respuesta"/>
+                                        <Button Text="Eliminar" Grid.Column="1" Command="{Binding Path=BindingContext.EliminarOpcionRespuestaCommand, Source={x:Reference collectionView}}" CommandParameter="{Binding .}"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <Button Text="Agregar Respuesta" Grid.Row="4" Grid.ColumnSpan="4" Command="{Binding AgregarRespuestaCommand}"/>
+                        <Button Text="Agregar Respuesta" Grid.Row="4" Grid.ColumnSpan="4" Command="{Binding AgregarOpcionRespuestaCommand}"/>
                         
                         <!-- Sección de recomendaciones -->
                         <Label Text="Recomendaciones:"
@@ -207,7 +207,8 @@
                             VerticalOptions="Center" 
                             Margin="10" 
                             BackgroundColor="Red" 
-                            TextColor="White"/>
+                            TextColor="White"/>
+
                         <Button Text="Guardar" 
                             Grid.Row="11" 
                             Grid.Column="1" 

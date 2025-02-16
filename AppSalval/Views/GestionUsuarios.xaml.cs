@@ -58,17 +58,25 @@ namespace AppSalval.Views
 
             if (isConfirmed)
             {
-                // Llamar al servicio para eliminar el usuario
-                var result = await _userService.DeleteUserAsync(usuario.IdUsuario);
+                try
+                {
 
-                if (result)
-                {
-                    Usuarios.Remove(usuario);  // Actualizamos la lista
-                    await DisplayAlert("Éxito", "El usuario fue eliminado correctamente.", "OK");
+                    // Llamar al servicio para eliminar el usuario
+                    var result = await _userService.DeleteUserAsync(usuario.IdUsuario);
+
+                    if (result)
+                    {
+                        Usuarios.Remove(usuario);  // Actualizamos la lista
+                        await DisplayAlert("Éxito", "El usuario fue eliminado correctamente.", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "No se pudo eliminar el usuario. Intenta nuevamente.", "OK");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    await DisplayAlert("Error", "No se pudo eliminar el usuario. Intenta nuevamente.", "OK");
+                    await DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
                 }
             }
         }
