@@ -17,7 +17,7 @@ namespace AppSalval.Services
         public ApiServicePregunta()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:5001/api/Pregunta"); // ⚠️ Cambia la URL si es diferente
+            _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/Pregunta"); // ⚠️ Cambia la URL si es diferente
         }
 
         // ✅ Método para obtener la lista de preguntas desde la API
