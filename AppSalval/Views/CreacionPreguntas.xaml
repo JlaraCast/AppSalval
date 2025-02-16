@@ -121,7 +121,7 @@
                             Grid.Row="1"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                                  Margin="20,0,0,0"
+                            Margin="20,0,0,0"
                             IsChecked="{Binding IsObligatorio}"/>
                         
                         <!-- Label para respuestas -->

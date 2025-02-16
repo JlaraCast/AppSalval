@@ -289,6 +289,20 @@
 
 
             </Border>
+			
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="30">
+                <Button 
+					Text="Cancelar" 
+                    BackgroundColor="Green"
+					
+                 />
+                
+               <Button 
+					Text="Aceptar" 
+                    BackgroundColor="LightBlue"
+					
+                />
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
