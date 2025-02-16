@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.CrearFormulario"
              Title="CrearFormulario">
-   
+
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
 
@@ -82,9 +81,9 @@
                         Margin="20,0,0,40"
                         TextColor="#000000"
                     />
-                    
-                    
-                   
+
+
+
                     <Entry
                         Grid.Row="1"
                         Grid.Column="1"
@@ -104,7 +103,7 @@
                          TextColor="#000000"
                      />
 
-                     <Entry
+                    <Entry
                          Grid.Row="2"
                          Grid.Column="1"
                          Grid.ColumnSpan="2"
@@ -112,9 +111,9 @@
                          HorizontalOptions="Fill"
                          Margin="40,0,40,40"
                          TextColor="#000000"
-                     /> 
-                    
-                    
+                     />
+
+
                     <Label
                         Grid.Row="3"
                         Grid.Column="0"
@@ -140,7 +139,8 @@
                          FontSize="Title"
                          Margin="20,0,0,0"
                          TextColor="#000000"
-                    />
+                    />
+
                     <DatePicker
                          Grid.Row="4"
                          Grid.Column="1"
@@ -150,7 +150,7 @@
                          TextColor="#000000"
                     />
 
-                    
+
                     <Label
                         Grid.Row="5"
                         Grid.Column="0"
@@ -159,7 +159,7 @@
                         Margin="20,0,0,30"
                         TextColor="#000000"
                     />
-     
+
                     <Switch
                         Grid.Row="5"
                         Grid.Column="0"
@@ -167,12 +167,12 @@
                         HorizontalOptions="Start"
                         Margin="160,-25,40,0"
                     />
-                    
+
                 </Grid>
             </Border>
 
             <Grid Margin="0,0,0,20">
-                
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -204,34 +204,34 @@
 
 
             </Grid>
-            
-            
-            
+
+
+
             <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" >
-                
-                    <Grid Margin="0,0,30,0" Padding="20,0,0,30">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"
+                <Grid Margin="0,0,30,0" Padding="20,0,0,30">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"
                         />
-                        </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <Label
+                    <Label
                              Grid.Row="0"
                              Grid.Column="0"
                              Text="Lista Preguntas" 
@@ -240,47 +240,56 @@
                              TextColor="#000000"
                         />
 
-                        <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
-                   
-                                <Grid Margin="0,0,30,0" Padding="20,0,0,30">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                    <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
 
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="2*"/>
-                                    </Grid.ColumnDefinitions>
+                        <Grid Margin="0,0,30,0" Padding="20,0,0,30">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                                    <Label
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Text="Pregunta" 
-                                        FontSize="30"
-                                        Margin="0,0,0,40"
-                                        TextColor="#000000"
-                                    />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
 
-                                    
-                                    
-                                </Grid>
-                        </Border>
-                        
-                    </Grid>
-                    
-                    
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Pregunta" 
+                                FontSize="30"
+                                Margin="0,0,0,40"        
+                           />
+							
+							<CheckBox
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="Start"
+                                Margin="40,-5,0,30"                
+                            />
+							
+							
+
+
+
+                        </Grid>
+                    </Border>
+
+                </Grid>
+
+
             </Border>
-            
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
