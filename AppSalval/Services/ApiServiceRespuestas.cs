@@ -117,5 +117,27 @@ namespace AppSalval.Services
                 return false;
             }
         }
+        public async Task<bool> DeleteRespuestaAsync(int idRespuesta)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"Respuesta/{idRespuesta}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error al eliminar respuesta: {errorMessage}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error de conexión: {ex.Message}");
+                return false;
+            }
+        }
+
     }
 }

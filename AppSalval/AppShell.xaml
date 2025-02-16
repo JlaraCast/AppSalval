@@ -19,9 +19,9 @@
     ContentTemplate="{DataTemplate vista:GestionFormularios}"
     Route="GestionFormularios" />
     <ShellContent
-     Title="GestionRespuestas"
-     ContentTemplate="{DataTemplate vista:GestionRespuestas}"
-     Route="GestionRespuestas" />
+     Title="GestionRespuesta"
+     ContentTemplate="{DataTemplate vista:GestionRespuesta}"
+     Route="GestionRespuesta" />
     <ShellContent
      Title="CreacionPreguntas"
      ContentTemplate="{DataTemplate vista:CreacionPreguntas}"
@@ -42,6 +42,6 @@
     Title="GestionUsuarios"
     ContentTemplate="{DataTemplate vista:GestionUsuarios}"
     Route="GestionUsuarios" />
-    
+
 </Shell>
 
