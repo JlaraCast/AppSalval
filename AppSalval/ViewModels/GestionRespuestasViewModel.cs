@@ -42,6 +42,13 @@ namespace AppSalval.ViewModels
 
                 if (respuestas != null && respuestas.Count > 0)
                 {
+                    foreach (var respuesta in respuestas)
+                    {
+                        if (string.IsNullOrEmpty(respuesta.IdentificacionEncuestado))
+                        {
+                            respuesta.IdentificacionEncuestado = "Anónimo";
+                        }
+                    }
                     ListaRespuestas = respuestas;
                 }
                 else

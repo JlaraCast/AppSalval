@@ -17,7 +17,7 @@ namespace AppSalval.Services
         public ApiServiceOpcionRespuesta()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("https://localhost:5001/api/OpcionRespuesta"); // ⚠️ Cambia la URL si es diferente
+            _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/OpcionRespuesta"); // ⚠️ Cambia la URL si es diferente
         }
 
         // ✅ Método para obtener la lista de opciones de respuesta desde la API
