@@ -110,7 +110,10 @@
 	  <MauiXaml Update="Views\CreacionPreguntas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EdicionRespuestas.xaml">
+	  <MauiXaml Update="Views\CrearFormulario.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EdicionRespuestas.xaml">	  
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\GestionFormularios.xaml">
