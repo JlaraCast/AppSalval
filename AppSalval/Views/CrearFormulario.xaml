@@ -92,26 +92,28 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Text="{Binding Titulo}"
                     />
 
                     <Label
                          Grid.Row="2"
                          Grid.Column="0"
-                         Text="Titulo del Formulario" 
+                         Text="Descripción del formulario" 
                          FontSize="Title"
                          Margin="20,0,0,40"
                          TextColor="#000000"
                      />
 
                     <Entry
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="2"
-                         Placeholder="Ingrese el título"
-                         HorizontalOptions="Fill"
-                         Margin="40,0,40,40"
-                         TextColor="#000000"
-                     />
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Placeholder="Ingrese Descripcion"
+                        HorizontalOptions="Fill"
+                        Margin="40,0,40,40"
+                        TextColor="#000000"
+                        Text="{Binding Descripcion}"
+                    />
 
 
                     <Label
@@ -130,6 +132,7 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Date="{Binding FechaInicio}"
                     />
 
                     <Label
@@ -148,6 +151,7 @@
                          HorizontalOptions="Fill"
                          Margin="40,0,40,40"
                          TextColor="#000000"
+                        Date="{Binding FechaFin}"
                     />
 
 
@@ -166,6 +170,7 @@
                         Grid.ColumnSpan="2"
                         HorizontalOptions="Start"
                         Margin="160,-25,40,0"
+                        IsToggled="{Binding Habilitado}"
                     />
 
                 </Grid>
@@ -199,7 +204,8 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="Start"
-                    Margin="40,-5,0,0"                
+                    Margin="40,-5,0,0"
+                    IsChecked="{Binding RequiereDatosPersonales}"
                 />
 
 
@@ -269,16 +275,17 @@
                                 FontSize="30"
                                 Margin="0,0,0,40"        
                            />
-							
-							<CheckBox
+
+                            <CheckBox
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="Start"
                                 Margin="40,-5,0,30"                
+                                IsChecked="{Binding RequiereDatosPersonales}"
                             />
-							
-							
+                            
+                            <!-- Las preguntas debne de ir aqui-->
 
 
 
@@ -289,6 +296,22 @@
 
 
             </Border>
+			
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="30">
+                <Button 
+					Text="Cancelar" 
+                    BackgroundColor="Green"
+                    Command="{Binding BtnCancelar}"
+					
+                 />
+                
+               <Button 
+					Text="Aceptar" 
+                    BackgroundColor="LightBlue"
+                    Command="{Binding BtnAceptar}"
+					
+                />
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
