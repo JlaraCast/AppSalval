@@ -24,7 +24,7 @@
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
                     Margin="20,10,0,0"
-                    Clicked="OnOpcionesClicked" />
+                    />
 
                 <Label
                     Grid.Row="0"
@@ -42,7 +42,7 @@
                     HorizontalOptions="End"
                     VerticalOptions="Start"
                     Margin="0,10,20,0"
-                    Clicked="OnMenuPrincipalClicked" />
+                     />
 
                 <!-- Contenido principal de la página -->
                 <ContentView Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center">
