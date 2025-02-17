@@ -161,6 +161,7 @@
                                                 Title="Seleccione una recomendación"
                                                 ItemsSource="{Binding BindingContext.RecomendacionesComboBox, Source={x:Reference collectionView}}"
                                                 SelectedItem="{Binding SeleccionadaRecomendacion, Mode=TwoWay}"
+                                                
                                                 BackgroundColor="#2D2D2D"
                                                 TextColor="White"
                                                 WidthRequest="200"

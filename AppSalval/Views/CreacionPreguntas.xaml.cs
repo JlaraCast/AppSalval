@@ -7,6 +7,6 @@ public partial class CreacionPreguntas : ContentPage
     public CreacionPreguntas()
     {
         InitializeComponent();
-        BindingContext = new CreacionPreguntasViewModel();
+        BindingContext = new CreacionPreguntasViewModel(38);
     }
 }
