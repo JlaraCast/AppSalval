@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppSalval.Views.AplicarFormulario"
+             Title="Aplicar Formulario">
+
+    <VerticalStackLayout Padding="20">
+
+        <!-- Título del Formulario -->
+        <Label x:Name="FormularioTitulo"
+               FontSize="20"
+               FontAttributes="Bold"
+               TextColor="Black"
+               HorizontalOptions="Center" />
+
+        <!-- Lista de Preguntas -->
+        <ListView x:Name="ListaPreguntas">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BackgroundColor="#f5f5f5" Padding="10" Margin="5" CornerRadius="8">
+                            <Label Text="{Binding TextoPregunta}" FontSize="16" TextColor="Black"/>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Botones de Acción -->
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Enviar"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    Clicked="OnEnviarClicked"/>
+
+            <Button Text="Cancelar"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    Clicked="OnCancelarClicked"/>
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
