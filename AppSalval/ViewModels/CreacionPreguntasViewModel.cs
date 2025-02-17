@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using AppSalval.DTOS_API;
 using AppSalval.Services;
@@ -12,14 +14,13 @@ namespace AppSalval.ViewModels
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly RecomService _apiServiceRecomendaciones;
         private readonly FactorService _apiServiceFactoresRiesgo;
+        private readonly ApiServiceReglaOpcion _apiServiceReglaOpcion;
         private int _preguntaId = -1;
-        private List<OpcionRespuestaDto> _opcionesRespuesta;
+        private ObservableCollection<OpcionRespuestaDtoExtendida> _opcionesRespuesta;
         private List<Recomendacion> _recomendaciones;
         private List<FactorRiesgo> _factoresRiesgo;
-        private string _seleccionadaRecomendacion;
-        private string _seleccionadaRiesgo;
-        private ObservableCollection<string> _recomendacionesComboBox;
-        private ObservableCollection<string> _factoresRiesgoComboBox;
+        private string _textoPregunta;
+        private string _tipoPregunta;
 
         public CreacionPreguntasViewModel()
         {
@@ -27,16 +28,23 @@ namespace AppSalval.ViewModels
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceRecomendaciones = new RecomService();
             _apiServiceFactoresRiesgo = new FactorService();
+            _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
             AgregarOpcionRespuestaCommand = new Command(async () => await ControlCrearOpcionesRespuesta());
-            EliminarOpcionRespuestaCommand = new Command<OpcionRespuestaDto>(async (opcionRespuesta) => await EliminarOpcionRespuesta(opcionRespuesta));
+            EliminarOpcionRespuestaCommand = new Command<OpcionRespuestaDtoExtendida>(async (opcionRespuesta) => await EliminarOpcionRespuesta(opcionRespuesta));
             CargarOpcionesRespuestaCommand = new Command(async () => await CargarOpcionesRespuesta());
-            CargarRecomendacionesCommand = new Command(async () => await CargarRecomendaciones());
-            CargarFactoresRiesgoCommand = new Command(async () => await CargarFactoresRiesgo());
-            CargarRecomendaciones();
-            CargarFactoresRiesgo();
+            GuardarCambiosCommand = new Command(async () => await GuardarCambios());
+            OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
+            RecomendacionesComboBox = new ObservableCollection<string>();
+            FactoresRiesgoComboBox = new ObservableCollection<string>();
+            CargarDatosIniciales();
         }
 
-        public List<OpcionRespuestaDto> OpcionesRespuesta
+        public CreacionPreguntasViewModel(int idPregunta) : this()
+        {
+            _ = CargarPregunta(idPregunta);
+        }
+
+        public ObservableCollection<OpcionRespuestaDtoExtendida> OpcionesRespuesta
         {
             get => _opcionesRespuesta;
             set
@@ -54,6 +62,7 @@ namespace AppSalval.ViewModels
                 _recomendaciones = value;
                 OnPropertyChanged();
                 RecomendacionesComboBox = new ObservableCollection<string>(_recomendaciones.Select(r => $"{r.IdRecomendacion} - {r.TextoRecomendacion}"));
+                OnPropertyChanged(nameof(RecomendacionesComboBox));
             }
         }
 
@@ -65,45 +74,29 @@ namespace AppSalval.ViewModels
                 _factoresRiesgo = value;
                 OnPropertyChanged();
                 FactoresRiesgoComboBox = new ObservableCollection<string>(_factoresRiesgo.Select(f => $"{f.IdFactor} - {f.TextoFactor}"));
+                OnPropertyChanged(nameof(FactoresRiesgoComboBox));
             }
         }
 
-        public ObservableCollection<string> RecomendacionesComboBox
-        {
-            get => _recomendacionesComboBox;
-            private set
-            {
-                _recomendacionesComboBox = value;
-                OnPropertyChanged();
-            }
-        }
+        public ObservableCollection<string> RecomendacionesComboBox { get; private set; }
+        public ObservableCollection<string> FactoresRiesgoComboBox { get; private set; }
 
-        public ObservableCollection<string> FactoresRiesgoComboBox
+        public string TextoPregunta
         {
-            get => _factoresRiesgoComboBox;
-            private set
-            {
-                _factoresRiesgoComboBox = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string SeleccionadaRecomendacion
-        {
-            get => _seleccionadaRecomendacion;
+            get => _textoPregunta;
             set
             {
-                _seleccionadaRecomendacion = value;
+                _textoPregunta = value;
                 OnPropertyChanged();
             }
         }
 
-        public string SeleccionadaRiesgo
+        public string TipoPregunta
         {
-            get => _seleccionadaRiesgo;
+            get => _tipoPregunta;
             set
             {
-                _seleccionadaRiesgo = value;
+                _tipoPregunta = value;
                 OnPropertyChanged();
             }
         }
@@ -111,8 +104,13 @@ namespace AppSalval.ViewModels
         public ICommand AgregarOpcionRespuestaCommand { get; }
         public ICommand EliminarOpcionRespuestaCommand { get; }
         public ICommand CargarOpcionesRespuestaCommand { get; }
-        public ICommand CargarRecomendacionesCommand { get; }
-        public ICommand CargarFactoresRiesgoCommand { get; }
+        public ICommand GuardarCambiosCommand { get; }
+
+        private async void CargarDatosIniciales()
+        {
+            await CargarRecomendaciones();
+            await CargarFactoresRiesgo();
+        }
 
         private async Task CargarRecomendaciones()
         {
@@ -142,7 +140,7 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                var nuevaPregunta = new PreguntaDto { TextoPregunta = "Nueva Pregunta", TipoPregunta = "SelecciónMultiple" };
+                var nuevaPregunta = new PreguntaDto { TextoPregunta = TextoPregunta, TipoPregunta = TipoPregunta };
                 var resultado = await _apiServicePregunta.AddPregunta(nuevaPregunta);
                 if (resultado)
                 {
@@ -179,11 +177,57 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                List<OpcionRespuestaDto> opciones = await _apiService.GetOpcionRespuestaById(_preguntaId);
-                OpcionesRespuesta = opciones ?? new List<OpcionRespuestaDto>();
-                if (OpcionesRespuesta.Count == 0)
+                var opciones = await _apiService.GetOpcionRespuestaById(_preguntaId);
+                var opcionesExtendidas = new List<OpcionRespuestaDtoExtendida>();
+
+                foreach (var opcion in opciones)
+                {
+                    var reglasOpcion = await _apiServiceReglaOpcion.GetReglaOpcionByOpcionId(opcion.IdOpcion);
+                    var reglaOpcion = reglasOpcion?.FirstOrDefault();
+
+                    var opcionExtendida = new OpcionRespuestaDtoExtendida(opcion)
+                    {
+                        SeleccionadaRecomendacion = reglaOpcion?.IdRecomendacion.ToString(),
+                        SeleccionadaRiesgo = reglaOpcion?.IdFactorRiesgo.ToString(),
+                        Condicion = double.TryParse(reglaOpcion?.Condicion, out double condicion) ? condicion : 0
+                    };
+
+                    opcionesExtendidas.Add(opcionExtendida);
+                }
+
+                OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>(opcionesExtendidas);
+
+                foreach (var opcion in OpcionesRespuesta)
+                {
+                    if (int.TryParse(opcion.SeleccionadaRiesgo, out int idFactorRiesgo))
+                    {
+                        var factorRiesgo = FactoresRiesgo?.FirstOrDefault(f => f.IdFactor == idFactorRiesgo);
+                        if (factorRiesgo != null)
+                        {
+                            opcion.SeleccionadaRiesgo = $"{factorRiesgo.IdFactor} - {factorRiesgo.TextoFactor}";
+                        }
+                    }
+
+                    if (int.TryParse(opcion.SeleccionadaRecomendacion, out int idRecomendacion))
+                    {
+                        var recomendacion = Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion == idRecomendacion);
+                        if (recomendacion != null)
+                        {
+                            opcion.SeleccionadaRecomendacion = $"{recomendacion.IdRecomendacion} - {recomendacion.TextoRecomendacion}";
+                        }
+                    }
+
+                    OnPropertyChanged(nameof(opcion.SeleccionadaRecomendacion));
+                    OnPropertyChanged(nameof(opcion.SeleccionadaRiesgo));
+                }
+
+                if (!OpcionesRespuesta.Any())
                 {
                     await Application.Current.MainPage.DisplayAlert("Información", "No hay opciones de respuesta disponibles", "OK");
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Éxito", "Opciones de respuesta cargadas correctamente.", "OK");
                 }
             }
             catch (Exception ex)
@@ -194,19 +238,22 @@ namespace AppSalval.ViewModels
 
         private async Task AgregarOpcionRespuesta()
         {
-            await Application.Current.MainPage.DisplayAlert("Notificación", "Se ha agregado una nueva opción de respuesta.", "OK");
-
             var nuevaOpcion = new OpcionRespuestaDto { NombreOpcion = string.Empty, IdPregunta = _preguntaId };
             var resultado = await _apiService.AddOpcionRespuesta(nuevaOpcion);
             if (resultado != null)
             {
-                OpcionesRespuesta.Add(resultado);
+                OpcionesRespuesta.Add(new OpcionRespuestaDtoExtendida(resultado));
                 OnPropertyChanged(nameof(OpcionesRespuesta));
-                await CargarOpcionesRespuesta(); // Refrescar la lista después de agregar
+                await CargarOpcionesRespuesta();
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Opción de respuesta agregada correctamente.", "OK");
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo agregar la opción de respuesta. Intenta nuevamente.", "OK");
             }
         }
 
-        private async Task EliminarOpcionRespuesta(OpcionRespuestaDto opcionRespuesta)
+        private async Task EliminarOpcionRespuesta(OpcionRespuestaDtoExtendida opcionRespuesta)
         {
             var confirm = await Application.Current.MainPage.DisplayAlert("Confirmación", "¿Está seguro de que desea borrar esta opción de respuesta?", "Sí", "No");
             if (confirm)
@@ -230,6 +277,122 @@ namespace AppSalval.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
                 }
+            }
+        }
+
+        public async Task CargarPregunta(int preguntaId)
+        {
+            try
+            {
+                await CargarRecomendaciones();
+                await CargarFactoresRiesgo();
+
+                var pregunta = await _apiServicePregunta.GetPreguntaById(preguntaId);
+                if (pregunta == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Pregunta no encontrada.", "OK");
+                    return;
+                }
+
+                _preguntaId = pregunta.IdPregunta;
+                TextoPregunta = pregunta.TextoPregunta;
+                TipoPregunta = pregunta.TipoPregunta;
+
+                var opciones = await _apiService.GetOpcionRespuestaById(_preguntaId);
+                var opcionesExtendidas = new List<OpcionRespuestaDtoExtendida>();
+
+                foreach (var opcion in opciones)
+                {
+                    var reglasOpcion = await _apiServiceReglaOpcion.GetReglaOpcionByOpcionId(opcion.IdOpcion);
+                    var reglaOpcion = reglasOpcion?.FirstOrDefault();
+
+                    var opcionExtendida = new OpcionRespuestaDtoExtendida(opcion)
+                    {
+                        SeleccionadaRecomendacion = reglaOpcion?.IdRecomendacion.ToString(),
+                        SeleccionadaRiesgo = reglaOpcion?.IdFactorRiesgo.ToString(),
+                        Condicion = double.TryParse(reglaOpcion?.Condicion, out double condicion) ? condicion : 0
+                    };
+
+                    opcionesExtendidas.Add(opcionExtendida);
+                }
+
+                OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>(opcionesExtendidas);
+
+                foreach (var opcion in OpcionesRespuesta)
+                {
+                    if (int.TryParse(opcion.SeleccionadaRiesgo, out int idFactorRiesgo))
+                    {
+                        var factorRiesgo = FactoresRiesgo?.FirstOrDefault(f => f.IdFactor == idFactorRiesgo);
+                        if (factorRiesgo != null)
+                        {
+                            opcion.SeleccionadaRiesgo = $"{factorRiesgo.IdFactor} - {factorRiesgo.TextoFactor}";
+                        }
+                    }
+
+                    if (int.TryParse(opcion.SeleccionadaRecomendacion, out int idRecomendacion))
+                    {
+                        var recomendacion = Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion == idRecomendacion);
+                        if (recomendacion != null)
+                        {
+                            opcion.SeleccionadaRecomendacion = $"{recomendacion.IdRecomendacion} - {recomendacion.TextoRecomendacion}";
+                        }
+                    }
+
+                    OnPropertyChanged(nameof(opcion.SeleccionadaRecomendacion));
+                    OnPropertyChanged(nameof(opcion.SeleccionadaRiesgo));
+                }
+
+                OnPropertyChanged(nameof(TextoPregunta));
+                OnPropertyChanged(nameof(TipoPregunta));
+                OnPropertyChanged(nameof(OpcionesRespuesta));
+                OnPropertyChanged(nameof(RecomendacionesComboBox));
+                OnPropertyChanged(nameof(FactoresRiesgoComboBox));
+
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Pregunta cargada correctamente.", "OK");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al cargar la pregunta y sus opciones: {ex.Message}", "OK");
+            }
+        }
+
+        private async Task GuardarCambios()
+        {
+            try
+            {
+                if (OpcionesRespuesta.Any(opcion => string.IsNullOrEmpty(opcion.NombreOpcion) || string.IsNullOrEmpty(opcion.SeleccionadaRecomendacion) || string.IsNullOrEmpty(opcion.SeleccionadaRiesgo) || opcion.Condicion < 0 || opcion.Condicion > 10))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Debe completar todos los campos para cada opción de respuesta y asegurarse de que la condición esté entre 0 y 10.", "OK");
+                    return;
+                }
+
+                var pregunta = new PreguntaDto
+                {
+                    IdPregunta = _preguntaId,
+                    TextoPregunta = TextoPregunta,
+                    TipoPregunta = TipoPregunta
+                };
+                await _apiServicePregunta.EditPregunta(pregunta);
+
+                foreach (var opcion in OpcionesRespuesta)
+                {
+                    await _apiService.EditOpcionRespuesta(opcion);
+
+                    var reglaOpcion = new ReglaOpcionDto
+                    {
+                        IdOpcion = opcion.IdOpcion,
+                        IdRecomendacion = int.Parse(opcion.SeleccionadaRecomendacion.Split(' ')[0]),
+                        IdFactorRiesgo = int.Parse(opcion.SeleccionadaRiesgo.Split(' ')[0]),
+                        Condicion = opcion.Condicion.ToString()
+                    };
+                    await _apiServiceReglaOpcion.AddReglaOpcion(reglaOpcion);
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Los cambios fueron guardados exitosamente.", "OK");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar los cambios: {ex.Message}", "OK");
             }
         }
     }

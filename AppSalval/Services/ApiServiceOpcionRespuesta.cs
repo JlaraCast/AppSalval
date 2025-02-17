@@ -51,7 +51,7 @@ namespace AppSalval.Services
         }
 
 
-        // ✅ Método para obtener una opción de respuesta por su ID
+        // ✅ Método para obtener Varias opción de respuesta por su ID pregunta
         public async Task<List<OpcionRespuestaDto>> GetOpcionRespuestaById(int id)
         {
             try
@@ -69,15 +69,43 @@ namespace AppSalval.Services
                 return null;
             }
         }
-        
 
+        // ✅ Método para obtener una opción de respuesta por su ID de opción
+        public async Task<OpcionRespuestaDto> GetOpcionRespuestaByIdOpcion(int idOpcion)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"OpcionRespuesta/{idOpcion}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"📢 Datos de la API: {json}"); // 🔹 Agrega esto para ver los datos en la consola
+
+                    return JsonSerializer.Deserialize<OpcionRespuestaDto>(json, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en GetOpcionRespuestaByIdOpcion: {ex.Message}");
+                return null;
+            }
+        }
         // ✅ Método para editar una opción de respuesta existente
         public async Task<bool> EditOpcionRespuesta(OpcionRespuestaDto opcionRespuesta)
         {
             try
             {
                 // Verificar si la opción de respuesta existe
-                var existingOpcionRespuesta = await GetOpcionRespuestaById(opcionRespuesta.IdOpcion);
+                var existingOpcionRespuesta = await GetOpcionRespuestaByIdOpcion(opcionRespuesta.IdOpcion);
                 if (existingOpcionRespuesta == null)
                 {
                     Console.WriteLine($"⚠️ Opción de respuesta con ID {opcionRespuesta.IdOpcion} no encontrada.");
