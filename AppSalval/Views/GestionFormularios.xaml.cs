@@ -83,7 +83,6 @@ public partial class GestionFormularios : ContentPage
     {
         // Buscar el formulario por su ID
         var formularioEncontrado = await _apiService.GetFormularioById(formulario.IdFormulario);
-
         if (formularioEncontrado != null)
         {
             // Deshabilitar el formulario
