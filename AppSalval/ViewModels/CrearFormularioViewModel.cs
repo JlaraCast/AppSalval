@@ -19,6 +19,7 @@ namespace AppSalval.ViewModels
         private DateTime _fechaFin;
         private bool _requiereDatosPersonales;
         private bool _habilitado;
+        private bool _checkboxPregunta;
 
         public ICommand BtnCancelar { get; }
         public ICommand BtnAceptar{ get; }
@@ -58,6 +59,14 @@ namespace AppSalval.ViewModels
             set => SetProperty(ref _requiereDatosPersonales, value);
         }
 
+        public bool CheckboxPregunta
+        {
+            get => _checkboxPregunta;
+            set => SetProperty(ref _checkboxPregunta, value);
+        }
+
+
+
 
 
         public CrearFormularioViewModel(INavigation navigation)
@@ -69,8 +78,9 @@ namespace AppSalval.ViewModels
             _fechaFin = DateTime.Now;
             _requiereDatosPersonales = false;
             _habilitado = true;
+            _checkboxPregunta = false;
 
-            
+
             BtnCancelar = new Command(async () =>
             {
                 await _navigation.PushAsync(new GestionFormularios());
