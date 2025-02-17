@@ -40,11 +40,24 @@ namespace AppSalval.Services
         }
 
         // ✅ Método para obtener un formulario por su ID desde Somee
-        public async Task<FormularioDto> GetFormularioById(int id)
+        public async Task<FormularioDto?> GetFormularioById(int id)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<FormularioDto>($"{id}");
+                var url = $"{BaseUrl}/{id}"; // Construir la URL completa con el ID
+                var formulario = await _httpClient.GetFromJsonAsync<FormularioDto>(url);
+
+                if (formulario == null)
+                {
+                    Console.WriteLine($"⚠️ Formulario con ID {id} no encontrado.");
+                }
+
+                return formulario;
+            }
+            catch (HttpRequestException httpEx)
+            {
+                Console.WriteLine($"❌ Error HTTP en GetFormularioById: {httpEx.Message}");
+                return null;
             }
             catch (Exception ex)
             {
@@ -60,7 +73,8 @@ namespace AppSalval.Services
             {
                 var jsonContent = new StringContent(JsonSerializer.Serialize(formulario), Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PutAsync($"{formulario.IdFormulario}", jsonContent);
+                var url = $"{BaseUrl}/{formulario.IdFormulario}"; // Construir la URL completa con el ID
+                var response = await _httpClient.PutAsync(url, jsonContent);
 
                 if (response.IsSuccessStatusCode)
                 {
