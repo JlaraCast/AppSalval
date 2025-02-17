@@ -3,6 +3,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+
 
 namespace AppSalval.Views
 {
@@ -32,16 +34,23 @@ namespace AppSalval.Views
         {
             try
             {
-                if (string.IsNullOrEmpty(EntryEmail.Text) || PickerRole.SelectedItem == null)
+                if (string.IsNullOrEmpty(EntryEmail.Text) || string.IsNullOrEmpty(EntryPassword.Text) || PickerRole.SelectedItem == null)
                 {
                     await DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
+                    return;
+                }
+
+                // Verificar si el correo ya está registrado
+                if (await IsEmailRegisteredAsync(EntryEmail.Text.Trim()))
+                {
+                    await DisplayAlert("Error", "El correo electrónico ya está registrado.", "OK");
                     return;
                 }
 
                 var newUser = new Usuario
                 {
                     Correo = EntryEmail.Text.Trim(),
-                    Contraseña = "123456",  // Puedes permitir que el usuario ingrese su contraseña
+                    Contraseña = EntryPassword.Text.Trim(),  // Usar la contraseña ingresada
                     IdRol = GetRoleId(PickerRole.SelectedItem.ToString())
                 };
 
@@ -70,13 +79,47 @@ namespace AppSalval.Views
             }
         }
 
+        // Método para verificar si el correo ya está registrado
+        private async Task<bool> IsEmailRegisteredAsync(string email)
+        {
+            try
+            {
+                using var client = new HttpClient();
+                client.BaseAddress = new Uri("http://savalapi.somee.com/api/");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync("Usuario");  // Obtener todos los usuarios
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var usuarios = JsonSerializer.Deserialize<List<Usuario>>(content);  // Deserializa la lista de usuarios
+
+                    // Verificar si algún usuario tiene el mismo correo
+                    return usuarios.Any(u => u.Correo.Trim().ToLower() == email.Trim().ToLower());
+                }
+                else
+                {
+                    // Si la respuesta no es exitosa, asumimos que el correo no está registrado
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre un error en la solicitud, se asume que el correo no está registrado
+                Debug.WriteLine($"Error al verificar correo: {ex.Message}");
+                return false;
+            }
+        }
+
+
         private int GetRoleId(string roleName)
         {
             return roleName switch
             {
                 "Administrador" => 1,
                 "Encuestador" => 2,
-                "Encuestado" => 3,
+                "Desarrollador" => 3,
                 _ => 0
             };
         }
