@@ -1,5 +1,5 @@
-using System;
-
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace AppSalval.Views
 {
@@ -12,58 +12,51 @@ namespace AppSalval.Views
         {
             InitializeComponent();
 
-            // Asignar el usuario a la propiedad y llenar los controles con sus datos
             Usuario = usuario;
             BindingContext = this;
 
             EntryEmail.Text = Usuario.Correo;
             EntryPassword.Text = Usuario.Contraseña;
-            PickerRole.SelectedIndex = Usuario.IdRol - 1;  // Restamos 1 si los roles empiezan desde 1
+            PickerRole.SelectedIndex = Usuario.IdRol - 1;
         }
 
-        // Guardar los cambios del usuario
         private async void OnSaveChangesClicked(object sender, EventArgs e)
         {
-            // Validar campos
             if (string.IsNullOrEmpty(EntryEmail.Text) || string.IsNullOrEmpty(EntryPassword.Text))
             {
                 await DisplayAlert("Error", "Por favor complete todos los campos.", "OK");
                 return;
             }
 
-            // Actualizar la información del usuario
-            Usuario.Correo = EntryEmail.Text;
-            Usuario.Contraseña = EntryPassword.Text;
+            string newEmail = EntryEmail.Text.Trim();
+            string oldEmail = Usuario.Correo;
 
-            // Asignar el IdRol correctamente, tomando el índice seleccionado
-            switch (PickerRole.SelectedIndex)
+            // Si el usuario cambió su correo, verificar si ya existe en la base de datos
+            if (!newEmail.Equals(oldEmail, StringComparison.OrdinalIgnoreCase) && await IsEmailRegisteredAsync(newEmail))
             {
-                case 0:
-                    Usuario.IdRol = 1;  // "Administrador"
-                    break;
-                case 1:
-                    Usuario.IdRol = 2;  // "Encuestador"
-                    break;
-                case 2:
-                    Usuario.IdRol = 3;  // "Encuestado"
-                    break;
-                default:
-                    Usuario.IdRol = 0;  // Valor por defecto o inválido
-                    break;
+                await DisplayAlert("Error", "El correo electrónico ya está en uso por otro usuario.", "OK");
+                return;
             }
 
-            // Llamar al servicio para actualizar el usuario en la base de datos
-            var userService = new UserService();  // Suponiendo que tienes un servicio similar al de agregar
+            Usuario.Correo = newEmail;
+            Usuario.Contraseña = EntryPassword.Text.Trim();
+
+            switch (PickerRole.SelectedIndex)
+            {
+                case 0: Usuario.IdRol = 1; break;
+                case 1: Usuario.IdRol = 2; break;
+                case 2: Usuario.IdRol = 3; break;
+                default: Usuario.IdRol = 0; break;
+            }
+
+            var userService = new UserService();
             var result = await userService.UpdateUserAsync(Usuario);
 
             if (result)
             {
                 await DisplayAlert("Éxito", "Los cambios fueron guardados correctamente.", "OK");
-
-                // Notificar que el usuario ha sido actualizado
                 OnUserUpdated?.Invoke();
-
-                await Navigation.PopAsync();  // Regresar a la vista anterior
+                await Navigation.PopAsync();
             }
             else
             {
@@ -71,10 +64,37 @@ namespace AppSalval.Views
             }
         }
 
-        // Cancelar la edición
+        private async Task<bool> IsEmailRegisteredAsync(string email)
+        {
+            try
+            {
+                using var client = new HttpClient();
+                client.BaseAddress = new Uri("http://savalapi.somee.com/api/");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var response = await client.GetAsync("Usuario"); // Obtener todos los usuarios
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var usuarios = JsonSerializer.Deserialize<List<Usuario>>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+                    // Verificar si algún usuario tiene el mismo correo (excepto el usuario actual)
+                    return usuarios.Any(u => u.Correo.Equals(email, StringComparison.OrdinalIgnoreCase) && u.IdUsuario != Usuario.IdUsuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"No se pudo verificar el correo: {ex.Message}", "OK");
+            }
+
+            return false;
+        }
+
+
         private async void OnCancelClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();  // Volver a la vista anterior sin guardar cambios
+            await Navigation.PopAsync();
         }
     }
 }

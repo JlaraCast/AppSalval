@@ -97,6 +97,11 @@ namespace AppSalval.Views
         {
             await LoadUsersAsync();
         }
+
+        private async void OnBackClicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("///InicioAdmin");
+        }
     }
 }
 
