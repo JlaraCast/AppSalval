@@ -18,7 +18,7 @@ public class Usuario
     {
         1 => "Administrador",
         2 => "Encuestador",
-        3 => "Encuestado",
+        3 => "Desarrollador",
         _ => "Desconocido"
     };
 }
