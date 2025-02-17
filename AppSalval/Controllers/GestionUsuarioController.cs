@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -16,21 +17,45 @@ public class UsuarioController
     // Obtener lista de usuarios
     public async Task<List<Usuario>> GetUsuariosAsync()
     {
-        return await _httpClient.GetFromJsonAsync<List<Usuario>>($"{BaseUrl}/usuarios");
+        try
+        {
+            return await _httpClient.GetFromJsonAsync<List<Usuario>>(BaseUrl);
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine($"Error al obtener usuarios: {ex.Message}");
+            return null;
+        }
     }
 
     // Agregar un usuario
     public async Task<bool> AddUsuarioAsync(Usuario nuevoUsuario)
     {
-        var response = await _httpClient.PostAsJsonAsync($"{BaseUrl}/usuarios", nuevoUsuario);
-        return response.IsSuccessStatusCode;
+        try
+        {
+            var response = await _httpClient.PostAsJsonAsync(BaseUrl, nuevoUsuario);
+            return response.IsSuccessStatusCode;
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine($"Error al agregar usuario: {ex.Message}");
+            return false;
+        }
     }
 
     // Eliminar un usuario
     public async Task<bool> DeleteUsuarioAsync(int id)
     {
-        var response = await _httpClient.DeleteAsync($"{BaseUrl}/usuarios/{id}");
-        return response.IsSuccessStatusCode;
+        try
+        {
+            var response = await _httpClient.DeleteAsync($"{BaseUrl}/{id}");
+            return response.IsSuccessStatusCode;
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine($"Error al eliminar usuario: {ex.Message}");
+            return false;
+        }
     }
 
     // Método para obtener y eliminar un usuario al mismo tiempo
@@ -40,5 +65,4 @@ public class UsuarioController
         List<Usuario> usuarios = isDeleted ? await GetUsuariosAsync() : null;
         return (isDeleted, usuarios);
     }
-
 }

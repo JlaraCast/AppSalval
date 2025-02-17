@@ -51,7 +51,11 @@
     Title="CrearFormulario"
     ContentTemplate="{DataTemplate vista:CrearFormulario}"
     Route="CrearFormulario" />
-  
 
-    
+    <ShellContent
+    Title="LoginPage"
+    ContentTemplate="{DataTemplate vista:LoginPage}"
+    Route="LoginPage" />
+
+
 </Shell>
