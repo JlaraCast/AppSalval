@@ -282,7 +282,7 @@
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="Start"
                                 Margin="40,-5,0,30"                
-                                IsChecked="{Binding RequiereDatosPersonales}"
+                                IsChecked="{Binding CheckboxPregunta}"
                             />
                             
                             <!-- Las preguntas debne de ir aqui-->

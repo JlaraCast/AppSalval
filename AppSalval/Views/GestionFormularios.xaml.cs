@@ -18,10 +18,10 @@ public partial class GestionFormularios : ContentPage
     {
         InitializeComponent();
         _apiService = new ApiServiceFormularios();
-        GestionFormularioViewModel Pesta�aViewModel = new GestionFormularioViewModel(Navigation, ListaFormularios);
-        Pesta�aViewModel.LoadFormularios(); // Llamamos a la API cuando se carga la p�gina
-        BindingContext = Pesta�aViewModel;
-       // ((GestionFormularioViewModel)BindingContext).LoadFormularios(); // Llamamos al m�todo LoadFormularios del ViewModel
+        GestionFormularioViewModel ViewModel = new GestionFormularioViewModel(Navigation, ListaFormularios);
+        ViewModel.LoadFormularios(); 
+        BindingContext = ViewModel;
+       
     }
     
 }

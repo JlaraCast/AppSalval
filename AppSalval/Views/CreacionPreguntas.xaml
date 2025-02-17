@@ -95,6 +95,23 @@
                             </Picker.Items>
                         </Picker>
 
+                        <Label Text="Habilitado"
+                           Grid.Column="2"
+                           Grid.Row="1"
+                           FontSize="Medium"
+                           TextColor="MidnightBlue" 
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"
+                           Margin="0,0,15,0"/>
+
+                        <CheckBox x:Name="checkBoxObligatorio"
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0"
+                            IsChecked="{Binding IsObligatorio}"/>
+
                         <!-- Label para respuestas -->
                         <Label Text="Respuestas:"
                            Grid.Column="0"
@@ -130,6 +147,7 @@
                                                 Title="Seleccione una recomendación"
                                                 ItemsSource="{Binding BindingContext.RecomendacionesComboBox, Source={x:Reference collectionView}}"
                                                 SelectedItem="{Binding SeleccionadaRecomendacion, Mode=TwoWay}"
+                                                
                                                 BackgroundColor="#2D2D2D"
                                                 TextColor="White"
                                                 WidthRequest="200"
