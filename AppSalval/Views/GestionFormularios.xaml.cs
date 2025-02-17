@@ -11,11 +11,15 @@ namespace AppSalval.Views;
 
 public partial class GestionFormularios : ContentPage
 {
-	public GestionFormularios()
+
+
+
+    public GestionFormularios()
 	{
 		InitializeComponent();
         _apiService = new ApiServiceFormularios();
         LoadFormularios(); // Llamamos a la API cuando se carga la página
+
 
     }
     private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
@@ -112,5 +116,6 @@ public partial class GestionFormularios : ContentPage
         public string NombreDescripcion { get; set; }
         public Command VerCommand { get; set; }
         public Command EditarCommand { get; set; }
-        public Command EliminarCommand { get; set; }
-    }
+        public Command EliminarCommand { get; set; }    
+   
+}
