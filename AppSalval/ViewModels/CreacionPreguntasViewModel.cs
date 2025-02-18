@@ -21,6 +21,7 @@ namespace AppSalval.ViewModels
         private List<FactorRiesgo> _factoresRiesgo;
         private string _textoPregunta;
         private string _tipoPregunta;
+        private int _tipoPreguntaIndex;
 
         public CreacionPreguntasViewModel()
         {
@@ -101,6 +102,16 @@ namespace AppSalval.ViewModels
             }
         }
 
+        public int TipoPreguntaIndex
+        {
+            get => _tipoPreguntaIndex;
+            set
+            {
+                _tipoPreguntaIndex = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand AgregarOpcionRespuestaCommand { get; }
         public ICommand EliminarOpcionRespuestaCommand { get; }
         public ICommand CargarOpcionesRespuestaCommand { get; }
@@ -140,7 +151,7 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                var nuevaPregunta = new PreguntaDto { TextoPregunta = TextoPregunta, TipoPregunta = TipoPregunta };
+                var nuevaPregunta = new PreguntaDto { TextoPregunta = "texttemp", TipoPregunta = "tipotemp" };
                 var resultado = await _apiServicePregunta.AddPregunta(nuevaPregunta);
                 if (resultado)
                 {
@@ -165,12 +176,9 @@ namespace AppSalval.ViewModels
             if (_preguntaId == -1)
             {
                 await CrearPregunta();
-                await AgregarOpcionRespuesta();
             }
-            else
-            {
-                await AgregarOpcionRespuesta();
-            }
+
+            await AgregarOpcionRespuesta();
         }
 
         private async Task CargarOpcionesRespuesta()
@@ -192,34 +200,16 @@ namespace AppSalval.ViewModels
                         Condicion = double.TryParse(reglaOpcion?.Condicion, out double condicion) ? condicion : 0
                     };
 
+                    // Asigna los índices seleccionados
+                    opcionExtendida.SeleccionadaRecomendacionIndex = RecomendacionesComboBox.IndexOf($"{opcionExtendida.SeleccionadaRecomendacion} - {Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion.ToString() == opcionExtendida.SeleccionadaRecomendacion)?.TextoRecomendacion}");
+                    opcionExtendida.SeleccionadaRiesgoIndex = FactoresRiesgoComboBox.IndexOf($"{opcionExtendida.SeleccionadaRiesgo} - {FactoresRiesgo?.FirstOrDefault(f => f.IdFactor.ToString() == opcionExtendida.SeleccionadaRiesgo)?.TextoFactor}");
+
                     opcionesExtendidas.Add(opcionExtendida);
                 }
 
                 OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>(opcionesExtendidas);
 
-                foreach (var opcion in OpcionesRespuesta)
-                {
-                    if (int.TryParse(opcion.SeleccionadaRiesgo, out int idFactorRiesgo))
-                    {
-                        var factorRiesgo = FactoresRiesgo?.FirstOrDefault(f => f.IdFactor == idFactorRiesgo);
-                        if (factorRiesgo != null)
-                        {
-                            opcion.SeleccionadaRiesgo = $"{factorRiesgo.IdFactor} - {factorRiesgo.TextoFactor}";
-                        }
-                    }
-
-                    if (int.TryParse(opcion.SeleccionadaRecomendacion, out int idRecomendacion))
-                    {
-                        var recomendacion = Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion == idRecomendacion);
-                        if (recomendacion != null)
-                        {
-                            opcion.SeleccionadaRecomendacion = $"{recomendacion.IdRecomendacion} - {recomendacion.TextoRecomendacion}";
-                        }
-                    }
-
-                    OnPropertyChanged(nameof(opcion.SeleccionadaRecomendacion));
-                    OnPropertyChanged(nameof(opcion.SeleccionadaRiesgo));
-                }
+                OnPropertyChanged(nameof(OpcionesRespuesta));
 
                 if (!OpcionesRespuesta.Any())
                 {
@@ -297,6 +287,7 @@ namespace AppSalval.ViewModels
                 _preguntaId = pregunta.IdPregunta;
                 TextoPregunta = pregunta.TextoPregunta;
                 TipoPregunta = pregunta.TipoPregunta;
+                TipoPreguntaIndex = TipoPregunta == "Selección Múltiple" ? 0 : 1;
 
                 var opciones = await _apiService.GetOpcionRespuestaById(_preguntaId);
                 var opcionesExtendidas = new List<OpcionRespuestaDtoExtendida>();
@@ -313,38 +304,19 @@ namespace AppSalval.ViewModels
                         Condicion = double.TryParse(reglaOpcion?.Condicion, out double condicion) ? condicion : 0
                     };
 
+                    // Asigna los índices seleccionados
+                    opcionExtendida.SeleccionadaRecomendacionIndex = RecomendacionesComboBox.IndexOf($"{opcionExtendida.SeleccionadaRecomendacion} - {Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion.ToString() == opcionExtendida.SeleccionadaRecomendacion)?.TextoRecomendacion}");
+                    opcionExtendida.SeleccionadaRiesgoIndex = FactoresRiesgoComboBox.IndexOf($"{opcionExtendida.SeleccionadaRiesgo} - {FactoresRiesgo?.FirstOrDefault(f => f.IdFactor.ToString() == opcionExtendida.SeleccionadaRiesgo)?.TextoFactor}");
+
                     opcionesExtendidas.Add(opcionExtendida);
                 }
 
                 OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>(opcionesExtendidas);
 
-                foreach (var opcion in OpcionesRespuesta)
-                {
-                    if (int.TryParse(opcion.SeleccionadaRiesgo, out int idFactorRiesgo))
-                    {
-                        var factorRiesgo = FactoresRiesgo?.FirstOrDefault(f => f.IdFactor == idFactorRiesgo);
-                        if (factorRiesgo != null)
-                        {
-                            opcion.SeleccionadaRiesgo = $"{factorRiesgo.IdFactor} - {factorRiesgo.TextoFactor}";
-                        }
-                    }
-
-                    if (int.TryParse(opcion.SeleccionadaRecomendacion, out int idRecomendacion))
-                    {
-                        var recomendacion = Recomendaciones?.FirstOrDefault(r => r.IdRecomendacion == idRecomendacion);
-                        if (recomendacion != null)
-                        {
-                            opcion.SeleccionadaRecomendacion = $"{recomendacion.IdRecomendacion} - {recomendacion.TextoRecomendacion}";
-                        }
-                    }
-
-                    OnPropertyChanged(nameof(opcion.SeleccionadaRecomendacion));
-                    OnPropertyChanged(nameof(opcion.SeleccionadaRiesgo));
-                }
-
+                OnPropertyChanged(nameof(OpcionesRespuesta));
                 OnPropertyChanged(nameof(TextoPregunta));
                 OnPropertyChanged(nameof(TipoPregunta));
-                OnPropertyChanged(nameof(OpcionesRespuesta));
+                OnPropertyChanged(nameof(TipoPreguntaIndex));
                 OnPropertyChanged(nameof(RecomendacionesComboBox));
                 OnPropertyChanged(nameof(FactoresRiesgoComboBox));
 
@@ -360,7 +332,7 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                if (OpcionesRespuesta.Any(opcion => string.IsNullOrEmpty(opcion.NombreOpcion) || string.IsNullOrEmpty(opcion.SeleccionadaRecomendacion) || string.IsNullOrEmpty(opcion.SeleccionadaRiesgo) || opcion.Condicion < 0 || opcion.Condicion > 10))
+                if (OpcionesRespuesta.Any(opcion => string.IsNullOrEmpty(opcion.NombreOpcion) || opcion.SeleccionadaRecomendacionIndex == -1 || opcion.SeleccionadaRiesgoIndex == -1 || opcion.Condicion < 0 || opcion.Condicion > 10))
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "Debe completar todos los campos para cada opción de respuesta y asegurarse de que la condición esté entre 0 y 10.", "OK");
                     return;
@@ -381,8 +353,8 @@ namespace AppSalval.ViewModels
                     var reglaOpcion = new ReglaOpcionDto
                     {
                         IdOpcion = opcion.IdOpcion,
-                        IdRecomendacion = int.Parse(opcion.SeleccionadaRecomendacion.Split(' ')[0]),
-                        IdFactorRiesgo = int.Parse(opcion.SeleccionadaRiesgo.Split(' ')[0]),
+                        IdRecomendacion = int.Parse(RecomendacionesComboBox[opcion.SeleccionadaRecomendacionIndex].Split(' ')[0]),
+                        IdFactorRiesgo = int.Parse(FactoresRiesgoComboBox[opcion.SeleccionadaRiesgoIndex].Split(' ')[0]),
                         Condicion = opcion.Condicion.ToString()
                     };
                     await _apiServiceReglaOpcion.AddReglaOpcion(reglaOpcion);
@@ -395,5 +367,21 @@ namespace AppSalval.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar los cambios: {ex.Message}", "OK");
             }
         }
+    }
+
+    public class OpcionRespuestaDtoExtendida : OpcionRespuestaDto
+    {
+        public OpcionRespuestaDtoExtendida(OpcionRespuestaDto opcionRespuestaDto)
+        {
+            IdOpcion = opcionRespuestaDto.IdOpcion;
+            NombreOpcion = opcionRespuestaDto.NombreOpcion;
+            IdPregunta = opcionRespuestaDto.IdPregunta;
+        }
+
+        public string SeleccionadaRecomendacion { get; set; }
+        public string SeleccionadaRiesgo { get; set; }
+        public double Condicion { get; set; }
+        public int SeleccionadaRecomendacionIndex { get; set; }
+        public int SeleccionadaRiesgoIndex { get; set; }
     }
 }

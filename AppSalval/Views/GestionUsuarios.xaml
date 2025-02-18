@@ -3,27 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.GestionUsuarios"
              Title="Gestión de Usuarios">
-    
+
     <ScrollView>
         <!-- Hacemos que todo el contenido sea desplazable -->
         <VerticalStackLayout Padding="20">
 
-            <Grid Padding="0,0,0,10" RowDefinitions="Auto" ColumnDefinitions="Auto, *, Auto">
-                <!-- Botón Agregar alineado a la izquierda -->
+            <!-- Encabezado con botón alineado a la derecha -->
+            <HorizontalStackLayout Padding="0,0,0,10">
+               
                 <Button Text="Agregar +" Clicked="OnAddUserClicked"
                         BackgroundColor="Green" TextColor="White" 
-                        Padding="5" CornerRadius="8" 
-                        HorizontalOptions="Start" Grid.Column="0"/>
-
-                <Grid HorizontalOptions="FillAndExpand" Grid.Column="1"/>
-                
-                <!-- Botón Regresar alineado a la derecha -->
-                <Button Text="← Regresar" Clicked="OnBackClicked"
-                        BackgroundColor="Gray" TextColor="White" 
-                        Padding="5" CornerRadius="8" 
-                        HorizontalOptions="End" Grid.Column="2"/>
-            </Grid>
-
+                        Padding="5" CornerRadius="8"
+                        HorizontalOptions="End"/>
+            </HorizontalStackLayout>
 
             <!-- Encabezados -->
             <Frame BackgroundColor="#F0F0F0" Padding="10" HasShadow="False" BorderColor="Gray" CornerRadius="10">
@@ -58,6 +50,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
         </VerticalStackLayout>
     </ScrollView>
     <!-- Fin del ScrollView -->
