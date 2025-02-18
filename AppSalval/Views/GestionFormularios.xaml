@@ -74,7 +74,7 @@
                     </Grid>
                 </ContentView>
 
-                <CollectionView x:Name="ListaFormularios" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding Formularios}">
+                <CollectionView x:Name="ListaFormularios" Grid.Row="2" Grid.ColumnSpan="3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="10">
