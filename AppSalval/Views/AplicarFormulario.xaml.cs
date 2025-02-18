@@ -1,25 +1,24 @@
 using AppSalval.Services;
-using AppSalval.Models_Api;
+using AppSalval.DTOS_API;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
-using AppSalval.DTOS_API;
 
 namespace AppSalval.Views
 {
     public partial class AplicarFormulario : ContentPage
     {
         private readonly ApiServiceFormularioPregunta _apiServiceFormularioPregunta;
+        private readonly ApiServiceOpcionesRespuesta _apiServiceOpcionesRespuesta;
         private List<FormularioPreguntaDto> _preguntas;
 
         public AplicarFormulario(int idFormulario, string tituloFormulario)
         {
             InitializeComponent();
             _apiServiceFormularioPregunta = new ApiServiceFormularioPregunta();
-            FormularioTitulo.Text = tituloFormulario; // Muestra el título del formulario en la UI
-
-            // ?? Cargar preguntas automáticamente al abrir la pantalla
+            _apiServiceOpcionesRespuesta = new ApiServiceOpcionesRespuesta();
+            FormularioTitulo.Text = tituloFormulario;
             LoadPreguntas(idFormulario);
         }
 
@@ -31,7 +30,12 @@ namespace AppSalval.Views
 
                 if (_preguntas != null && _preguntas.Count > 0)
                 {
-                    ListaPreguntas.ItemsSource = _preguntas; // Asigna la lista de preguntas a la UI
+                    foreach (var pregunta in _preguntas)
+                    {
+                        pregunta.Opciones = await _apiServiceOpcionesRespuesta.GetOpcionesByPregunta(pregunta.IdPregunta);
+                    }
+
+                    ListaPreguntas.ItemsSource = _preguntas;
                 }
                 else
                 {

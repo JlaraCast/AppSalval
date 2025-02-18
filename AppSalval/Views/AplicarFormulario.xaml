@@ -4,40 +4,66 @@
              x:Class="AppSalval.Views.AplicarFormulario"
              Title="Aplicar Formulario">
 
-    <VerticalStackLayout Padding="20">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
 
-        <!-- Título del Formulario -->
-        <Label x:Name="FormularioTitulo"
-               FontSize="20"
-               FontAttributes="Bold"
-               TextColor="Black"
-               HorizontalOptions="Center" />
+            <!-- Título del Formulario -->
+            <Label x:Name="FormularioTitulo"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="SteelBlue"
+                   HorizontalOptions="Center"/>
 
-        <!-- Lista de Preguntas -->
-        <ListView x:Name="ListaPreguntas">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame BackgroundColor="#f5f5f5" Padding="10" Margin="5" CornerRadius="8">
-                            <Label Text="{Binding TextoPregunta}" FontSize="16" TextColor="Black"/>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <!-- Lista de preguntas -->
+            <ListView x:Name="ListaPreguntas"
+                      ItemsSource="{Binding _preguntas}"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None">
 
-        <!-- Botones de Acción -->
-        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-            <Button Text="Enviar"
-                    BackgroundColor="Green"
-                    TextColor="White"
-                    Clicked="OnEnviarClicked"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="10" BackgroundColor="White" CornerRadius="10">
+                                <VerticalStackLayout>
 
-            <Button Text="Cancelar"
-                    BackgroundColor="Red"
-                    TextColor="White"
-                    Clicked="OnCancelarClicked"/>
-        </HorizontalStackLayout>
+                                    <!-- Pregunta -->
+                                    <Label Text="{Binding TextoPregunta}"
+                                           FontSize="18"
+                                           TextColor="Black"
+                                           FontAttributes="Bold"/>
 
-    </VerticalStackLayout>
+                                    <!-- Opciones de respuesta -->
+                                    <ListView ItemsSource="{Binding Opciones}"
+                                              HasUnevenRows="True"
+                                              SeparatorVisibility="None">
+
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Grid Padding="5">
+                                                        <Label Text="{Binding TextoOpcion}" FontSize="16" TextColor="Gray"/>
+                                                    </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+
+                                    </ListView>
+
+                                </VerticalStackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <!-- Botones -->
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                <Button Text="Enviar" BackgroundColor="Green" TextColor="White" Clicked="OnEnviarClicked"/>
+                <Button Text="Cancelar" BackgroundColor="Red" TextColor="White" Clicked="OnCancelarClicked"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
