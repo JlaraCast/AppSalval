@@ -272,33 +272,32 @@
                                 Margin="0,0,0,40"        
                            />
                                     <CollectionView x:Name="ListaPreguntas"
-                                Grid.Row="1"
-                                Grid.ColumnSpan="2"
-                                ItemsSource="{Binding PreguntasDtos}"
-                                            
-                                VerticalOptions="FillAndExpand">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Padding="10" Margin="5" BorderColor="Black">
-                                        <StackLayout>
-                                            <Label Text="{Binding TextoPregunta}" FontSize="16" />
-                                            <CheckBox IsChecked="{Binding IsSelected}"/>
-                                            
-                                            <CollectionView ItemsSource="{Binding Opciones}">
-                                                <CollectionView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <CheckBox IsChecked="{Binding IsSelected}" />
-                                                            <Label Text="{Binding NombreOpcion}" FontSize="14" />
-                                                        </StackLayout>
-                                                    </DataTemplate>
-                                                </CollectionView.ItemTemplate>
-                                            </CollectionView>
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                                        ItemsSource="{Binding PreguntasDtos}"
+                                        VerticalOptions="FillAndExpand">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame Padding="10" Margin="5" BorderColor="Black">
+                                                    <VerticalStackLayout>
+                                                        <!-- Mostrar el texto de la pregunta -->
+                                                        <Label Text="{Binding TextoPregunta}" FontSize="18" FontAttributes="Bold"  />
+                                                        
+                                                        <!-- Sub-CollectionView para mostrar las opciones -->
+                                                        <CollectionView ItemsSource="{Binding Opciones}" Margin="20,5,0,5">
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <HorizontalStackLayout>
+                                                                        <CheckBox IsChecked="{Binding IsSelected}" />
+                                                                        <Label Text="{Binding NombreOpcion}" FontSize="16" />
+                                                                    </HorizontalStackLayout>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+
+                                                    </VerticalStackLayout>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
 
 
 
@@ -306,7 +305,8 @@
 
 
 
-                        </Grid>
+
+                                </Grid>
                             </VerticalStackLayout>
                         </ScrollView>
         

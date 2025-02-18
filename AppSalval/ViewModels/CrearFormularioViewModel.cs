@@ -9,6 +9,7 @@ using AppSalval.DTOS_API;
 using AppSalval.Models_Api;
 using AppSalval.Services;
 using AppSalval.Views;
+using static AppSalval.ViewModels.CrearFormularioViewModel;
 
 
 namespace AppSalval.ViewModels
@@ -32,7 +33,8 @@ namespace AppSalval.ViewModels
         private ObservableCollection<OpcionRespuestaDtoExtendida> _opcionesRespuesta;
         private int _preguntaId = -1;
 
-        private ObservableCollection<PreguntaDto> _preguntasDtos;
+        public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
+
 
 
 
@@ -48,7 +50,7 @@ namespace AppSalval.ViewModels
             _titulo = string.Empty;
             _descripcion = string.Empty;
             _opcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
-           
+
             _fechaInicio = DateTime.Now;
             _fechaFin = DateTime.Now;
             _requiereDatosPersonales = false;
@@ -70,7 +72,7 @@ namespace AppSalval.ViewModels
         }
 
 
-        
+
         public ObservableCollection<OpcionRespuestaDtoExtendida> OpcionesRespuesta
         {
             get => _opcionesRespuesta;
@@ -97,7 +99,7 @@ namespace AppSalval.ViewModels
             _habilitado = true;
             _checkboxPregunta = false;
             OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
-            
+
 
             BtnCancelar = new Command(async () =>
             {
@@ -109,7 +111,7 @@ namespace AppSalval.ViewModels
                 // Lógica para aceptar el formulario
             });
 
-            _preguntasDtos = new ObservableCollection<PreguntaDto>(); // Asegurar que está inicializado
+            _preguntasDtos = new ObservableCollection<PreguntaViewModel>(); // Asegurar que está inicializado
 
             CargarPreguntasCommand = new Command(async () => await CargarPreguntas());
 
@@ -117,15 +119,16 @@ namespace AppSalval.ViewModels
             Task.Run(async () => await CargarPreguntas());
         }
 
-        public ObservableCollection<PreguntaDto> PreguntasDtos
+        public ObservableCollection<PreguntaViewModel> PreguntasDtos
         {
             get => _preguntasDtos;
             set
             {
                 _preguntasDtos = value;
-                OnPropertyChanged(nameof(PreguntasDtos)); // ✅ Notificar cambios a la UI
+                OnPropertyChanged(nameof(PreguntasDtos)); // 🔄 Notifica cambios a la UI
             }
         }
+
 
 
         private async Task CargarPreguntas()
@@ -138,13 +141,39 @@ namespace AppSalval.ViewModels
                 return;
             }
 
-            PreguntasDtos.Clear(); // Limpiar antes de agregar nuevas preguntas
+            PreguntasDtos.Clear(); // Limpiar antes de cargar nuevas preguntas
 
             foreach (var pregunta in preguntas)
             {
-                PreguntasDtos.Add(pregunta);
+                // Obtener las opciones de respuesta para cada pregunta
+                var opciones = await _apiServiceOpcionRespuesta.GetOpcionRespuestaById(pregunta.IdPregunta) ?? new List<OpcionRespuestaDto>();
+
+                // Convertir opciones a ViewModel
+                var opcionesViewModel = new ObservableCollection<OpcionRespuestaViewModel>();
+
+                foreach (var o in opciones)
+                {
+                    opcionesViewModel.Add(new OpcionRespuestaViewModel
+                    {
+                        OpcionId = o.IdOpcion,
+                        NombreOpcion = o.NombreOpcion,
+                        IdPregunta = o.IdPregunta,
+                        IsSelected = false
+                    });
+                }
+
+                // Agregar la pregunta con sus opciones a la lista
+                PreguntasDtos.Add(new PreguntaViewModel
+                {
+                    PreguntaId = pregunta.IdPregunta,
+                    TextoPregunta = pregunta.TextoPregunta,
+                    Opciones = opcionesViewModel
+                });
             }
         }
+
+
+
 
 
 
@@ -193,40 +222,27 @@ namespace AppSalval.ViewModels
             get => _checkboxPregunta;
             set => SetProperty(ref _checkboxPregunta, value);
         }
-      
-        
-
-
-        
-
-
-
-
-
-
-
-
-        internal class PreguntaViewModel
-        {
-            public int PreguntaId { get; set; }
-            public string TextoPregunta { get; set; }
-            public string TipoPregunta { get; set; }
-            public string NombreOpciones { get; set; }
-            public Command VerCommand { get; set; }
-            public Command EditarCommand { get; set; }
-            public Command EliminarCommand { get; set; }
-        }
-
-        internal class OpcionRespuestaViewModel
-        {
-            public int OpcionId { get; set; }
-            public string NombreOpcion { get; set; }
-            public int IdPregunta { get; set; }
-            public bool IsSelected { get; set; }
-        }
-
 
 
     }//fin de la clase
+
+
+    public class PreguntaViewModel
+    {
+        public int PreguntaId { get; set; }
+        public string TextoPregunta { get; set; }
+        public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
+    }
+
+
+    public class OpcionRespuestaViewModel
+    {
+        public int OpcionId { get; set; }
+        public string NombreOpcion { get; set; }
+        public int IdPregunta { get; set; }
+        public bool IsSelected { get; set; }
+    }
+
+
 
 }//Fin del Namespace
