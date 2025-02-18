@@ -25,6 +25,12 @@
             <Button Text="Ingresar" BackgroundColor="#4CAF50" TextColor="White"
                     Clicked="OnLoginClicked"/>
 
+            <!-- Botón Crear Cuenta -->
+            <Button Text="Crear una cuenta" 
+                    BackgroundColor="Transparent" 
+                    TextColor="Blue" 
+                    Clicked="OnCreateAccountClicked"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

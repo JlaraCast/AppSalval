@@ -52,5 +52,10 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", "Usuario o contraseña incorrectos", "OK");
             }
         }
+
+        private async void OnCreateAccountClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AgregarUsuario());
+        }
     }
 }
