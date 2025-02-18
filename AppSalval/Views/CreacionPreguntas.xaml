@@ -88,7 +88,9 @@
                             Margin="10,0,15,0"
                             TextColor="Gray"
                             BackgroundColor="LightGreen"
-                            SelectedItem="{Binding TipoPregunta, Mode=TwoWay}">
+                            SelectedIndex="{Binding TipoPreguntaIndex, Mode=TwoWay}"
+                             SelectedItem="{Binding TipoPregunta, Mode=TwoWay}">
+                            
                             <Picker.Items>
                                 <x:String>Selección Múltiple</x:String>
                                 <x:String>Selección Única</x:String>
@@ -146,8 +148,7 @@
                                         <Picker Grid.Column="1" 
                                                 Title="Seleccione una recomendación"
                                                 ItemsSource="{Binding BindingContext.RecomendacionesComboBox, Source={x:Reference collectionView}}"
-                                                SelectedItem="{Binding SeleccionadaRecomendacion, Mode=TwoWay}"
-                                                
+                                                SelectedIndex="{Binding SeleccionadaRecomendacionIndex, Mode=TwoWay}"
                                                 BackgroundColor="#2D2D2D"
                                                 TextColor="White"
                                                 WidthRequest="200"
@@ -156,7 +157,7 @@
                                         <Picker Grid.Column="2" 
                                                 Title="Seleccione un factor de riesgo"
                                                 ItemsSource="{Binding BindingContext.FactoresRiesgoComboBox, Source={x:Reference collectionView}}"
-                                                SelectedItem="{Binding SeleccionadaRiesgo, Mode=TwoWay}"
+                                                SelectedIndex="{Binding SeleccionadaRiesgoIndex, Mode=TwoWay}"
                                                 BackgroundColor="#2D2D2D"
                                                 TextColor="White"
                                                 WidthRequest="200"
