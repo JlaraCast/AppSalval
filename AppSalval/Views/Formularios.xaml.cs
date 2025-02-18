@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
-
 namespace AppSalval.Views
 {
     public partial class Formularios : ContentPage

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
+using AppSalval.ViewModels;
 namespace AppSalval.Views;
 
 public partial class GestionFormularios : ContentPage
@@ -23,8 +24,6 @@ public partial class GestionFormularios : ContentPage
 
     private async void LoadFormularios()
     {
-        InitializeComponent();
-        _apiService = new ApiServiceFormularios();
         GestionFormularioViewModel ViewModel = new GestionFormularioViewModel(Navigation, ListaFormularios);
         ViewModel.LoadFormularios(); 
         BindingContext = ViewModel;
