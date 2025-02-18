@@ -11,6 +11,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -240,9 +241,10 @@
                              TextColor="#000000"
                         />
 
-                    <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
-
-                        <Grid Margin="0,0,30,0" Padding="20,0,0,30">
+                    <Border Stroke="Green" StrokeThickness="3" Padding="0,0,0,0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="400">
+                        <ScrollView>
+                            <VerticalStackLayout Spacing="10" >
+                                <Grid Margin="0,0,30,0" Padding="20,0,0,30">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -262,34 +264,92 @@
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label
+                                    <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Text="Pregunta" 
                                 FontSize="30"
                                 Margin="0,0,0,40"        
                            />
-							
-							<CheckBox
-                                Grid.Row="0"
-                                Grid.Column="1"
+                                    <CollectionView x:Name="ListaPreguntas"
+                                Grid.Row="1"
                                 Grid.ColumnSpan="2"
-                                HorizontalOptions="Start"
-                                Margin="40,-5,0,30"                
-                                IsChecked="{Binding CheckboxPregunta}"
-                            />
-							
-							
+                                ItemsSource="{Binding PreguntasDtos}"
+                                            
+                                VerticalOptions="FillAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10" Margin="5" BorderColor="Black">
+                                        <StackLayout>
+                                            <Label Text="{Binding TextoPregunta}" FontSize="16" />
+                                            <CheckBox IsChecked="{Binding IsSelected}"/>
+                                            
+                                            <CollectionView ItemsSource="{Binding Opciones}">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <CheckBox IsChecked="{Binding IsSelected}" />
+                                                            <Label Text="{Binding NombreOpcion}" FontSize="14" />
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+
+
+
 
 
 
                         </Grid>
-                    </Border>
+                            </VerticalStackLayout>
+                        </ScrollView>
+        
+
+        </Border>
+
 
                 </Grid>
-
-
             </Border>
+
+            <Grid HorizontalOptions="Center" Margin="0,0,0,30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Margin="0,0,10,0"
+                  Text="Guardar"
+                  BackgroundColor="Green"
+                  TextColor="White"
+                  HorizontalOptions="CenterAndExpand"
+                  
+              />
+
+                <Button
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Text="Cancelar"
+                  BackgroundColor="Red"
+                  TextColor="White"
+                  
+                  HorizontalOptions="CenterAndExpand"
+                 />
+
+            </Grid>
 
         </VerticalStackLayout>
     </ScrollView>
