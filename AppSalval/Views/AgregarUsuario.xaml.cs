@@ -76,7 +76,7 @@ namespace AppSalval.Views
             {
                 "Administrador" => 1,
                 "Encuestador" => 2,
-                "Encuestado" => 3,
+                "Desarrollador" => 3,
                 _ => 0
             };
         }
