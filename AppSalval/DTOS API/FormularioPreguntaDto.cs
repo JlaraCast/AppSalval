@@ -1,10 +1,9 @@
-﻿namespace AppSalval.Models_Api
+﻿namespace AppSalval.DTOS_API
 {
     public class FormularioPreguntaDto
     {
-        public int IdFormularioPregunta { get; set; } // ID único de la relación formulario-pregunta
-        public int IdFormulario { get; set; } // ID del formulario al que pertenece la pregunta
-        public int IdPregunta { get; set; } // ID de la pregunta
-        public string TextoPregunta { get; set; } // Contenido de la pregunta
+        public int IdPregunta { get; set; }
+        public string TipoPregunta { get; set; }
+        public string TextoPregunta { get; set; }
     }
 }
