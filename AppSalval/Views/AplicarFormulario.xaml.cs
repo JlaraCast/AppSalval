@@ -13,7 +13,7 @@ namespace AppSalval.Views
     {
         private readonly ApiServiceFormularioPregunta _apiServiceFormulario;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcion;
-        private List<FormularioPreguntaDto> _preguntas;
+        private List<FormularioPreguntaIdDto> _preguntas;
 
         public AplicarFormulario(int idFormulario, string tituloFormulario)
         {

@@ -23,7 +23,7 @@ namespace AppSalval.Services
         /// <summary>
         /// Obtiene las preguntas de un formulario según su ID.
         /// </summary>
-        public async Task<List<FormularioPreguntaDto>> GetPreguntasByFormulario(int idFormulario)
+        public async Task<List<FormularioPreguntaIdDto>> GetPreguntasByFormulario(int idFormulario)
         {
             if (idFormulario <= 0)
             {
@@ -42,7 +42,7 @@ namespace AppSalval.Services
                 }
 
                 string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonSerializer.Deserialize<List<FormularioPreguntaDto>>(json, new JsonSerializerOptions
+                return JsonSerializer.Deserialize<List<FormularioPreguntaIdDto>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
