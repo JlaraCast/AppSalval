@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AppSalval.DTOS_API;
-using System.Diagnostics;
 
 namespace AppSalval.Services
 {
-    public class ApiServiceFormularioPregunta
+    class ApiServiceFormularioPregunta
     {
         private readonly HttpClient _httpClient;
+        private const string BaseUrl = "http://savalapi.somee.com/api/";
 
         public ApiServiceFormularioPregunta()
         {
-            _httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("http://savalapi.somee.com/api/")
-            };
+            _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
         public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDtoS formularioPregunta)
@@ -53,16 +49,11 @@ namespace AppSalval.Services
         }
 
         /// <summary>
-        /// Obtiene las preguntas de un formulario según su ID.
+        /// Obtiene las preguntas de los formularios pero aun no sirve porque falta en la api 
         /// </summary>
-        public async Task<List<FormularioPreguntaDto>> GetPreguntasByFormulario(int idFormulario)
+        /// <returns></returns>
+        public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasAsync()
         {
-            if (idFormulario <= 0)
-            {
-                Debug.WriteLine("⚠️ ID de formulario inválido.");
-                return null;
-            }
-
             try
             {
                 return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDtoS>>("FormularioPregunta");
@@ -73,17 +64,20 @@ namespace AppSalval.Services
             }
         }
 
-                if (!response.IsSuccessStatusCode)
+        public async Task<bool> DeleteFormularioPreguntaAsync(int FormulariopreguntaId)
+        {
+            try
+            {
+                var response = await _httpClient.DeleteAsync($"FormularioPregunta/{FormulariopreguntaId}");
+
+                if (response.IsSuccessStatusCode)
                 {
-                    Debug.WriteLine($"⚠️ Error en API: {response.StatusCode}");
-                    return null;
+                    return true;
                 }
 
-                string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonSerializer.Deserialize<List<FormularioPreguntaDto>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"Error al eliminar pregunta: {errorMessage}");
+                return false;
             }
             catch (Exception ex)
             {
@@ -114,38 +108,6 @@ namespace AppSalval.Services
             }
         }
 
-        /// <summary>
-        /// Obtiene las opciones de respuesta de una pregunta según su ID.
-        /// </summary>
-        public async Task<List<OpcionRespuestaDto>> GetOpcionesByPregunta(int idPregunta)
-        {
-            if (idPregunta <= 0)
-            {
-                Debug.WriteLine("⚠️ ID de pregunta inválido.");
-                return null;
-            }
 
-            try
-            {
-                var response = await _httpClient.GetAsync($"FormularioPregunta/pregunta/{idPregunta}").ConfigureAwait(false);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    Debug.WriteLine($"⚠️ Error en API: {response.StatusCode}");
-                    return null;
-                }
-
-                string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonSerializer.Deserialize<List<OpcionRespuestaDto>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"❌ Error en GetOpcionesByPregunta: {ex.Message}");
-                return null;
-            }
-        }
     }
 }
