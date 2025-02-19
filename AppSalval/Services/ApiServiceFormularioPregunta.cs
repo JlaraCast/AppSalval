@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AppSalval.DTOS_API;
 
@@ -18,27 +19,35 @@ namespace AppSalval.Services
             _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
-        public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDtoS newPregunta)
+        public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDtoS formularioPregunta)
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("FormularioPregunta", newPregunta);
+                string json = JsonSerializer.Serialize(formularioPregunta);
+                Console.WriteLine($"📤 Enviando a API: {json}"); // Verificar que los datos sean correctos
+
+                var jsonContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync($"{BaseUrl}FormularioPregunta", jsonContent);
 
                 if (response.IsSuccessStatusCode)
                 {
+                    Console.WriteLine("✅ Relación Formulario-Pregunta guardada correctamente.");
                     return true;
                 }
-
-                string errorMessage = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Error al agregar pregunta: {errorMessage}");
-                return false;
+                else
+                {
+                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error de conexión: {ex.Message}");
+                Console.WriteLine($"❌ Error en AddFormularioPreguntaAsync: {ex.Message}");
                 return false;
             }
         }
+
         /// <summary>
         /// Obtiene las preguntas de los formularios pero aun no sirve porque falta en la api 
         /// </summary>

@@ -32,14 +32,13 @@ namespace AppSalval.ViewModels
         private DateTime _fechaFin;
         private bool _requiereDatosPersonales;
         private bool _habilitado;
-        private bool _checkboxPregunta;
         private ObservableCollection<OpcionRespuestaDtoExtendida> _opcionesRespuesta;
-        private int _preguntaId = -1;
+
 
         public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
 
         public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
-
+        public ICommand ActualizarPreguntasSeleccionadasCommand { get; }
         public ICommand SeleccionarPreguntaCommand { get; }
 
         public ICommand BtnCancelar { get; }
@@ -62,6 +61,7 @@ namespace AppSalval.ViewModels
 
         public CrearFormularioViewModel(INavigation navigation)
         {
+            // Inicialización de servicios y comandos
             _navigation = navigation;
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceFormularios = new ApiServiceFormularios();
@@ -69,38 +69,31 @@ namespace AppSalval.ViewModels
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
             _apiServiceFormularioPregunta = new ApiServiceFormularioPregunta();
 
+            // Inicialización de propiedades
             _titulo = string.Empty;
             _descripcion = string.Empty;
             _fechaInicio = DateTime.Now;
             _fechaFin = DateTime.Now;
             _requiereDatosPersonales = false;
             _habilitado = true;
-            _checkboxPregunta = false;
+
 
             OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
+            PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
+            PreguntasSeleccionadas = new ObservableCollection<PreguntaViewModel>();
+
+            // Inicialización de comandos
             SeleccionarPreguntaCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
-            BtnCancelar = new Command(async () =>
-            {
-                await _navigation.PushAsync(new GestionFormularios());
-            });
+            ActualizarPreguntasSeleccionadasCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
-            //BtnGuardar = new Command(async () => await CrearFormulario());
-
-            BtnGuardar = new Command(async () =>
-            {
-                await CrearFormulario();
-            });
-
-            _preguntasDtos = new ObservableCollection<PreguntaViewModel>(); // Asegurar que está inicializado
-
+            BtnCancelar = new Command(async () => await _navigation.PushAsync(new GestionFormularios()));
+            BtnGuardar = new Command(async () => await CrearFormulario());
             CargarPreguntasCommand = new Command(async () => await CargarPreguntas());
 
             // Cargar preguntas al iniciar
             Task.Run(async () => await CargarPreguntas());
-
-
-            Task.Run(async () => await ObtenerIdFormulario());
+            
         }
 
         public ObservableCollection<PreguntaViewModel> PreguntasDtos
@@ -135,10 +128,10 @@ namespace AppSalval.ViewModels
 
                 foreach (var o in opciones)
                 {
-                    
+
                     opcionesViewModel.Add(new OpcionRespuestaViewModel
                     {
-                       
+
                         OpcionId = o.IdOpcion,
                         NombreOpcion = o.NombreOpcion,
                         IdPregunta = o.IdPregunta,
@@ -153,85 +146,95 @@ namespace AppSalval.ViewModels
                     TextoPregunta = pregunta.TextoPregunta,
                     Opciones = opcionesViewModel
                 });
-
                 
+
             }
         }
 
-        private void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
+        public void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
         {
             if (pregunta == null) return;
 
-            pregunta.IsSelected = !pregunta.IsSelected;
 
             if (pregunta.IsSelected)
             {
                 if (!PreguntasSeleccionadas.Contains(pregunta))
+                {
                     PreguntasSeleccionadas.Add(pregunta);
+                    Console.WriteLine($"Pregunta agregada: {pregunta.PreguntaId}");
+                }
             }
             else
             {
                 PreguntasSeleccionadas.Remove(pregunta);
+                Console.WriteLine($"Pregunta removida: {pregunta.PreguntaId}");
             }
 
             OnPropertyChanged(nameof(PreguntasSeleccionadas));
         }
 
 
-        private async Task ObtenerIdFormulario()
-        {
-            var formulariosExistentes = await _apiServiceFormularios.GetFormularios();
-            idFormulario = formulariosExistentes.Any() ? formulariosExistentes.Max(f => f.IdFormulario) : 0;
-        }
+
+
+      
 
 
         public async Task CrearFormulario()
         {
             try
             {
-                // 🔹 Validar datos antes de enviarlos
+                // ✅ 1. Validar datos antes de enviarlos
                 if (string.IsNullOrWhiteSpace(Titulo) || string.IsNullOrWhiteSpace(Descripcion))
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "El título y la descripción no pueden estar vacíos", "OK");
                     return;
                 }
 
-                // ✅ 1. Crear el objeto DTO con los datos del formulario
+                var formulariosExistentes = await _apiServiceFormularios.GetFormularios();
+                idFormulario = formulariosExistentes.Any() ? formulariosExistentes.Max(f => f.IdFormulario) : 0;
+
+                // ✅ 2. Crear objeto DTO con los datos del formulario
                 var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
 
-                // ✅ 2. Guardar el formulario en la API y obtener su ID
+                // ✅ 3. Guardar el formulario en la API y obtener su ID
                 await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
 
                 int idFormularioCreado = idFormulario + 1;
-
+                // ✅ 4. Validar si la creación del formulario falló
                 if (idFormularioCreado <= 0)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo guardar el formulario. ID recibido: {idFormularioCreado}", "OK");
                     return;
                 }
 
-                // ✅ 3. Asociar las preguntas seleccionadas al formulario
+                Console.WriteLine($"✅ Formulario creado con ID: {idFormularioCreado}");
+
+                // ✅ 5. Asociar las preguntas seleccionadas al formulario
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
+
+                    Console.WriteLine($"Intentando asociar PreguntaId {pregunta.PreguntaId} con FormularioId {idFormularioCreado}");
+
                     var formularioPregunta = new FormularioPreguntaDtoS(idFormularioCreado, pregunta.PreguntaId);
 
                     bool respuesta = await _apiServiceFormularioPregunta.AddFormularioPreguntaAsync(formularioPregunta);
 
                     if (!respuesta)
                     {
+                        Console.WriteLine($"❌ Error: No se pudo asociar PreguntaId {pregunta.PreguntaId} con FormularioId {idFormularioCreado}");
                         await Application.Current.MainPage.DisplayAlert("Advertencia", $"No se pudo asociar la pregunta: {pregunta.TextoPregunta} al formulario", "OK");
                     }
                 }
 
-                // ✅ 4. Confirmación de éxito
+                // ✅ 6. Confirmación de éxito
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
-
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar el formulario: {ex.Message}", "OK");
             }
         }
+
 
 
 
