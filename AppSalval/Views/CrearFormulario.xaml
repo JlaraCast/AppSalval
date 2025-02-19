@@ -300,10 +300,14 @@
                                                            VerticalOptions="Start" />
 
                                                         <!-- CheckBox en la esquina superior derecha -->
-                                                        <CheckBox Grid.Row="0" Grid.Column="1"
-                                                          HorizontalOptions="End"
-                                                          IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                                          CheckedChanged="OnCheckBoxCheckedChanged" />
+                                                        <CheckBox Grid.Column="1"
+                                                              HorizontalOptions="End"
+                                                              IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                            <CheckBox.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding SeleccionarPreguntaCommand}" CommandParameter="{Binding}" />
+                                                            </CheckBox.GestureRecognizers>
+                                                        </CheckBox>
+
 
                                                         <!-- Opciones de respuesta -->
                                                         <CollectionView Grid.Row="1" Grid.ColumnSpan="2"

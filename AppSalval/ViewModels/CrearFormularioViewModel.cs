@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace AppSalval.ViewModels
 
         public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
 
-
+        public ICommand SeleccionarPreguntaCommand { get; }
 
 
 
@@ -105,6 +106,7 @@ namespace AppSalval.ViewModels
             _apiServiceFormularios = new ApiServiceFormularios();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
+
             _titulo = string.Empty;
             _descripcion = string.Empty;
             _fechaInicio = DateTime.Now;
@@ -112,8 +114,9 @@ namespace AppSalval.ViewModels
             _requiereDatosPersonales = false;
             _habilitado = true;
             _checkboxPregunta = false;
-            OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
 
+            OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
+            SeleccionarPreguntaCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
             BtnCancelar = new Command(async () =>
             {
@@ -142,8 +145,6 @@ namespace AppSalval.ViewModels
                 OnPropertyChanged(nameof(PreguntasDtos)); // 🔄 Notifica cambios a la UI
             }
         }
-
-
 
         private async Task CargarPreguntas()
         {
@@ -186,8 +187,24 @@ namespace AppSalval.ViewModels
             }
         }
 
+        private void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
+        {
+            if (pregunta == null) return;
 
+            pregunta.IsSelected = !pregunta.IsSelected;
 
+            if (pregunta.IsSelected)
+            {
+                if (!PreguntasSeleccionadas.Contains(pregunta))
+                    PreguntasSeleccionadas.Add(pregunta);
+            }
+            else
+            {
+                PreguntasSeleccionadas.Remove(pregunta);
+            }
+
+            OnPropertyChanged(nameof(PreguntasSeleccionadas));
+        }
 
 
 
@@ -248,8 +265,35 @@ namespace AppSalval.ViewModels
     public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
 
     // ✅ Nueva propiedad para indicar si la pregunta está seleccionada
-    public bool IsSelected { get; set; }
-}
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
+                OnPropertyChanged(nameof(IsSelected));
+            }
+        }
+
+        // ✅ Command para manejar la selección de preguntas
+        public ICommand SeleccionarPreguntaCommand { get; }
+
+        public PreguntaViewModel()
+        {
+            SeleccionarPreguntaCommand = new Command(() => IsSelected = !IsSelected);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+
+    }
 
 
     public class OpcionRespuestaViewModel
