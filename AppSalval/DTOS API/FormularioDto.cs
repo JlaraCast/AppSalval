@@ -17,7 +17,9 @@ namespace AppSalval.Models_Api
         public bool Anonimo { get; set; }
 
         // ✅ Constructor vacío requerido por el serializador JSON
-        public FormularioDto() { }
+        public FormularioDto() { 
+        
+        }
 
         public FormularioDto(string tituloFormulario, string? descripcionFormulario, DateTime fechaInicio, DateTime fechaFin, bool habilitado, bool anonimo)
         {

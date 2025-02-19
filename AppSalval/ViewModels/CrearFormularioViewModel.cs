@@ -17,7 +17,7 @@ namespace AppSalval.ViewModels
 {
     public partial class CrearFormularioViewModel : BaseViewModel
     {
-        private int contador = 0;
+        private int idFormulario = -2;
         private readonly INavigation _navigation;
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly ApiServiceFormularios _apiServiceFormularios;
@@ -98,7 +98,9 @@ namespace AppSalval.ViewModels
 
             // Cargar preguntas al iniciar
             Task.Run(async () => await CargarPreguntas());
-            
+
+
+            Task.Run(async () => await ObtenerIdFormulario());
         }
 
         public ObservableCollection<PreguntaViewModel> PreguntasDtos
@@ -176,43 +178,53 @@ namespace AppSalval.ViewModels
         }
 
 
+        private async Task ObtenerIdFormulario()
+        {
+            var formulariosExistentes = await _apiServiceFormularios.GetFormularios();
+            idFormulario = formulariosExistentes.Any() ? formulariosExistentes.Max(f => f.IdFormulario) : 0;
+        }
+
+
         public async Task CrearFormulario()
         {
             try
             {
-                // 1️⃣ Crear el objeto DTO con los datos del formulario
+                // 🔹 Validar datos antes de enviarlos
+                if (string.IsNullOrWhiteSpace(Titulo) || string.IsNullOrWhiteSpace(Descripcion))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "El título y la descripción no pueden estar vacíos", "OK");
+                    return;
+                }
+
+                // ✅ 1. Crear el objeto DTO con los datos del formulario
                 var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
 
-                // 2️⃣ Llamar al API para guardar el formulario
-                int idFormularioCreado = await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
+                // ✅ 2. Guardar el formulario en la API y obtener su ID
+                await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
 
-                // 3️⃣ Validar si el formulario fue creado correctamente
+                int idFormularioCreado = idFormulario + 1;
+
                 if (idFormularioCreado <= 0)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo guardar el formulario. ID recibido: {idFormularioCreado}", "OK");
                     return;
                 }
 
-                Console.WriteLine($"✅ Formulario creado correctamente con ID: {idFormularioCreado}");
-
-                // 4️⃣ Guardar las preguntas seleccionadas en el formulario
+                // ✅ 3. Asociar las preguntas seleccionadas al formulario
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
                     var formularioPregunta = new FormularioPreguntaDtoS(idFormularioCreado, pregunta.PreguntaId);
 
-                    // 5️⃣ Llamar al servicio para asociar la pregunta al formulario
-                    var respuesta = await _apiServiceFormularioPregunta.AddFormularioPreguntaAsync(formularioPregunta);
+                    bool respuesta = await _apiServiceFormularioPregunta.AddFormularioPreguntaAsync(formularioPregunta);
 
-                    // 6️⃣ Verificar si la pregunta se asoció correctamente
                     if (!respuesta)
                     {
                         await Application.Current.MainPage.DisplayAlert("Advertencia", $"No se pudo asociar la pregunta: {pregunta.TextoPregunta} al formulario", "OK");
                     }
                 }
 
-                // 7️⃣ Confirmación de éxito
+                // ✅ 4. Confirmación de éxito
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
-                await _navigation.PushAsync(new GestionFormularios()); // Redirigir a la lista de formularios
 
             }
             catch (Exception ex)
@@ -220,8 +232,6 @@ namespace AppSalval.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar el formulario: {ex.Message}", "OK");
             }
         }
-
-
 
 
 
