@@ -56,6 +56,9 @@
     Title="LoginPage"
     ContentTemplate="{DataTemplate vista:LoginPage}"
     Route="LoginPage" />
-
+    <ShellContent
+        Title="GestionParticipantes"
+        ContentTemplate="{DataTemplate vista:GestionParticipantes}"
+        Route="GestionParticipantes" />
 
 </Shell>

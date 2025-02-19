@@ -20,6 +20,9 @@
     <MauiXaml Update="Views\GestionFormularios.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\GestionParticipantes.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\GestionRespuesta.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
