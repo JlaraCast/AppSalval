@@ -93,5 +93,38 @@ namespace AppSalval.Services
                 return false;
             }
         }
+        // ✅ Método para crear un nuevo formulario en Somee
+        public async Task<int> CreateFormulario(FormularioDto formulario)
+        {
+            try
+            {
+                var jsonContent = new StringContent(JsonSerializer.Serialize(formulario), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(BaseUrl, jsonContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var formularioCreado = JsonSerializer.Deserialize<FormularioDto>(jsonResponse);
+
+                    Console.WriteLine($"✅ Formulario creado correctamente con ID: {formularioCreado.IdFormulario}");
+                    return formularioCreado.IdFormulario;
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    return 0; // ⛔ Devuelve 0 si la API falló
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en CreateFormulario: {ex.Message}");
+                return 0; // ⛔ Devuelve 0 en caso de error
+            }
+        }
+
+
+
+
+
     }
 }

@@ -100,7 +100,7 @@
                     <Label
                          Grid.Row="2"
                          Grid.Column="0"
-                         Text="Titulo del Formulario" 
+                         Text="Descripcion del Formulario" 
                          FontSize="Title"
                          Margin="20,0,0,40"
                          TextColor="#000000"
@@ -154,8 +154,7 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Date="{Binding FechaFin}"
-                        MinimumDate="{x:Static sys:DateTime.Now}"
-                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                        
                     />
 
 

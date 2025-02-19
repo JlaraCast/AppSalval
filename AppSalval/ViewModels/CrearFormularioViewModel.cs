@@ -17,9 +17,11 @@ namespace AppSalval.ViewModels
 {
     public partial class CrearFormularioViewModel : BaseViewModel
     {
+        private int contador = 0;
         private readonly INavigation _navigation;
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly ApiServiceFormularios _apiServiceFormularios;
+        private readonly ApiServiceFormularioPregunta _apiServiceFormularioPregunta;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcionRespuesta;
         private readonly ApiServiceReglaOpcion _apiServiceReglaOpcion;
         private CollectionView _listaPreguntas;
@@ -65,6 +67,7 @@ namespace AppSalval.ViewModels
             _apiServiceFormularios = new ApiServiceFormularios();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
+            _apiServiceFormularioPregunta = new ApiServiceFormularioPregunta();
 
             _titulo = string.Empty;
             _descripcion = string.Empty;
@@ -82,9 +85,11 @@ namespace AppSalval.ViewModels
                 await _navigation.PushAsync(new GestionFormularios());
             });
 
+            //BtnGuardar = new Command(async () => await CrearFormulario());
+
             BtnGuardar = new Command(async () =>
             {
-                // Lógica para aceptar el formulario
+                await CrearFormulario();
             });
 
             _preguntasDtos = new ObservableCollection<PreguntaViewModel>(); // Asegurar que está inicializado
@@ -93,6 +98,7 @@ namespace AppSalval.ViewModels
 
             // Cargar preguntas al iniciar
             Task.Run(async () => await CargarPreguntas());
+            
         }
 
         public ObservableCollection<PreguntaViewModel> PreguntasDtos
@@ -127,8 +133,10 @@ namespace AppSalval.ViewModels
 
                 foreach (var o in opciones)
                 {
+                    
                     opcionesViewModel.Add(new OpcionRespuestaViewModel
                     {
+                       
                         OpcionId = o.IdOpcion,
                         NombreOpcion = o.NombreOpcion,
                         IdPregunta = o.IdPregunta,
@@ -143,6 +151,8 @@ namespace AppSalval.ViewModels
                     TextoPregunta = pregunta.TextoPregunta,
                     Opciones = opcionesViewModel
                 });
+
+                
             }
         }
 
@@ -166,14 +176,53 @@ namespace AppSalval.ViewModels
         }
 
 
-        private void CrearFormulario()
+        public async Task CrearFormulario()
         {
+            try
+            {
+                // ✅ 1. Crear el objeto DTO con los datos del formulario
+                var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
 
+                // ✅ 2. Guardar el formulario en la API y obtener su ID
+                int idFormularioCreado = await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
+
+                // 🔹 Verifica si el ID del formulario es válido
+                Console.WriteLine($"📌 ID del formulario creado: {idFormularioCreado}");
+
+                if (idFormularioCreado == 0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo guardar el formulario. La API devolvió un ID inválido.", "OK");
+                    return;
+                }
+
+                // ✅ 3. Guardar las preguntas seleccionadas en el formulario
+                foreach (var pregunta in PreguntasSeleccionadas)
+                {
+                    var formularioPregunta = new FormularioPreguntaDto(idFormularioCreado, pregunta.PreguntaId); // Usamos el ID recibido de la API
+
+                    // 🔹 Llamar al servicio para asociar la pregunta al formulario
+                    var respuesta = await _apiServiceFormularioPregunta.AddFormularioPreguntaAsync(formularioPregunta);
+
+                    // 🔴 4. Validar si no se pudo asociar la pregunta
+                    if (!respuesta)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Advertencia", $"No se pudo asociar la pregunta: {pregunta.TextoPregunta} al formulario", "OK");
+                    }
+                }
+
+                // ✅ 5. Confirmación de éxito
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
+
+                // 🔹 Regresar a la pantalla de gestión de formularios
+                await _navigation.PushAsync(new GestionFormularios());
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar el formulario: {ex.Message}", "OK");
+            }
         }
 
 
-
-        
 
         public string Titulo
         {
