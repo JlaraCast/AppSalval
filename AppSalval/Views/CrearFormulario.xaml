@@ -1,49 +1,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.CrearFormulario"
+             xmlns:viewModels="clr-namespace:AppSalval.ViewModels"
              Title="CrearFormulario">
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
 
+            <!-- Información del usuario -->
             <Grid Margin="30,20,30,40" Padding="40,0,0,0">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-
                 <Image
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Source="usuario.png"
-                        HeightRequest="60"
-                        Aspect="AspectFit"
-                        Margin="0,20,0,30" 
-                        HorizontalOptions="Start"
-                        SemanticProperties.Description="dot net bot in a hovercraft number nine" 
-                    
-                    />
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Source="usuario.png"
+                    HeightRequest="60"
+                    Aspect="AspectFit"
+                    Margin="0,20,0,30" 
+                    HorizontalOptions="Start"
+                    SemanticProperties.Description="dot net bot in a hovercraft number nine" 
+                />
                 <Label
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Text="Administrador" 
-                        FontSize="Title"
-                        Margin="80,33,0,0"
-                        TextColor="#5ac1c0"
-                    />
-
-
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Administrador" 
+                    FontSize="Title"
+                    Margin="80,33,0,0"
+                    TextColor="#5ac1c0"
+                />
             </Grid>
 
+            <!-- Formulario -->
             <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" >
                 <Grid Margin="0,0,30,0" Padding="20,0,0,30">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -55,10 +52,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"
-                    />
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="2*"/>
@@ -72,7 +67,6 @@
                         Margin="0,0,0,40"
                         TextColor="#000000"
                     />
-
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
@@ -81,9 +75,6 @@
                         Margin="20,0,0,40"
                         TextColor="#000000"
                     />
-
-
-
                     <Entry
                         Grid.Row="1"
                         Grid.Column="1"
@@ -92,28 +83,26 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Text="{Binding Titulo}"
                     />
-
                     <Label
-                         Grid.Row="2"
-                         Grid.Column="0"
-                         Text="Titulo del Formulario" 
-                         FontSize="Title"
-                         Margin="20,0,0,40"
-                         TextColor="#000000"
-                     />
-
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Text="Descripcion del Formulario" 
+                        FontSize="Title"
+                        Margin="20,0,0,40"
+                        TextColor="#000000"
+                    />
                     <Entry
-                         Grid.Row="2"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="2"
-                         Placeholder="Ingrese el título"
-                         HorizontalOptions="Fill"
-                         Margin="40,0,40,40"
-                         TextColor="#000000"
-                     />
-
-
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Placeholder="Ingrese la descripción"
+                        HorizontalOptions="Fill"
+                        Margin="40,0,40,40"
+                        TextColor="#000000"
+                        Text="{Binding Descripcion}"
+                    />
                     <Label
                         Grid.Row="3"
                         Grid.Column="0"
@@ -122,7 +111,6 @@
                         Margin="20,0,0,40"
                         TextColor="#000000"
                     />
-
                     <DatePicker
                         Grid.Row="3"
                         Grid.Column="1"
@@ -130,27 +118,25 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Date="{Binding FechaInicio}"
                     />
-
                     <Label
-                         Grid.Row="4"
-                         Grid.Column="0"
-                         Text="Fecha finalizacion del formulario" 
-                         FontSize="Title"
-                         Margin="20,0,0,0"
-                         TextColor="#000000"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Text="Fecha finalizacion del formulario" 
+                        FontSize="Title"
+                        Margin="20,0,0,0"
+                        TextColor="#000000"
                     />
-
                     <DatePicker
-                         Grid.Row="4"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="2"
-                         HorizontalOptions="Fill"
-                         Margin="40,0,40,40"
-                         TextColor="#000000"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Fill"
+                        Margin="40,0,40,40"
+                        TextColor="#000000"
+                        Date="{Binding FechaFin}"
                     />
-
-
                     <Label
                         Grid.Row="5"
                         Grid.Column="0"
@@ -159,31 +145,27 @@
                         Margin="20,0,0,30"
                         TextColor="#000000"
                     />
-
                     <Switch
                         Grid.Row="5"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         HorizontalOptions="Start"
                         Margin="160,-25,40,0"
+                        IsToggled="{Binding Habilitado}"
                     />
-
                 </Grid>
             </Border>
 
+            <!-- Requiere datos personales -->
             <Grid Margin="0,0,0,20">
-
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-
-
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
@@ -192,25 +174,19 @@
                     Margin="80,0,0,0"
                     TextColor="#000000"
                 />
-
-
                 <CheckBox
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="Start"
-                    Margin="40,-5,0,0"                
+                    Margin="40,-5,0,0" 
+                    IsChecked="{Binding RequiereDatosPersonales}"
                 />
-
-
             </Grid>
 
-
-
+            <!-- Lista de preguntas -->
             <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" >
-
                 <Grid Margin="0,0,30,0" Padding="20,0,0,30">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -222,75 +198,140 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"
-                        />
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label
-                             Grid.Row="0"
-                             Grid.Column="0"
-                             Text="Lista Preguntas" 
-                             FontSize="60"
-                             Margin="0,0,0,40"
-                             TextColor="#000000"
-                        />
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="Lista Preguntas" 
+                        FontSize="60"
+                        Margin="0,0,0,40"
+                        TextColor="#000000"
+                    />
+                    <Border Stroke="Green" StrokeThickness="3" Padding="0,0,0,0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="400">
+                        <ScrollView>
+                            <VerticalStackLayout Spacing="10" >
+                                <Grid Margin="0,0,30,0" Padding="20,0,0,30">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
 
-                    <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,0,30,30" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="Pregunta" 
+                                        FontSize="30"
+                                        Margin="0,0,0,40"
+                                    />
+                                    <CollectionView x:Name="ListaPreguntas"
+                                        ItemsSource="{Binding PreguntasDtos}"
+                                        VerticalOptions="FillAndExpand">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Frame Padding="10" Margin="5" BorderColor="Black" WidthRequest="550">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para la pregunta y el CheckBox -->
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para las opciones -->
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <!-- Columna para el texto de la pregunta -->
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <!-- Columna para el CheckBox -->
+                                                        </Grid.ColumnDefinitions>
 
-                        <Grid Margin="0,0,30,0" Padding="20,0,0,30">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                                                        <!-- Pregunta -->
+                                                        <Label Grid.Row="0" Grid.Column="0"
+                                                           Text="{Binding TextoPregunta}" 
+                                                           FontSize="18" 
+                                                           FontAttributes="Bold"
+                                                           VerticalOptions="Start" />
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
+                                                        <!-- CheckBox en la esquina superior derecha -->
+                                                        <CheckBox Grid.Column="1"
+                                                                  HorizontalOptions="End"
+                                                                  IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                            <CheckBox.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CrearFormularioViewModel}}, Path=ActualizarPreguntasSeleccionadasCommand}" CommandParameter="{Binding}" />
+                                                            </CheckBox.GestureRecognizers>
+                                                        </CheckBox>
 
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Text="Pregunta" 
-                                FontSize="30"
-                                Margin="0,0,0,40"        
-                           />
-							
-							<CheckBox
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
-                                HorizontalOptions="Start"
-                                Margin="40,-5,0,30"                
-                                IsChecked="{Binding CheckboxPregunta}"
-                            />
-							
-							
-
-
-
-                        </Grid>
+                                                        <!-- Opciones de respuesta -->
+                                                        <CollectionView Grid.Row="1" Grid.ColumnSpan="2"
+                                                            ItemsSource="{Binding Opciones}" Margin="20,5,0,5">
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <HorizontalStackLayout>
+                                                                        <RadioButton IsChecked="{Binding IsSelected}" IsEnabled="False"/>
+                                                                        <Label Text="{Binding NombreOpcion}" FontSize="16" Margin="0,8,0,0" />
+                                                                    </HorizontalStackLayout>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+                                                    </Grid>
+                                                </Frame>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ScrollView>
                     </Border>
-
                 </Grid>
-
-
             </Border>
 
+            <!-- Botones de acción -->
+            <Grid HorizontalOptions="Center" Margin="0,0,0,30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Margin="0,0,10,0"
+                  Text="Guardar"
+                  BackgroundColor="Green"
+                  TextColor="White"
+                  HorizontalOptions="CenterAndExpand"
+                  Command="{Binding BtnGuardar}"
+                />
+                <Button
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Text="Cancelar"
+                  BackgroundColor="Red"
+                  TextColor="White"
+                  Command="{Binding BtnCancelar}"
+                  HorizontalOptions="CenterAndExpand"
+                />
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

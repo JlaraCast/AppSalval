@@ -41,7 +41,7 @@ namespace AppSalval.Views
                 var newUser = new Usuario
                 {
                     Correo = EntryEmail.Text.Trim(),
-                    Contraseña = "123456",  // Puedes permitir que el usuario ingrese su contraseña
+                    Contraseña = EntryPassword.Text.Trim(), 
                     IdRol = GetRoleId(PickerRole.SelectedItem.ToString())
                 };
 

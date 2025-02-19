@@ -17,7 +17,7 @@
                 <Picker.Items>
                     <x:String>Administrador</x:String>
                     <x:String>Encuestador</x:String>
-                    <x:String>Encuestado</x:String>
+                    <x:String>Desarrollador</x:String>
                 </Picker.Items>
             </Picker>
 
