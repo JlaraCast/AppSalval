@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AppSalval.DTOS_API
 {
-    public class FormularioPreguntaDto
+    public class FormularioPreguntaDtoS
     {
         public int IdFormularioPregunta { get; set; }
         public int IdFormulario { get; set; }
         public int IdPregunta { get; set; }
-        public FormularioPreguntaDto(int IdFormulario, int IdPregunta)
+        public FormularioPreguntaDtoS(int IdFormulario, int IdPregunta)
         {
             this.IdFormulario = IdFormulario;
             this.IdPregunta = IdPregunta;

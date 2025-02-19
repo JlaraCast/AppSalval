@@ -104,23 +104,37 @@ namespace AppSalval.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var formularioCreado = JsonSerializer.Deserialize<FormularioDto>(jsonResponse);
+                    var createdFormulario = JsonSerializer.Deserialize<FormularioDto>(jsonResponse);
 
-                    Console.WriteLine($"✅ Formulario creado correctamente con ID: {formularioCreado.IdFormulario}");
-                    return formularioCreado.IdFormulario;
+                    if (createdFormulario != null)
+                    {
+                        Console.WriteLine($"✅ Formulario creado con ID: {createdFormulario.IdFormulario}");
+                        return createdFormulario.IdFormulario;
+                    }
+                    else
+                    {
+                        Console.WriteLine("⚠️ Error al deserializar la respuesta de la API.");
+                        return -1;
+                    }
                 }
                 else
                 {
                     Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
-                    return 0; // ⛔ Devuelve 0 si la API falló
+                    return -2;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"❌ Error en CreateFormulario: {ex.Message}");
-                return 0; // ⛔ Devuelve 0 en caso de error
+                return -3;
             }
         }
+        public int GetFormularioId(FormularioDto formulario)
+        {
+            return formulario.IdFormulario;
+        }
+
+
 
 
 

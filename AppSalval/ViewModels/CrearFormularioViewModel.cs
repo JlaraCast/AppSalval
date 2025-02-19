@@ -180,47 +180,48 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                // ✅ 1. Crear el objeto DTO con los datos del formulario
+                // 1️⃣ Crear el objeto DTO con los datos del formulario
                 var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
 
-                // ✅ 2. Guardar el formulario en la API y obtener su ID
+                // 2️⃣ Llamar al API para guardar el formulario
                 int idFormularioCreado = await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
 
-                // 🔹 Verifica si el ID del formulario es válido
-                Console.WriteLine($"📌 ID del formulario creado: {idFormularioCreado}");
-
-                if (idFormularioCreado == 0)
+                // 3️⃣ Validar si el formulario fue creado correctamente
+                if (idFormularioCreado <= 0)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo guardar el formulario. La API devolvió un ID inválido.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo guardar el formulario. ID recibido: {idFormularioCreado}", "OK");
                     return;
                 }
 
-                // ✅ 3. Guardar las preguntas seleccionadas en el formulario
+                Console.WriteLine($"✅ Formulario creado correctamente con ID: {idFormularioCreado}");
+
+                // 4️⃣ Guardar las preguntas seleccionadas en el formulario
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
-                    var formularioPregunta = new FormularioPreguntaDto(idFormularioCreado, pregunta.PreguntaId); // Usamos el ID recibido de la API
+                    var formularioPregunta = new FormularioPreguntaDtoS(idFormularioCreado, pregunta.PreguntaId);
 
-                    // 🔹 Llamar al servicio para asociar la pregunta al formulario
+                    // 5️⃣ Llamar al servicio para asociar la pregunta al formulario
                     var respuesta = await _apiServiceFormularioPregunta.AddFormularioPreguntaAsync(formularioPregunta);
 
-                    // 🔴 4. Validar si no se pudo asociar la pregunta
+                    // 6️⃣ Verificar si la pregunta se asoció correctamente
                     if (!respuesta)
                     {
                         await Application.Current.MainPage.DisplayAlert("Advertencia", $"No se pudo asociar la pregunta: {pregunta.TextoPregunta} al formulario", "OK");
                     }
                 }
 
-                // ✅ 5. Confirmación de éxito
+                // 7️⃣ Confirmación de éxito
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
+                await _navigation.PushAsync(new GestionFormularios()); // Redirigir a la lista de formularios
 
-                // 🔹 Regresar a la pantalla de gestión de formularios
-                await _navigation.PushAsync(new GestionFormularios());
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar el formulario: {ex.Message}", "OK");
             }
         }
+
+
 
 
 

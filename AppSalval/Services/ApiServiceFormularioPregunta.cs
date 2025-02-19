@@ -18,7 +18,7 @@ namespace AppSalval.Services
             _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
-        public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDto newPregunta)
+        public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDtoS newPregunta)
         {
             try
             {
@@ -43,15 +43,15 @@ namespace AppSalval.Services
         /// Obtiene las preguntas de los formularios pero aun no sirve porque falta en la api 
         /// </summary>
         /// <returns></returns>
-        public async Task<List<FormularioPreguntaDto>> GetFormularioPreguntasAsync()
+        public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasAsync()
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDto>>("FormularioPregunta");
+                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDtoS>>("FormularioPregunta");
             }
             catch
             {
-                return new List<FormularioPreguntaDto>();
+                return new List<FormularioPreguntaDtoS>();
             }
         }
 
@@ -76,26 +76,26 @@ namespace AppSalval.Services
                 return false;
             }
         }
-        public async Task<List<FormularioPreguntaDto>> GetFormularioPreguntasByFormularioIdAsync(int formularioId)
+        public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasByFormularioIdAsync(int formularioId)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDto>>($"FormularioPregunta/Formulario/{formularioId}");
+                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDtoS>>($"FormularioPregunta/Formulario/{formularioId}");
             }
             catch
             {
-                return new List<FormularioPreguntaDto>();
+                return new List<FormularioPreguntaDtoS>();
             }
         }
-        public async Task<List<FormularioPreguntaDto>> GetFormularioPreguntasByPreguntaIdAsync(int preguntaId)
+        public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasByPreguntaIdAsync(int preguntaId)
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDto>>($"FormularioPregunta/Pregunta/{preguntaId}");
+                return await _httpClient.GetFromJsonAsync<List<FormularioPreguntaDtoS>>($"FormularioPregunta/Pregunta/{preguntaId}");
             }
             catch
             {
-                return new List<FormularioPreguntaDto>();
+                return new List<FormularioPreguntaDtoS>();
             }
         }
 

@@ -15,7 +15,11 @@ namespace AppSalval.Models_Api
         public DateTime FechaFin { get; set; }
         public bool Habilitado { get; set; }
         public bool Anonimo { get; set; }
-        public FormularioDto( string tituloFormulario, string? descripcionFormulario, DateTime fechaInicio, DateTime fechaFin, bool habilitado, bool anonimo)
+
+        // ✅ Constructor vacío requerido por el serializador JSON
+        public FormularioDto() { }
+
+        public FormularioDto(string tituloFormulario, string? descripcionFormulario, DateTime fechaInicio, DateTime fechaFin, bool habilitado, bool anonimo)
         {
             TituloFormulario = tituloFormulario;
             DescripcionFormulario = descripcionFormulario;
@@ -25,8 +29,21 @@ namespace AppSalval.Models_Api
             Anonimo = anonimo;
         }
 
-
-
-
+        public FormularioDto(int IdFormulario, string tituloFormulario, string? descripcionFormulario, DateTime fechaInicio, DateTime fechaFin, bool habilitado, bool anonimo)
+        {
+            this.IdFormulario = IdFormulario;
+            TituloFormulario = tituloFormulario;
+            DescripcionFormulario = descripcionFormulario;
+            FechaInicio = fechaInicio;
+            FechaFin = fechaFin;
+            Habilitado = habilitado;
+            Anonimo = anonimo;
+        }
     }
+
+
+
+
 }
+
+
