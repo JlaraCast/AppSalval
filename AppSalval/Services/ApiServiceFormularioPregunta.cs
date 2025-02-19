@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using AppSalval.DTOS_API; // Asegúrate de que el DTO está en este namespace
+using AppSalval.DTOS_API;
+using System.Diagnostics;
 
 namespace AppSalval.Services
 {
@@ -13,7 +14,6 @@ namespace AppSalval.Services
 
         public ApiServiceFormularioPregunta()
         {
-            // 🔹 Configuración correcta de la URL base
             _httpClient = new HttpClient
             {
                 BaseAddress = new Uri("http://savalapi.somee.com/api/")
@@ -23,42 +23,67 @@ namespace AppSalval.Services
         /// <summary>
         /// Obtiene las preguntas de un formulario según su ID.
         /// </summary>
-        /// <param name="idFormulario">ID del formulario</param>
-        /// <returns>Lista de preguntas asociadas al formulario</returns>
         public async Task<List<FormularioPreguntaDto>> GetPreguntasByFormulario(int idFormulario)
         {
             if (idFormulario <= 0)
             {
-                Console.WriteLine("⚠️ ID de formulario inválido.");
+                Debug.WriteLine("⚠️ ID de formulario inválido.");
                 return null;
             }
 
             try
             {
-                // 🔹 URL corregida para coincidir con la API de Swagger
                 var response = await _httpClient.GetAsync($"FormularioPregunta/formulario/{idFormulario}").ConfigureAwait(false);
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    Console.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    Debug.WriteLine($"⚠️ Error en API: {response.StatusCode}");
                     return null;
                 }
 
                 string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
                 return JsonSerializer.Deserialize<List<FormularioPreguntaDto>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
             }
-            catch (HttpRequestException httpEx)
+            catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error de conexión con la API: {httpEx.Message}");
+                Debug.WriteLine($"❌ Error en GetPreguntasByFormulario: {ex.Message}");
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene las opciones de respuesta de una pregunta según su ID.
+        /// </summary>
+        public async Task<List<OpcionRespuestaDto>> GetOpcionesByPregunta(int idPregunta)
+        {
+            if (idPregunta <= 0)
+            {
+                Debug.WriteLine("⚠️ ID de pregunta inválido.");
+                return null;
+            }
+
+            try
+            {
+                var response = await _httpClient.GetAsync($"FormularioPregunta/pregunta/{idPregunta}").ConfigureAwait(false);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    return null;
+                }
+
+                string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return JsonSerializer.Deserialize<List<OpcionRespuestaDto>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error en GetPreguntasByFormulario: {ex.Message}");
+                Debug.WriteLine($"❌ Error en GetOpcionesByPregunta: {ex.Message}");
                 return null;
             }
         }

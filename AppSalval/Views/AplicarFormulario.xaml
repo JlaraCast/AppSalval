@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.AplicarFormulario"
-             Title="Aplicar Formulario">
+             Title="Formulario">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
@@ -11,56 +11,61 @@
             <Label x:Name="FormularioTitulo"
                    FontSize="24"
                    FontAttributes="Bold"
-                   TextColor="SteelBlue"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   TextColor="Black"
+                   Text="Formulario"/>
 
-            <!-- Lista de preguntas -->
-            <ListView x:Name="ListaPreguntas"
-                      ItemsSource="{Binding _preguntas}"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None">
-
-                <ListView.ItemTemplate>
+            <!-- Lista de preguntas con sus opciones -->
+            <CollectionView x:Name="ListaPreguntas"
+                            ItemsSource="{Binding .}"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Frame Padding="10" BackgroundColor="White" CornerRadius="10">
-                                <VerticalStackLayout>
+                        <Frame BackgroundColor="#F5F5F5"
+                               CornerRadius="10"
+                               Padding="10"
+                               Margin="5">
+                            <VerticalStackLayout>
 
-                                    <!-- Pregunta -->
-                                    <Label Text="{Binding TextoPregunta}"
-                                           FontSize="18"
-                                           TextColor="Black"
-                                           FontAttributes="Bold"/>
+                                <!-- Pregunta -->
+                                <Label Text="{Binding TextPregunta}"  
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       Margin="0,5,0,10"/>
 
-                                    <!-- Opciones de respuesta -->
-                                    <ListView ItemsSource="{Binding Opciones}"
-                                              HasUnevenRows="True"
-                                              SeparatorVisibility="None">
+                                <!-- Opciones de respuesta -->
+                                <StackLayout Padding="5"
+                                             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Orientation="Horizontal">
+                                                <RadioButton Content="{Binding NombreOpcion}" 
+                                                             GroupName="{Binding IdPregunta}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
 
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <Grid Padding="5">
-                                                        <Label Text="{Binding TextoOpcion}" FontSize="16" TextColor="Gray"/>
-                                                    </Grid>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-
-                                    </ListView>
-
-                                </VerticalStackLayout>
-                            </Frame>
-                        </ViewCell>
+                            </VerticalStackLayout>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <!-- Botones -->
-            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
-                <Button Text="Enviar" BackgroundColor="Green" TextColor="White" Clicked="OnEnviarClicked"/>
-                <Button Text="Cancelar" BackgroundColor="Red" TextColor="White" Clicked="OnCancelarClicked"/>
+            <HorizontalStackLayout Spacing="20"
+                                   HorizontalOptions="Center">
+                <Button Text="Cancelar"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        Clicked="OnCancelarClicked"
+                        WidthRequest="120"/>
+                <Button Text="Enviar"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        Clicked="OnEnviarClicked"
+                        WidthRequest="120"/>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

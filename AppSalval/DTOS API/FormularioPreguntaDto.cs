@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace AppSalval.DTOS_API
 {
     public class FormularioPreguntaDto
     {
+        [JsonPropertyName("idPregunta")]
         public int IdPregunta { get; set; }
-        public string TipoPregunta { get; set; }
-        public string TextoPregunta { get; set; }
-        public List<OpcionRespuestaDto> Opciones { get; set; } = new List<OpcionRespuestaDto>();
-    }
 
-    public class OpcionRespuestaormularioDto
-    {
-        public int IdOpcion { get; set; }
-        public int IdPregunta { get; set; }
-        public string TextoOpcion { get; set; }
+        [JsonPropertyName("tipoPregunta")]
+        public string TipoPregunta { get; set; }
+
+        [JsonPropertyName("textoPregunta")] // 🔹 Corregido para que coincida con el JSON
+        public string TextPregunta { get; set; }
+
+        public List<OpcionRespuestaDto> OpcionesRespuesta { get; set; } = new List<OpcionRespuestaDto>();
     }
 }
