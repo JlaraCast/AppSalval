@@ -73,7 +73,7 @@ namespace AppSalval.Views
             if (formulario != null)
             {
                 // 🚀 Navegar a la pantalla AplicarFormulario enviando el ID y título del formulario
-                await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
+                 Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
             }
         }
 
