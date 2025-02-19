@@ -195,9 +195,10 @@ namespace AppSalval.ViewModels
 
                 // ✅ 2. Crear objeto DTO con los datos del formulario
                 var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
-
-                // ✅ 3. Guardar el formulario en la API y obtener su ID
-                await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
+                if (PreguntasSeleccionadas.Count() > 0)
+                {
+                    // ✅ 3. Guardar el formulario en la API y obtener su ID
+                    await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
 
                 int idFormularioCreado = idFormulario + 1;
                 // ✅ 4. Validar si la creación del formulario falló
@@ -210,6 +211,9 @@ namespace AppSalval.ViewModels
                 Console.WriteLine($"✅ Formulario creado con ID: {idFormularioCreado}");
 
                 // ✅ 5. Asociar las preguntas seleccionadas al formulario
+                
+
+                
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
 
@@ -228,6 +232,12 @@ namespace AppSalval.ViewModels
 
                 // ✅ 6. Confirmación de éxito
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
+                
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "Debes de seleccionar como minimo una pregunta para poder crear el formulario", "OK");
+                }
             }
             catch (Exception ex)
             {
