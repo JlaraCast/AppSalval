@@ -8,4 +8,16 @@ public partial class CrearFormulario : ContentPage
         InitializeComponent();
         BindingContext = new CrearFormularioViewModel();
     }
+
+    private void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        var checkBox = sender as CheckBox;
+        if (checkBox?.BindingContext is PreguntaViewModel pregunta)
+        {
+            var viewModel = BindingContext as CrearFormularioViewModel;
+            viewModel?.ActualizarPreguntasSeleccionadas();
+        }
+    }
 }
+
+

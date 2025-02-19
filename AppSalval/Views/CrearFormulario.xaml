@@ -269,36 +269,59 @@
                                 Grid.Column="0"
                                 Text="Pregunta" 
                                 FontSize="30"
-                                Margin="0,0,0,40"        
-                           />
+                                Margin="0,0,0,40"/>
+
                                     <CollectionView x:Name="ListaPreguntas"
                                         ItemsSource="{Binding PreguntasDtos}"
                                         VerticalOptions="FillAndExpand">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame Padding="10" Margin="5" BorderColor="Black">
-                                                    <VerticalStackLayout>
-                                                        <!-- Mostrar el texto de la pregunta -->
-                                                        <Label Text="{Binding TextoPregunta}" FontSize="18" FontAttributes="Bold"  />
-                                                        
-                                                        <!-- Sub-CollectionView para mostrar las opciones -->
-                                                        <CollectionView ItemsSource="{Binding Opciones}" Margin="20,5,0,5">
+                                                <Frame Padding="10" Margin="5" BorderColor="Black" WidthRequest="550">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para la pregunta y el CheckBox -->
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para las opciones -->
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <!-- Columna para el texto de la pregunta -->
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <!-- Columna para el CheckBox -->
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <!-- Pregunta -->
+                                                        <Label Grid.Row="0" Grid.Column="0"
+                                                           Text="{Binding TextoPregunta}" 
+                                                           FontSize="18" 
+                                                           FontAttributes="Bold"
+                                                           VerticalOptions="Start" />
+
+                                                        <!-- CheckBox en la esquina superior derecha -->
+                                                        <CheckBox Grid.Row="0" Grid.Column="1"
+                                                          HorizontalOptions="End"
+                                                          IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                          CheckedChanged="OnCheckBoxCheckedChanged" />
+
+                                                        <!-- Opciones de respuesta -->
+                                                        <CollectionView Grid.Row="1" Grid.ColumnSpan="2"
+                                                            ItemsSource="{Binding Opciones}" Margin="20,5,0,5">
                                                             <CollectionView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <HorizontalStackLayout>
-                                                                        <CheckBox IsChecked="{Binding IsSelected}" />
-                                                                        <Label Text="{Binding NombreOpcion}" FontSize="16" />
+                                                                        <RadioButton IsChecked="{Binding IsSelected}" IsEnabled="False"/>
+                                                                        <Label Text="{Binding NombreOpcion}" FontSize="16" Margin="0,8,0,0" />
                                                                     </HorizontalStackLayout>
                                                                 </DataTemplate>
                                                             </CollectionView.ItemTemplate>
                                                         </CollectionView>
-
-                                                    </VerticalStackLayout>
+                                                    </Grid>
                                                 </Frame>
                                             </DataTemplate>
                                         </CollectionView.ItemTemplate>
                                     </CollectionView>
-
 
 
 

@@ -35,6 +35,8 @@ namespace AppSalval.ViewModels
 
         public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
 
+        public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
+
 
 
 
@@ -80,6 +82,18 @@ namespace AppSalval.ViewModels
             {
                 _opcionesRespuesta = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public void ActualizarPreguntasSeleccionadas()
+        {
+            PreguntasSeleccionadas.Clear();
+            foreach (var pregunta in PreguntasDtos)
+            {
+                if (pregunta.IsSelected)
+                {
+                    PreguntasSeleccionadas.Add(pregunta);
+                }
             }
         }
 
@@ -228,11 +242,14 @@ namespace AppSalval.ViewModels
 
 
     public class PreguntaViewModel
-    {
-        public int PreguntaId { get; set; }
-        public string TextoPregunta { get; set; }
-        public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
-    }
+{
+    public int PreguntaId { get; set; }
+    public string TextoPregunta { get; set; }
+    public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
+
+    // ✅ Nueva propiedad para indicar si la pregunta está seleccionada
+    public bool IsSelected { get; set; }
+}
 
 
     public class OpcionRespuestaViewModel
