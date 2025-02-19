@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
@@ -105,6 +106,37 @@ namespace AppSalval.Services
             catch
             {
                 return new List<FormularioPreguntaDtoS>();
+            }
+        }
+
+        public async Task<List<FormularioPreguntaDto>> GetPreguntasByFormulario(int idFormulario)
+        {
+            if (idFormulario <= 0)
+            {
+                Debug.WriteLine("⚠️ ID de formulario inválido.");
+                return null;
+            }
+
+            try
+            {
+                var response = await _httpClient.GetAsync($"FormularioPregunta/formulario/{idFormulario}").ConfigureAwait(false);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine($"⚠️ Error en API: {response.StatusCode}");
+                    return null;
+                }
+
+                string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return JsonSerializer.Deserialize<List<FormularioPreguntaDto>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ Error en GetPreguntasByFormulario: {ex.Message}");
+                return null;
             }
         }
 
