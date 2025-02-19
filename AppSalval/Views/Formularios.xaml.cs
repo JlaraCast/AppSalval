@@ -64,13 +64,18 @@ namespace AppSalval.Views
             if (FormularioPicker.SelectedIndex == -1)
                 return;
 
+            // Obtener el título del formulario seleccionado
             string tituloSeleccionado = FormularioPicker.Items[FormularioPicker.SelectedIndex];
+
+            // Buscar el formulario correspondiente en la lista de formularios
             FormularioDto formulario = _formularios.FirstOrDefault(f => f.TituloFormulario == tituloSeleccionado);
 
             if (formulario != null)
             {
-                DisplayAlert("Formulario Seleccionado", $"Seleccionaste: {formulario.TituloFormulario}", "OK");
+                // 🚀 Navegar a la pantalla AplicarFormulario enviando el ID y título del formulario
+                await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
             }
         }
+
     }
 }

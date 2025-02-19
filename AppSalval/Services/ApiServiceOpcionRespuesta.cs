@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -225,5 +226,63 @@ namespace AppSalval.Services
                 return null;
             }
         }
+
+        public async Task<List<OpcionRespuestaDto>> GetValidOpcionRespuestasByPreguntaId(int idPregunta)
+        {
+            try
+            {
+                Debug.WriteLine($"🔍 Buscando opciones para la pregunta ID: {idPregunta}");
+
+                // Obtener todas las opciones desde la API
+                var response = await _httpClient.GetAsync($"OpcionRespuesta");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine($"⚠️ Error en API al obtener opciones: {response.StatusCode}");
+                    return new List<OpcionRespuestaDto>();
+                }
+
+                string json = await response.Content.ReadAsStringAsync();
+                var todasLasOpciones = JsonSerializer.Deserialize<List<OpcionRespuestaDto>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+                if (todasLasOpciones == null || todasLasOpciones.Count == 0)
+                {
+                    Debug.WriteLine($"⚠️ No se encontraron opciones en la API.");
+                    return new List<OpcionRespuestaDto>();
+                }
+
+                // Filtrar solo las opciones que correspondan a la pregunta con idPregunta
+                var opcionesValidas = todasLasOpciones
+                    .Where(o => o.IdPregunta == idPregunta && !string.IsNullOrWhiteSpace(o.NombreOpcion))
+                    .ToList();
+
+                if (opcionesValidas.Count == 0)
+                {
+                    Debug.WriteLine($"⚠️ No se encontraron opciones válidas para la pregunta {idPregunta}");
+                }
+                else
+                {
+                    Debug.WriteLine($"✅ Opciones válidas encontradas para la pregunta {idPregunta}: {opcionesValidas.Count}");
+                    foreach (var opcion in opcionesValidas)
+                    {
+                        Debug.WriteLine($"   - Opción: {opcion.NombreOpcion}");
+                    }
+                }
+
+                return opcionesValidas;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ Error en GetValidOpcionRespuestasByPreguntaId: {ex.Message}");
+                return new List<OpcionRespuestaDto>();
+            }
+        }
+
+
+
+
     }
 }

@@ -11,8 +11,6 @@ namespace AppSalval.DTOS_API
     {
         public int IdOpcion { get; set; }
         public string NombreOpcion { get; set; }
-
         public int IdPregunta { get; set; }
-        
     }
 }
