@@ -33,11 +33,11 @@ namespace AppSalval.Views
                     case 1: // Administrador
                         await Navigation.PushAsync(new InicioAdmin());
                         break;
-                    case 2: // Encuestador (Desarrollador)
-                        await Navigation.PushAsync(new InicioDesarrollador());
+                    case 2: // Encuestador 
+                        await Navigation.PushAsync(new InicioEncuestador());
                         break;
 
-                    case 3: // Encuestador (Desarrollador)
+                    case 3: // Desarrollador
                         await Navigation.PushAsync(new InicioDesarrollador());
                         break;
 
