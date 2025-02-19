@@ -81,6 +81,7 @@
                         FontSize="Title"
                         Margin="20,0,0,40"
                         TextColor="#000000"
+                        
                     />
 
 
@@ -93,6 +94,7 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Text="{Binding Titulo}"
                     />
 
                     <Label
@@ -112,6 +114,7 @@
                          HorizontalOptions="Fill"
                          Margin="40,0,40,40"
                          TextColor="#000000"
+                        Text="{Binding Descripcion}"
                      />
 
 
@@ -131,6 +134,7 @@
                         HorizontalOptions="Fill"
                         Margin="40,0,40,40"
                         TextColor="#000000"
+                        Date="{Binding FechaInicio}"
                     />
 
                     <Label
@@ -143,12 +147,15 @@
                     />
 
                     <DatePicker
-                         Grid.Row="4"
-                         Grid.Column="1"
-                         Grid.ColumnSpan="2"
-                         HorizontalOptions="Fill"
-                         Margin="40,0,40,40"
-                         TextColor="#000000"
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Fill"
+                        Margin="40,0,40,40"
+                        TextColor="#000000"
+                        Date="{Binding FechaFin}"
+                        MinimumDate="{x:Static sys:DateTime.Now}"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     />
 
 
@@ -167,6 +174,7 @@
                         Grid.ColumnSpan="2"
                         HorizontalOptions="Start"
                         Margin="160,-25,40,0"
+                        IsToggled="{Binding Habilitado}"
                     />
 
                 </Grid>
@@ -200,7 +208,8 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     HorizontalOptions="Start"
-                    Margin="40,-5,0,0"                
+                    Margin="40,-5,0,0" 
+                    IsChecked="{Binding RequiereDatosPersonales}"
                 />
 
 
@@ -327,12 +336,6 @@
                                         </CollectionView.ItemTemplate>
                                     </CollectionView>
 
-
-
-
-
-
-
                                 </Grid>
                             </VerticalStackLayout>
                         </ScrollView>
@@ -363,8 +366,8 @@
                   BackgroundColor="Green"
                   TextColor="White"
                   HorizontalOptions="CenterAndExpand"
-                  
-              />
+                  Command="{Binding BtnGuardar}"
+                />
 
                 <Button
                   Grid.Row="0"
@@ -372,7 +375,7 @@
                   Text="Cancelar"
                   BackgroundColor="Red"
                   TextColor="White"
-                  
+                  Command="{Binding BtnCancelar}"
                   HorizontalOptions="CenterAndExpand"
                  />
 

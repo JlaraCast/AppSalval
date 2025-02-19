@@ -6,7 +6,7 @@ public partial class CrearFormulario : ContentPage
     public CrearFormulario()
     {
         InitializeComponent();
-        BindingContext = new CrearFormularioViewModel();
+        BindingContext = new CrearFormularioViewModel(Navigation);
     }
 
     

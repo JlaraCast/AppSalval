@@ -40,40 +40,8 @@ namespace AppSalval.ViewModels
 
         public ICommand SeleccionarPreguntaCommand { get; }
 
-
-
-        public CrearFormularioViewModel(CollectionView listaPreguntas)
-        {
-            _apiServicePregunta = new ApiServicePregunta();
-            _apiServiceFormularios = new ApiServiceFormularios();
-            _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
-            _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
-            this._listaPreguntas = listaPreguntas;
-
-            _titulo = string.Empty;
-            _descripcion = string.Empty;
-            _opcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
-
-            _fechaInicio = DateTime.Now;
-            _fechaFin = DateTime.Now;
-            _requiereDatosPersonales = false;
-            _habilitado = true;
-            _checkboxPregunta = false;
-
-
-
-            BtnCancelar = new Command(async () =>
-            {
-                await _navigation.PushAsync(new GestionFormularios());
-            });
-
-            BtnAceptar = new Command(async () =>
-            {
-                // Lógica para aceptar el formulario
-            });
-
-        }
-
+        public ICommand BtnCancelar { get; }
+        public ICommand BtnGuardar { get; }
 
 
         public ObservableCollection<OpcionRespuestaDtoExtendida> OpcionesRespuesta
@@ -86,22 +54,13 @@ namespace AppSalval.ViewModels
             }
         }
 
-        public void ActualizarPreguntasSeleccionadas()
-        {
-            PreguntasSeleccionadas.Clear();
-            foreach (var pregunta in PreguntasDtos)
-            {
-                if (pregunta.IsSelected)
-                {
-                    PreguntasSeleccionadas.Add(pregunta);
-                }
-            }
-        }
+       
 
         public ICommand CargarPreguntasCommand { get; }
 
-        public CrearFormularioViewModel()
+        public CrearFormularioViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceFormularios = new ApiServiceFormularios();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
@@ -123,7 +82,7 @@ namespace AppSalval.ViewModels
                 await _navigation.PushAsync(new GestionFormularios());
             });
 
-            BtnAceptar = new Command(async () =>
+            BtnGuardar = new Command(async () =>
             {
                 // Lógica para aceptar el formulario
             });
@@ -207,11 +166,14 @@ namespace AppSalval.ViewModels
         }
 
 
+        private void CrearFormulario()
+        {
 
-        public ICommand BtnCancelar { get; }
-        public ICommand BtnAceptar { get; }
+        }
 
-        public ICommand CargarOpcionesRespuestaCommand { get; }
+
+
+        
 
         public string Titulo
         {
@@ -248,11 +210,7 @@ namespace AppSalval.ViewModels
             set => SetProperty(ref _requiereDatosPersonales, value);
         }
 
-        public bool CheckboxPregunta
-        {
-            get => _checkboxPregunta;
-            set => SetProperty(ref _checkboxPregunta, value);
-        }
+        
 
 
     }//fin de la clase
