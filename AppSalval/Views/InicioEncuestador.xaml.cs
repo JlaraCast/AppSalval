@@ -1,9 +1,19 @@
-namespace AppSalval.Views;
+using Microsoft.Maui.Controls;
+using System;
 
-public partial class InicioEncuestador : ContentPage
+namespace AppSalval.Views
 {
-	public InicioEncuestador()
-	{
-		InitializeComponent();
-	}
+    public partial class InicioEncuestador : ContentPage
+    {
+        public InicioEncuestador()
+        {
+            InitializeComponent();
+        }
+
+        private async void OnFormularioClicked(object sender, EventArgs e)
+        {
+            // ?? Aquí puedes redirigir a la vista donde se muestran los formularios
+            await Navigation.PushAsync(new Formularios());
+        }
+    }
 }
