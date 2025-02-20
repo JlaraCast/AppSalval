@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Input;
 using AppSalval.Views;
 using AppSalval.Models_Api;
@@ -85,10 +86,11 @@ namespace AppSalval.ViewModels
             Console.WriteLine("Menú Principal clicked.");
         }
 
-        private void OnVerFormularioClicked(FormularioDto formulario)
+        private async void OnVerFormularioClicked(FormularioDto formulario)
         {
             // Lógica para ver el formulario
-            Console.WriteLine($"Ver formulario: {formulario.TituloFormulario}");
+            await _navigation.PushAsync(new VerFormularioCreado(formulario));
+            Debug.WriteLine($"Ver formulario: {formulario.TituloFormulario}");
         }
 
         private void OnEditarFormularioClicked(FormularioDto formulario)
