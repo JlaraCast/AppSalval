@@ -8,7 +8,11 @@ namespace AppSalval.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value is string tipoPregunta && tipoPregunta == "SelecciónMultiple";
+            if (value is string tipoPregunta)
+            {
+                return tipoPregunta == "SelecciónMultiple"; // ✅ Solo muestra CheckBox si es selección múltiple
+            }
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -3,26 +3,29 @@
     public int IdOpcion { get; set; }
     public string NombreOpcion { get; set; }
     public int IdPregunta { get; set; }
-    public bool IsSelected { get; set; } // Nuevo atributo para manejar selección múltiple
+    public bool IsSelected { get; set; }
 
-    // 🟢 Constructor original (sin IsSelected) para compatibilidad con código existente
+    // 🔹 Nueva propiedad para que cada opción conozca el tipo de pregunta
+    public string TipoPregunta { get; set; }
+
+    // Constructor original
     public OpcionRespuestaDto(int idOpcion, string nombreOpcion, int idPregunta)
     {
         IdOpcion = idOpcion;
         NombreOpcion = nombreOpcion;
         IdPregunta = idPregunta;
-        IsSelected = false; // Valor por defecto en caso de que no se inicialice
+        IsSelected = false;
     }
 
-    // 🟢 Nuevo constructor que incluye IsSelected
-    public OpcionRespuestaDto(int idOpcion, string nombreOpcion, int idPregunta, bool isSelected)
+    // Constructor con TipoPregunta
+    public OpcionRespuestaDto(int idOpcion, string nombreOpcion, int idPregunta, string tipoPregunta)
     {
         IdOpcion = idOpcion;
         NombreOpcion = nombreOpcion;
         IdPregunta = idPregunta;
-        IsSelected = isSelected;
+        TipoPregunta = tipoPregunta;
+        IsSelected = false;
     }
 
-    // 🟢 Constructor vacío para serialización/deserialización JSON
     public OpcionRespuestaDto() { }
 }

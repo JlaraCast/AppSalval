@@ -40,16 +40,13 @@
                                         <DataTemplate>
                                             <StackLayout Orientation="Horizontal">
 
-                                                <!-- Usamos 'RelativeSource' para buscar 'TipoPregunta' en el contexto correcto -->
+                                                <!-- RadioButton para Selección Única -->
                                                 <RadioButton Content="{Binding NombreOpcion}"
                              GroupName="{Binding IdPregunta}"
-                             IsVisible="{Binding Path=BindingContext.TipoPregunta, 
-                                                 Source={RelativeSource AncestorType={x:Type ContentPage}}, 
-                                                 Converter={StaticResource RadioButtonVisibilityConverter}}"/>
+                             IsVisible="{Binding TipoPregunta, Converter={StaticResource RadioButtonVisibilityConverter}}"/>
 
-                                                <HorizontalStackLayout IsVisible="{Binding Path=BindingContext.TipoPregunta, 
-                                                             Source={RelativeSource AncestorType={x:Type ContentPage}}, 
-                                                             Converter={StaticResource CheckBoxVisibilityConverter}}">
+                                                <!-- CheckBox para Selección Múltiple -->
+                                                <HorizontalStackLayout IsVisible="{Binding TipoPregunta, Converter={StaticResource CheckBoxVisibilityConverter}}">
                                                     <CheckBox IsChecked="{Binding IsSelected}" />
                                                     <Label Text="{Binding NombreOpcion}" />
                                                 </HorizontalStackLayout>

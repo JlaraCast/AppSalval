@@ -8,7 +8,11 @@ namespace AppSalval.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value is string tipoPregunta && tipoPregunta == "Seleccion única";
+            if (value is string tipoPregunta)
+            {
+                return tipoPregunta == "Seleccion única"; // ✅ Solo muestra RadioButton si es selección única
+            }
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
