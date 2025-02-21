@@ -226,6 +226,7 @@
                 Grid.ColumnSpan="4"
                 Text="Continuar"
                 FontFamily="Bold"
+                Clicked="OnContinuarClicked"
                 Margin="0,30,0,50"
                 WidthRequest="200"
                 Command="{Binding RegistrarComando}">
