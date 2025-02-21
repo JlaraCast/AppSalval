@@ -8,6 +8,6 @@ public partial class EditarFormulario : ContentPage
 	public EditarFormulario(FormularioDto formulario)
 	{
 		InitializeComponent();
-        BindingContext = new VerFormularioCreadoViewModel(Navigation, formulario, ListaPreguntas);
+        BindingContext = new EditarFormularioViewModel(Navigation, formulario, ListaPreguntas);
     }
 }

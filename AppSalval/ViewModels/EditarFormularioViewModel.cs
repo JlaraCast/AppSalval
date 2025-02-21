@@ -24,12 +24,15 @@ namespace AppSalval.ViewModels
         private DateTime _fechaFin;
         private bool _habilitado;
         private bool _requiereDatosPersonales;
-        private ICommand _btnRegresar;
+        
 
 
         private readonly ApiServiceFormularioPregunta _apiServiceFormulario;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcion;
         private readonly ApiServiceFormularios _apiFormulario;
+
+        public ICommand BtnRegresar { get; }
+        public ICommand BtnGuardar { get; }
 
 
         private List<FormularioPreguntaDto> _preguntas;
@@ -54,6 +57,8 @@ namespace AppSalval.ViewModels
 
             LoadPreguntas(formulario.IdFormulario);
 
+            BtnRegresar = new Command(ComandoBtnRegresar);
+            BtnGuardar = new Command(async () => await GuardarCambiosFormulario());
         }
 
         public String Titulo
@@ -91,8 +96,7 @@ namespace AppSalval.ViewModels
             get => _requiereDatosPersonales;
             set => SetProperty(ref _requiereDatosPersonales, value);
         }
-        public ICommand BtnRegresar => _btnRegresar ??= new Command(ComandoBtnRegresar);
-        public ICommand BtnGuardar => new Command(async () => await GuardarCambiosFormulario());
+        
 
 
         private async void ComandoBtnRegresar()
