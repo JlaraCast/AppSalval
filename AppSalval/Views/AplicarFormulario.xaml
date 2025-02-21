@@ -34,19 +34,27 @@
                                        TextColor="Black"
                                        Margin="0,5,0,10"/>
 
-                                <!-- Opciones de respuesta -->
                                 <StackLayout Padding="5"
-                                             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
+             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <StackLayout Orientation="Horizontal">
-                                                <RadioButton Content="{Binding NombreOpcion}" 
-                                                             GroupName="{Binding IdPregunta}"/>
+
+                                                <!-- RadioButton para Selección Única -->
+                                                <RadioButton Content="{Binding NombreOpcion}"
+                             GroupName="{Binding IdPregunta}"
+                             IsVisible="{Binding TipoPregunta, Converter={StaticResource RadioButtonVisibilityConverter}}"/>
+
+                                                <!-- CheckBox para Selección Múltiple -->
+                                                <HorizontalStackLayout IsVisible="{Binding TipoPregunta, Converter={StaticResource CheckBoxVisibilityConverter}}">
+                                                    <CheckBox IsChecked="{Binding IsSelected}" />
+                                                    <Label Text="{Binding NombreOpcion}" />
+                                                </HorizontalStackLayout>
+
                                             </StackLayout>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
-
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>

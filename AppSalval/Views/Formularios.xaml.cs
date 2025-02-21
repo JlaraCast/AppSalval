@@ -4,17 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
+using System.Diagnostics;
+using AppSalval.DTOS_API; // ✅ Se agregó la referencia para RespuestaDto
+
 namespace AppSalval.Views
 {
     public partial class Formularios : ContentPage
     {
         private readonly ApiServiceFormularios _apiService;
+        private readonly ApiServiceRespuestas _apiServiceRespuestas; // ✅ Se agregó la instancia del servicio de respuestas
         private List<FormularioDto> _formularios;
+        private List<RespuestasDTO> _respuestas; // ✅ Se declaró la lista de respuestas correctamente
 
         public Formularios()
         {
             InitializeComponent();
             _apiService = new ApiServiceFormularios();
+            _apiServiceRespuestas = new ApiServiceRespuestas(); // ✅ Se inicializa el servicio de respuestas
             LoadFormularios();
         }
 
@@ -24,9 +30,8 @@ namespace AppSalval.Views
             {
                 _formularios = await _apiService.GetFormularios();
 
-                // 🔹 Filtrar formularios que tienen habilitado = true
                 var formulariosHabilitados = _formularios
-                    .Where(f => f.Habilitado) // Solo los habilitados
+                    .Where(f => f.Habilitado)
                     .ToList();
 
                 if (formulariosHabilitados != null && formulariosHabilitados.Count > 0)
@@ -46,7 +51,6 @@ namespace AppSalval.Views
             }
         }
 
-
         private void SearchFormularios(object sender, EventArgs e)
         {
             string query = SearchBox.Text?.ToLower();
@@ -59,7 +63,7 @@ namespace AppSalval.Views
             }
         }
 
-        private void FormularioPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private async void FormularioPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FormularioPicker.SelectedIndex == -1)
                 return;
@@ -72,10 +76,61 @@ namespace AppSalval.Views
 
             if (formulario != null)
             {
-                // 🚀 Navegar a la pantalla AplicarFormulario enviando el ID y título del formulario
-                 Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
+                Debug.WriteLine($"📌 Cargando respuestas para el formulario: {formulario.TituloFormulario}");
+
+                try
+                {
+                    // Cargar respuestas asociadas al formulario
+                    _respuestas = await _apiServiceRespuestas.GetRespuestas();
+                    Debug.WriteLine($"✅ Total de respuestas obtenidas de la API: {_respuestas.Count}");
+
+                    var respuestasFiltradas = _respuestas
+                        .Where(r => r.IdFormulario == formulario.IdFormulario)
+                        .ToList();
+
+                    Debug.WriteLine($"🔹 Total de respuestas filtradas para el formulario {formulario.TituloFormulario}: {respuestasFiltradas.Count}");
+
+                    foreach (var respuesta in respuestasFiltradas)
+                    {
+                        string identificacion = respuesta.IdentificacionEncuestado ?? "Sin Identificación";
+                        Debug.WriteLine($"📝 Encuestado: {identificacion} - Fecha: {respuesta.FechaRespuesta:dd/MM/yyyy HH:mm:ss}");
+                    }
+
+                    if (respuestasFiltradas.Count > 0)
+                    {
+                        ListaRespuestas.ItemsSource = null; // Limpiar la vista antes de asignar nuevos datos
+                        ListaRespuestas.ItemsSource = respuestasFiltradas;
+                    }
+                    else
+                    {
+                        ListaRespuestas.ItemsSource = null;
+                        await DisplayAlert("Información", "No hay respuestas para este formulario", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", $"Error al cargar respuestas: {ex.Message}", "OK");
+                }
             }
         }
 
+        private async void OnAplicarClicked(object sender, EventArgs e)
+        {
+            if (FormularioPicker.SelectedIndex == -1)
+            {
+                await DisplayAlert("Error", "Seleccione un formulario antes de continuar.", "OK");
+                return;
+            }
+
+            string tituloSeleccionado = FormularioPicker.Items[FormularioPicker.SelectedIndex];
+            FormularioDto formulario = _formularios.FirstOrDefault(f => f.TituloFormulario == tituloSeleccionado);
+
+            if (formulario != null)
+            {
+                bool requiereDatosPersonales = !formulario.Anonimo;
+
+                await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
+            }
+        }
     }
 }

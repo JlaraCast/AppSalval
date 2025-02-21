@@ -48,11 +48,34 @@
 
         <!-- Botón Aplicar -->
         <Button Text="Aplicar"
-                BackgroundColor="#4CAF50"
-                TextColor="White"
-                FontSize="18"
-                CornerRadius="10"
-                Margin="0,20,0,0"/>
+            BackgroundColor="#4CAF50"
+            TextColor="White"
+            FontSize="18"
+            CornerRadius="10"
+            Margin="0,20,0,0"
+            Clicked="OnAplicarClicked"/>
+
+        <ScrollView HeightRequest="300">
+            <ListView x:Name="ListaRespuestas"
+              BackgroundColor="#2D2D2D"
+              SeparatorVisibility="None"
+              Margin="0,10,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="#37474F" Padding="10" CornerRadius="8" Margin="5">
+                                <StackLayout>
+                                    <Label Text="{Binding IdentificacionEncuestado}" 
+                                   FontSize="16" TextColor="White"/>
+                                    <Label Text="{Binding FechaRespuesta, StringFormat='Fecha: {0:dd/MM/yyyy}'}" 
+                                   FontSize="14" TextColor="Gray"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
 
     </VerticalStackLayout>
 

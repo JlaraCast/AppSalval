@@ -63,32 +63,26 @@
 	  <AndroidResource Remove="buenas\**" />
 	  <AndroidResource Remove="Models\**" />
 	  <AndroidResource Remove="NewFolder2\**" />
-	  <AndroidResource Remove="NewFolder\**" />
 	  <AndroidResource Remove="Services\NewFolder\**" />
 	  <Compile Remove="buenas\**" />
 	  <Compile Remove="Models\**" />
 	  <Compile Remove="NewFolder2\**" />
-	  <Compile Remove="NewFolder\**" />
 	  <Compile Remove="Services\NewFolder\**" />
 	  <EmbeddedResource Remove="buenas\**" />
 	  <EmbeddedResource Remove="Models\**" />
 	  <EmbeddedResource Remove="NewFolder2\**" />
-	  <EmbeddedResource Remove="NewFolder\**" />
 	  <EmbeddedResource Remove="Services\NewFolder\**" />
 	  <MauiCss Remove="buenas\**" />
 	  <MauiCss Remove="Models\**" />
 	  <MauiCss Remove="NewFolder2\**" />
-	  <MauiCss Remove="NewFolder\**" />
 	  <MauiCss Remove="Services\NewFolder\**" />
 	  <MauiXaml Remove="buenas\**" />
 	  <MauiXaml Remove="Models\**" />
 	  <MauiXaml Remove="NewFolder2\**" />
-	  <MauiXaml Remove="NewFolder\**" />
 	  <MauiXaml Remove="Services\NewFolder\**" />
 	  <None Remove="buenas\**" />
 	  <None Remove="Models\**" />
 	  <None Remove="NewFolder2\**" />
-	  <None Remove="NewFolder\**" />
 	  <None Remove="Services\NewFolder\**" />
 	</ItemGroup>
 

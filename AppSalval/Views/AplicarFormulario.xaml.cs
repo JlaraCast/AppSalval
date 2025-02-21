@@ -37,23 +37,29 @@ namespace AppSalval.Views
                 {
                     foreach (var pregunta in _preguntas)
                     {
-                        Debug.WriteLine($"✅ Pregunta ID: {pregunta.IdPregunta}, Texto: {pregunta.TextPregunta}");
+                        Debug.WriteLine($"✅ Pregunta ID: {pregunta.IdPregunta}, Tipo: {pregunta.TipoPregunta}");
 
-                        // Obtener opciones válidas desde la API
                         var opciones = await _apiServiceOpcion.GetValidOpcionRespuestasByPreguntaId(pregunta.IdPregunta);
 
                         if (opciones != null && opciones.Count > 0)
                         {
-                            Debug.WriteLine($"🔹 Opciones cargadas para la pregunta {pregunta.IdPregunta}: {opciones.Count}");
+                            // 🔹 Aseguramos que cada opción tenga asignado el TipoPregunta
                             foreach (var opcion in opciones)
                             {
-                                Debug.WriteLine($"   - Opción: {opcion.NombreOpcion}");
+                                opcion.TipoPregunta = pregunta.TipoPregunta;
                             }
+
                             pregunta.OpcionesRespuesta = opciones;
                         }
-                        else
+                    }
+
+                    // 🚀 Verificar en la consola que cada opción ahora tiene un TipoPregunta asignado
+                    foreach (var pregunta in _preguntas)
+                    {
+                        Debug.WriteLine($"📢 Pregunta {pregunta.IdPregunta} - Tipo: {pregunta.TipoPregunta}");
+                        foreach (var opcion in pregunta.OpcionesRespuesta)
                         {
-                            Debug.WriteLine($"⚠️ No se encontraron opciones válidas para la pregunta {pregunta.IdPregunta}");
+                            Debug.WriteLine($"   🔹 Opción: {opcion.NombreOpcion} - TipoPregunta: {opcion.TipoPregunta}");
                         }
                     }
 
@@ -69,6 +75,8 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", $"Error al cargar preguntas: {ex.Message}", "OK");
             }
         }
+
+
 
         private async void OnEnviarClicked(object sender, EventArgs e)
         {

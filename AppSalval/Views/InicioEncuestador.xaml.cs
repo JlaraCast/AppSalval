@@ -1,6 +1,7 @@
-namespace AppSalval.Views;
+using Microsoft.Maui.Controls;
+using System;
 
-public partial class InicioEncuestador : ContentPage
+namespace AppSalval.Views
 {
     public InicioEncuestador()
     {
@@ -9,13 +10,13 @@ public partial class InicioEncuestador : ContentPage
 
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
-        // Navega a la página de login
+        // Navega a la pï¿½gina de login
         await Navigation.PushAsync(new LoginPage());
     }
 
     private async void OnFormularioClicked(object sender, EventArgs e)
     {
-        // Navega a la página de encuestas
+        // Navega a la pï¿½gina de encuestas
         await Navigation.PushAsync(new Formularios());
     }
 }
