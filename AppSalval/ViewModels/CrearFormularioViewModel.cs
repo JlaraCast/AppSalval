@@ -173,12 +173,6 @@ namespace AppSalval.ViewModels
             OnPropertyChanged(nameof(PreguntasSeleccionadas));
         }
 
-
-
-
-      
-
-
         public async Task CrearFormulario()
         {
             try

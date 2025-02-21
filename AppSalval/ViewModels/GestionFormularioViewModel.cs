@@ -93,10 +93,12 @@ namespace AppSalval.ViewModels
             Debug.WriteLine($"Ver formulario: {formulario.TituloFormulario}");
         }
 
-        private void OnEditarFormularioClicked(FormularioDto formulario)
+        private async void OnEditarFormularioClicked(FormularioDto formulario)
         {
             // Lógica para editar el formulario
+            await _navigation.PushAsync(new EditarFormulario(formulario));
             Console.WriteLine($"Editar formulario: {formulario.TituloFormulario}");
+            
         }
 
         private async void OnEliminarFormularioClicked(FormularioDto formulario)

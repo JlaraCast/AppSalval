@@ -1,8 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppSalval.Views.VerFormularioCreado"
+             x:Class="AppSalval.Views.EditarFormulario"
              xmlns:viewModels="clr-namespace:AppSalval.ViewModels"
-             Title="VerFormulario">
+             Title="EditarrFormulario">
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
@@ -62,7 +62,7 @@
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Ver Formulario" 
+                        Text="Editar Formulario" 
                         FontSize="45"
                         Margin="0,0,0,40"
                         TextColor="#000000"
@@ -84,7 +84,6 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Text="{Binding Titulo}"
-                        IsEnabled="False"
                     />
                     <Label
                         Grid.Row="2"
@@ -103,7 +102,6 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Text="{Binding Descripcion}"
-                        IsEnabled="False"
                     />
                     <Label
                         Grid.Row="3"
@@ -121,7 +119,6 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Date="{Binding FechaInicio}"
-                        IsEnabled="False"
                     />
                     <Label
                         Grid.Row="4"
@@ -139,7 +136,6 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Date="{Binding FechaFin}"
-                        IsEnabled="False"
                     />
                     <Label
                         Grid.Row="5"
@@ -156,7 +152,6 @@
                         HorizontalOptions="Start"
                         Margin="160,-25,40,0"
                         IsToggled="{Binding Habilitado}"
-                        IsEnabled="False"
                     />
                 </Grid>
             </Border>
@@ -186,7 +181,6 @@
                     HorizontalOptions="Start"
                     Margin="40,-5,0,0" 
                     IsChecked="{Binding RequiereDatosPersonales}"
-                    IsEnabled="False"
                 />
             </Grid>
 
@@ -270,8 +264,8 @@
                                                                 <DataTemplate>
                                                                     <StackLayout Orientation="Horizontal">
                                                                         <RadioButton Content="{Binding NombreOpcion}"
-                                                                                     IsEnabled="False"
-                                                                            GroupName="{Binding IdPregunta}"/>
+                                                                            GroupName="{Binding IdPregunta}"
+                                                                            IsEnabled="False"/>
                                                                     </StackLayout>
                                                                 </DataTemplate>
                                                             </BindableLayout.ItemTemplate>
@@ -304,11 +298,21 @@
                   Grid.Row="0"
                   Grid.Column="0"
                   Margin="0,0,10,0"
-                  Text="Regresar"
+                  Text="Guardar"
                   BackgroundColor="Green"
                   TextColor="White"
                   HorizontalOptions="CenterAndExpand"
-                  Command="{Binding BtnRegresar}"
+                  Command="{Binding BtnGuardar}"
+                />
+
+                <Button
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  Text="Cancelar"
+                  BackgroundColor="Red"
+                  TextColor="White"
+                  Command="{Binding BtnCancelar}"
+                  HorizontalOptions="CenterAndExpand"
                 />
 
             </Grid>
