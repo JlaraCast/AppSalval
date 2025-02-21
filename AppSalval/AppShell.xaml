@@ -10,6 +10,7 @@
     Title="AppSalval"
     >
 
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
 
     <ShellContent
         Title="Formularios"

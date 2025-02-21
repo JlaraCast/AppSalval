@@ -97,6 +97,12 @@ namespace AppSalval.Views
         {
             await LoadUsersAsync();
         }
+
+        private async void OnBackButtonClicked(object sender, EventArgs e)
+        {
+            // Navega a la página de login
+            await Navigation.PushAsync(new InicioAdmin());
+        }
     }
 }
 

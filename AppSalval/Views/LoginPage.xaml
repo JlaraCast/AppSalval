@@ -22,13 +22,13 @@
             <Entry x:Name="txtContrasena" Placeholder="Contraseña" IsPassword="True"/>
 
             <!-- Botón Ingresar -->
-            <Button Text="Ingresar" BackgroundColor="#4CAF50" TextColor="White"
+            <Button Text="Ingresar" BackgroundColor="#57CC99" TextColor="White"
                     Clicked="OnLoginClicked"/>
 
             <!-- Botón Crear Cuenta -->
             <Button Text="Crear una cuenta" 
                     BackgroundColor="Transparent" 
-                    TextColor="Blue" 
+                    TextColor="#22577A" 
                     Clicked="OnCreateAccountClicked"/>
 
         </VerticalStackLayout>
