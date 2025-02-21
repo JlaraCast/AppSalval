@@ -9,6 +9,10 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary xmlns:local="clr-namespace:AppSalval.Converters">
+                <local:RadioButtonVisibilityConverter x:Key="RadioButtonVisibilityConverter"/>
+                <local:CheckBoxVisibilityConverter x:Key="CheckBoxVisibilityConverter"/>
+            </ResourceDictionary>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

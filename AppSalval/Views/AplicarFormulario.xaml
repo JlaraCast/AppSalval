@@ -34,19 +34,30 @@
                                        TextColor="Black"
                                        Margin="0,5,0,10"/>
 
-                                <!-- Opciones de respuesta -->
                                 <StackLayout Padding="5"
-                                             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
+             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <StackLayout Orientation="Horizontal">
-                                                <RadioButton Content="{Binding NombreOpcion}" 
-                                                             GroupName="{Binding IdPregunta}"/>
+
+                                                <!-- Usamos 'RelativeSource' para buscar 'TipoPregunta' en el contexto correcto -->
+                                                <RadioButton Content="{Binding NombreOpcion}"
+                             GroupName="{Binding IdPregunta}"
+                             IsVisible="{Binding Path=BindingContext.TipoPregunta, 
+                                                 Source={RelativeSource AncestorType={x:Type ContentPage}}, 
+                                                 Converter={StaticResource RadioButtonVisibilityConverter}}"/>
+
+                                                <HorizontalStackLayout IsVisible="{Binding Path=BindingContext.TipoPregunta, 
+                                                             Source={RelativeSource AncestorType={x:Type ContentPage}}, 
+                                                             Converter={StaticResource CheckBoxVisibilityConverter}}">
+                                                    <CheckBox IsChecked="{Binding IsSelected}" />
+                                                    <Label Text="{Binding NombreOpcion}" />
+                                                </HorizontalStackLayout>
+
                                             </StackLayout>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
-
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>

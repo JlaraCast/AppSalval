@@ -37,7 +37,7 @@ namespace AppSalval.Views
                 {
                     foreach (var pregunta in _preguntas)
                     {
-                        Debug.WriteLine($"✅ Pregunta ID: {pregunta.IdPregunta}, Texto: {pregunta.TextPregunta}");
+                        Debug.WriteLine($"✅ Pregunta ID: {pregunta.IdPregunta}, Texto: {pregunta.TextPregunta}, Tipo: {pregunta.TipoPregunta}");
 
                         // Obtener opciones válidas desde la API
                         var opciones = await _apiServiceOpcion.GetValidOpcionRespuestasByPreguntaId(pregunta.IdPregunta);
@@ -45,10 +45,15 @@ namespace AppSalval.Views
                         if (opciones != null && opciones.Count > 0)
                         {
                             Debug.WriteLine($"🔹 Opciones cargadas para la pregunta {pregunta.IdPregunta}: {opciones.Count}");
+
                             foreach (var opcion in opciones)
                             {
                                 Debug.WriteLine($"   - Opción: {opcion.NombreOpcion}");
+
+                                // Agregamos la propiedad IsSelected para gestionar selección múltiple
+                                opcion.IsSelected = false;
                             }
+
                             pregunta.OpcionesRespuesta = opciones;
                         }
                         else
@@ -57,6 +62,7 @@ namespace AppSalval.Views
                         }
                     }
 
+                    // Actualizar la interfaz con la lista de preguntas y opciones
                     ListaPreguntas.ItemsSource = _preguntas;
                 }
                 else

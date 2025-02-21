@@ -1,16 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace AppSalval.DTOS_API
+﻿public class OpcionRespuestaDto
 {
-    public class OpcionRespuestaDto
+    public int IdOpcion { get; set; }
+    public string NombreOpcion { get; set; }
+    public int IdPregunta { get; set; }
+    public bool IsSelected { get; set; } // Nuevo atributo para manejar selección múltiple
+
+    // 🟢 Constructor original (sin IsSelected) para compatibilidad con código existente
+    public OpcionRespuestaDto(int idOpcion, string nombreOpcion, int idPregunta)
     {
-        public int IdOpcion { get; set; }
-        public string NombreOpcion { get; set; }
-        public int IdPregunta { get; set; }
+        IdOpcion = idOpcion;
+        NombreOpcion = nombreOpcion;
+        IdPregunta = idPregunta;
+        IsSelected = false; // Valor por defecto en caso de que no se inicialice
     }
+
+    // 🟢 Nuevo constructor que incluye IsSelected
+    public OpcionRespuestaDto(int idOpcion, string nombreOpcion, int idPregunta, bool isSelected)
+    {
+        IdOpcion = idOpcion;
+        NombreOpcion = nombreOpcion;
+        IdPregunta = idPregunta;
+        IsSelected = isSelected;
+    }
+
+    // 🟢 Constructor vacío para serialización/deserialización JSON
+    public OpcionRespuestaDto() { }
 }
