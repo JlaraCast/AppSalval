@@ -45,7 +45,7 @@ namespace AppSalval.Views
                     Usuario.IdRol = 2;  // "Encuestador"
                     break;
                 case 2:
-                    Usuario.IdRol = 3;  // "Encuestado"
+                    Usuario.IdRol = 3;  // "Desarrollador"
                     break;
                 default:
                     Usuario.IdRol = 0;  // Valor por defecto o inválido

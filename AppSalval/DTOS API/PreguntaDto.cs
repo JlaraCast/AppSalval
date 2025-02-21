@@ -9,6 +9,7 @@ namespace AppSalval.DTOS_API
 {
     public class PreguntaDto
     {
+
         public int IdPregunta { get; set; }
 
         public string TipoPregunta { get; set; }

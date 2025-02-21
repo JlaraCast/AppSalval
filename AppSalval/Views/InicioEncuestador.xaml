@@ -17,9 +17,10 @@
         <Button Text="Formulario"
                 BackgroundColor="Blue"
                 TextColor="White"
-                Clicked="OnFormularioClicked"
+                
                 HorizontalOptions="Center"
                 WidthRequest="200"/>
+        <!--BClicked="OnFormularioClicked" -->
 
     </VerticalStackLayout>
 </ContentPage>
