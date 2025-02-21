@@ -8,26 +8,33 @@ using AppSalval.ViewModels;
 using AppSalval.Models_Api;
 using AppSalval.Services;
 using AppSalval.DTOS_API;
+using System.Windows.Input;
 namespace AppSalval.ViewModels
 {
     public class GestionPreguntasViewModel : BaseViewModel
     {
-        
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcionRespuesta;
         private readonly INavigation _navigation;
+        public ICommand CargarPreguntasCommand { get; }
+
+        public ObservableCollection<PreguntaViewModel> PreguntasDtos { get; set; }
 
         public GestionPreguntasViewModel(INavigation navigation)
         {
+            _navigation = navigation;
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
-            _navigation = navigation;
-            //PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
-            // Inicialización de propiedades o comandos
+            PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
+
+            CargarPreguntasCommand = new Command(async () => await CargarPreguntas());
+
+            // Cargar preguntas al iniciar
+            Task.Run(async () => await CargarPreguntas());
+
+            //Inicialización de propiedades o comandos
         }
-        /*
-        public async Task ObservableCollection<PreguntaViewModel> PreguntasDtos { get; set; }
-        
+
         private async Task CargarPreguntas()
         {
             var preguntas = await _apiServicePregunta.GetPreguntas();
@@ -68,8 +75,5 @@ namespace AppSalval.ViewModels
                 });
             }
         }
-
-        */
-
     }
 }

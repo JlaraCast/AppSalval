@@ -52,6 +52,10 @@
     Title="CrearFormulario"
     ContentTemplate="{DataTemplate vista:CrearFormulario}"
     Route="CrearFormulario" />
+    <ShellContent
+    Title="GestionPreguntas"
+    ContentTemplate="{DataTemplate vista:GestionPreguntas}"
+    Route="GestionPreguntas"/>
 
     <ShellContent
      Title="GestionParticipantes"

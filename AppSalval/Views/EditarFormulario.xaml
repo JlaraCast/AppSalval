@@ -294,6 +294,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
+                
                 <Button
                   Grid.Row="0"
                   Grid.Column="0"
@@ -311,7 +312,7 @@
                   Text="Cancelar"
                   BackgroundColor="Red"
                   TextColor="White"
-                  Command="{Binding BtnCancelar}"
+                  Command="{Binding BtnRegresar}"
                   HorizontalOptions="CenterAndExpand"
                 />
 
