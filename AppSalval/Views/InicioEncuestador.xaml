@@ -1,26 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppSalval.Views.InicioEncuestador"
-             Title="Inicio">
+             x:Class="AppSalval.Views.InicioEncuestador">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <!-- Encabezado -->
-        <Label Text="Encuestador"
-               FontSize="24"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               TextColor="Black"/>
+        <!-- Contenedor del botón de volver alineado a la derecha -->
+        <Grid Grid.Row="0">
+            <ImageButton Source="back_icon.png"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="End"
+                         VerticalOptions="Start"
+                         Margin="0,-60,0,0"
+                         Clicked="OnBackButtonClicked"/>
+        </Grid>
 
-        <!-- Botón para acceder al formulario -->
-        <Button Text="Formulario"
-                BackgroundColor="Blue"
-                TextColor="White"
-                
-                HorizontalOptions="Center"
-                WidthRequest="200"/>
-        <!--BClicked="OnFormularioClicked" -->
+        <VerticalStackLayout Grid.Row="1" Padding="20" Spacing="15">
 
-    </VerticalStackLayout>
+            <!-- Encabezado -->
+            <Label Text="Encuestador"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+
+            <!-- Botón para acceder al formulario -->
+            <Button Text="Formulario"
+                    BackgroundColor="Blue"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    WidthRequest="200"
+                    Clicked="OnFormularioClicked"/>
+          
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>

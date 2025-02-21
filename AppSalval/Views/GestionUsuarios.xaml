@@ -2,20 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.GestionUsuarios"
-             Title="Gestión de Usuarios">
+             >
 
     <ScrollView>
-        <!-- Hacemos que todo el contenido sea desplazable -->
+        <!-- Contenedor principal -->
         <VerticalStackLayout Padding="20">
 
-            <!-- Encabezado con botón alineado a la derecha -->
-            <HorizontalStackLayout Padding="0,0,0,10">
-               
+            <!-- Encabezado con botón de volver y botón de agregar -->
+            <Grid ColumnDefinitions="*, Auto">
+                <!-- Botón de volver -->
+                <ImageButton Source="back_icon.png"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             BackgroundColor="Transparent"
+                             Clicked="OnBackButtonClicked"
+                             HorizontalOptions="End"
+                             Margin="0,-55,0,0"/>
+
+                <!-- Botón de agregar usuario -->
                 <Button Text="Agregar +" Clicked="OnAddUserClicked"
-                        BackgroundColor="Green" TextColor="White" 
+                        BackgroundColor="#57CC99" TextColor="White" 
                         Padding="5" CornerRadius="8"
-                        HorizontalOptions="End"/>
-            </HorizontalStackLayout>
+                        HorizontalOptions="Start"
+                        Margin="0,0,0,5"/>
+            </Grid>
 
             <!-- Encabezados -->
             <Frame BackgroundColor="#F0F0F0" Padding="10" HasShadow="False" BorderColor="Gray" CornerRadius="10">
@@ -39,11 +49,11 @@
                             <!-- Botones más pequeños -->
                             <HorizontalStackLayout Grid.Column="3" Spacing="5">
                                 <Button Text="✏️" Clicked="OnEditUserClicked"
-                                        BackgroundColor="Blue" TextColor="White" 
+                                        BackgroundColor="#22577A" TextColor="White" 
                                         Padding="2" CornerRadius="5" WidthRequest="50" HeightRequest="30"/>
 
                                 <Button Text="🗑️"  Clicked="OnDeleteUserClicked"
-                                        BackgroundColor="Red" TextColor="White" 
+                                        BackgroundColor="#38A3A5" TextColor="White" 
                                         Padding="2" CornerRadius="5" WidthRequest="50" HeightRequest="30"/>
                             </HorizontalStackLayout>
                         </Grid>
@@ -53,7 +63,5 @@
 
         </VerticalStackLayout>
     </ScrollView>
-    <!-- Fin del ScrollView -->
 
 </ContentPage>
-

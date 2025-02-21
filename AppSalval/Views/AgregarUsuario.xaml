@@ -21,8 +21,8 @@
             </Picker>
 
             <HorizontalStackLayout Spacing="20">
-                <Button Text="Agregar" BackgroundColor="Green" TextColor="White" Clicked="OnAddUserClicked"/>
-                <Button Text="Cancelar" BackgroundColor="Red" TextColor="White" Clicked="OnCancelClicked"/>
+                <Button Text="Agregar" BackgroundColor="#57CC99" TextColor="White" Clicked="OnAddUserClicked"/>
+                <Button Text="Cancelar" BackgroundColor="#3B727B" TextColor="White" Clicked="OnCancelClicked"/>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

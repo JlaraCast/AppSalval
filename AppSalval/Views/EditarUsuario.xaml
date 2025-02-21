@@ -22,8 +22,8 @@
             </Picker>
 
             <HorizontalStackLayout Spacing="20">
-                <Button Text="Guardar cambios" BackgroundColor="Green" TextColor="White" Clicked="OnSaveChangesClicked"/>
-                <Button Text="Cancelar" BackgroundColor="Red" TextColor="White" Clicked="OnCancelClicked"/>
+                <Button Text="Guardar cambios" BackgroundColor="#57CC99" TextColor="White" Clicked="OnSaveChangesClicked"/>
+                <Button Text="Cancelar" BackgroundColor="#3B727B" TextColor="White" Clicked="OnCancelClicked"/>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
