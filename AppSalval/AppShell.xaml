@@ -10,7 +10,7 @@
     Title="AppSalval"
     >
 
-    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Title="LoginPage" Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
 
     <ShellContent
         Title="Formularios"
@@ -54,12 +54,13 @@
     Route="CrearFormulario" />
 
     <ShellContent
-    Title="LoginPage"
-    ContentTemplate="{DataTemplate vista:LoginPage}"
-    Route="LoginPage" />
+     Title="GestionParticipantes"
+     ContentTemplate="{DataTemplate vista:GestionParticipantes}"
+     Route="GestionParticipantes" />
+
     <ShellContent
-        Title="GestionParticipantes"
-        ContentTemplate="{DataTemplate vista:GestionParticipantes}"
-        Route="GestionParticipantes" />
+    Title="InicioEncuestador"
+    ContentTemplate="{DataTemplate vista:InicioEncuestador}"
+    Route="InicioEncuestador" />
 
 </Shell>

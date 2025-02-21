@@ -23,6 +23,9 @@
                     <Image Source="question_icon.png" WidthRequest="40" HeightRequest="40"/>
                     <Label Text="Preguntas" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
                 </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToPreguntasPageCommand}" />
+                </Frame.GestureRecognizers>
             </Frame>
 
             <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
@@ -30,6 +33,9 @@
                     <Image Source="form_icon.png" WidthRequest="40" HeightRequest="40"/>
                     <Label Text="Formulario" FontSize="17" HorizontalOptions="Center" TextColor="SteelBlue"/>
                 </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToFormulariosPageCommand}" />
+                </Frame.GestureRecognizers>
             </Frame>
 
             <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="#d9e9ed" CornerRadius="20" Padding="10">
