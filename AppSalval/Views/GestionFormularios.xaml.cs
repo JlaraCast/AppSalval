@@ -12,7 +12,8 @@ namespace AppSalval.Views;
 
 public partial class GestionFormularios : ContentPage
 {
-	public GestionFormularios()
+ 
+    public GestionFormularios()
 	{
 		InitializeComponent();
         _apiService = new ApiServiceFormularios();

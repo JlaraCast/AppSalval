@@ -12,22 +12,21 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Botón para desplegar opciones -->
+                <!-- Aquí puedes añadir un botón si es necesario -->
 
-
-   
                 <!-- Contenido principal de la página -->
-                <ContentView Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+                <ContentView Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <Label
@@ -54,23 +53,41 @@
                     </Grid>
                 </ContentView>
 
+                <!-- Encabezados de la tabla -->
+                <Grid Grid.Row="1" Grid.ColumnSpan="3" ColumnDefinitions="*,*,*,*,*,*" Margin="0,30,0,0">
+                    <Label Grid.Column="0" Text="ID" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="1" Text="Nombre" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="2" Text="Descripción" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="3" Text="Ver" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="4" Text="Editar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="5" Text="Eliminar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                </Grid>
+
                 <CollectionView x:Name="ListaFormularios" Grid.Row="2" Grid.ColumnSpan="3">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding Id}" FontSize="16" VerticalOptions="Center" />
-                                <Label Grid.Column="1" Text="{Binding NombreDescripcion}" FontSize="16" VerticalOptions="Center" />
-                                <Button Grid.Column="2" Command="{Binding VerCommand}" CommandParameter="{Binding Id}" Text="Ver" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
-                                <Button Grid.Column="3" Command="{Binding EditarCommand}" CommandParameter="{Binding Id}" Text="Editar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
-                                <Button Grid.Column="4" Command="{Binding EliminarCommand}" CommandParameter="{Binding Id}" Text="Eliminar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" />
-                            </Grid>
+                            <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
+                                <Grid ColumnDefinitions="*,*,*,*,*,*">
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
+                                        <Label Text="{Binding Id}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                    </Frame>
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="1" Margin="0,0,5,0">
+                                        <Label Text="{Binding Nombre}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                    </Frame>
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="2" Margin="0,0,5,0">
+                                        <Label Text="{Binding Descripcion}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                    </Frame>
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="3" Margin="0,0,5,0">
+                                        <Button Command="{Binding VerCommand}" CommandParameter="{Binding Id}" Text="Ver" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#4682B4" TextColor="White" />
+                                    </Frame>
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="4" Margin="0,0,5,0">
+                                        <Button Command="{Binding EditarCommand}" CommandParameter="{Binding Id}" Text="Editar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#DAA520" TextColor="White" />
+                                    </Frame>
+                                    <Frame BorderColor="Black" Padding="5" Grid.Column="5" Margin="0,0,5,0">
+                                        <Button Command="{Binding EliminarCommand}" CommandParameter="{Binding Id}" Text="Eliminar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#CD5C5C" TextColor="White" />
+                                    </Frame>
+                                 </Grid>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
