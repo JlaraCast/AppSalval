@@ -53,7 +53,6 @@ namespace AppSalval.ViewModels
                         if (!string.IsNullOrEmpty(respuesta.IdentificacionEncuestado))
                         {
                             encuestado = await _apiServiceEncuestado.GetEncuestado(respuesta.IdentificacionEncuestado);
-                            await Application.Current.MainPage.DisplayAlert("Información", $"{encuestado.Identificacion}", "OK");
                             respuestaExtendida = new EncuestadoExtendidoDTO(encuestado)
                             {
 
