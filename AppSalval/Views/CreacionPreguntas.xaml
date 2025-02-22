@@ -182,13 +182,14 @@
                         <Button Text="Agregar Respuesta" 
                                 Grid.Row="4" 
                                 Grid.ColumnSpan="5" 
-                                Command="{Binding AgregarOpcionRespuestaCommand}"
-                                Margin="0,15,0,15"/>
+                             
+                                Command="{Binding AgregarOpcionRespuestaCommand}"/>
 
-                        <Button Text="Guardar" 
+                        <Button Text="Guardar Cambios" 
                             Grid.Row="5" 
-                            Grid.Column="2" 
-                            HorizontalOptions="End" 
+                                
+                                Grid.ColumnSpan="5"
+                            HorizontalOptions="Center" 
                             VerticalOptions="Center" 
                             Margin="10" 
                             BackgroundColor="Green" 

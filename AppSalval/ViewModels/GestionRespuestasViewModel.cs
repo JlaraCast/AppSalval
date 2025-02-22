@@ -46,6 +46,7 @@ namespace AppSalval.ViewModels
                     {
                         if (string.IsNullOrEmpty(respuesta.IdentificacionEncuestado))
                         {
+
                             respuesta.IdentificacionEncuestado = "Anónimo";
                         }
                     }

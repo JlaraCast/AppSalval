@@ -11,6 +11,7 @@ namespace AppSalval.DTOS_API
     {
         public EncuestadoExtendidoDTO(EncuestadoDto encuestadoDTO)
         {
+            Identificacion = encuestadoDTO.Identificacion;
             TipoIdentificacion = encuestadoDTO.TipoIdentificacion;
             NombreCompleto = encuestadoDTO.NombreCompleto;
             FechaNacimiento = encuestadoDTO.FechaNacimiento;

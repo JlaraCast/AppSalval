@@ -54,7 +54,7 @@ namespace AppSalval.ViewModels
                         .Select((f, index) => new FormularioViewModel
                         {
                             Id = f.IdFormulario,
-                            NombreDescripcion = $"{f.TituloFormulario} - {f.DescripcionFormulario}",
+                            NombreDescripcion = $") {f.TituloFormulario} - {f.DescripcionFormulario}",
                             VerCommand = new Command(() => OnVerFormularioClicked(f)),
                             EditarCommand = new Command(() => OnEditarFormularioClicked(f)),
                             EliminarCommand = new Command(() => OnEliminarFormularioClicked(f))

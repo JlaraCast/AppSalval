@@ -22,23 +22,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Botón para desplegar opciones -->
-                <Button Text="Opciones"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Start"
-                        FontSize="Small"
-                        Margin="10,5,0,0">
-                </Button>
-
-                <Label Text="Administrador" 
-                       Grid.Row="0"
-                       Grid.Column="1"
-                       FontSize="Medium"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       TextColor="MidnightBlue"
-                       Margin="10,5,0,0"/>
+          
 
                 <!-- Contenido principal de la página -->
                 <ContentView Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center">
@@ -67,13 +51,13 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="180"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
@@ -155,10 +139,10 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate >
                                     <Frame BorderColor="LightGray" CornerRadius="0" Padding="5" Margin="0,0,0,10" >
-                                        <Grid ColumnDefinitions="150,150,150,150,150,150,150,*" RowDefinitions="Auto" Padding="0,0,0,0">
+                                        <Grid ColumnDefinitions="180,180,180,180,180,180,*" RowDefinitions="Auto" Padding="0,0,0,0">
                                             <!-- Identificación -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
-                                                <Label Text="{Binding TipoIdentificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding Identificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Tipo Identificación -->
@@ -196,15 +180,7 @@
                                                         HorizontalOptions="Center" />
                                             </Frame>
 
-                                            <!-- Botón para Editar -->
-                                            <Frame BorderColor="Black" Padding="5" Grid.Column="7" Margin="0,0,5,0">
-                                                <Button Text="Editar" 
-                                                        Command="{Binding Path=BindingContext.EditarCommand, Source={x:Reference ListaRespuestas}}" 
-                                                        CommandParameter="{Binding .}" 
-                                                        BackgroundColor="#FFA500" TextColor="White"
-                                                        FontSize="Small"
-                                                        HorizontalOptions="Center" />
-                                            </Frame>
+                               
 
                                             <BoxView Grid.Column="8" BackgroundColor="Transparent" />
                                         </Grid>

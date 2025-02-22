@@ -47,25 +47,40 @@ namespace AppSalval.ViewModels
                 {
                     foreach (var respuesta in respuestas)
                     {
+                        
                         EncuestadoDto encuestado = null;
-
+                        EncuestadoExtendidoDTO respuestaExtendida;
                         if (!string.IsNullOrEmpty(respuesta.IdentificacionEncuestado))
                         {
                             encuestado = await _apiServiceEncuestado.GetEncuestado(respuesta.IdentificacionEncuestado);
+                            await Application.Current.MainPage.DisplayAlert("Información", $"{encuestado.Identificacion}", "OK");
+                            respuestaExtendida = new EncuestadoExtendidoDTO(encuestado)
+                            {
+
+                                IdRespuesta = respuesta.IdRespuesta,
+
+                                FechaRespuesta = respuesta.FechaRespuesta,
+                                IdFormulario = respuesta.IdFormulario
+                            };
+                        }
+                        else
+                        {
+                             respuestaExtendida = new EncuestadoExtendidoDTO(encuestado ?? new EncuestadoDto
+                            {
+                                 Identificacion = "Anónimo",
+                                 TipoIdentificacion = "Anónimo",
+                                NombreCompleto = "Anónimo",
+                                FechaNacimiento = DateTime.MinValue,
+                                Sexo = "Anónimo"
+                            })
+                            {
+                                IdRespuesta = respuesta.IdRespuesta,
+
+                                FechaRespuesta = respuesta.FechaRespuesta,
+                                IdFormulario = respuesta.IdFormulario
+                            };
                         }
 
-                        var respuestaExtendida = new EncuestadoExtendidoDTO(encuestado ?? new EncuestadoDto
-                        {
-                            TipoIdentificacion = "Anónimo",
-                            NombreCompleto = "Anónimo",
-                            FechaNacimiento = DateTime.MinValue,
-                            Sexo = "Anónimo"
-                        })
-                        {
-                            IdRespuesta = respuesta.IdRespuesta,
-                            FechaRespuesta = respuesta.FechaRespuesta,
-                            IdFormulario = respuesta.IdFormulario
-                        };
 
                         listaRespuestasExtendidas.Add(respuestaExtendida);
                     }
