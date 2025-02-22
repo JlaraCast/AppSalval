@@ -67,7 +67,7 @@
                        TextColor="#5ac1c0"
                     />
 
-                    <Entry  
+                    <Entry x:Name="CedulaEntry"
                        Grid.Row="2"  
                        Grid.Column="0"  
                        TextColor="Black"  
@@ -90,7 +90,6 @@
                     >
                     </Image>
 
-
                     <Label
                        Grid.Row="3"
                        Grid.Column="0"
@@ -101,7 +100,7 @@
                     />
 
 
-                    <Entry 
+                    <Entry x:Name="NombreEntry"
                         Grid.Row="4" 
                         Grid.Column="0" 
                         TextColor="Black"
@@ -135,7 +134,7 @@
                        TextColor="#5ac1c0"
                     />
 
-                    <Picker
+                    <Picker x:Name="GeneroPicker"
                         Grid.Row="6"
                         Grid.Column="0"
                         TextColor="Black"
@@ -160,7 +159,7 @@
                        TextColor="#5ac1c0"
                     />
 
-                    <DatePicker
+                    <DatePicker x:Name="FechaNacimientoPicker"
                         Grid.Row="8"
                         Grid.Column="0"
                         TextColor="Black"
@@ -220,22 +219,17 @@
             </Border>
 
             <Button 
+                Clicked="OnContinuarClicked"
                 BackgroundColor="Green" 
                 Grid.Row="6" 
                 HorizontalOptions="Center" 
                 Grid.ColumnSpan="4"
                 Text="Continuar"
                 FontFamily="Bold"
-                Clicked="OnContinuarClicked"
                 Margin="0,30,0,50"
                 WidthRequest="200"
                 Command="{Binding RegistrarComando}">
             </Button>
-
-           
-
-            
-
 
         </VerticalStackLayout>
     </ScrollView>

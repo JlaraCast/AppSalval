@@ -114,7 +114,6 @@ namespace AppSalval.Views
             }
         }
 
-        // Modificación en Formularios.xaml.cs
         private async void OnAplicarClicked(object sender, EventArgs e)
         {
             if (FormularioPicker.SelectedIndex == -1)
