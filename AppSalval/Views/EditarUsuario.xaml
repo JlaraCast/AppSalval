@@ -6,9 +6,6 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="15">
 
-            <Label Text="Correo" FontSize="16" />
-            <Entry x:Name="EntryEmail" Placeholder="Ingrese el correo" />
-
             <Label Text="Contraseña" FontSize="16" />
             <Entry x:Name="EntryPassword" Placeholder="Ingrese la contraseña" IsPassword="True"/>
 

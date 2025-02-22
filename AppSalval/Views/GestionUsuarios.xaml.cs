@@ -1,9 +1,10 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-
+using Microsoft.Maui.Controls;
 
 namespace AppSalval.Views
 {
@@ -18,7 +19,7 @@ namespace AppSalval.Views
             BindingContext = this;
             _userService = new UserService();
             _ = LoadUsersAsync();
-            OnUserUpdated();    
+            OnUserUpdated();
         }
 
         private async Task LoadUsersAsync()
@@ -27,6 +28,16 @@ namespace AppSalval.Views
             {
                 var usuarios = await _userService.GetUsersAsync();
                 Usuarios.Clear();
+
+                switch (SortPicker.SelectedIndex)
+                {
+                    case 0: usuarios = usuarios.OrderBy(u => u.Correo).ToList(); break;
+                    case 1: usuarios = usuarios.OrderByDescending(u => u.Correo).ToList(); break;
+                    case 2: usuarios = usuarios.OrderByDescending(u => u.IdUsuario).ToList(); break;
+                    case 3: usuarios = usuarios.OrderBy(u => u.IdUsuario).ToList(); break;
+                    case 4: usuarios = usuarios.OrderBy(u => u.RoleName).ToList(); break;
+                }
+
                 foreach (var usuario in usuarios)
                 {
                     Usuarios.Add(usuario);
@@ -47,31 +58,26 @@ namespace AppSalval.Views
 
         private async void OnDeleteUserClicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+            var button = (ImageButton)sender;
             var usuario = (Usuario)button.BindingContext;
 
-            // Mostrar pop-up de confirmación
             bool isConfirmed = await DisplayAlert("Confirmación",
-                "¿Estás seguro de que deseas eliminar este usuario?",
-                "Sí",
-                "No");
+                "¿Estás seguro de que deseas eliminar este usuario?", "Sí", "No");
 
             if (isConfirmed)
             {
                 try
                 {
-
-                    // Llamar al servicio para eliminar el usuario
                     var result = await _userService.DeleteUserAsync(usuario.IdUsuario);
 
                     if (result)
                     {
-                        Usuarios.Remove(usuario);  // Actualizamos la lista
+                        Usuarios.Remove(usuario);
                         await DisplayAlert("Éxito", "El usuario fue eliminado correctamente.", "OK");
                     }
                     else
                     {
-                        await DisplayAlert("Error", "No se pudo eliminar el usuario. Intenta nuevamente.", "OK");
+                        await DisplayAlert("Error", "No se pudo eliminar el usuario.", "OK");
                     }
                 }
                 catch (Exception ex)
@@ -83,7 +89,7 @@ namespace AppSalval.Views
 
         private async void OnEditUserClicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+            var button = (ImageButton)sender;
             var usuario = (Usuario)button.BindingContext;
 
             var editarUsuarioPage = new EditarUsuario(usuario);
@@ -91,8 +97,6 @@ namespace AppSalval.Views
             await Navigation.PushAsync(editarUsuarioPage);
         }
 
-
-        // Método para actualizar la lista de usuarios después de la edición
         private async void OnUserUpdated()
         {
             await LoadUsersAsync();
@@ -100,8 +104,48 @@ namespace AppSalval.Views
 
         private async void OnBackButtonClicked(object sender, EventArgs e)
         {
-            // Navega a la página de login
             await Navigation.PushAsync(new InicioAdmin());
+        }
+
+        private async void OnSearchUserClicked(object sender, EventArgs e)
+        {
+            string searchText = SearchEntry.Text;
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                await DisplayAlert("Error", "Debe ingresar un id válido.", "OK");
+                return;
+            }
+
+            if (!int.TryParse(searchText, out int userId))
+            {
+                await DisplayAlert("Error", "El id debe ser un número válido.", "OK");
+                return;
+            }
+
+            try
+            {
+                var usuario = await _userService.GetUserByIdAsync(userId);
+
+                if (usuario == null)
+                {
+                    await DisplayAlert("Aviso", "No se encuentran usuarios con el id ingresado.", "OK");
+                }
+                else
+                {
+                    Usuarios.Clear();
+                    Usuarios.Add(usuario);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Ocurrió un error al buscar el usuario: {ex.Message}", "OK");
+            }
+        }
+
+        private async void OnSortOptionChanged(object sender, EventArgs e)
+        {
+            await LoadUsersAsync();
         }
     }
 }

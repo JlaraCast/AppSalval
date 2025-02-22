@@ -84,4 +84,24 @@ public class UserService
             return false;
         }
     }
+
+    public async Task<Usuario> GetUserByIdAsync(int userId)
+    {
+        try
+        {
+            var response = await _httpClient.GetAsync($"Usuario/{userId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<Usuario>();
+            }
+
+            return null; // Si no se encuentra el usuario, devolvemos null
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error de conexión: {ex.Message}");
+            return null; // En caso de error en la conexión, devolvemos null
+        }
+    }
 }

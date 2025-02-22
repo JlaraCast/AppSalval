@@ -16,7 +16,6 @@ namespace AppSalval.Views
             Usuario = usuario;
             BindingContext = this;
 
-            EntryEmail.Text = Usuario.Correo;
             EntryPassword.Text = Usuario.Contraseña;
             PickerRole.SelectedIndex = Usuario.IdRol - 1;  // Restamos 1 si los roles empiezan desde 1
         }
@@ -25,14 +24,13 @@ namespace AppSalval.Views
         private async void OnSaveChangesClicked(object sender, EventArgs e)
         {
             // Validar campos
-            if (string.IsNullOrEmpty(EntryEmail.Text) || string.IsNullOrEmpty(EntryPassword.Text))
+            if (string.IsNullOrEmpty(EntryPassword.Text))
             {
                 await DisplayAlert("Error", "Por favor complete todos los campos.", "OK");
                 return;
             }
 
             // Actualizar la información del usuario
-            Usuario.Correo = EntryEmail.Text;
             Usuario.Contraseña = EntryPassword.Text;
 
             // Asignar el IdRol correctamente, tomando el índice seleccionado

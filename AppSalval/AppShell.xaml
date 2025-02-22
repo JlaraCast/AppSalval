@@ -41,7 +41,7 @@
     ContentTemplate="{DataTemplate vista:ResultadosUsuario}"
     Route="ResultadosUsuario" />
     <ShellContent
-    Title="GestionUsuarios"
+    Title="GestionUsuarioss"
     ContentTemplate="{DataTemplate vista:GestionUsuarios}"
     Route="GestionUsuarios" />
     <ShellContent

@@ -8,6 +8,19 @@
         <!-- Contenedor principal -->
         <VerticalStackLayout Padding="20">
 
+            <!-- Barra de búsqueda y botón -->
+            <HorizontalStackLayout Spacing="10" Padding="0,10,0,10">
+                <Entry x:Name="SearchEntry" Placeholder="Ingrese ID de usuario"
+                   Keyboard="Numeric" WidthRequest="200"/>
+                <Button Text="🔍 Buscar" Clicked="OnSearchUserClicked"
+                    BackgroundColor="#22577A" TextColor="White" 
+                    Padding="5" CornerRadius="8"/>
+            </HorizontalStackLayout>
+            
+            
+            <!-- Espacio entre la barra de búsqueda y el resto -->
+            <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+
             <!-- Encabezado con botón de volver y botón de agregar -->
             <Grid ColumnDefinitions="*, Auto">
                 <!-- Botón de volver -->
@@ -17,10 +30,34 @@
                              BackgroundColor="Transparent"
                              Clicked="OnBackButtonClicked"
                              HorizontalOptions="End"
-                             Margin="0,-55,0,0"/>
+                             VerticalOptions="Start"
+                             Margin="0,-100,0,0"/>
+
+
+                <!-- Contenedor para el texto "Ordenar por:" y el Picker -->
+                <VerticalStackLayout Spacing="5" HorizontalOptions="EndAndExpand">
+                    <!-- Texto "Ordenar por:" -->
+                    <Label Text="Ordenar por:"
+                           FontSize="12" FontAttributes="Bold" TextColor="Black"
+                           HorizontalOptions="Start"/>
+
+                    <!-- Picker de ordenación con tamaño reducido -->
+                    <Picker x:Name="SortPicker" SelectedIndexChanged="OnSortOptionChanged"
+                            WidthRequest="160" HeightRequest="30" HorizontalOptions="EndAndExpand"
+                            FontSize="12" Margin="0,0,0,0">
+                        <Picker.Items>
+                            <x:String>Correo (A - Z)</x:String>
+                            <x:String>Correo (Z - A)</x:String>
+                            <x:String>Mayor a Menor (ID)</x:String>
+                            <x:String>Menor a Mayor (ID)</x:String>
+                            <x:String>Rol (Administrador, Desarrollador, Encuestador)</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+
 
                 <!-- Botón de agregar usuario -->
-                <Button Text="Agregar +" Clicked="OnAddUserClicked"
+                <Button Text="Agregar usuario➕" Clicked="OnAddUserClicked"
                         BackgroundColor="#57CC99" TextColor="White" 
                         Padding="5" CornerRadius="8"
                         HorizontalOptions="Start"
@@ -28,7 +65,7 @@
             </Grid>
 
             <!-- Encabezados -->
-            <Frame BackgroundColor="#F0F0F0" Padding="10" HasShadow="False" BorderColor="Gray" CornerRadius="10">
+            <Frame BackgroundColor="#F0F0F0" Padding="10" HasShadow="False" BorderColor="Gray" CornerRadius="10" Margin="0,10,0,0">
                 <Grid ColumnDefinitions="1.2*, 3*, 1.2*, 1.8*">
                     <Label Text="ID Usuario" FontAttributes="Bold" FontSize="16" TextColor="Black" Grid.Column="0"/>
                     <Label Text="Correo" FontAttributes="Bold" FontSize="16" TextColor="Black" Grid.Column="1"/>
@@ -48,12 +85,13 @@
 
                             <!-- Botones más pequeños -->
                             <HorizontalStackLayout Grid.Column="3" Spacing="5">
-                                <Button Text="✏️" Clicked="OnEditUserClicked"
-                                        BackgroundColor="#22577A" TextColor="White" 
+                           
+                                <ImageButton Source="edit_icon.png" Clicked="OnEditUserClicked"
+                                        BackgroundColor="Transparent"
                                         Padding="2" CornerRadius="5" WidthRequest="50" HeightRequest="30"/>
 
-                                <Button Text="🗑️"  Clicked="OnDeleteUserClicked"
-                                        BackgroundColor="#38A3A5" TextColor="White" 
+                                <ImageButton Source="delete_icon.png" Clicked="OnDeleteUserClicked"
+                                        BackgroundColor="Transparent" 
                                         Padding="2" CornerRadius="5" WidthRequest="50" HeightRequest="30"/>
                             </HorizontalStackLayout>
                         </Grid>
