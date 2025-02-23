@@ -104,4 +104,35 @@ public class UserService
             return null; // En caso de error en la conexión, devolvemos null
         }
     }
+
+    public async Task<bool> ChangePasswordAsync(int userId, string nuevaContrasena)
+    {
+        try
+        {
+            // Crear el objeto que contiene los datos de la contraseña
+            var data = new
+            {
+                us= userId,
+                nuevaContrasena = nuevaContrasena
+            };
+
+            // Hacer la solicitud POST para cambiar la contraseña
+            var response = await _httpClient.PostAsJsonAsync("Usuario/cambiarContrasena", data);
+
+            // Verificar si la respuesta es exitosa
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+
+            string errorMessage = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error al cambiar la contraseña: {errorMessage}");
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error de conexión: {ex.Message}");
+            return false;
+        }
+    }
 }

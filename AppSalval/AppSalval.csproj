@@ -104,6 +104,12 @@
 	  <MauiXaml Update="Views\AplicarFormulario.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\CambioContrasena.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CambioContrasenaCorreo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\CreacionPreguntas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

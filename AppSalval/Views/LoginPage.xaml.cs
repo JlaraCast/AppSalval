@@ -57,5 +57,10 @@ namespace AppSalval.Views
         {
             await Navigation.PushAsync(new AgregarUsuario());
         }
+
+        private async void OnForgotPasswordClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CambioContrasenaCorreo());
+        }
     }
 }

@@ -31,6 +31,12 @@
                     TextColor="#22577A" 
                     Clicked="OnCreateAccountClicked"/>
 
+            <!-- Botón "¿Has olvidado tu contraseña?" -->
+            <Button Text="¿Has olvidado tu contraseña?" 
+                    BackgroundColor="Transparent" 
+                    TextColor="#22577A" 
+                    Clicked="OnForgotPasswordClicked"/>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
