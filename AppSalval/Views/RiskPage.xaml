@@ -16,20 +16,33 @@
         <!-- Campo de búsqueda -->
         <HorizontalStackLayout Spacing="0" VerticalOptions="Start" Margin="5">
             <Label Text="Buscar tipo de riesgo:" FontSize="14" TextColor="SteelBlue" Padding="10"/>
-            <Entry Placeholder="Buscar..." WidthRequest="200"/>
+            <Entry Placeholder="Buscar..." WidthRequest="200" 
+        Text="{Binding SearchText, Mode=TwoWay}"/>
         </HorizontalStackLayout>
 
         <!-- Botones de acción -->
         <HorizontalStackLayout Spacing="60" Margin="10">
             <Button Text="Crear tipo de riesgo" 
-                BackgroundColor="MediumSeaGreen" 
-                TextColor="White" 
-                CornerRadius="10" 
-                Command="{Binding NavigateToRiskFormCommand}"/>
-            <Button Text="Ordenar por:" 
-                BackgroundColor="SteelBlue" 
-                TextColor="White" 
-                CornerRadius="10"/>
+             BackgroundColor="MediumSeaGreen" 
+             TextColor="White" 
+             CornerRadius="10" 
+             Command="{Binding NavigateToRiskFormCommand}"/>
+            <Picker Title="Ordenar por:" 
+     SelectedItem="{Binding OrdenActual, Mode=TwoWay}"
+     WidthRequest="150">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Nombre</x:String>
+                        <x:String>ID</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Button Text="Ordenar" 
+     BackgroundColor="SteelBlue" 
+     TextColor="White" 
+     CornerRadius="10"
+     Command="{Binding OrdenarCommand}"/>
         </HorizontalStackLayout>
 
         <!-- Lista de factores de riesgo -->
@@ -41,40 +54,40 @@
 
                             <!-- ID del factor -->
                             <Label Text="{Binding IdFactor}" 
-                                FontSize="16" 
-                                TextColor="Black" 
-                                FontAttributes="Bold"/>
+                             FontSize="16" 
+                             TextColor="Black" 
+                             FontAttributes="Bold"/>
 
                             <!-- Texto del factor -->
                             <Label Text="{Binding TextoFactor}" 
-                                FontSize="14" 
-                                TextColor="Black"/>
+                             FontSize="14" 
+                             TextColor="Black"/>
 
                             <!-- Estado (Activo/Inactivo) -->
                             <Label Text="{Binding EstadoTexto}" 
-                                FontSize="14" 
-                                TextColor="Gray"/>
+                             FontSize="14" 
+                             TextColor="Gray"/>
 
                             <!-- Botones de acción -->
                             <HorizontalStackLayout Spacing="10">
                                 <ImageButton Source="ver_icon.png" WidthRequest="30" HeightRequest="30"/>
                                 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditCommand}"
-                                    CommandParameter="{Binding}"
-                                    BackgroundColor="Transparent"
-                                    Padding="0"
-                                    WidthRequest="30"
-                                    HeightRequest="30">
+                                 CommandParameter="{Binding}"
+                                 BackgroundColor="Transparent"
+                                 Padding="0"
+                                 WidthRequest="30"
+                                 HeightRequest="30">
                                     <Button.ImageSource>
                                         <FileImageSource File="edit_icon.png"/>
                                     </Button.ImageSource>
                                 </Button>
 
                                 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteCommand}"
-                                    CommandParameter="{Binding}"
-                                    BackgroundColor="Transparent"
-                                    Padding="0"
-                                    WidthRequest="30"
-                                    HeightRequest="30">
+                                 CommandParameter="{Binding}"
+                                 BackgroundColor="Transparent"
+                                 Padding="0"
+                                 WidthRequest="30"
+                                 HeightRequest="30">
                                     <Button.ImageSource>
                                         <FileImageSource File="delete_icon.png"/>
                                     </Button.ImageSource>

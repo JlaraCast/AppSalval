@@ -4,37 +4,39 @@
              x:Class="AppSalval.Views.CambioContrasena"
              BackgroundColor="White">
 
-    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
 
-        <!-- Icono de usuario -->
-        <Image Source="user_icon.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+            <!-- Icono de usuario -->
+            <Image Source="user_icon.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
 
-        <!-- Título -->
-        <Label Text="Cambio de contraseña" 
-               FontSize="22" 
-               FontAttributes="Bold"
-               TextColor="Black"
-               HorizontalOptions="Center"/>
+            <!-- Título -->
+            <Label Text="Cambio de contraseña" 
+                   FontSize="22" 
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   HorizontalOptions="Center"/>
 
-        <!-- Nueva contraseña -->
-        <Label Text="Nueva contraseña"/>
-        <Entry x:Name="txtNuevaContrasena" Placeholder="Nueva contraseña" IsPassword="True"/>
+            <!-- Nueva contraseña -->
+            <Label Text="Nueva contraseña"/>
+            <Entry x:Name="txtNuevaContrasena" Placeholder="Nueva contraseña" IsPassword="True"/>
 
-        <!-- Confirmar contraseña -->
-        <Label Text="Confirmar contraseña"/>
-        <Entry x:Name="txtConfirmarContrasena" Placeholder="Confirmar contraseña" IsPassword="True"/>
+            <!-- Confirmar contraseña -->
+            <Label Text="Confirmar contraseña"/>
+            <Entry x:Name="txtConfirmarContrasena" Placeholder="Confirmar contraseña" IsPassword="True"/>
 
-        <!-- Botón para guardar la contraseña -->
-        <Button Text="Guardar" 
-                BackgroundColor="#80ED99" 
-                TextColor="White"
-                FontSize="16"
-                CornerRadius="10"
-                HeightRequest="50"
-                WidthRequest="200"
-                HorizontalOptions="Center"
-                Clicked="OnSavePasswordClicked"/>
+            <!-- Botón para guardar la contraseña -->
+            <Button Text="Guardar" 
+                    BackgroundColor="#80ED99" 
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    Clicked="OnSavePasswordClicked"/>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
 

@@ -15,6 +15,10 @@ namespace AppSalval.ViewModels
         private readonly INavigation _navigation;
         private readonly RecomService _recomService;
         private ObservableCollection<Recomendacion> _recomendaciones;
+        private List<Recomendacion> _todasRecomendaciones;
+        private string _searchText;
+        private bool _ordenAscendente = true;
+        private string _ordenActual = "ID"; // Default
 
         public ObservableCollection<Recomendacion> Recomendaciones
         {
@@ -26,21 +30,43 @@ namespace AppSalval.ViewModels
             }
         }
 
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged();
+                Buscar();
+            }
+        }
+
+        public string OrdenActual
+        {
+            get => _ordenActual;
+            set
+            {
+                _ordenActual = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand NavigateToRecomFormCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand EditCommand { get; }
-
+        public ICommand OrdenarCommand { get; }
 
         public RecomViewModel(INavigation navigation)
         {
             _navigation = navigation;
             _recomService = new RecomService();
             _recomendaciones = new ObservableCollection<Recomendacion>();
-
+            _todasRecomendaciones = new List<Recomendacion>();
 
             NavigateToRecomFormCommand = new Command(async () => await _navigation.PushAsync(new Views.RecomFormView()));
             DeleteCommand = new Command<Recomendacion>(async (recom) => await DeleteRecomendacionAsync(recom));
             EditCommand = new Command<Recomendacion>(async (recom) => await EditRecomendacionAsync(recom));
+            OrdenarCommand = new Command(Ordenar);
 
             LoadRecomendaciones();
         }
@@ -48,7 +74,41 @@ namespace AppSalval.ViewModels
         private async void LoadRecomendaciones()
         {
             var lista = await _recomService.GetRecomendacionesAsync();
+            _todasRecomendaciones = new List<Recomendacion>(lista);
             Recomendaciones = new ObservableCollection<Recomendacion>(lista);
+        }
+
+        private void Buscar()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                Recomendaciones = new ObservableCollection<Recomendacion>(_todasRecomendaciones);
+            }
+            else
+            {
+                var resultado = _todasRecomendaciones
+                    .Where(r => r.TextoRecomendacion.Contains(SearchText, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+                Recomendaciones = new ObservableCollection<Recomendacion>(resultado);
+            }
+        }
+
+        private void Ordenar()
+        {
+            if (OrdenActual == "ID")
+            {
+                Recomendaciones = _ordenAscendente
+                    ? new ObservableCollection<Recomendacion>(Recomendaciones.OrderBy(r => r.IdRecomendacion))
+                    : new ObservableCollection<Recomendacion>(Recomendaciones.OrderByDescending(r => r.IdRecomendacion));
+            }
+            else
+            {
+                Recomendaciones = _ordenAscendente
+                    ? new ObservableCollection<Recomendacion>(Recomendaciones.OrderBy(r => r.TextoRecomendacion))
+                    : new ObservableCollection<Recomendacion>(Recomendaciones.OrderByDescending(r => r.TextoRecomendacion));
+            }
+
+            _ordenAscendente = !_ordenAscendente;
         }
 
         private async Task DeleteRecomendacionAsync(Recomendacion recomendacion)
@@ -62,7 +122,8 @@ namespace AppSalval.ViewModels
 
             if (deleted)
             {
-                Recomendaciones.Remove(recomendacion); // 🔹 Eliminamos de la lista visualmente
+                Recomendaciones.Remove(recomendacion);
+                _todasRecomendaciones.Remove(recomendacion);
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Recomendación eliminada", "OK");
             }
             else
@@ -71,10 +132,11 @@ namespace AppSalval.ViewModels
             }
         }
 
-
         private async Task EditRecomendacionAsync(Recomendacion recomendacion)
         {
             await _navigation.PushAsync(new Views.RecomEditFormPage(recomendacion));
         }
     }
 }
+
+
