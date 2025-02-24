@@ -35,15 +35,17 @@
                                        Margin="0,5,0,10"/>
 
                                 <StackLayout Padding="5"
-             BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
+                                    BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <StackLayout Orientation="Horizontal">
 
                                                 <!-- RadioButton para Selección Única -->
                                                 <RadioButton Content="{Binding NombreOpcion}"
-                             GroupName="{Binding IdPregunta}"
-                             IsVisible="{Binding TipoPregunta, Converter={StaticResource RadioButtonVisibilityConverter}}"/>
+                                                    GroupName="{Binding IdPregunta}"
+                                                    IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                                    IsVisible="{Binding TipoPregunta, Converter={StaticResource RadioButtonVisibilityConverter}}"/>
+
 
                                                 <!-- CheckBox para Selección Múltiple -->
                                                 <HorizontalStackLayout IsVisible="{Binding TipoPregunta, Converter={StaticResource CheckBoxVisibilityConverter}}">

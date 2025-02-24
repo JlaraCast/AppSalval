@@ -5,9 +5,9 @@
              Title="ResultadosUsuario">
     <ScrollView>
         <VerticalStackLayout>
-        
-            <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,20,30,0" >
-                <Grid Margin="30,20,30,40" >
+
+            <Border Stroke="Green" StrokeThickness="3" Padding="0" Margin="30,20,30,0">
+                <Grid Margin="30,20,30,40">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -28,252 +28,102 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="3*"/>
-                    
                     </Grid.ColumnDefinitions>
 
-                    <Image
-                         Grid.Row="0"
-                         Grid.Column="0"
-                         Source="resultados.png"
-                         HeightRequest="60"
-                         Aspect="AspectFit"
-                         Margin="0,20,0,30" 
-                         HorizontalOptions="Start"
-                         SemanticProperties.Description="dot net bot in a hovercraft number nine" 
-                    />
+                    <Image Grid.Row="0"
+                           Grid.Column="0"
+                           Source="resultados.png"
+                           HeightRequest="60"
+                           Aspect="AspectFit"
+                           Margin="0,20,0,30"
+                           HorizontalOptions="Start"
+                           SemanticProperties.Description="Resultados del Formulario"/>
 
-                    <Label
-                        Grid.Row="0" Grid.Column="1"
-                        Text="Resultados"
-                        FontSize="Header"
-                        VerticalOptions="Center"
-                        Margin="30,0,10,15"
-                        FontAttributes="Bold">
-                    
-                    </Label>
+                    <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Text="Resultados"
+                           FontSize="Header"
+                           VerticalOptions="Center"
+                           Margin="30,0,10,15"
+                           FontAttributes="Bold"/>
 
-                
 
-                    <Label
-                        Grid.Row="1" Grid.Column="1"
-                        Text="ID:"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Label
-                        Grid.Row="1" Grid.Column="2"
-                        Text="Aqui Debe ir el id usuario"
-                        x:Name="txtId"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Label
-                        Grid.Row="2" Grid.Column="1"
-                        Text="Nombre:"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Label
-                        Grid.Row="2" Grid.Column="2"
-                        Text="Aqui Debe ir el nombre"
-                        x:Name="txtNombre"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Label
-                        Grid.Row="3" Grid.Column="1"
-                        Text="IDEncuestador:"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Label
-                        Grid.Row="3" Grid.Column="2"
-                        Text="Aqui Debe ir el id Encues"
-                        x:Name="txtIdEncuestador"
-                        FontSize="Title"
-                        VerticalOptions="Center"
-                    >
-                    </Label>
-
-                    <Grid Grid.Row="4" BackgroundColor="#22577A" Grid.ColumnSpan="4"
-                         HorizontalOptions="Fill"
-                         Margin="0,20,0,0">
+                    <!-- Sección de Recomendaciones -->
+                    <Grid Grid.Row="4"
+                          BackgroundColor="#22577A"
+                          Grid.ColumnSpan="4"
+                          HorizontalOptions="Fill"
+                          Margin="0,20,0,0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label
-                            Text="Recomendaciones"
-                            FontSize="Large"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            TextColor="White"
-                            FontAttributes="Bold"                        
-                        />
+                        <Label Text="Recomendaciones"
+                               FontSize="Large"
+                               Grid.Row="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               FontAttributes="Bold"/>
 
-                        <Entry Grid.Row="1"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRecomendacion1"
-                            Placeholder="1. Recomendación"
-                            Text="{Binding Recomendacion1}">
-                        </Entry>
-
-                        <Entry Grid.Row="2"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRecomendacion2"
-                            Placeholder="2. Recomendación"
-                            Text="{Binding Recomendacion2}">
-                        </Entry>
-
-                        <Entry Grid.Row="3"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRecomendacion3"
-                            Placeholder="3. Recomendación"
-                            Text="{Binding Recomendacion3}">
-                        </Entry>
-
-                        <Entry Grid.Row="4"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRecomendacion4"
-                            Placeholder="4. Recomendación"
-                            Text="{Binding Recomendacion4}">
-                        </Entry>
-
-                        <Entry Grid.Row="5"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRecomendacion5"
-                            Placeholder="5. Recomendación"
-                            Text="{Binding Recomendacion5}">
-                        </Entry>
-
-
-
+                        <ScrollView Grid.Row="1" 
+                                    BackgroundColor="#38A3A5" 
+                                    Margin="10,10,10,10" 
+                                    HeightRequest="150">
+                            <VerticalStackLayout x:Name="RecomendacionesContainer"/>
+                        </ScrollView>
                     </Grid>
 
-                    <Grid Grid.Row="5" BackgroundColor="#22577A" Grid.ColumnSpan="4"
-                         HorizontalOptions="Fill"
-                         Margin="0,20,0,0">
+                    <!-- Sección de Riesgos -->
+                    <Grid Grid.Row="5"
+                          BackgroundColor="#22577A"
+                          Grid.ColumnSpan="4"
+                          HorizontalOptions="Fill"
+                          Margin="0,20,0,0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label
-                            Text="Riesgos"
-                            FontSize="Large"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            TextColor="White"
-                            FontAttributes="Bold"                        
-                        />
+                        <Label Text="Riesgos"
+                               FontSize="Large"
+                               Grid.Row="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               FontAttributes="Bold"/>
 
-                        <Entry Grid.Row="1"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRiesgo1"
-                            Placeholder="1. Riesgo"
-                            Text="{Binding Riesgo1}">
-                        </Entry>
-
-                        <Entry Grid.Row="2"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRiesgo2"
-                            Placeholder="2. Riesgo"
-                            Text="{Binding Riesgo2}">
-                        </Entry>
-
-                        <Entry Grid.Row="3"
-                            Grid.ColumnSpan="4"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#38A3A5"
-                            Margin="10,10,10,10"
-                            IsReadOnly="True"
-                            x:Name="txtRiesgo3"
-                            Placeholder="3. Riesgo"
-                            Text="{Binding Riesgo3}">
-                        </Entry>
-
+                        <ScrollView Grid.Row="1"
+                                    BackgroundColor="#38A3A5"
+                                    Margin="10,10,10,10"
+                                    HeightRequest="150">
+                            <VerticalStackLayout x:Name="RiesgosContainer"/>
+                        </ScrollView>
                     </Grid>
-
-
 
                 </Grid>
             </Border>
 
-            <Button 
-                        BackgroundColor="Green" 
-                        Grid.Row="6" 
-                        HorizontalOptions="Center" 
-                        Grid.ColumnSpan="4"
-                        Text="Salir"
-                        FontFamily="Bold"
-                        Margin="0,30,0,50"
-                        WidthRequest="200">
-
-            </Button>
-
+            <Button BackgroundColor="Green"
+                    Grid.Row="6"
+                    Clicked="OnSalirClicked"
+                    HorizontalOptions="Center"
+                    Grid.ColumnSpan="4"
+                    Text="Salir"
+                    FontFamily="Bold"
+                    Margin="0,30,0,50"
+                    WidthRequest="200"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

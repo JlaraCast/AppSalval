@@ -218,7 +218,9 @@
                 </Grid>
             </Border>
 
-            <Button 
+            <HorizontalStackLayout Spacing="20"
+                       HorizontalOptions="Center">
+                <Button 
                 Clicked="OnContinuarClicked"
                 BackgroundColor="Green" 
                 Grid.Row="6" 
@@ -231,6 +233,20 @@
                 Command="{Binding RegistrarComando}">
             </Button>
 
+
+            <Button 
+                Clicked="OnCancelarClicked"
+                BackgroundColor="Red" 
+                Grid.Row="6" 
+                HorizontalOptions="Center" 
+                Grid.ColumnSpan="10"
+                Text="Volver"
+                FontFamily="Bold"
+                Margin="0,30,0,50"
+                WidthRequest="200"
+                Command="{Binding RegistrarComando}">
+            </Button>
+           </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
