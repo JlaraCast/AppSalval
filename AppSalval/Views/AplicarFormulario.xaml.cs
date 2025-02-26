@@ -17,6 +17,20 @@ namespace AppSalval.Views
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcion;
         private readonly ApiServiceReglaOpcion _apiServiceReglaOpcion;
         private List<FormularioPreguntaDto> _preguntas;
+        private bool _isFormularioCompleto;
+
+        public bool IsFormularioCompleto
+        {
+            get => _isFormularioCompleto;
+            set
+            {
+                if (_isFormularioCompleto != value)
+                {
+                    _isFormularioCompleto = value;
+                    OnPropertyChanged(nameof(IsFormularioCompleto));
+                }
+            }
+        }
 
         public AplicarFormulario(int idFormulario, string tituloFormulario)
         {
@@ -79,20 +93,40 @@ namespace AppSalval.Views
 
 
 
-        private async void OnOpcionSeleccionada(object sender, CheckedChangedEventArgs e)
+        private void OnOpcionSeleccionada(object sender, CheckedChangedEventArgs e)
         {
-            if (e.Value) // Solo si se seleccionó (Checked = true)
+            if (sender is RadioButton radioButton && radioButton.BindingContext is OpcionRespuestaDto opcionSeleccionada)
             {
-                var radioButton = sender as RadioButton;
-                if (radioButton != null && radioButton.BindingContext is OpcionRespuestaDto opcionSeleccionada)
-                {
-                    Debug.WriteLine($"✅ Opción seleccionada: {opcionSeleccionada.NombreOpcion} (ID: {opcionSeleccionada.IdOpcion})");
+                Debug.WriteLine($"✅ Opción seleccionada: {opcionSeleccionada.NombreOpcion} (ID: {opcionSeleccionada.IdOpcion})");
 
-                    // Cargar factores de riesgo y recomendaciones para la opción seleccionada
-                    await CargarFactoresYRecomendaciones(opcionSeleccionada.IdOpcion);
+                // Desmarcar otras opciones si es selección única
+                if (opcionSeleccionada.TipoPregunta.ToLower().Contains("única") || opcionSeleccionada.TipoPregunta.ToLower().Contains("unica"))
+                {
+                    foreach (var pregunta in _preguntas)
+                    {
+                        if (pregunta.IdPregunta == opcionSeleccionada.IdPregunta)
+                        {
+                            foreach (var opcion in pregunta.OpcionesRespuesta)
+                            {
+                                if (opcion.IdOpcion != opcionSeleccionada.IdOpcion)
+                                {
+                                    opcion.IsSelected = false;
+                                }
+                            }
+                        }
+                    }
                 }
+
+                // Recalcular si el formulario está completo
+                ValidarFormulario();
             }
         }
+
+        private void OnCheckBoxSeleccionado(object sender, CheckedChangedEventArgs e)
+        {
+            ValidarFormulario();
+        }
+
 
         private async Task CargarFactoresYRecomendaciones(int idOpcion)
         {
@@ -147,6 +181,11 @@ namespace AppSalval.Views
         private async void OnCancelarClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private void ValidarFormulario()
+        {
+            IsFormularioCompleto = _preguntas.All(p => p.OpcionesRespuesta.Any(op => op.IsSelected));
         }
 
         private async Task ObtenerRecomendacionesYFactores()

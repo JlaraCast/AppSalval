@@ -78,7 +78,7 @@ namespace AppSalval.Views
 
         private async void OnSalirClicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new Formularios());
         }
     }
 }

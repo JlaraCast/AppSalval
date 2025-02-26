@@ -49,7 +49,7 @@
 
                                                 <!-- CheckBox para Selección Múltiple -->
                                                 <HorizontalStackLayout IsVisible="{Binding TipoPregunta, Converter={StaticResource CheckBoxVisibilityConverter}}">
-                                                    <CheckBox IsChecked="{Binding IsSelected}" />
+                                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" CheckedChanged="OnCheckBoxSeleccionado"/>
                                                     <Label Text="{Binding NombreOpcion}" />
                                                 </HorizontalStackLayout>
 
@@ -72,10 +72,12 @@
                         Clicked="OnCancelarClicked"
                         WidthRequest="120"/>
                 <Button Text="Enviar"
-                        BackgroundColor="Green"
-                        TextColor="White"
-                        Clicked="OnEnviarClicked"
-                        WidthRequest="120"/>
+                       BackgroundColor="Green"
+                       TextColor="White"
+                       Clicked="OnEnviarClicked"
+                       WidthRequest="120"
+                       IsEnabled="{Binding IsFormularioCompleto}"/>
+
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
