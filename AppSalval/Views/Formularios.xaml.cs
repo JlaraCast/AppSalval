@@ -13,6 +13,7 @@ namespace AppSalval.Views
     {
         private readonly ApiServiceFormularios _apiService;
         private readonly ApiServiceRespuestas _apiServiceRespuestas; // ✅ Se agregó la instancia del servicio de respuestas
+        private readonly ApiServiceFormularioPregunta _apiServicePreguntas;
         private List<FormularioDto> _formularios;
         private List<RespuestasDTO> _respuestas; // ✅ Se declaró la lista de respuestas correctamente
 
@@ -20,6 +21,7 @@ namespace AppSalval.Views
         {
             InitializeComponent();
             _apiService = new ApiServiceFormularios();
+            _apiServicePreguntas = new ApiServiceFormularioPregunta();
             _apiServiceRespuestas = new ApiServiceRespuestas(); // ✅ Se inicializa el servicio de respuestas
             LoadFormularios();
         }
@@ -30,19 +32,37 @@ namespace AppSalval.Views
             {
                 _formularios = await _apiService.GetFormularios();
 
-                var formulariosHabilitados = _formularios
-                    .Where(f => f.Habilitado)
-                    .ToList();
-
-                if (formulariosHabilitados != null && formulariosHabilitados.Count > 0)
+                if (_formularios == null || _formularios.Count == 0)
                 {
-                    FormularioPicker.ItemsSource = formulariosHabilitados
-                        .Select(f => f.TituloFormulario)
-                        .ToList();
+                    await DisplayAlert("Información", "No hay formularios disponibles", "OK");
+                    return;
+                }
+
+                var formulariosConPreguntas = new List<string>();
+
+                foreach (var formulario in _formularios.Where(f => f.Habilitado))
+                {
+                    var preguntas = await _apiServicePreguntas.GetPreguntasByFormulario(formulario.IdFormulario);
+
+                    if (preguntas != null && preguntas.Count > 0)
+                    {
+                        formulariosConPreguntas.Add(formulario.TituloFormulario);
+                        Debug.WriteLine($"✅ Formulario '{formulario.TituloFormulario}' tiene {preguntas.Count} preguntas.");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"❌ Formulario '{formulario.TituloFormulario}' no tiene preguntas y será excluido.");
+                    }
+                }
+
+                if (formulariosConPreguntas.Count > 0)
+                {
+                    FormularioPicker.ItemsSource = formulariosConPreguntas;
                 }
                 else
                 {
-                    await DisplayAlert("Información", "No hay formularios habilitados disponibles", "OK");
+                    await DisplayAlert("Información", "No hay formularios con preguntas disponibles", "OK");
+                    FormularioPicker.ItemsSource = null;
                 }
             }
             catch (Exception ex)
@@ -50,6 +70,7 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", $"Error al cargar formularios: {ex.Message}", "OK");
             }
         }
+    
 
         private void SearchFormularios(object sender, EventArgs e)
         {
@@ -127,18 +148,38 @@ namespace AppSalval.Views
 
             if (formulario != null)
             {
+                // ✅ Manteniendo funcionalidad original: Navegar según el formulario sea anónimo o no
                 if (formulario.Anonimo)
                 {
-                    // Si el formulario es anónimo, ir directamente a AplicarFormulario.xaml
                     await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
                 }
                 else
                 {
-                    // Si no es anónimo, primero pedir datos personales en InfoPersonal.xaml
                     await Navigation.PushAsync(new InfoPersonal(formulario.IdFormulario, formulario.TituloFormulario));
+                }
+
+                // ✅ Nueva funcionalidad: Guardar respuesta en la API
+                var nuevaRespuesta = new RespuestasDTO
+                (
+                    idRespuesta: 0, // Se generará automáticamente en la base de datos
+                    idFormulario: formulario.IdFormulario,
+                    identificacionEncuestado: formulario.Anonimo ? null : "12345678", // Si es anónimo, no se envía ID (esto deberá adaptarse a la identificación real)
+                    fechaRespuesta: DateTime.Now
+                );
+
+                bool respuestaGuardada = await _apiServiceRespuestas.SaveRespuesta(nuevaRespuesta);
+
+                if (respuestaGuardada)
+                {
+                    await DisplayAlert("Éxito", "La respuesta se ha guardado correctamente.", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudo guardar la respuesta. Intente nuevamente.", "OK");
                 }
             }
         }
+
 
     }
 }

@@ -139,5 +139,35 @@ namespace AppSalval.Services
             }
         }
 
+        public async Task<bool> SaveRespuesta(RespuestasDTO respuesta)
+        {
+            try
+            {
+                var json = JsonSerializer.Serialize(respuesta);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("Respuesta", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"✅ Respuesta guardada correctamente con ID: {respuesta.IdFormulario}");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Error al guardar la respuesta: {response.StatusCode}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en SaveRespuesta: {ex.Message}");
+                return false;
+            }
+        }
+
+
+
+
     }
 }
