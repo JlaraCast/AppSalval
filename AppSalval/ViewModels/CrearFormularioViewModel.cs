@@ -206,8 +206,6 @@ namespace AppSalval.ViewModels
 
                 // ✅ 5. Asociar las preguntas seleccionadas al formulario
                 
-
-                
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
 
@@ -238,10 +236,7 @@ namespace AppSalval.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al guardar el formulario: {ex.Message}", "OK");
             }
         }
-
-
-
-
+          
         public string Titulo
         {
             get => _titulo;
@@ -284,10 +279,10 @@ namespace AppSalval.ViewModels
 
 
     public class PreguntaViewModel
-{
-    public int PreguntaId { get; set; }
-    public string TextoPregunta { get; set; }
-    public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
+    {
+        public int PreguntaId { get; set; }
+        public string TextoPregunta { get; set; }
+        public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
 
     // ✅ Nueva propiedad para indicar si la pregunta está seleccionada
 
