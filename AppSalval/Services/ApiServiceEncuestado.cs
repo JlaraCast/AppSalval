@@ -141,5 +141,36 @@ namespace AppSalval.Services
                 return false;
             }
         }
+
+        public async Task<bool> AddEncuestado(EncuestadoDto encuestado)
+        {
+            try
+            {
+                // Convertir el objeto encuestado a JSON
+                var json = JsonSerializer.Serialize(encuestado);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                // Enviar la solicitud POST a la API
+                var response = await _httpClient.PostAsync("Encuestado", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine($"✅ Encuestado con ID {encuestado.Identificacion} agregado correctamente.");
+                    return true;
+                }
+                else
+                {
+                    string errorMessage = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"⚠️ Error al agregar encuestado: {response.StatusCode}, {errorMessage}");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en AddEncuestado: {ex.Message}");
+                return false;
+            }
+        }
+
     }
 }

@@ -93,5 +93,34 @@ namespace AppSalval.Services
                 return false;
             }
         }
+
+        // ✅ Método para obtener una recomendación por su ID
+        public async Task<Recomendacion> GetRecomendacionByIdAsync(int idRecomendacion)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"Recomendacion/{idRecomendacion}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    return System.Text.Json.JsonSerializer.Deserialize<Recomendacion>(json, new System.Text.Json.JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Error en API (Recomendacion): {response.StatusCode}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en GetRecomendacionByIdAsync: {ex.Message}");
+                return null;
+            }
+        }
+
     }
 }

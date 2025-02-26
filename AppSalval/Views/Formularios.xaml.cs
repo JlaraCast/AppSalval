@@ -127,10 +127,18 @@ namespace AppSalval.Views
 
             if (formulario != null)
             {
-                bool requiereDatosPersonales = !formulario.Anonimo;
-
-                await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
+                if (formulario.Anonimo)
+                {
+                    // Si el formulario es anónimo, ir directamente a AplicarFormulario.xaml
+                    await Navigation.PushAsync(new AplicarFormulario(formulario.IdFormulario, formulario.TituloFormulario));
+                }
+                else
+                {
+                    // Si no es anónimo, primero pedir datos personales en InfoPersonal.xaml
+                    await Navigation.PushAsync(new InfoPersonal(formulario.IdFormulario, formulario.TituloFormulario));
+                }
             }
         }
+
     }
 }

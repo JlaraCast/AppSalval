@@ -94,5 +94,34 @@ namespace AppSalval.Services
                 return false;
             }
         }
+
+        // ✅ Método para obtener un factor de riesgo por su ID
+        public async Task<FactorRiesgo> GetFactorByIdAsync(int idFactor)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"FactorRiesgo/{idFactor}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    return System.Text.Json.JsonSerializer.Deserialize<FactorRiesgo>(json, new System.Text.Json.JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                }
+                else
+                {
+                    Console.WriteLine($"⚠️ Error en API (FactorRiesgo): {response.StatusCode}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error en GetFactorByIdAsync: {ex.Message}");
+                return null;
+            }
+        }
+
     }
 }
