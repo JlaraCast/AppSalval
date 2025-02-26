@@ -274,7 +274,7 @@
                                                             HorizontalOptions="End"
                                                             IsChecked="{Binding IsSelected, Mode=TwoWay}">
                                                             <CheckBox.GestureRecognizers>
-                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:CrearFormularioViewModel}}, Path=ActualizarPreguntasSeleccionadasCommand}" CommandParameter="{Binding}" />
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:EditarFormularioViewModel}}, Path=ActualizarPreguntasSeleccionadasCommand}" CommandParameter="{Binding}" />
                                                             </CheckBox.GestureRecognizers>
                                                         </CheckBox>
 

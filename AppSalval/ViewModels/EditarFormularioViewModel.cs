@@ -37,8 +37,12 @@ namespace AppSalval.ViewModels
 
         public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
 
+        public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
+
         public ICommand BtnRegresar { get; }
         public ICommand BtnGuardar { get; }
+
+        public ICommand ActualizarPreguntasSeleccionadasCommand { get; }
 
 
         private List<FormularioPreguntaDto> _preguntas;
@@ -50,7 +54,8 @@ namespace AppSalval.ViewModels
             _apiServiceOpcion = new ApiServiceOpcionRespuesta();
             _apiFormulario = new ApiServiceFormularios();
             _apiServicePregunta = new ApiServicePregunta();
-            
+
+            ActualizarPreguntasSeleccionadasCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
             _navigation = navigation;
             _formulario = formulario;
@@ -63,7 +68,7 @@ namespace AppSalval.ViewModels
 
             PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
 
-            CargarPreguntas();
+            CargarPreguntas(formulario);
 
             BtnRegresar = new Command(ComandoBtnRegresar);
             BtnGuardar = new Command(async () => await GuardarCambiosFormulario());
@@ -128,27 +133,7 @@ namespace AppSalval.ViewModels
 
                 if (_preguntas != null && _preguntas.Count > 0)
                 {
-                    foreach (var pregunta in _preguntas)
-                    {
-                        Debug.WriteLine($"✅ Pregunta ID: {pregunta.IdPregunta}, Texto: {pregunta.TextPregunta}");
-
-                        // Obtener opciones válidas desde la API
-                        var opciones = await _apiServiceOpcion.GetValidOpcionRespuestasByPreguntaId(pregunta.IdPregunta);
-
-                        if (opciones != null && opciones.Count > 0)
-                        {
-                            Debug.WriteLine($"🔹 Opciones cargadas para la pregunta {pregunta.IdPregunta}: {opciones.Count}");
-                            foreach (var opcion in opciones)
-                            {
-                                Debug.WriteLine($"   - Opción: {opcion.NombreOpcion}");
-                            }
-                            pregunta.OpcionesRespuesta = opciones;
-                        }
-                        else
-                        {
-                            Debug.WriteLine($"⚠️ No se encontraron opciones válidas para la pregunta {pregunta.IdPregunta}");
-                        }
-                    }
+                   
 
                 }
                 else
@@ -164,8 +149,29 @@ namespace AppSalval.ViewModels
             }
         }
 
+        public void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
+        {
+            if (pregunta == null) return;
 
-        private async Task CargarPreguntas()
+            if (pregunta.IsSelected)
+            {
+                if (!PreguntasSeleccionadas.Contains(pregunta))
+                {
+                    PreguntasSeleccionadas.Add(pregunta);
+                    Console.WriteLine($"Pregunta agregada: {pregunta.PreguntaId}");
+                }
+            }
+            else
+            {
+                PreguntasSeleccionadas.Remove(pregunta);
+                Console.WriteLine($"Pregunta removida: {pregunta.PreguntaId}");
+            }
+
+            OnPropertyChanged(nameof(PreguntasSeleccionadas));
+        }
+
+
+        private async Task CargarPreguntas(FormularioDto formulario)
         {
             var preguntas = await _apiServicePregunta.GetPreguntas();
 
@@ -187,10 +193,8 @@ namespace AppSalval.ViewModels
 
                 foreach (var o in opciones)
                 {
-
                     opcionesViewModel.Add(new OpcionRespuestaViewModel
                     {
-
                         OpcionId = o.IdOpcion,
                         NombreOpcion = o.NombreOpcion,
                         IdPregunta = o.IdPregunta,
@@ -199,14 +203,23 @@ namespace AppSalval.ViewModels
                 }
 
                 // Agregar la pregunta con sus opciones a la lista
-                PreguntasDtos.Add(new PreguntaViewModel
+                var preguntaViewModel = new PreguntaViewModel
                 {
                     PreguntaId = pregunta.IdPregunta,
                     TextoPregunta = pregunta.TextoPregunta,
                     Opciones = opcionesViewModel
-                });
+                };
 
+                _preguntas = await _apiServiceFormulario.GetPreguntasByFormulario(formulario.IdFormulario);
 
+                // Marcar la pregunta como seleccionada si está en el formulario
+                if (_preguntas.Any(p => p.IdPregunta == pregunta.IdPregunta))
+                {
+                    preguntaViewModel.IsSelected = true;
+                    ActualizarPreguntasSeleccionadas(preguntaViewModel);
+                }
+
+                PreguntasDtos.Add(preguntaViewModel);
             }
         }
 

@@ -37,9 +37,9 @@ namespace AppSalval.ViewModels
 
         public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
 
+        // Esta es la lista que se guarda de manera temporal para poder guardar cuales preguntas se guardaron en el formulario
         public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
         public ICommand ActualizarPreguntasSeleccionadasCommand { get; }
-        public ICommand SeleccionarPreguntaCommand { get; }
 
         public ICommand BtnCancelar { get; }
         public ICommand BtnGuardar { get; }
@@ -69,6 +69,7 @@ namespace AppSalval.ViewModels
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
             _apiServiceFormularioPregunta = new ApiServiceFormularioPregunta();
 
+
             // Inicialización de propiedades
             _titulo = string.Empty;
             _descripcion = string.Empty;
@@ -80,11 +81,8 @@ namespace AppSalval.ViewModels
 
             OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
             PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
-            PreguntasSeleccionadas = new ObservableCollection<PreguntaViewModel>();
-
+        
             // Inicialización de comandos
-            SeleccionarPreguntaCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
-
             ActualizarPreguntasSeleccionadasCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
             BtnCancelar = new Command(async () => await _navigation.PushAsync(new GestionFormularios()));
