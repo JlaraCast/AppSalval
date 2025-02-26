@@ -9,6 +9,8 @@ using AppSalval.Models_Api;
 using AppSalval.Services;
 using AppSalval.DTOS_API;
 using System.Windows.Input;
+using System.Runtime.CompilerServices;
+using AppSalval.Views;
 namespace AppSalval.ViewModels
 {
     public class GestionPreguntasViewModel : BaseViewModel
@@ -18,6 +20,7 @@ namespace AppSalval.ViewModels
         private readonly INavigation _navigation;
         public ICommand CargarPreguntasCommand { get; }
 
+        public ICommand AgregarCommand { get; }
         public ObservableCollection<PreguntaViewModel> PreguntasDtos { get; set; }
 
         public GestionPreguntasViewModel(INavigation navigation)
@@ -26,7 +29,7 @@ namespace AppSalval.ViewModels
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
             PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
-
+            AgregarCommand = new Command(async () =>  OnAgregarRespuestaClicked());
             CargarPreguntasCommand = new Command(async () => await CargarPreguntas());
 
             // Cargar preguntas al iniciar
@@ -74,6 +77,14 @@ namespace AppSalval.ViewModels
                     Opciones = opcionesViewModel
                 });
             }
+        }
+
+        private async void OnAgregarRespuestaClicked()
+        {
+
+            await _navigation.PushAsync(new CreacionPreguntas());
+            Task.Run(async () => await CargarPreguntas());
+
         }
     }
 }
