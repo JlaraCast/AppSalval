@@ -243,35 +243,54 @@
                                         Margin="0,0,0,40"
                                     />
                                     <CollectionView x:Name="ListaPreguntas"
+                                        ItemsSource="{Binding PreguntasDtos}"
                                         VerticalOptions="FillAndExpand">
                                         <CollectionView.ItemTemplate>
                                             <DataTemplate>
-                                                <Frame BackgroundColor="#F5F5F5"
-                                                   CornerRadius="10"
-                                                   Padding="10"
-                                                   Margin="5">
-                                                    <VerticalStackLayout>
-                                                        <!-- Pregunta -->
-                                                        <Label Text="{Binding TextPregunta}"  
-                                                           FontSize="18"
-                                                           FontAttributes="Bold"
-                                                           TextColor="Black"
-                                                           Margin="0,5,0,10"/>
-                                                        <!-- Opciones de respuesta -->
-                                                        <StackLayout Padding="5"
-                                                            BindableLayout.ItemsSource="{Binding OpcionesRespuesta}">
-                                                            <BindableLayout.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <StackLayout Orientation="Horizontal">
-                                                                        <RadioButton Content="{Binding NombreOpcion}"
-                                                                            GroupName="{Binding IdPregunta}"
-                                                                            IsEnabled="False"/>
-                                                                    </StackLayout>
-                                                                </DataTemplate>
-                                                            </BindableLayout.ItemTemplate>
-                                                        </StackLayout>
+                                                <Frame Padding="10" Margin="5" BorderColor="Black" WidthRequest="550">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para la pregunta y el CheckBox -->
+                                                            <RowDefinition Height="Auto"/>
+                                                            <!-- Fila para las opciones -->
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <!-- Columna para el texto de la pregunta -->
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <!-- Columna para el CheckBox -->
+                                                        </Grid.ColumnDefinitions>
 
-                                                    </VerticalStackLayout>
+                                                        <!-- Pregunta -->
+                                                        <Label Grid.Row="0" Grid.Column="0"
+                                                           Text="{Binding TextoPregunta}" 
+                                                           FontSize="18" 
+                                                           FontAttributes="Bold"
+                                                           VerticalOptions="Start" />
+
+                                                        <!-- CheckBox en la esquina superior derecha -->
+                                                        <CheckBox Grid.Column="1"
+                                                            HorizontalOptions="End"
+                                                            IsChecked="{Binding IsSelected, Mode=TwoWay}">
+                                                            <CheckBox.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:EditarFormularioViewModel}}, Path=ActualizarPreguntasSeleccionadasCommand}" CommandParameter="{Binding}" />
+                                                            </CheckBox.GestureRecognizers>
+                                                        </CheckBox>
+
+                                                        <!-- Opciones de respuesta -->
+                                                        <CollectionView Grid.Row="1" Grid.ColumnSpan="2"
+                                                            ItemsSource="{Binding Opciones}" Margin="20,5,0,5">
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <HorizontalStackLayout>
+                                                                        <RadioButton IsChecked="{Binding IsSelected}" IsEnabled="False"/>
+                                                                        <Label Text="{Binding NombreOpcion}" FontSize="16" Margin="0,8,0,0" />
+                                                                    </HorizontalStackLayout>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+                                                    </Grid>
                                                 </Frame>
                                             </DataTemplate>
                                         </CollectionView.ItemTemplate>
