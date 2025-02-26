@@ -14,12 +14,6 @@
     <MauiXaml Update="Views\AplicarFormulario.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\CambioContrasena.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
-    <MauiXaml Update="Views\CambioContrasenaCorreo.xaml">
-      <SubType>Designer</SubType>
-    </MauiXaml>
     <MauiXaml Update="Views\CrearFormulario.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
