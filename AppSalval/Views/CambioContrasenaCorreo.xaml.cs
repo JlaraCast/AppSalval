@@ -12,16 +12,16 @@ namespace AppSalval.Views
 
         public CambioContrasenaCorreo()
         {
-            InitializeComponent();
+            InitializeComponent(); // Inicializa los componentes de la página
         }
 
         private async void OnRecoverPasswordClicked(object sender, EventArgs e)
         {
-            string email = txtEmail.Text?.Trim();
+            string email = txtEmail.Text?.Trim(); // Obtiene y limpia el texto del campo de correo
 
             if (string.IsNullOrEmpty(email))
             {
-                await DisplayAlert("Error", "Ingrese un correo válido.", "OK");
+                await DisplayAlert("Error", "Ingrese un correo válido.", "OK"); // Muestra un mensaje de error si el correo está vacío
                 return;
             }
 
@@ -31,11 +31,11 @@ namespace AppSalval.Views
             if (emailExists)
             {
                 // Si el correo existe, navegar a la vista de cambio de contraseña
-                await Navigation.PushAsync(new CambioContrasena(email)); 
+                await Navigation.PushAsync(new CambioContrasena(email));
             }
             else
             {
-                await DisplayAlert("Error", "El correo ingresado no está registrado.", "OK");
+                await DisplayAlert("Error", "El correo ingresado no está registrado.", "OK"); // Muestra un mensaje de error si el correo no está registrado
             }
         }
 
@@ -49,29 +49,29 @@ namespace AppSalval.Views
 
                     if (response.IsSuccessStatusCode)
                     {
-                        string jsonResponse = await response.Content.ReadAsStringAsync();
-                        var usuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonResponse);
+                        string jsonResponse = await response.Content.ReadAsStringAsync(); // Lee la respuesta de la API
+                        var usuarios = JsonSerializer.Deserialize<List<Usuario>>(jsonResponse); // Deserializa la respuesta en una lista de usuarios
 
                         // Verificar si el correo existe en la lista
                         return usuarios.Any(u => u.Correo.Equals(email, StringComparison.OrdinalIgnoreCase));
                     }
                     else
                     {
-                        await DisplayAlert("Error", "No se pudo obtener la lista de usuarios.", "OK");
+                        await DisplayAlert("Error", "No se pudo obtener la lista de usuarios.", "OK"); // Muestra un mensaje de error si no se pudo obtener la lista
                         return false;
                     }
                 }
             }
             catch (Exception)
             {
-                await DisplayAlert("Error", "No se pudo conectar con la API.", "OK");
+                await DisplayAlert("Error", "No se pudo conectar con la API.", "OK"); // Muestra un mensaje de error si no se pudo conectar con la API
                 return false;
             }
         }
 
         private async void OnBackButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Navigation.PushAsync(new LoginPage()); // Navega a la página de inicio de sesión
         }
     }
 }

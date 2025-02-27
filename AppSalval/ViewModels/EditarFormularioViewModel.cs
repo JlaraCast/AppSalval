@@ -17,7 +17,7 @@ namespace AppSalval.ViewModels
 {
     public class EditarFormularioViewModel : BaseViewModel
     {
-
+        // Campos privados
         private INavigation _navigation;
         private FormularioDto _formulario;
         private String _titulo;
@@ -26,37 +26,38 @@ namespace AppSalval.ViewModels
         private DateTime _fechaFin;
         private bool _habilitado;
         private bool _requiereDatosPersonales;
-        
 
-
+        // Servicios API
         private readonly ApiServiceFormularioPregunta _apiServiceFormulario;
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcion;
         private readonly ApiServiceFormularios _apiFormulario;
-     
 
+        // Colecciones observables
         public ObservableCollection<PreguntaViewModel> _preguntasDtos { get; set; }
-
         public ObservableCollection<PreguntaViewModel> PreguntasSeleccionadas { get; set; } = new ObservableCollection<PreguntaViewModel>();
 
+        // Comandos
         public ICommand BtnRegresar { get; }
         public ICommand BtnGuardar { get; }
-
         public ICommand ActualizarPreguntasSeleccionadasCommand { get; }
 
-
+        // Lista de preguntas
         private List<FormularioPreguntaDto> _preguntas;
-        
 
+        // Constructor
         public EditarFormularioViewModel(INavigation navigation, FormularioDto formulario)
         {
+            // Inicialización de servicios API
             _apiServiceFormulario = new ApiServiceFormularioPregunta();
             _apiServiceOpcion = new ApiServiceOpcionRespuesta();
             _apiFormulario = new ApiServiceFormularios();
             _apiServicePregunta = new ApiServicePregunta();
 
+            // Inicialización de comandos
             ActualizarPreguntasSeleccionadasCommand = new Command<PreguntaViewModel>(ActualizarPreguntasSeleccionadas);
 
+            // Asignación de valores iniciales
             _navigation = navigation;
             _formulario = formulario;
             Titulo = formulario.TituloFormulario;
@@ -66,14 +67,18 @@ namespace AppSalval.ViewModels
             Habilitado = formulario.Habilitado;
             RequiereDatosPersonales = !formulario.Anonimo;
 
+            // Inicialización de colecciones
             PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
 
+            // Cargar preguntas del formulario
             CargarPreguntas(formulario);
 
+            // Inicialización de comandos de botones
             BtnRegresar = new Command(ComandoBtnRegresar);
             BtnGuardar = new Command(async () => await GuardarCambiosFormulario());
         }
 
+        // Propiedades con notificación de cambios
         public String Titulo
         {
             get => _titulo;
@@ -109,22 +114,25 @@ namespace AppSalval.ViewModels
             get => _requiereDatosPersonales;
             set => SetProperty(ref _requiereDatosPersonales, value);
         }
-        
+
+        // Comando para regresar a la vista anterior
         private async void ComandoBtnRegresar()
         {
             await _navigation.PushAsync(new GestionFormularios());
         }
 
+        // Propiedad para la colección de preguntas
         public ObservableCollection<PreguntaViewModel> PreguntasDtos
         {
             get => _preguntasDtos;
             set
             {
                 _preguntasDtos = value;
-                OnPropertyChanged(nameof(PreguntasDtos)); // 🔄 Notifica cambios a la UI
+                OnPropertyChanged(nameof(PreguntasDtos)); // Notifica cambios a la UI
             }
         }
 
+        // Método para actualizar la lista de preguntas seleccionadas
         public void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
         {
             if (pregunta == null) return;
@@ -146,7 +154,7 @@ namespace AppSalval.ViewModels
             OnPropertyChanged(nameof(PreguntasSeleccionadas));
         }
 
-
+        // Método para cargar preguntas del formulario
         private async Task CargarPreguntas(FormularioDto formulario)
         {
             var preguntas = await _apiServicePregunta.GetPreguntas();
@@ -199,11 +207,12 @@ namespace AppSalval.ViewModels
             }
         }
 
-
+        // Método para guardar cambios en el formulario
         private async Task GuardarCambiosFormulario()
         {
             try
             {
+                // Actualizar propiedades del formulario
                 _formulario.TituloFormulario = Titulo;
                 _formulario.DescripcionFormulario = Descripcion;
                 _formulario.FechaInicio = FechaInicio;
@@ -211,6 +220,7 @@ namespace AppSalval.ViewModels
                 _formulario.Habilitado = Habilitado;
                 _formulario.Anonimo = !RequiereDatosPersonales;
 
+                // Guardar cambios a través del servicio API
                 bool resultado = await _apiFormulario.EditFormulario(_formulario);
 
                 if (resultado)
@@ -228,8 +238,6 @@ namespace AppSalval.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Error", $"Error al guardar el formulario: {ex.Message}", "OK");
             }
         }
-
-
     }
 
 

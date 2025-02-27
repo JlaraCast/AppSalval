@@ -21,6 +21,7 @@ namespace AppSalval.ViewModels
         private bool _ordenAscendente = true;
         private string _ordenActual = "Nombre"; // Valor por defecto
 
+        // Propiedad para la colección observable de factores de riesgo
         public ObservableCollection<FactorRiesgo> Factores
         {
             get => _factores;
@@ -31,6 +32,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para el texto de búsqueda
         public string SearchText
         {
             get => _searchText;
@@ -42,6 +44,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para el orden actual
         public string OrdenActual
         {
             get => _ordenActual;
@@ -53,12 +56,14 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Comandos para la navegación y acciones
         public ICommand NavigateToRiskFormCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand BuscarCommand { get; }
         public ICommand OrdenarCommand { get; }
 
+        // Constructor del ViewModel
         public RiskViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -66,6 +71,7 @@ namespace AppSalval.ViewModels
             _factores = new ObservableCollection<FactorRiesgo>();
             _todosFactores = new List<FactorRiesgo>();
 
+            // Inicialización de comandos
             NavigateToRiskFormCommand = new Command(async () => await _navigation.PushAsync(new Views.RiskFormPage()));
             DeleteCommand = new Command<FactorRiesgo>(async (factor) => await DeleteFactorAsync(factor));
             EditCommand = new Command<FactorRiesgo>(async (factor) => await EditFactorAsync(factor));
@@ -73,9 +79,11 @@ namespace AppSalval.ViewModels
             BuscarCommand = new Command(Buscar);
             OrdenarCommand = new Command(Ordenar);
 
+            // Cargar los factores de riesgo
             LoadFactores();
         }
 
+        // Método para cargar los factores de riesgo
         private async void LoadFactores()
         {
             var lista = await _factorService.GetFactoresAsync();
@@ -83,6 +91,7 @@ namespace AppSalval.ViewModels
             Factores = new ObservableCollection<FactorRiesgo>(lista);
         }
 
+        // Método para buscar factores de riesgo
         private void Buscar()
         {
             if (string.IsNullOrWhiteSpace(SearchText))
@@ -98,6 +107,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para ordenar factores de riesgo
         private void Ordenar()
         {
             if (OrdenActual == "Nombre")
@@ -116,6 +126,7 @@ namespace AppSalval.ViewModels
             _ordenAscendente = !_ordenAscendente;
         }
 
+        // Método para eliminar un factor de riesgo
         private async Task DeleteFactorAsync(FactorRiesgo factor)
         {
             bool confirm = await Application.Current.MainPage.DisplayAlert(
@@ -138,6 +149,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para editar un factor de riesgo
         private async Task EditFactorAsync(FactorRiesgo factor)
         {
             await _navigation.PushAsync(new Views.RiskEditFormPage(factor));

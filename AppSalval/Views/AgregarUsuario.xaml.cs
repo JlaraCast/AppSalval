@@ -12,23 +12,28 @@ namespace AppSalval.Views
     {
         public ObservableCollection<Usuario> Usuarios { get; set; } // Definir la propiedad Usuarios
         public event Action OnUserAdded; // Evento para actualizar la lista
+
         public AgregarUsuario()
         {
             InitializeComponent();
             Usuarios = new ObservableCollection<Usuario>(); // Inicializar la colección
         }
+
         private async void OnCancelClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();  // Regresar a la vista anterior
         }
+
         private async void OnAddUserClicked(object sender, EventArgs e)
         {
-            await AddUserToApiAsync();
+            await AddUserToApiAsync(); // Llamar al método para agregar usuario a la API
         }
+
         private async Task AddUserToApiAsync()
         {
             try
             {
+                // Verificar si los campos están completos
                 if (string.IsNullOrEmpty(EntryEmail.Text) || string.IsNullOrEmpty(EntryPassword.Text) || PickerRole.SelectedItem == null)
                 {
                     await DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
@@ -42,6 +47,7 @@ namespace AppSalval.Views
                     return;
                 }
 
+                // Crear un nuevo usuario
                 var newUser = new Usuario
                 {
                     Correo = EntryEmail.Text.Trim(),
@@ -49,10 +55,13 @@ namespace AppSalval.Views
                     IdRol = GetRoleId(PickerRole.SelectedItem.ToString())
                 };
 
+                // Configurar el cliente HTTP
                 using var client = new HttpClient();
                 client.BaseAddress = new Uri("http://savalapi.somee.com/api/");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var jsonContent = new StringContent(JsonSerializer.Serialize(newUser), Encoding.UTF8, "application/json");
+
+                // Enviar la solicitud POST a la API
                 var response = await client.PostAsync("Usuario", jsonContent);
                 if (response.IsSuccessStatusCode)
                 {
@@ -105,7 +114,7 @@ namespace AppSalval.Views
             }
         }
 
-
+        // Método para obtener el ID del rol basado en el nombre del rol
         private int GetRoleId(string roleName)
         {
             return roleName switch
@@ -116,6 +125,7 @@ namespace AppSalval.Views
                 _ => 0
             };
         }
+
         private async void OnDeleteUserClicked(object sender, EventArgs e)
         {
             if (sender is Button button && button.BindingContext is Usuario usuario)

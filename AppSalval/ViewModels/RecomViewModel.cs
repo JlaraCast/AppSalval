@@ -13,14 +13,16 @@ namespace AppSalval.ViewModels
 {
     public class RecomViewModel : BindableObject
     {
+        // Campos privados
         private readonly INavigation _navigation;
         private readonly RecomService _recomService;
         private ObservableCollection<Recomendacion> _recomendaciones;
         private List<Recomendacion> _todasRecomendaciones;
         private string _searchText;
         private bool _ordenAscendente = true;
-        private string _ordenActual = "ID"; // Default
+        private string _ordenActual = "ID"; // Valor por defecto
 
+        // Propiedades públicas
         public ObservableCollection<Recomendacion> Recomendaciones
         {
             get => _recomendaciones;
@@ -52,11 +54,13 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Comandos públicos
         public ICommand NavigateToRecomFormCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand OrdenarCommand { get; }
 
+        // Constructor
         public RecomViewModel(INavigation navigation)
         {
             _navigation = navigation;
@@ -64,14 +68,17 @@ namespace AppSalval.ViewModels
             _recomendaciones = new ObservableCollection<Recomendacion>();
             _todasRecomendaciones = new List<Recomendacion>();
 
+            // Inicialización de comandos
             NavigateToRecomFormCommand = new Command(async () => await _navigation.PushAsync(new Views.RecomFormView()));
             DeleteCommand = new Command<Recomendacion>(async (recom) => await DeleteRecomendacionAsync(recom));
             EditCommand = new Command<Recomendacion>(async (recom) => await EditRecomendacionAsync(recom));
             OrdenarCommand = new Command(Ordenar);
 
+            // Cargar recomendaciones
             LoadRecomendaciones();
         }
 
+        // Método para cargar recomendaciones
         private async void LoadRecomendaciones()
         {
             var lista = await _recomService.GetRecomendacionesAsync();
@@ -79,6 +86,7 @@ namespace AppSalval.ViewModels
             Recomendaciones = new ObservableCollection<Recomendacion>(lista);
         }
 
+        // Método para buscar recomendaciones
         private void Buscar()
         {
             if (string.IsNullOrWhiteSpace(SearchText))
@@ -94,6 +102,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para ordenar recomendaciones
         private void Ordenar()
         {
             if (OrdenActual == "ID")
@@ -112,6 +121,7 @@ namespace AppSalval.ViewModels
             _ordenAscendente = !_ordenAscendente;
         }
 
+        // Método para eliminar una recomendación
         private async Task DeleteRecomendacionAsync(Recomendacion recomendacion)
         {
             bool confirm = await Application.Current.MainPage.DisplayAlert(
@@ -134,6 +144,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para editar una recomendación
         private async Task EditRecomendacionAsync(Recomendacion recomendacion)
         {
             await _navigation.PushAsync(new Views.RecomEditFormPage(recomendacion));

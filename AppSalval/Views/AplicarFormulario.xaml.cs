@@ -11,6 +11,7 @@ namespace AppSalval.Views
 {
     public partial class AplicarFormulario : ContentPage
     {
+        // Declaración de servicios utilizados en la clase
         private readonly ApiServiceFormularioPregunta _apiServiceFormulario;
         private readonly RecomService _apiServiceRecomendacion;
         private readonly FactorService _apiServiceFactor;
@@ -19,6 +20,7 @@ namespace AppSalval.Views
         private List<FormularioPreguntaDto> _preguntas;
         private bool _isFormularioCompleto;
 
+        // Propiedad para verificar si el formulario está completo
         public bool IsFormularioCompleto
         {
             get => _isFormularioCompleto;
@@ -32,22 +34,25 @@ namespace AppSalval.Views
             }
         }
 
+        // Constructor de la clase
         public AplicarFormulario(int idFormulario, string tituloFormulario)
         {
             InitializeComponent();
+            // Inicialización de servicios
             _apiServiceFormulario = new ApiServiceFormularioPregunta();
-            _apiServiceRecomendacion = new RecomService(); // ✅ Asegurar inicialización del servicio
-            _apiServiceFactor = new FactorService(); // ✅ Si también usas factores, inicialízalo
-            FormularioTitulo.Text = tituloFormulario;
+            _apiServiceRecomendacion = new RecomService();
+            _apiServiceFactor = new FactorService();
             _apiServiceOpcion = new ApiServiceOpcionRespuesta();
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
             FormularioTitulo.Text = tituloFormulario;
 
             Debug.WriteLine("📌 Constructor de AplicarFormulario ejecutado");
 
+            // Cargar preguntas del formulario
             LoadPreguntas(idFormulario);
         }
 
+        // Método para cargar preguntas del formulario
         private async void LoadPreguntas(int idFormulario)
         {
             try
@@ -86,13 +91,13 @@ namespace AppSalval.Views
             }
         }
 
+        // Evento al hacer clic en el botón Enviar
         private async void OnEnviarClicked(object sender, EventArgs e)
         {
             await ObtenerRecomendacionesYFactores();
         }
 
-
-
+        // Evento al seleccionar una opción (RadioButton)
         private void OnOpcionSeleccionada(object sender, CheckedChangedEventArgs e)
         {
             if (sender is RadioButton radioButton && radioButton.BindingContext is OpcionRespuestaDto opcionSeleccionada)
@@ -122,12 +127,13 @@ namespace AppSalval.Views
             }
         }
 
+        // Evento al seleccionar una opción (CheckBox)
         private void OnCheckBoxSeleccionado(object sender, CheckedChangedEventArgs e)
         {
             ValidarFormulario();
         }
 
-
+        // Método para cargar factores y recomendaciones basados en la opción seleccionada
         private async Task CargarFactoresYRecomendaciones(int idOpcion)
         {
             try
@@ -177,17 +183,19 @@ namespace AppSalval.Views
             }
         }
 
-
+        // Evento al hacer clic en el botón Cancelar
         private async void OnCancelarClicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
+        // Método para validar si el formulario está completo
         private void ValidarFormulario()
         {
             IsFormularioCompleto = _preguntas.All(p => p.OpcionesRespuesta.Any(op => op.IsSelected));
         }
 
+        // Método para obtener recomendaciones y factores basados en las opciones seleccionadas
         private async Task ObtenerRecomendacionesYFactores()
         {
             var recomendaciones = new List<string>();
@@ -197,14 +205,14 @@ namespace AppSalval.Views
             {
                 List<OpcionRespuestaDto> opcionesSeleccionadas = new List<OpcionRespuestaDto>();
 
-                // ✅ Para preguntas de selección múltiple (CheckBox)
+                // Para preguntas de selección múltiple (CheckBox)
                 if (pregunta.TipoPregunta.ToLower().Contains("múltiple"))
                 {
                     opcionesSeleccionadas = pregunta.OpcionesRespuesta
                         .Where(op => op.IsSelected) // Solo las opciones marcadas
                         .ToList();
                 }
-                // ✅ Para preguntas de selección única (RadioButton)
+                // Para preguntas de selección única (RadioButton)
                 else if (pregunta.TipoPregunta.ToLower().Contains("única") || pregunta.TipoPregunta.ToLower().Contains("unica"))
                 {
                     opcionesSeleccionadas = pregunta.OpcionesRespuesta
@@ -213,7 +221,7 @@ namespace AppSalval.Views
                         .ToList();
                 }
 
-                // 🔹 Ahora procesamos solo las opciones seleccionadas
+                // Procesamos solo las opciones seleccionadas
                 foreach (var opcion in opcionesSeleccionadas)
                 {
                     var reglas = await _apiServiceReglaOpcion.GetReglaOpcionByOpcionId(opcion.IdOpcion);
@@ -244,9 +252,8 @@ namespace AppSalval.Views
                 }
             }
 
-            // ✅ Solo después de procesar la información, navegamos a la pantalla de resultados
+            // Navegamos a la pantalla de resultados
             await Navigation.PushAsync(new ResultadosUsuario(recomendaciones, factoresRiesgo));
         }
-
     }
 }

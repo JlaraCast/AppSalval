@@ -12,7 +12,7 @@ namespace AppSalval.ViewModels
 {
     public class RiskFormViewModel : INotifyPropertyChanged
     {
-        private readonly FactorService _factorService; // 🔹 Controlador para manejar factores
+        private readonly FactorService _factorService; // Controlador para manejar factores
 
         private int _id;
         public int Id
@@ -23,7 +23,7 @@ namespace AppSalval.ViewModels
                 if (_id != value)
                 {
                     _id = value;
-                    OnPropertyChanged(nameof(Id));
+                    OnPropertyChanged(nameof(Id)); // Notificar cambio de propiedad
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace AppSalval.ViewModels
                 if (_textoFactor != value)
                 {
                     _textoFactor = value ?? string.Empty;
-                    OnPropertyChanged(nameof(TextoFactor));
+                    OnPropertyChanged(nameof(TextoFactor)); // Notificar cambio de propiedad
                 }
             }
         }
@@ -51,17 +51,17 @@ namespace AppSalval.ViewModels
                 if (_habilitado != value)
                 {
                     _habilitado = value;
-                    OnPropertyChanged(nameof(Habilitado));
+                    OnPropertyChanged(nameof(Habilitado)); // Notificar cambio de propiedad
                 }
             }
         }
 
-        public ICommand AceptarCommand { get; }
+        public ICommand AceptarCommand { get; } // Comando para aceptar
 
         public RiskFormViewModel()
         {
-            _factorService = new FactorService(); // 🔹 Usa el servicio de factores
-            AceptarCommand = new Command(async () => await AgregarFactorAsync());
+            _factorService = new FactorService(); // Usa el servicio de factores
+            AceptarCommand = new Command(async () => await AgregarFactorAsync()); // Inicializa el comando
         }
 
         private async Task AgregarFactorAsync()
@@ -70,13 +70,13 @@ namespace AppSalval.ViewModels
             {
                 var nuevoFactor = new FactorRiesgo
                 {
-                    TextoFactor = TextoFactor, // 🔹 Asegurar que el binding es correcto
+                    TextoFactor = TextoFactor, // Asegurar que el binding es correcto
                     Habilitado = Habilitado
                 };
 
                 Console.WriteLine($"Intentando agregar: {nuevoFactor.TextoFactor}, Habilitado: {nuevoFactor.Habilitado}");
 
-                bool success = await _factorService.AddFactorAsync(nuevoFactor);
+                bool success = await _factorService.AddFactorAsync(nuevoFactor); // Llama al servicio para agregar el factor
 
                 Console.WriteLine($"Resultado: {success}");
 
@@ -99,10 +99,10 @@ namespace AppSalval.ViewModels
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged; // Evento para notificar cambios de propiedad
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName)); // Invocar el evento
         }
     }
 }

@@ -8,13 +8,17 @@ using Microsoft.Maui.Controls;
 
 namespace AppSalval.ViewModels
 {
+    // Clase ViewModel para la creación de preguntas
     public class CreacionPreguntasViewModel : BindableObject
     {
+        // Servicios utilizados por el ViewModel
         private readonly ApiServiceOpcionRespuesta _apiService;
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly RecomService _apiServiceRecomendaciones;
         private readonly FactorService _apiServiceFactoresRiesgo;
         private readonly ApiServiceReglaOpcion _apiServiceReglaOpcion;
+
+        // Variables privadas
         private int _preguntaId = -1;
         private ObservableCollection<OpcionRespuestaDtoExtendida> _opcionesRespuesta;
         private List<Recomendacion> _recomendaciones;
@@ -23,31 +27,44 @@ namespace AppSalval.ViewModels
         private string _tipoPregunta;
         private int _tipoPreguntaIndex;
 
+        // Constructor por defecto
         public CreacionPreguntasViewModel()
         {
+            // Inicialización de servicios
             _apiService = new ApiServiceOpcionRespuesta();
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceRecomendaciones = new RecomService();
             _apiServiceFactoresRiesgo = new FactorService();
             _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
+
+            // Inicialización de comandos
             AgregarOpcionRespuestaCommand = new Command(async () => await ControlCrearOpcionesRespuesta());
             EliminarOpcionRespuestaCommand = new Command<OpcionRespuestaDtoExtendida>(async (opcionRespuesta) => await EliminarOpcionRespuesta(opcionRespuesta));
             CargarOpcionesRespuestaCommand = new Command(async () => await CargarOpcionesRespuesta());
             GuardarCambiosCommand = new Command(async () => await GuardarCambios());
+
+            // Inicialización de colecciones
             OpcionesRespuesta = new ObservableCollection<OpcionRespuestaDtoExtendida>();
             RecomendacionesComboBox = new ObservableCollection<string>();
             FactoresRiesgoComboBox = new ObservableCollection<string>();
+
+            // Carga de datos iniciales
             CargarDatosIniciales();
         }
 
+        // Constructor con parámetro de ID de pregunta
         public CreacionPreguntasViewModel(int idPregunta) : this()
         {
             _ = CargarPregunta(idPregunta);
         }
+
+        // Método llamado cuando la página reaparece
         public void OnPageReappearing()
         {
-            _preguntaId=-1;
+            _preguntaId = -1;
         }
+
+        // Propiedad para las opciones de respuesta
         public ObservableCollection<OpcionRespuestaDtoExtendida> OpcionesRespuesta
         {
             get => _opcionesRespuesta;
@@ -58,6 +75,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para las recomendaciones
         public List<Recomendacion> Recomendaciones
         {
             get => _recomendaciones;
@@ -70,6 +88,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para los factores de riesgo
         public List<FactorRiesgo> FactoresRiesgo
         {
             get => _factoresRiesgo;
@@ -82,9 +101,13 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para el ComboBox de recomendaciones
         public ObservableCollection<string> RecomendacionesComboBox { get; private set; }
+
+        // Propiedad para el ComboBox de factores de riesgo
         public ObservableCollection<string> FactoresRiesgoComboBox { get; private set; }
 
+        // Propiedad para el texto de la pregunta
         public string TextoPregunta
         {
             get => _textoPregunta;
@@ -95,6 +118,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para el tipo de pregunta
         public string TipoPregunta
         {
             get => _tipoPregunta;
@@ -105,6 +129,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Propiedad para el índice del tipo de pregunta
         public int TipoPreguntaIndex
         {
             get => _tipoPreguntaIndex;
@@ -115,17 +140,20 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Comandos
         public ICommand AgregarOpcionRespuestaCommand { get; }
         public ICommand EliminarOpcionRespuestaCommand { get; }
         public ICommand CargarOpcionesRespuestaCommand { get; }
         public ICommand GuardarCambiosCommand { get; }
 
+        // Método para cargar datos iniciales
         private async void CargarDatosIniciales()
         {
             await CargarRecomendaciones();
             await CargarFactoresRiesgo();
         }
 
+        // Método para cargar recomendaciones
         private async Task CargarRecomendaciones()
         {
             try
@@ -138,6 +166,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para cargar factores de riesgo
         private async Task CargarFactoresRiesgo()
         {
             try
@@ -150,6 +179,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para crear una nueva pregunta
         private async Task CrearPregunta()
         {
             try
@@ -174,6 +204,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para controlar la creación de opciones de respuesta
         private async Task ControlCrearOpcionesRespuesta()
         {
             if (_preguntaId == -1)
@@ -184,6 +215,7 @@ namespace AppSalval.ViewModels
             await AgregarOpcionRespuesta();
         }
 
+        // Método para cargar opciones de respuesta
         private async Task CargarOpcionesRespuesta()
         {
             try
@@ -229,6 +261,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para agregar una nueva opción de respuesta
         private async Task AgregarOpcionRespuesta()
         {
             var nuevaOpcion = new OpcionRespuestaDto { NombreOpcion = string.Empty, IdPregunta = _preguntaId };
@@ -246,6 +279,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para eliminar una opción de respuesta
         private async Task EliminarOpcionRespuesta(OpcionRespuestaDtoExtendida opcionRespuesta)
         {
             var confirm = await Application.Current.MainPage.DisplayAlert("Confirmación", "¿Está seguro de que desea borrar esta opción de respuesta?", "Sí", "No");
@@ -273,6 +307,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para cargar una pregunta por su ID
         public async Task CargarPregunta(int preguntaId)
         {
             try
@@ -331,6 +366,7 @@ namespace AppSalval.ViewModels
             }
         }
 
+        // Método para guardar cambios
         private async Task GuardarCambios()
         {
             try
@@ -372,6 +408,7 @@ namespace AppSalval.ViewModels
         }
     }
 
+    // Clase extendida para las opciones de respuesta
     public class OpcionRespuestaDtoExtendida : OpcionRespuestaDto
     {
         public OpcionRespuestaDtoExtendida(OpcionRespuestaDto opcionRespuestaDto)
