@@ -4,7 +4,11 @@
              x:Class="AppSalval.Views.CambioContrasena"
              BackgroundColor="White">
 
-    <ScrollView>
+
+    <Grid>
+
+        
+        <ScrollView>
         <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
 
             <!-- Icono de usuario -->
@@ -25,18 +29,33 @@
             <Label Text="Confirmar contraseña"/>
             <Entry x:Name="txtConfirmarContrasena" Placeholder="Confirmar contraseña" IsPassword="True"/>
 
-            <!-- Botón para guardar la contraseña -->
-            <Button Text="Guardar" 
-                    BackgroundColor="#57CC99" 
-                    TextColor="White"
-                    FontSize="16"
-                    CornerRadius="10"
-                    HeightRequest="50"
-                    WidthRequest="200"
-                    HorizontalOptions="Center"
-                    Clicked="OnSavePasswordClicked"/>
+            <HorizontalStackLayout Spacing="20">
+                    <!-- Botón para guardar la contraseña -->
+                    <Button Text="Guardar" 
+                        BackgroundColor="#57CC99" 
+                        TextColor="White"
+                        FontSize="16"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        HorizontalOptions="Center"
+                        Clicked="OnSavePasswordClicked"/>
 
-        </VerticalStackLayout>
+                    <!-- Botón para cancelar -->
+                    <Button Text="Cancelar" 
+                        BackgroundColor="#22577A" 
+                        TextColor="White"
+                        FontSize="16"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        WidthRequest="200"
+                        HorizontalOptions="Center"
+                        Clicked="OnCancelClicked"/>
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
     </ScrollView>
+    </Grid>
 </ContentPage>
 

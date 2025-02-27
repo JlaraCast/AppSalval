@@ -30,6 +30,12 @@ namespace AppSalval.Views
                 return;
             }
 
+            if (EntryPassword.Text.Length < 8)
+            {
+                await DisplayAlert("Error", "La contraseña debe tener al menos 8 caracteres.", "OK");
+                return;
+            }
+
             // Actualizar la información del usuario
             Usuario.Contraseña = EntryPassword.Text;
 

@@ -40,6 +40,12 @@ namespace AppSalval.Views
                     return;
                 }
 
+                if (EntryPassword.Text.Length < 8)
+                {
+                    await DisplayAlert("Error", "La contraseña debe tener al menos 8 caracteres.", "OK");
+                    return;
+                }
+
                 // Verificar si el correo ya está registrado
                 if (await IsEmailRegisteredAsync(EntryEmail.Text.Trim()))
                 {
@@ -80,6 +86,7 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", $"Error al conectar con la API: {ex.Message}", "OK");
             }
         }
+
 
         // Método para verificar si el correo ya está registrado
         private async Task<bool> IsEmailRegisteredAsync(string email)
