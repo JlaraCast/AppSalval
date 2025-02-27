@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:AppSalval.ViewModels"
-             x:Class="AppSalval.Views.GestionParticipantes"
-             Title="GestionParticipantes">
+             x:Class="AppSalval.Views.GestionParticipantes">
 
     <ScrollView Orientation="Both">
         <VerticalStackLayout Margin="10">
@@ -18,33 +17,20 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Botón para desplegar opciones -->
-          
-
-                <!-- Contenido principal de la página -->
-                <ContentView Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Label Text="Gestión de Participantes"
-                               FontSize="Small"
-                               TextColor="MidnightBlue"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"
-                               Margin="10,5,0,0"
-                               Grid.Column="0" />
-
-                    </Grid>
-                </ContentView>
+                <Label Text="Gestión de Participantes"
+                FontSize="Medium"
+                TextColor="SteelBlue"
+                VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                Margin="0,0,300,0"
+                Grid.Row="0" 
+                Grid.Column="0"/>
 
                 <!-- Tabla de registros -->
-                <ScrollView Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" Margin="10">
+                <ScrollView Orientation="Horizontal" Grid.Row="1"  Margin="10">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -66,7 +52,7 @@
                                Grid.Column="0" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
+                               TextColor="SteelBlue"   
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -76,7 +62,7 @@
                                Grid.Column="1" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue" 
+                               TextColor="SteelBlue" 
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -86,7 +72,7 @@
                                Grid.Column="2" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"    
+                               TextColor="SteelBlue"    
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -96,7 +82,7 @@
                                Grid.Column="3" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
+                               TextColor="SteelBlue"   
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -106,7 +92,7 @@
                                Grid.Column="4" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
+                               TextColor="SteelBlue"   
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -116,7 +102,7 @@
                                Grid.Column="5" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
+                               TextColor="SteelBlue"   
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -126,7 +112,7 @@
                                Grid.Column="6" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"    
+                               TextColor="SteelBlue"    
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                Margin="5"
@@ -142,32 +128,32 @@
                                         <Grid ColumnDefinitions="180,180,180,180,180,180,*" RowDefinitions="Auto" Padding="0,0,0,0">
                                             <!-- Identificación -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
-                                                <Label Text="{Binding Identificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding Identificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Tipo Identificación -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="1" Margin="0,0,5,0">
-                                                <Label Text="{Binding TipoIdentificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding TipoIdentificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Nombre Completo -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="2" Margin="0,0,5,0">
-                                                <Label Text="{Binding NombreCompleto}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding NombreCompleto}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Fecha Nacimiento -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="3" Margin="0,0,5,0">
-                                                <Label Text="{Binding FechaNacimiento, StringFormat='{0:dd/MM/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding FechaNacimiento, StringFormat='{0:dd/MM/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Sexo -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="4" Margin="0,0,5,0">
-                                                <Label Text="{Binding Sexo}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding Sexo}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- id Formulario -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="5" Margin="0,0,5,0">
-                                                <Label Text="{Binding IdFormulario}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                                <Label Text="{Binding IdFormulario}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
                                             </Frame>
 
                                             <!-- Botón para Ver Formulario -->

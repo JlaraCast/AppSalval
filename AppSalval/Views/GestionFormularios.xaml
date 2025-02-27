@@ -33,7 +33,7 @@
                             Grid.Column="1"
                             Text="Gestión de formularios"
                             FontSize="Medium"
-                            TextColor="MidnightBlue"
+                            TextColor="SteelBlue"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             Margin="0,0,0,0"
@@ -44,7 +44,7 @@
                             Text="Añadir"
                             FontSize="Medium"
                             TextColor="White"
-                            BackgroundColor="#1edb68"
+                            BackgroundColor="#5ac1c0"
                             HorizontalOptions="End"
                             VerticalOptions="Center"
                             Margin="0,20,30,0"
@@ -55,12 +55,12 @@
 
                 <!-- Encabezados de la tabla -->
                 <Grid Grid.Row="1" Grid.ColumnSpan="3" ColumnDefinitions="*,*,*,*,*,*" Margin="0,30,0,0">
-                    <Label Grid.Column="0" Text="ID" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
-                    <Label Grid.Column="1" Text="Nombre" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
-                    <Label Grid.Column="2" Text="Descripción" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
-                    <Label Grid.Column="3" Text="Ver" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
-                    <Label Grid.Column="4" Text="Editar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
-                    <Label Grid.Column="5" Text="Eliminar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" Margin="5" />
+                    <Label Grid.Column="0" Text="ID" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
+                    <Label Grid.Column="1" Text="Nombre" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
+                    <Label Grid.Column="2" Text="Descripción" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
+                    <Label Grid.Column="3" Text="Ver" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
+                    <Label Grid.Column="4" Text="Editar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
+                    <Label Grid.Column="5" Text="Eliminar" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" Margin="5" />
                 </Grid>
 
                 <CollectionView x:Name="ListaFormularios" Grid.Row="2" Grid.ColumnSpan="3">
@@ -69,13 +69,13 @@
                             <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
                                 <Grid ColumnDefinitions="*,*,*,*,*,*">
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
-                                        <Label Text="{Binding Id}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                        <Label Text="{Binding Id}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" />
                                     </Frame>
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="1" Margin="0,0,5,0">
-                                        <Label Text="{Binding Nombre}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                        <Label Text="{Binding Nombre}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" />
                                     </Frame>
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="2" Margin="0,0,5,0">
-                                        <Label Text="{Binding Descripcion}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="MidnightBlue" />
+                                        <Label Text="{Binding Descripcion}" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center" TextColor="SteelBlue" />
                                     </Frame>
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="3" Margin="0,0,5,0">
                                         <Button Command="{Binding VerCommand}" CommandParameter="{Binding Id}" Text="Ver" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#4682B4" TextColor="White" />

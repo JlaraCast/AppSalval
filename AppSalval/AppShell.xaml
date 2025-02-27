@@ -16,30 +16,12 @@
         Title="Formularios"
         ContentTemplate="{DataTemplate views:Formularios}"
         Route="Formularios" />
-    <ShellContent
-    Title="GestionFormularios"
-    ContentTemplate="{DataTemplate vista:GestionFormularios}"
-    Route="GestionFormularios" />
-    <ShellContent
-     Title="GestionRespuesta"
-     ContentTemplate="{DataTemplate vista:GestionRespuesta}"
-     Route="GestionRespuesta" />
-    <ShellContent
-     Title="CreacionPreguntas"
-     ContentTemplate="{DataTemplate vista:CreacionPreguntas}"
-     Route="CreacionPreguntas" />
+  
+
     <ShellContent
     Title="InicioAdmin"
     ContentTemplate="{DataTemplate vista:InicioAdmin}"
     Route="InicioAdmin" />
-    <ShellContent
-    Title="InfoPersonal"
-    ContentTemplate="{DataTemplate vista:InfoPersonal}"
-    Route="InfoPersonal" />
-    <ShellContent
-    Title="ResultadosUsuario"
-    ContentTemplate="{DataTemplate vista:ResultadosUsuario}"
-    Route="ResultadosUsuario" />
     <ShellContent
     Title="GestionUsuarioss"
     ContentTemplate="{DataTemplate vista:GestionUsuarios}"
@@ -57,10 +39,6 @@
     ContentTemplate="{DataTemplate vista:GestionPreguntas}"
     Route="GestionPreguntas"/>
 
-    <ShellContent
-     Title="GestionParticipantes"
-     ContentTemplate="{DataTemplate vista:GestionParticipantes}"
-     Route="GestionParticipantes" />
 
     <ShellContent
     Title="InicioEncuestador"
