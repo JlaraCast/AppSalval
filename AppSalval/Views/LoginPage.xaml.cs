@@ -62,5 +62,21 @@ namespace AppSalval.Views
         {
             await Navigation.PushAsync(new CambioContrasenaCorreo());
         }
+
+        private async void OnCloseAppButtonClicked(object sender, EventArgs e)
+        {
+            bool confirm = await Application.Current.MainPage.DisplayAlert(
+            "Confirmación",
+            "¿Estás seguro de que quieres salir de la aplicación?",
+            "Sí",
+            "No"
+            );
+
+            if (confirm && Application.Current is not null)
+            {
+                Application.Current.Quit();
+            }
+        }
+
     }
 }

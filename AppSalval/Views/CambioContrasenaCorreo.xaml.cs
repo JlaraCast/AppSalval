@@ -68,5 +68,10 @@ namespace AppSalval.Views
                 return false;
             }
         }
+
+        private async void OnBackButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
     }
 }

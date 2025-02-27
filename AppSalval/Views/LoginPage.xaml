@@ -1,42 +1,61 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.LoginPage">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="15">
+    <Grid>
+        <!-- Definimos dos filas: una pequeña para el botón y otra para el contenido -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <!-- Icono de usuario -->
-            <Image Source="user_icon.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+        <!-- Botón de cerrar aplicación en la primera fila -->
+        <ImageButton Source="back_icon.png"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     BackgroundColor="Transparent"
+                     Clicked="OnCloseAppButtonClicked"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="10,-50,10,0"
+                     Grid.Row="0"/>
 
-            <!-- Título -->
-            <Label Text="Bienvenido a Salval" FontSize="24" HorizontalOptions="Center"/>
-            <Label Text="Iniciar sesión" FontSize="18" HorizontalOptions="Center"/>
+        <!-- Contenido en la segunda fila -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="30" Spacing="15">
 
-            <!-- Usuario -->
-            <Label Text="Usuario"/>
-            <Entry x:Name="txtUsuario" Placeholder="Usuario"/>
+                <!-- Icono de usuario -->
+                <Image Source="user_icon.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
 
-            <!-- Contraseña -->
-            <Label Text="Contraseña"/>
-            <Entry x:Name="txtContrasena" Placeholder="Contraseña" IsPassword="True"/>
+                <!-- Título -->
+                <Label Text="Bienvenido a Salval" FontSize="24" HorizontalOptions="Center"/>
+                <Label Text="Iniciar sesión" FontSize="18" HorizontalOptions="Center"/>
 
-            <!-- Botón Ingresar -->
-            <Button Text="Ingresar" BackgroundColor="#57CC99" TextColor="White"
-                    Clicked="OnLoginClicked"/>
+                <!-- Usuario -->
+                <Label Text="Usuario"/>
+                <Entry x:Name="txtUsuario" Placeholder="Usuario"/>
 
-            <!-- Botón Crear Cuenta -->
-            <Button Text="Crear una cuenta" 
-                    BackgroundColor="Transparent" 
-                    TextColor="#22577A" 
-                    Clicked="OnCreateAccountClicked"/>
+                <!-- Contraseña -->
+                <Label Text="Contraseña"/>
+                <Entry x:Name="txtContrasena" Placeholder="Contraseña" IsPassword="True"/>
 
-            <!-- Botón "¿Has olvidado tu contraseña?" -->
-            <Button Text="¿Has olvidado tu contraseña?" 
-                    BackgroundColor="Transparent" 
-                    TextColor="#22577A" 
-                    Clicked="OnForgotPasswordClicked"/>
+                <!-- Botón Ingresar -->
+                <Button Text="Ingresar" BackgroundColor="#57CC99" TextColor="White"
+                        Clicked="OnLoginClicked"/> 
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <!-- Botón Crear Cuenta -->
+                <Button Text="Crear una cuenta" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#22577A" 
+                        Clicked="OnCreateAccountClicked"/>
+
+                <!-- Botón "¿Has olvidado tu contraseña?" -->
+                <Button Text="¿Has olvidado tu contraseña?" 
+                        BackgroundColor="Transparent" 
+                        TextColor="#22577A" 
+                        Clicked="OnForgotPasswordClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
