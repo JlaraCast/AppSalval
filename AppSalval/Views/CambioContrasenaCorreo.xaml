@@ -13,7 +13,7 @@
              Clicked="OnBackButtonClicked"
              HorizontalOptions="Start"
              VerticalOptions="Start"
-             Margin="10,-50,10,0"
+             Margin="10,10,10,0"
              Grid.Row="0"/>
 
         <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
