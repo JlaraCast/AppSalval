@@ -2,7 +2,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.CrearFormulario"
              xmlns:viewModels="clr-namespace:AppSalval.ViewModels"
-             Title="CrearFormulario">
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Title="">
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
@@ -119,6 +120,8 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Date="{Binding FechaInicio}"
+                        MinimumDate="{x:Static sys:DateTime.Now}"
+                        
                     />
                     <Label
                         Grid.Row="4"
@@ -136,6 +139,7 @@
                         Margin="40,0,40,40"
                         TextColor="#000000"
                         Date="{Binding FechaFin}"
+                        MinimumDate="{Binding FechaInicio}"
                     />
                     <Label
                         Grid.Row="5"

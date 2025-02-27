@@ -44,7 +44,10 @@ namespace AppSalval.ViewModels
         {
             _ = CargarPregunta(idPregunta);
         }
-
+        public void OnPageReappearing()
+        {
+            _preguntaId=-1;
+        }
         public ObservableCollection<OpcionRespuestaDtoExtendida> OpcionesRespuesta
         {
             get => _opcionesRespuesta;

@@ -7,6 +7,7 @@ namespace AppSalval.Views
     public partial class LoginPage : ContentPage
     {
         private readonly UsuarioController _usuarioController;
+        public static string UserRole { get; set; }
 
         public LoginPage()
         {
@@ -27,6 +28,7 @@ namespace AppSalval.Views
 
             if (usuarioEncontrado != null)
             {
+                UserRole = usuarioEncontrado.IdRol.ToString();
                 // Redirigir según el rol del usuario
                 switch (usuarioEncontrado.IdRol)
                 {
@@ -62,5 +64,21 @@ namespace AppSalval.Views
         {
             await Navigation.PushAsync(new CambioContrasenaCorreo());
         }
+
+        private async void OnCloseAppButtonClicked(object sender, EventArgs e)
+        {
+            bool confirm = await Application.Current.MainPage.DisplayAlert(
+            "Confirmación",
+            "¿Estás seguro de que quieres salir de la aplicación?",
+            "Sí",
+            "No"
+            );
+
+            if (confirm && Application.Current is not null)
+            {
+                Application.Current.Quit();
+            }
+        }
+
     }
 }

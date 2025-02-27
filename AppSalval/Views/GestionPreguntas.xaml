@@ -6,10 +6,39 @@
              Title="GestionPreguntas">
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
+            <Grid>
+                <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid ColumnDefinitions="*,*" Grid.Row="0">
 
+                    <ImageButton Source="back_icon.png"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         Margin="10,10,10,0"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Clicked="cerrrarSesion"/>
+
+                    <Button Text="Agregar" Grid.Column="1"
+                         Margin="-65,0,0,0"
+                         Command="{Binding AgregarCommand}" 
+                         CommandParameter="{Binding .}" 
+                         BackgroundColor="Green" TextColor="White"
+                         FontSize="Small"
+                         HorizontalOptions="Start" VerticalOptions="Center" 
+                         IsEnabled="{Binding CanAdd}"
+                        />
+                </Grid>
+            
             <CollectionView x:Name="ListaPreguntas"
                 ItemsSource="{Binding PreguntasDtos}"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="FillAndExpand"
+                 Grid.Row="1" Margin="10,10,10,0" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame Padding="10" Margin="5" BorderColor="Black" WidthRequest="550">
@@ -54,7 +83,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

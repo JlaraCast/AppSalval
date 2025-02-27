@@ -10,7 +10,7 @@ namespace AppSalval.Converters
         {
             if (value is string tipoPregunta)
             {
-                return tipoPregunta == "SelecciónMultiple"; // ✅ Solo muestra CheckBox si es selección múltiple
+                return tipoPregunta == "Selección Múltiple"; // ✅ Solo muestra CheckBox si es selección múltiple
             }
             return false;
         }

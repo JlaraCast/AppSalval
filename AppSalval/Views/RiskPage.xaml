@@ -2,20 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppSalval.Views.RiskPage"
-             Title="RiskPage"
              xmlns:vm="clr-namespace:AppSalval.ViewModels">
 
     <VerticalStackLayout Padding="20">
 
-        <!-- Encabezado -->
-        <HorizontalStackLayout Spacing="20">
-            <Image Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
-            <Label Text="Desarrollador" FontSize="18" VerticalOptions="Center" TextColor="SteelBlue" />
-        </HorizontalStackLayout>
+
+
+        <Grid ColumnDefinitions="Auto, *, Auto" Padding="20">
+            <!-- Imagen del usuario -->
+            <Image Grid.Column="0" Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
+
+            <!-- Nombre del usuario -->
+            <Label Grid.Column="1" Text="Desarrollador" FontSize="18" Padding="15" VerticalOptions="Center" TextColor="#25587b"/>
+
+            <Button Grid.Column="2"
+                Text="Volver"
+                BackgroundColor="#25587b"
+                Margin="10"
+                Clicked="volver"
+                HeightRequest="50"
+                WidthRequest="180"
+                HorizontalOptions="End"/>
+        </Grid>
 
         <!-- Campo de búsqueda -->
         <HorizontalStackLayout Spacing="0" VerticalOptions="Start" Margin="5">
-            <Label Text="Buscar tipo de riesgo:" FontSize="14" TextColor="SteelBlue" Padding="10"/>
+            <Label Text="Buscar tipo de riesgo:" FontSize="14" TextColor="#25587b" Padding="10"/>
             <Entry Placeholder="Buscar..." WidthRequest="200" 
         Text="{Binding SearchText, Mode=TwoWay}"/>
         </HorizontalStackLayout>
@@ -23,7 +35,7 @@
         <!-- Botones de acción -->
         <HorizontalStackLayout Spacing="60" Margin="10">
             <Button Text="Crear tipo de riesgo" 
-             BackgroundColor="MediumSeaGreen" 
+             BackgroundColor="#58c798" 
              TextColor="White" 
              CornerRadius="10" 
              Command="{Binding NavigateToRiskFormCommand}"/>
@@ -39,7 +51,7 @@
             </Picker>
 
             <Button Text="Ordenar" 
-     BackgroundColor="SteelBlue" 
+     BackgroundColor="#25587b" 
      TextColor="White" 
      CornerRadius="10"
      Command="{Binding OrdenarCommand}"/>
@@ -49,7 +61,7 @@
         <CollectionView ItemsSource="{Binding Factores}" Margin="10" HeightRequest="400">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame Padding="10" Margin="5" BackgroundColor="LightGray">
+                    <Frame Padding="10" Margin="5" BackgroundColor="White">
                         <VerticalStackLayout>
 
                             <!-- ID del factor -->
@@ -70,7 +82,6 @@
 
                             <!-- Botones de acción -->
                             <HorizontalStackLayout Spacing="10">
-                                <ImageButton Source="ver_icon.png" WidthRequest="30" HeightRequest="30"/>
                                 <Button Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditCommand}"
                                  CommandParameter="{Binding}"
                                  BackgroundColor="Transparent"

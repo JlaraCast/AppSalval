@@ -29,5 +29,10 @@ public partial class InicioAdmin : ContentPage
         await Navigation.PushAsync(new RiskPage());
     }
 
+    private async void cerrrarSesion(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new LoginPage());
+    }
+
 
 }

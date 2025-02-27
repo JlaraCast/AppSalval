@@ -26,13 +26,12 @@
             <!-- Encabezado -->
             <Label Text="Encuestador"
                    FontSize="24"
-                   FontAttributes="Bold"
                    HorizontalOptions="Center"
-                   TextColor="Black"/>
+                   TextColor="SteelBlue"/>
 
             <!-- Botón para acceder al formulario -->
             <Button Text="Formulario"
-                    BackgroundColor="Blue"
+                    BackgroundColor="#5ac1c0"
                     TextColor="White"
                     HorizontalOptions="Center"
                     WidthRequest="200"

@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:AppSalval.ViewModels"
-             x:Class="AppSalval.Views.GestionRespuesta"
-             Title="GestionRespuesta">
-
+             x:Class="AppSalval.Views.GestionRespuesta">
 
     <ScrollView>
         <VerticalStackLayout>
@@ -23,15 +21,17 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Botón para desplegar opciones -->
-   
-                <Label Text="Administrador" 
-                       Grid.Row="0"
-                       Grid.Column="0"
-                       FontSize="Title"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Start"
-                       TextColor="MidnightBlue"
-                       Margin="30,20,0,0"/>
+                <ImageButton Source="back_icon.png"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="10,10,10,0"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Clicked="cerrrarSesion"/>
+
 
                 <!-- Contenido principal de la página -->
                 <ContentView Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center">
@@ -43,7 +43,7 @@
 
                         <Label Text="Gestión de Respuestas"
                                FontSize="Medium"
-                               TextColor="MidnightBlue"
+                               TextColor="SteelBlue"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
                                Margin="30,20,0,0"
@@ -57,76 +57,70 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-
                     </Grid.RowDefinitions>
                     <!-- Encabezados de la tabla -->
-                    <Grid  Grid.Row="0" RowDefinitions="Auto"  ColumnDefinitions="*,*,*,*,*,*">
+                    <Grid Grid.Row="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*,*,*,*">
 
                         <Label Text="id respuesta" 
                                Grid.Column="0" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"  
-                               HorizontalOptions="CenterAndExpand"
-                               />
+                               TextColor="SteelBlue"  
+                               HorizontalOptions="CenterAndExpand"/>
 
                         <Label Text="Fecha de Registro" 
                                Grid.Column="1" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
-                               HorizontalOptions="CenterAndExpand"
-                               />
+                               TextColor="SteelBlue"   
+                               HorizontalOptions="CenterAndExpand"/>
 
                         <Label Text="Encuestador Encargado" 
                                Grid.Column="2" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"    
-                               HorizontalOptions="CenterAndExpand"
-                               />
+                               TextColor="SteelBlue"    
+                               HorizontalOptions="CenterAndExpand"/>
 
                         <Label Text="id Formulario" 
                                Grid.Column="3" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"   
-                               HorizontalOptions="CenterAndExpand"
-                               />
+                               TextColor="SteelBlue"   
+                               HorizontalOptions="CenterAndExpand"/>
 
                         <Label Text="Acciones" 
                                Grid.Column="4" 
                                FontAttributes="Bold" 
                                FontSize="Small" 
-                               TextColor="MidnightBlue"    
-                               HorizontalOptions="CenterAndExpand"
-                               />
+                               TextColor="SteelBlue"    
+                               HorizontalOptions="CenterAndExpand"/>
                     </Grid>
 
                     <!-- Lista de elementos -->
                     <CollectionView x:Name="ListaRespuestas" Grid.Row="1" ItemsSource="{Binding ListaRespuestas}">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate >
-                                <Frame BorderColor="LightGray" CornerRadius="0" Padding="5" Margin="0,0,0,10" >
+                            <DataTemplate>
+                                <Frame BorderColor="LightGray" CornerRadius="0" Padding="5" Margin="0,0,0,10">
                                     <Grid ColumnDefinitions="*,*,*,*,*,*" RowDefinitions="Auto" Padding="0,0,0,0">
                                         <!-- id -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
-                                            <Label Text="{Binding IdRespuesta}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                            <Label Text="{Binding IdRespuesta}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="SteelBlue" FontSize="Small" />
                                         </Frame>
 
                                         <!-- Fecha de Registro -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="1" Margin="0,0,5,0">
-                                            <Label Text="{Binding FechaRespuesta}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                            <Label Text="{Binding FechaRespuesta}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="SteelBlue" FontSize="Small" />
                                         </Frame>
 
                                         <!-- Encuestador Encargado -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="2" Margin="0,0,5,0">
-                                            <Label Text="{Binding IdentificacionEncuestado}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                            <Label Text="{Binding IdentificacionEncuestado}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="SteelBlue" FontSize="Small" />
                                         </Frame>
 
                                         <!-- id Formulario -->
                                         <Frame BorderColor="Black" Padding="5" Grid.Column="3" Margin="0,0,5,0">
-                                            <Label Text="{Binding IdFormulario}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="MidnightBlue" FontSize="Small" />
+                                            <Label Text="{Binding IdFormulario}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="SteelBlue" FontSize="Small" />
                                         </Frame>
 
                                         <!-- Botón para Editar -->

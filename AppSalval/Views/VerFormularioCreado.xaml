@@ -157,6 +157,7 @@
                         Margin="160,-25,40,0"
                         IsToggled="{Binding Habilitado}"
                         IsEnabled="False"
+                        OnColor="#3aa0a4"
                     />
                 </Grid>
             </Border>
@@ -187,6 +188,7 @@
                     Margin="40,-5,0,0" 
                     IsChecked="{Binding RequiereDatosPersonales}"
                     IsEnabled="False"
+                    Color="#3aa0a4"
                 />
             </Grid>
 

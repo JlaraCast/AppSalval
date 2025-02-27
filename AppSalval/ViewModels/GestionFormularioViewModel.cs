@@ -17,14 +17,29 @@ namespace AppSalval.ViewModels
         private readonly INavigation _navigation;
         private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
         private CollectionView _listaFormularios;
+        private bool _canAdd;
+
+        public bool CanAdd
+        {
+            get => _canAdd;
+            set
+            {
+                _canAdd = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand BtnAgregar { get; }
         public ICommand BtnOpciones{ get; }
         public ICommand BtnMenuPrincipal{ get; }
+        public ICommand BtnRegresar { get; }
+
         public GestionFormularioViewModel(INavigation navigation, CollectionView listaFormularios) {
             
             _listaFormularios = listaFormularios;
             _navigation = navigation;
             _apiService = new ApiServiceFormularios();
+            // Verificar si el rol del usuario es Desarrollador (rol 3)
+            CanAdd = LoginPage.UserRole != "3"; // Si el rol es Desarrollador, no puede agregar
 
 
             BtnAgregar = new Command(async () =>
@@ -32,9 +47,10 @@ namespace AppSalval.ViewModels
                 await _navigation.PushAsync(new CrearFormulario());
             });
 
-            BtnAgregar = new Command(async () =>
+           
+            BtnRegresar = new Command(async () =>
             {
-                await _navigation.PushAsync(new CrearFormulario());
+                await _navigation.PushAsync(new InicioAdmin());
             });
         }
 

@@ -9,4 +9,9 @@ public partial class GestionParticipantes : ContentPage
         InitializeComponent();
         BindingContext = new GestionParticipantesViewModel();
     }
+
+    private async void cerrrarSesion(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new InicioAdmin());
+    }
 }

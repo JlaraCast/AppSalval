@@ -198,7 +198,7 @@ namespace AppSalval.Views
                 List<OpcionRespuestaDto> opcionesSeleccionadas = new List<OpcionRespuestaDto>();
 
                 // ✅ Para preguntas de selección múltiple (CheckBox)
-                if (pregunta.TipoPregunta.ToLower().Contains("multiple"))
+                if (pregunta.TipoPregunta.ToLower().Contains("múltiple"))
                 {
                     opcionesSeleccionadas = pregunta.OpcionesRespuesta
                         .Where(op => op.IsSelected) // Solo las opciones marcadas

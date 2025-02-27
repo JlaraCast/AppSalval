@@ -9,4 +9,8 @@ public partial class InicioDesarrollador : ContentPage
         InitializeComponent();
         BindingContext = new InicioDesarrolladorViewModel(Navigation);
     }
+    private async void cerrrarSesion(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new LoginPage());
+    }
 }
