@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AppSalval.ViewModels"
              x:Class="AppSalval.Views.CreacionPreguntas"
-             Title="CreacionPreguntas">
+             >
 
     <ContentPage.BindingContext>
         <local:CreacionPreguntasViewModel />
@@ -22,18 +22,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Text="Administrador" 
-                    FontSize="Title"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Start"
-                    TextColor="MidnightBlue"
-                    Margin="0,20,0,0"/>
 
                 <!-- Contenido principal de la página -->
-                <ContentView Grid.Row="1" Grid.ColumnSpan="3" VerticalOptions="Center">
+                <ContentView Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -56,7 +47,7 @@
                            Grid.Column="0"
                            Grid.Row="0"
                            FontSize="Medium"
-                           TextColor="MidnightBlue" 
+                           TextColor="SteelBlue" 
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
                            Margin="30,0,15,0"/>
@@ -69,13 +60,14 @@
                            VerticalOptions="Center"
                            Margin="30,0,15,0"
                            Keyboard="Text"
+                               TextColor="SteelBlue"
                            Text="{Binding TextoPregunta, Mode=TwoWay}"/>
 
                         <Label Text="Tipo de Pregunta"
                            Grid.Column="0"
                            Grid.Row="1"
                            FontSize="Medium"
-                           TextColor="MidnightBlue" 
+                           TextColor="SteelBlue" 
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
                            Margin="30,0,15,0"/>
@@ -86,8 +78,8 @@
                             HorizontalOptions="StartAndExpand"
                             VerticalOptions="Center"
                             Margin="10,0,15,0"
-                            TextColor="Gray"
-                            BackgroundColor="LightGreen"
+                             TextColor="White"
+                            BackgroundColor="#5ac1c0"
                             SelectedIndex="{Binding TipoPreguntaIndex, Mode=TwoWay}"
                              SelectedItem="{Binding TipoPregunta, Mode=TwoWay}">
                             
@@ -101,7 +93,7 @@
                            Grid.Column="2"
                            Grid.Row="1"
                            FontSize="Medium"
-                           TextColor="MidnightBlue" 
+                           TextColor="SteelBlue" 
                            HorizontalOptions="StartAndExpand"
                            VerticalOptions="Center"
                            Margin="0,0,15,0"/>
@@ -118,7 +110,7 @@
                            Grid.Column="0"
                            Grid.Row="2"
                            FontSize="Medium"
-                           TextColor="MidnightBlue" 
+                           TextColor="SteelBlue" 
                            HorizontalOptions="Start"
                            VerticalOptions="Center"
                            Margin="30,0,15,0"/>
@@ -142,22 +134,25 @@
                                         <Entry Text="{Binding NombreOpcion, Mode=TwoWay}" 
                                                Grid.Column="0" 
                                                Placeholder="Ingresa la opción de respuesta"
-                                               Margin="0,0,15,0"/>
+                                               Margin="0,0,15,0"
+                                               TextColor="SteelBlue"/>
 
                                         <Picker Grid.Column="1" 
                                                 Title="Seleccione una recomendación"
+                                                TitleColor="SteelBlue"
                                                 ItemsSource="{Binding BindingContext.RecomendacionesComboBox, Source={x:Reference collectionView}}"
                                                 SelectedIndex="{Binding SeleccionadaRecomendacionIndex, Mode=TwoWay}"
-                                                BackgroundColor="#2D2D2D"
+                                                BackgroundColor="#25587b"
                                                 TextColor="White"
                                                 WidthRequest="200"
                                                 Margin="0,0,15,0"/>
 
                                         <Picker Grid.Column="2" 
                                                 Title="Seleccione un factor de riesgo"
+                                                TitleColor="SteelBlue"
                                                 ItemsSource="{Binding BindingContext.FactoresRiesgoComboBox, Source={x:Reference collectionView}}"
                                                 SelectedIndex="{Binding SeleccionadaRiesgoIndex, Mode=TwoWay}"
-                                                BackgroundColor="#2D2D2D"
+                                                BackgroundColor="#25587b"
                                                 TextColor="White"
                                                 WidthRequest="200"
                                                 Margin="0,0,15,0"/>
@@ -167,13 +162,18 @@
                                                 Maximum="10"
                                                 Value="{Binding Condicion, Mode=TwoWay}"
                                                 WidthRequest="150"
-                                                Margin="0,0,15,0"/>
+                                                Margin="0,0,15,0"
+                                                ThumbColor="SteelBlue"
+                                                BackgroundColor="SteelBlue"
+                                                MaximumTrackColor="SteelBlue"
+                                                MinimumTrackColor="SteelBlue"/>
 
                                         <Button Text="Eliminar" 
                                                 Grid.Column="4" 
                                                 Command="{Binding Path=BindingContext.EliminarOpcionRespuestaCommand, Source={x:Reference collectionView}}" 
                                                 CommandParameter="{Binding .}"
-                                                Margin="0,0,15,0"/>
+                                                Margin="0,0,15,0"
+                                                BackgroundColor="Red"/>
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -183,7 +183,8 @@
                                 Grid.Row="4" 
                                 Grid.ColumnSpan="5" 
                              
-                                Command="{Binding AgregarOpcionRespuestaCommand}"/>
+                                Command="{Binding AgregarOpcionRespuestaCommand}"
+                                BackgroundColor="#5ac1c0"/>
 
                         <Button Text="Guardar Cambios" 
                             Grid.Row="5" 
@@ -192,7 +193,7 @@
                             HorizontalOptions="Center" 
                             VerticalOptions="Center" 
                             Margin="10" 
-                            BackgroundColor="Green" 
+                            BackgroundColor="MediumSeaGreen"
                             TextColor="White"
                             Command="{Binding GuardarCambiosCommand}"/>
                     </Grid>
