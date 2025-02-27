@@ -23,9 +23,7 @@ namespace AppSalval.ViewModels
         private readonly ApiServiceFormularios _apiServiceFormularios;
         private readonly ApiServiceFormularioPregunta _apiServiceFormularioPregunta;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcionRespuesta;
-        private readonly ApiServiceReglaOpcion _apiServiceReglaOpcion;
-        private CollectionView _listaPreguntas;
-
+       
         private string _titulo;
         private string _descripcion;
         private DateTime _fechaInicio;
@@ -66,7 +64,6 @@ namespace AppSalval.ViewModels
             _apiServicePregunta = new ApiServicePregunta();
             _apiServiceFormularios = new ApiServiceFormularios();
             _apiServiceOpcionRespuesta = new ApiServiceOpcionRespuesta();
-            _apiServiceReglaOpcion = new ApiServiceReglaOpcion();
             _apiServiceFormularioPregunta = new ApiServiceFormularioPregunta();
 
 
@@ -120,7 +117,7 @@ namespace AppSalval.ViewModels
 
                 foreach (var pregunta in preguntas)
                 {
-                    // Obtener las opciones de respuesta para cada pregunta
+                    // Obtener las opciones de respuesta para cada pregunta, esto es un if, en caso de que devuelva un null lo que hace es inicializar la variable
                     var opciones = await _apiServiceOpcionRespuesta.GetOpcionRespuestaById(pregunta.IdPregunta) ?? new List<OpcionRespuestaDto>();
 
                     // Convertir opciones a ViewModel
@@ -178,7 +175,7 @@ namespace AppSalval.ViewModels
         {
             try
             {
-                // ✅ 1. Validar datos antes de enviarlos
+                // 1. Validar datos antes de enviarlos
                 if (string.IsNullOrWhiteSpace(Titulo) || string.IsNullOrWhiteSpace(Descripcion))
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "El título y la descripción no pueden estar vacíos", "OK");
@@ -186,26 +183,29 @@ namespace AppSalval.ViewModels
                 }
 
                 var formulariosExistentes = await _apiServiceFormularios.GetFormularios();
+
+                //esta linea de codigo es un if, en caso de que exista formulario va a cargar el idFormulario mas alto, en caso de que no va a cargar un 0 
                 idFormulario = formulariosExistentes.Any() ? formulariosExistentes.Max(f => f.IdFormulario) : 0;
 
-                // ✅ 2. Crear objeto DTO con los datos del formulario
+                // 2. Crear objeto DTO con los datos del formulario
                 var nuevoFormulario = new FormularioDto(Titulo, Descripcion, FechaInicio, FechaFin, Habilitado, RequiereDatosPersonales);
                 if (PreguntasSeleccionadas.Count() > 0)
                 {
-                    // ✅ 3. Guardar el formulario en la API y obtener su ID
+                    //  3. Guardar el formulario en la API y obtener su ID
                     await _apiServiceFormularios.CreateFormulario(nuevoFormulario);
 
                 int idFormularioCreado = idFormulario + 1;
-                // ✅ 4. Validar si la creación del formulario falló
+
+                //  4. En caso de que sea 0 o menor significa que no existe ningun formulario
                 if (idFormularioCreado <= 0)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo guardar el formulario. ID recibido: {idFormularioCreado}", "OK");
                     return;
                 }
 
-                Console.WriteLine($"✅ Formulario creado con ID: {idFormularioCreado}");
+                Console.WriteLine($" Formulario creado con ID: {idFormularioCreado}");
 
-                // ✅ 5. Asociar las preguntas seleccionadas al formulario
+                // 5. Asociar las preguntas seleccionadas al formulario
                 
                 foreach (var pregunta in PreguntasSeleccionadas)
                 {
@@ -218,12 +218,12 @@ namespace AppSalval.ViewModels
 
                     if (!respuesta)
                     {
-                        Console.WriteLine($"❌ Error: No se pudo asociar PreguntaId {pregunta.PreguntaId} con FormularioId {idFormularioCreado}");
+                        Console.WriteLine($" Error: No se pudo asociar PreguntaId {pregunta.PreguntaId} con FormularioId {idFormularioCreado}");
                         await Application.Current.MainPage.DisplayAlert("Advertencia", $"No se pudo asociar la pregunta: {pregunta.TextoPregunta} al formulario", "OK");
                     }
                 }
 
-                // ✅ 6. Confirmación de éxito
+                // 6. Confirmación de éxito
                     await Application.Current.MainPage.DisplayAlert("Éxito", "Formulario guardado correctamente", "OK");
                     await _navigation.PushAsync(new GestionFormularios());
                 }

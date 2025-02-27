@@ -44,11 +44,6 @@
                 <Button Text="Ingresar" BackgroundColor="#57CC99" TextColor="White"
                         Clicked="OnLoginClicked"/> 
 
-                <!-- Botón Crear Cuenta -->
-                <Button Text="Crear una cuenta" 
-                        BackgroundColor="Transparent" 
-                        TextColor="#22577A" 
-                        Clicked="OnCreateAccountClicked"/>
 
                 <!-- Botón "¿Has olvidado tu contraseña?" -->
                 <Button Text="¿Has olvidado tu contraseña?" 

@@ -53,9 +53,9 @@
                             <ColumnDefinition Width="180"/>
                             <ColumnDefinition Width="180"/>
                             <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="180"/>
-                            <ColumnDefinition Width="*"/>
+                            
                         </Grid.ColumnDefinitions>
 
                         <!-- Encabezados de la tabla -->
@@ -119,24 +119,14 @@
                                Margin="5"
                                />
 
-                        <Label Text="Acciones" 
-                               Grid.Column="6" 
-                               FontAttributes="Bold" 
-                               FontSize="Small" 
-                               TextColor="SteelBlue"    
-                               HorizontalTextAlignment="Center"
-                               VerticalTextAlignment="Center"
-                               Margin="5"
-                               />
-
                         <BoxView Grid.Column="7" BackgroundColor="Transparent" />
 
                         <!-- Lista de elementos -->
-                        <CollectionView x:Name="ListaRespuestas" Grid.Row="1" Grid.ColumnSpan="8" ItemsSource="{Binding ListaRespuestas}">
+                        <CollectionView x:Name="ListaRespuestas" Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding ListaRespuestas}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate >
                                     <Frame BorderColor="LightGray" CornerRadius="0" Padding="5" Margin="0,0,0,10" >
-                                        <Grid ColumnDefinitions="180,180,180,180,180,180,*" RowDefinitions="Auto" Padding="0,0,0,0">
+                                        <Grid ColumnDefinitions="180,180,180,180,180,180" RowDefinitions="Auto" Padding="0,0,0,0">
                                             <!-- Identificación -->
                                             <Frame BorderColor="Black" Padding="5" Grid.Column="0" Margin="0,0,5,0">
                                                 <Label Text="{Binding Identificacion}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="SteelBlue" FontSize="Small" />
@@ -168,14 +158,7 @@
                                             </Frame>
 
                                             <!-- Botón para Ver Formulario -->
-                                            <Frame BorderColor="Black" Padding="5" Grid.Column="6" Margin="0,0,5,0">
-                                                <Button Text="Ver Formulario" 
-                                                        Command="{Binding Path=BindingContext.VerFormularioCommand, Source={x:Reference ListaRespuestas}}" 
-                                                        CommandParameter="{Binding .}" 
-                                                        BackgroundColor="#1E90FF" TextColor="White"
-                                                        FontSize="Small"
-                                                        HorizontalOptions="Center" />
-                                            </Frame>
+                                            
 
                                
 

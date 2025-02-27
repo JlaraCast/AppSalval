@@ -99,5 +99,11 @@ namespace AppSalval.ViewModels
             Task.Run(async () => await CargarPreguntas());
 
         }
+
+        public void OnPageReappearing()
+        {
+            Task.Run(async () => await CargarPreguntas());
+        }
+
     }
 }

@@ -89,22 +89,6 @@
                             </Picker.Items>
                         </Picker>
 
-                        <Label Text="Habilitado"
-                           Grid.Column="2"
-                           Grid.Row="1"
-                           FontSize="Medium"
-                           TextColor="SteelBlue" 
-                           HorizontalOptions="StartAndExpand"
-                           VerticalOptions="Center"
-                           Margin="0,0,15,0"/>
-
-                        <CheckBox x:Name="checkBoxObligatorio"
-                            Grid.Column="3"
-                            Grid.Row="1"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"
-                            Margin="20,0,0,0"/>
-
                         <!-- Label para respuestas -->
                         <Label Text="Respuestas:"
                            Grid.Column="0"
