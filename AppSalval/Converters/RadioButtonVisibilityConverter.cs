@@ -10,7 +10,7 @@ namespace AppSalval.Converters
         {
             if (value is string tipoPregunta)
             {
-                return tipoPregunta == "Seleccion única"; // ✅ Solo muestra RadioButton si es selección única
+                return tipoPregunta == "Selección Única"; // ✅ Solo muestra RadioButton si es selección única
             }
             return false;
         }

@@ -39,7 +39,7 @@ namespace AppSalval.Views
                 {
                     RecomendacionesContainer.Children.Add(new Label
                     {
-                        Text = $"? {rec}",
+                        Text = $" {rec}",
                         FontSize = 16,
                         TextColor = Colors.White,
                         Margin = new Thickness(5)
@@ -66,7 +66,7 @@ namespace AppSalval.Views
                 {
                     RiesgosContainer.Children.Add(new Label
                     {
-                        Text = $"? {riesgo}",
+                        Text = $" {riesgo}",
                         FontSize = 16,
                         TextColor = Colors.White,
                         Margin = new Thickness(5)
