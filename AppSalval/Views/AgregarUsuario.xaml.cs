@@ -25,6 +25,7 @@ namespace AppSalval.Views
         {
             await AddUserToApiAsync();
         }
+
         private async Task AddUserToApiAsync()
         {
             try
@@ -32,6 +33,12 @@ namespace AppSalval.Views
                 if (string.IsNullOrEmpty(EntryEmail.Text) || string.IsNullOrEmpty(EntryPassword.Text) || PickerRole.SelectedItem == null)
                 {
                     await DisplayAlert("Error", "Por favor, complete todos los campos.", "OK");
+                    return;
+                }
+
+                if (EntryPassword.Text.Length < 8)
+                {
+                    await DisplayAlert("Error", "La contraseña debe tener al menos 8 caracteres.", "OK");
                     return;
                 }
 
@@ -71,6 +78,7 @@ namespace AppSalval.Views
                 await DisplayAlert("Error", $"Error al conectar con la API: {ex.Message}", "OK");
             }
         }
+
 
         // Método para verificar si el correo ya está registrado
         private async Task<bool> IsEmailRegisteredAsync(string email)

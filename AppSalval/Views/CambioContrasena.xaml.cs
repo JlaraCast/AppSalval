@@ -36,6 +36,12 @@ namespace AppSalval.Views
                 return;
             }
 
+            if (nuevaContrasena.Length < 8)
+            {
+                await DisplayAlert("Error", "La contraseña debe tener al menos 8 caracteres.", "OK");
+                return;
+            }
+
             // Obtener usuario por correo
             var usuario = await ObtenerUsuarioPorCorreo(_correo);
 
@@ -85,6 +91,16 @@ namespace AppSalval.Views
             var response = await client.PutAsync($"{ApiUrl}/{usuario.IdUsuario}", content);
 
             return response.IsSuccessStatusCode;
+        }
+
+        private async void OnCancelClicked(object sender, EventArgs e)
+        {
+            bool confirm = await DisplayAlert("Confirmación", "¿Está seguro de que desea cancelar?", "Sí", "No");
+
+            if (confirm)
+            {
+                await Navigation.PushAsync(new LoginPage());
+            }
         }
     }
 }
