@@ -7,6 +7,7 @@ namespace AppSalval.Views
     public partial class LoginPage : ContentPage
     {
         private readonly UsuarioController _usuarioController;
+        public static string UserRole { get; set; }
 
         public LoginPage()
         {
@@ -27,6 +28,7 @@ namespace AppSalval.Views
 
             if (usuarioEncontrado != null)
             {
+                UserRole = usuarioEncontrado.IdRol.ToString();
                 // Redirigir según el rol del usuario
                 switch (usuarioEncontrado.IdRol)
                 {

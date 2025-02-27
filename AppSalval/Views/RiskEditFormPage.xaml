@@ -10,25 +10,25 @@
 
         <HorizontalStackLayout Spacing="20">
             <Image Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
-            <Label Text="Desarrollador" FontSize="18" VerticalOptions="Center" TextColor="SteelBlue"/>
+            <Label Text="Desarrollador" FontSize="18" VerticalOptions="Center" TextColor="#25587b"/>
         </HorizontalStackLayout>
 
         <!-- Contenedor del formulario -->
         <Frame BackgroundColor="White" CornerRadius="25" Padding="20" BorderColor="Black" WidthRequest="350" Margin="50">
             <VerticalStackLayout>
 
-                <Label Text="Editar Tipo de Riesgo" FontSize="20" FontAttributes="Bold" TextColor="SteelBlue" HorizontalOptions="Center"/>
+                <Label Text="Editar Tipo de Riesgo" FontSize="20" FontAttributes="Bold" TextColor="#25587b" HorizontalOptions="Center"/>
 
 
                 <!-- Campo Tipo de Riesgo -->
                 <HorizontalStackLayout Margin="10">
-                    <Label Text="Tipo de Riesgo:" FontSize="16" TextColor="SteelBlue" VerticalOptions="Center"/>
-                    <Entry Text="{Binding TextoFactor, Mode=TwoWay}" WidthRequest="250"/>
+                    <Label Text="Tipo de Riesgo:" FontSize="16" TextColor="#25587b" VerticalOptions="Center"/>
+                    <Editor Text="{Binding TextoFactor, Mode=TwoWay}" AutoSize="TextChanges" HorizontalOptions="FillAndExpand" WidthRequest="150"/>
                 </HorizontalStackLayout>
 
                 <!-- Campo Estado -->
                 <HorizontalStackLayout Margin="10">
-                    <Label Text="Estado:" FontSize="16" TextColor="SteelBlue" VerticalOptions="Center"/>
+                    <Label Text="Estado:" FontSize="16" TextColor="#25587b" VerticalOptions="Center"/>
                     <Picker SelectedItem="{Binding Estado, Mode=TwoWay}" WidthRequest="250">
                         <Picker.Items>
                             <x:String>Activo</x:String>
@@ -40,13 +40,14 @@
                 <!-- Botones -->
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="10">
                     <Button Text="Volver"
-                         BackgroundColor="MediumSeaGreen"
+                         BackgroundColor="#7ee698"
                          TextColor="White"
                          CornerRadius="10"
-                         WidthRequest="100"/>
+                         WidthRequest="100"
+                         Clicked="OnCancelClicked"/>
 
                     <Button Text="Guardar"
-                         BackgroundColor="MediumSeaGreen"
+                         BackgroundColor="#7ee698"
                          TextColor="White"
                          CornerRadius="10"
                          WidthRequest="100"

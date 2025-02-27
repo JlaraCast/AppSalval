@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AppSalval.DTOS_API;
 using AppSalval.Services;
+using AppSalval.Views;
 
 namespace AppSalval.ViewModels
 {
@@ -54,7 +55,7 @@ namespace AppSalval.ViewModels
             if (actualizado)
             {
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Recomendación actualizada", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.Navigation.PushAsync(new RecomPage());
             }
             else
             {

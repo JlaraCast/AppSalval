@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AppSalval.DTOS_API;
 using AppSalval.Services;
+using AppSalval.Views;
 
 namespace AppSalval.ViewModels
 {
@@ -125,6 +126,7 @@ namespace AppSalval.ViewModels
                 Recomendaciones.Remove(recomendacion);
                 _todasRecomendaciones.Remove(recomendacion);
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Recomendación eliminada", "OK");
+                await Application.Current.MainPage.Navigation.PushAsync(new RecomPage());
             }
             else
             {

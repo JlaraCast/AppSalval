@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AppSalval.DTOS_API;
 using AppSalval.Services;
+using AppSalval.Views;
 
 namespace AppSalval.ViewModels
 {
@@ -129,6 +130,7 @@ namespace AppSalval.ViewModels
                 Factores.Remove(factor);
                 _todosFactores.Remove(factor);
                 await Application.Current.MainPage.DisplayAlert("Éxito", "Factor eliminado", "OK");
+                await Application.Current.MainPage.Navigation.PushAsync(new RiskPage());
             }
             else
             {

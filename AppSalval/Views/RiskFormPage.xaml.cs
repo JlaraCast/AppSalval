@@ -10,6 +10,11 @@ public partial class RiskFormPage : ContentPage
         BindingContext = new RiskFormViewModel();
     }
 
+    private async void OnCancelClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();  // Regresar a la vista anterior
+    }
+
     private void EstadoPicker_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (BindingContext is RiskFormViewModel viewModel && sender is Picker picker)

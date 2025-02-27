@@ -85,6 +85,12 @@ namespace AppSalval.ViewModels
                     success ? "Factor de riesgo agregado correctamente" : "No se pudo agregar el factor",
                     "OK"
                 );
+
+                if (success)
+                {
+                    // Usando Shell para regresar a la página anterior
+                    await Shell.Current.GoToAsync("..");
+                }
             }
             catch (Exception ex)
             {

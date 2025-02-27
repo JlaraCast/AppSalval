@@ -20,7 +20,9 @@
                      CommandParameter="{Binding .}" 
                      BackgroundColor="Green" TextColor="White"
                      FontSize="Small"
-                     HorizontalOptions="Start" VerticalOptions="Center" />
+                     HorizontalOptions="Start" VerticalOptions="Center" 
+                     IsEnabled="{Binding CanAdd}"
+                        />
                 </Grid>
             
             <CollectionView x:Name="ListaPreguntas"
