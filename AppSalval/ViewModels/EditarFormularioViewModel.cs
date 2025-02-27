@@ -125,30 +125,6 @@ namespace AppSalval.ViewModels
             }
         }
 
-        private async void LoadPreguntas(int idFormulario)
-        {
-            try
-            {
-                _preguntas = await _apiServiceFormulario.GetPreguntasByFormulario(idFormulario);
-
-                if (_preguntas != null && _preguntas.Count > 0)
-                {
-                   
-
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Información", "No hay preguntas en este formulario.", "OK");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Error al cargar preguntas: {ex.Message}", "OK");
-
-            }
-        }
-
         public void ActualizarPreguntasSeleccionadas(PreguntaViewModel pregunta)
         {
             if (pregunta == null) return;
@@ -259,47 +235,4 @@ namespace AppSalval.ViewModels
 
 }
 
-    public class PreguntaViewModel
-    {
-        public int PreguntaId { get; set; }
-        public string TextoPregunta { get; set; }
-        public ObservableCollection<OpcionRespuestaViewModel> Opciones { get; set; } = new ObservableCollection<OpcionRespuestaViewModel>();
-
-        // ✅ Nueva propiedad para indicar si la pregunta está seleccionada
-
-        private bool _isSelected;
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set
-            {
-                _isSelected = value;
-                OnPropertyChanged(nameof(IsSelected));
-            }
-        }
-
-        // ✅ Command para manejar la selección de preguntas
-        public ICommand SeleccionarPreguntaCommand { get; }
-
-        public PreguntaViewModel()
-        {
-            SeleccionarPreguntaCommand = new Command(() => IsSelected = !IsSelected);
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
     
-    }
-
-    public class OpcionRespuestaViewModel
-    {
-        public int OpcionId { get; set; }
-        public string NombreOpcion { get; set; }
-        public int IdPregunta { get; set; }
-        public bool IsSelected { get; set; }
-    }

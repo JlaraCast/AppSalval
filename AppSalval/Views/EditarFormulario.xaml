@@ -3,7 +3,7 @@
              x:Class="AppSalval.Views.EditarFormulario"
              xmlns:viewModels="clr-namespace:AppSalval.ViewModels"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             Title="EditarrFormulario">
+             Title="">
 
     <ScrollView>
         <VerticalStackLayout Spacing="10" >
