@@ -7,10 +7,16 @@ using AppSalval.DTOS_API;
 
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para obtener las opciones de respuesta de una pregunta desde la API.
+    /// </summary>
     public class ApiServiceOpcionesRespuesta
     {
         private readonly HttpClient _httpClient;
 
+        /// <summary>
+        /// Constructor que inicializa el cliente HTTP con la dirección base de la API.
+        /// </summary>
         public ApiServiceOpcionesRespuesta()
         {
             _httpClient = new HttpClient
@@ -22,6 +28,8 @@ namespace AppSalval.Services
         /// <summary>
         /// Obtiene las opciones de respuesta de una pregunta por su ID.
         /// </summary>
+        /// <param name="idPregunta">ID de la pregunta.</param>
+        /// <returns>Lista de opciones de respuesta.</returns>
         public async Task<List<OpcionRespuestaDto>> GetOpcionesByPregunta(int idPregunta)
         {
             if (idPregunta <= 0)

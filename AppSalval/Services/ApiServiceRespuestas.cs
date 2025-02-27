@@ -8,19 +8,27 @@ using AppSalval.DTOS_API;
 using AppSalval.Models_Api;
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para interactuar con la API de respuestas.
+    /// </summary>
     public class ApiServiceRespuestas
     {
         // Cliente HTTP para conectar con la API
         private readonly HttpClient _httpClient;
 
-        // Constructor: Configura la URL base de la API
+        /// <summary>
+        /// Constructor: Configura la URL base de la API.
+        /// </summary>
         public ApiServiceRespuestas()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/Respuesta"); // ⚠️ Cambia la URL si es diferente
         }
 
-        // ✅ Método para obtener la lista de respuestas desde la API
+        /// <summary>
+        /// Obtiene la lista de respuestas desde la API.
+        /// </summary>
+        /// <returns>Lista de respuestas.</returns>
         public async Task<List<RespuestasDTO>> GetRespuestas()
         {
             try
@@ -50,7 +58,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener una respuesta por su ID
+        /// <summary>
+        /// Obtiene una respuesta por su ID.
+        /// </summary>
+        /// <param name="id">ID de la respuesta.</param>
+        /// <returns>Respuesta correspondiente al ID.</returns>
         public async Task<RespuestasDTO> GetRespuestaById(int id)
         {
             try
@@ -80,7 +92,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para editar una respuesta existente
+        /// <summary>
+        /// Edita una respuesta existente.
+        /// </summary>
+        /// <param name="respuesta">Objeto de respuesta a editar.</param>
+        /// <returns>Verdadero si la edición fue exitosa, falso en caso contrario.</returns>
         public async Task<bool> EditRespuesta(RespuestasDTO respuesta)
         {
             try
@@ -117,6 +133,12 @@ namespace AppSalval.Services
                 return false;
             }
         }
+
+        /// <summary>
+        /// Elimina una respuesta por su ID.
+        /// </summary>
+        /// <param name="idRespuesta">ID de la respuesta a eliminar.</param>
+        /// <returns>Verdadero si la eliminación fue exitosa, falso en caso contrario.</returns>
         public async Task<bool> DeleteRespuestaAsync(int idRespuesta)
         {
             try
@@ -138,6 +160,5 @@ namespace AppSalval.Services
                 return false;
             }
         }
-
     }
 }

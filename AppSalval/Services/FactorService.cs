@@ -8,17 +8,27 @@ using AppSalval.DTOS_API;
 
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para gestionar los factores de riesgo.
+    /// </summary>
     public class FactorService
     {
         private readonly HttpClient _httpClient;
         private const string BaseUrl = "http://savalapi.somee.com/api/FactorRiesgo";
 
+        /// <summary>
+        /// Constructor de la clase FactorService.
+        /// </summary>
         public FactorService()
         {
             _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
-        // Agregar un factor de riesgo
+        /// <summary>
+        /// Agrega un nuevo factor de riesgo.
+        /// </summary>
+        /// <param name="nuevoFactor">El nuevo factor de riesgo a agregar.</param>
+        /// <returns>True si el factor fue agregado exitosamente, false en caso contrario.</returns>
         public async Task<bool> AddFactorAsync(FactorRiesgo nuevoFactor)
         {
             try
@@ -41,7 +51,10 @@ namespace AppSalval.Services
             }
         }
 
-        // Obtener la lista de factores de riesgo
+        /// <summary>
+        /// Obtiene la lista de factores de riesgo.
+        /// </summary>
+        /// <returns>Una lista de factores de riesgo.</returns>
         public async Task<List<FactorRiesgo>> GetFactoresAsync()
         {
             try
@@ -54,7 +67,11 @@ namespace AppSalval.Services
             }
         }
 
-        // Eliminar (deshabilitar) un factor de riesgo (Soft Delete)
+        /// <summary>
+        /// Elimina (deshabilita) un factor de riesgo (Soft Delete).
+        /// </summary>
+        /// <param name="factor">El factor de riesgo a eliminar.</param>
+        /// <returns>True si el factor fue eliminado exitosamente, false en caso contrario.</returns>
         public async Task<bool> DeleteFactorAsync(FactorRiesgo factor)
         {
             try
@@ -80,7 +97,11 @@ namespace AppSalval.Services
             }
         }
 
-        // Actualizar un factor de riesgo
+        /// <summary>
+        /// Actualiza un factor de riesgo.
+        /// </summary>
+        /// <param name="factor">El factor de riesgo a actualizar.</param>
+        /// <returns>True si el factor fue actualizado exitosamente, false en caso contrario.</returns>
         public async Task<bool> UpdateFactorAsync(FactorRiesgo factor)
         {
             try
@@ -95,7 +116,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener un factor de riesgo por su ID
+        /// <summary>
+        /// Obtiene un factor de riesgo por su ID.
+        /// </summary>
+        /// <param name="idFactor">El ID del factor de riesgo.</param>
+        /// <returns>El factor de riesgo correspondiente al ID proporcionado.</returns>
         public async Task<FactorRiesgo> GetFactorByIdAsync(int idFactor)
         {
             try
@@ -122,6 +147,5 @@ namespace AppSalval.Services
                 return null;
             }
         }
-
     }
 }

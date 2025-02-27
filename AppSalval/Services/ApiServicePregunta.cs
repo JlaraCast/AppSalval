@@ -13,14 +13,19 @@ namespace AppSalval.Services
         // Cliente HTTP para conectar con la API
         private readonly HttpClient _httpClient;
 
-        // Constructor: Configura la URL base de la API
+        /// <summary>
+        /// Constructor: Configura la URL base de la API
+        /// </summary>
         public ApiServicePregunta()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/Pregunta"); // ⚠️ Cambia la URL si es diferente
         }
 
-        // ✅ Método para obtener la lista de preguntas desde la API
+        /// <summary>
+        /// Obtiene la lista de preguntas desde la API
+        /// </summary>
+        /// <returns>Lista de preguntas</returns>
         public async Task<List<PreguntaDto>> GetPreguntas()
         {
             try
@@ -50,7 +55,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener una pregunta por su ID
+        /// <summary>
+        /// Obtiene una pregunta por su ID
+        /// </summary>
+        /// <param name="id">ID de la pregunta</param>
+        /// <returns>Pregunta correspondiente al ID</returns>
         public async Task<PreguntaDto> GetPreguntaById(int id)
         {
             try
@@ -80,7 +89,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para editar una pregunta existente
+        /// <summary>
+        /// Edita una pregunta existente
+        /// </summary>
+        /// <param name="pregunta">Objeto PreguntaDto con los datos a editar</param>
+        /// <returns>True si la edición fue exitosa, false en caso contrario</returns>
         public async Task<bool> EditPregunta(PreguntaDto pregunta)
         {
             try
@@ -118,6 +131,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Elimina una pregunta por su ID
+        /// </summary>
+        /// <param name="idPregunta">ID de la pregunta a eliminar</param>
+        /// <returns>True si la eliminación fue exitosa, false en caso contrario</returns>
         public async Task<bool> DeletePreguntaAsync(int idPregunta)
         {
             try
@@ -139,7 +157,12 @@ namespace AppSalval.Services
                 return false;
             }
         }
-        // ✅ Método para agregar una nueva pregunta
+
+        /// <summary>
+        /// Agrega una nueva pregunta
+        /// </summary>
+        /// <param name="nuevaPregunta">Objeto PreguntaDto con los datos de la nueva pregunta</param>
+        /// <returns>True si la adición fue exitosa, false en caso contrario</returns>
         public async Task<bool> AddPregunta(PreguntaDto nuevaPregunta)
         {
             try

@@ -15,11 +15,20 @@ namespace AppSalval.Services
         private readonly HttpClient _httpClient;
         private const string BaseUrl = "http://savalapi.somee.com/api/Recomendacion";
 
+        /// <summary>
+        /// Constructor de la clase RecomService.
+        /// Inicializa el HttpClient con la URL base de la API.
+        /// </summary>
         public RecomService()
         {
             _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
+        /// <summary>
+        /// Agrega una nueva recomendación a través de una solicitud POST a la API.
+        /// </summary>
+        /// <param name="nuevaRecomendacion">La nueva recomendación a agregar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> AddRecomendacionAsync(Recomendacion nuevaRecomendacion)
         {
             try
@@ -42,6 +51,10 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Obtiene la lista de recomendaciones a través de una solicitud GET a la API.
+        /// </summary>
+        /// <returns>Una lista de recomendaciones.</returns>
         public async Task<List<Recomendacion>> GetRecomendacionesAsync()
         {
             try
@@ -54,6 +67,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Elimina una recomendación a través de una solicitud DELETE a la API.
+        /// </summary>
+        /// <param name="recomendacion">La recomendación a eliminar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> DeleteRecomendacionAsync(Recomendacion recomendacion)
         {
             try
@@ -79,7 +97,11 @@ namespace AppSalval.Services
             }
         }
 
-
+        /// <summary>
+        /// Actualiza una recomendación a través de una solicitud PUT a la API.
+        /// </summary>
+        /// <param name="recomendacion">La recomendación a actualizar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> UpdateRecomendacionAsync(Recomendacion recomendacion)
         {
             try
@@ -94,7 +116,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener una recomendación por su ID
+        /// <summary>
+        /// Obtiene una recomendación por su ID a través de una solicitud GET a la API.
+        /// </summary>
+        /// <param name="idRecomendacion">El ID de la recomendación a obtener.</param>
+        /// <returns>La recomendación obtenida o null si no se encuentra.</returns>
         public async Task<Recomendacion> GetRecomendacionByIdAsync(int idRecomendacion)
         {
             try
@@ -121,6 +147,5 @@ namespace AppSalval.Services
                 return null;
             }
         }
-
     }
 }

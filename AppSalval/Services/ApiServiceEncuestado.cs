@@ -9,20 +9,29 @@ using AppSalval.Models_Api;
 
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para interactuar con la API de Encuestados.
+    /// </summary>
     public class ApiServiceEncuestado
     {
         // Cliente HTTP para conectar con la API
         private readonly HttpClient _httpClient;
 
-        // Constructor: Configura la URL base de la API
+        /// <summary>
+        /// Constructor: Configura la URL base de la API.
+        /// </summary>
         public ApiServiceEncuestado()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/Encuestado"); // ⚠️ Cambia la URL si es diferente
         }
 
-        // ✅ Método para obtener el encuestado por su ID
-        public async Task<EncuestadoDto> GetEncuestado(String idEncuestado)
+        /// <summary>
+        /// Obtiene un encuestado por su ID.
+        /// </summary>
+        /// <param name="idEncuestado">ID del encuestado.</param>
+        /// <returns>EncuestadoDto</returns>
+        public async Task<EncuestadoDto> GetEncuestado(string idEncuestado)
         {
             try
             {
@@ -51,7 +60,10 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener todos los encuestados
+        /// <summary>
+        /// Obtiene todos los encuestados.
+        /// </summary>
+        /// <returns>Lista de EncuestadoDto</returns>
         public async Task<List<EncuestadoDto>> GetEncuestados()
         {
             try
@@ -81,7 +93,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para editar un encuestado existente
+        /// <summary>
+        /// Edita un encuestado existente.
+        /// </summary>
+        /// <param name="encuestado">Objeto encuestado con los datos actualizados.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public async Task<bool> EditEncuestado(EncuestadoDto encuestado)
         {
             try
@@ -119,7 +135,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para eliminar un encuestado
+        /// <summary>
+        /// Elimina un encuestado por su ID.
+        /// </summary>
+        /// <param name="idEncuestado">ID del encuestado a eliminar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public async Task<bool> DeleteEncuestadoAsync(int idEncuestado)
         {
             try
@@ -142,6 +162,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Agrega un nuevo encuestado.
+        /// </summary>
+        /// <param name="encuestado">Objeto encuestado a agregar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public async Task<bool> AddEncuestado(EncuestadoDto encuestado)
         {
             try

@@ -10,16 +10,27 @@ using AppSalval.DTOS_API;
 
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para manejar las operaciones relacionadas con FormularioPregunta en la API.
+    /// </summary>
     class ApiServiceFormularioPregunta
     {
         private readonly HttpClient _httpClient;
         private const string BaseUrl = "http://savalapi.somee.com/api/";
 
+        /// <summary>
+        /// Constructor que inicializa el HttpClient con la URL base de la API.
+        /// </summary>
         public ApiServiceFormularioPregunta()
         {
             _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
         }
 
+        /// <summary>
+        /// Agrega una nueva relación Formulario-Pregunta a la API.
+        /// </summary>
+        /// <param name="formularioPregunta">Objeto FormularioPreguntaDtoS que contiene los datos de la relación.</param>
+        /// <returns>Devuelve true si la operación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> AddFormularioPreguntaAsync(FormularioPreguntaDtoS formularioPregunta)
         {
             try
@@ -50,9 +61,9 @@ namespace AppSalval.Services
         }
 
         /// <summary>
-        /// Obtiene las preguntas de los formularios pero aun no sirve porque falta en la api 
+        /// Obtiene todas las relaciones Formulario-Pregunta desde la API.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Lista de objetos FormularioPreguntaDtoS.</returns>
         public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasAsync()
         {
             try
@@ -65,6 +76,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Elimina una relación Formulario-Pregunta de la API.
+        /// </summary>
+        /// <param name="FormulariopreguntaId">ID de la relación Formulario-Pregunta a eliminar.</param>
+        /// <returns>Devuelve true si la operación fue exitosa, de lo contrario false.</returns>
         public async Task<bool> DeleteFormularioPreguntaAsync(int FormulariopreguntaId)
         {
             try
@@ -86,6 +102,12 @@ namespace AppSalval.Services
                 return false;
             }
         }
+
+        /// <summary>
+        /// Obtiene las relaciones Formulario-Pregunta por ID de formulario desde la API.
+        /// </summary>
+        /// <param name="formularioId">ID del formulario.</param>
+        /// <returns>Lista de objetos FormularioPreguntaDtoS.</returns>
         public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasByFormularioIdAsync(int formularioId)
         {
             try
@@ -97,6 +119,12 @@ namespace AppSalval.Services
                 return new List<FormularioPreguntaDtoS>();
             }
         }
+
+        /// <summary>
+        /// Obtiene las relaciones Formulario-Pregunta por ID de pregunta desde la API.
+        /// </summary>
+        /// <param name="preguntaId">ID de la pregunta.</param>
+        /// <returns>Lista de objetos FormularioPreguntaDtoS.</returns>
         public async Task<List<FormularioPreguntaDtoS>> GetFormularioPreguntasByPreguntaIdAsync(int preguntaId)
         {
             try
@@ -109,6 +137,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Obtiene las preguntas asociadas a un formulario específico desde la API.
+        /// </summary>
+        /// <param name="idFormulario">ID del formulario.</param>
+        /// <returns>Lista de objetos FormularioPreguntaDto.</returns>
         public async Task<List<FormularioPreguntaDto>> GetPreguntasByFormulario(int idFormulario)
         {
             if (idFormulario <= 0)
@@ -139,9 +172,5 @@ namespace AppSalval.Services
                 return null;
             }
         }
-
-
-
-
     }
 }

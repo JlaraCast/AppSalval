@@ -25,7 +25,10 @@ namespace AppSalval.Services
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        // ✅ Método para obtener la lista de formularios desde la API en Somee
+        /// <summary>
+        /// Obtiene la lista de formularios desde la API en Somee.
+        /// </summary>
+        /// <returns>Lista de objetos FormularioDto.</returns>
         public async Task<List<FormularioDto>> GetFormularios()
         {
             try
@@ -39,7 +42,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener un formulario por su ID desde Somee
+        /// <summary>
+        /// Obtiene un formulario por su ID desde Somee.
+        /// </summary>
+        /// <param name="id">ID del formulario a obtener.</param>
+        /// <returns>Objeto FormularioDto si se encuentra, de lo contrario null.</returns>
         public async Task<FormularioDto?> GetFormularioById(int id)
         {
             try
@@ -66,7 +73,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para editar un formulario existente en Somee
+        /// <summary>
+        /// Edita un formulario existente en Somee.
+        /// </summary>
+        /// <param name="formulario">Objeto FormularioDto con los datos actualizados.</param>
+        /// <returns>True si la edición fue exitosa, de lo contrario false.</returns>
         public async Task<bool> EditFormulario(FormularioDto formulario)
         {
             try
@@ -93,7 +104,12 @@ namespace AppSalval.Services
                 return false;
             }
         }
-        // ✅ Método para crear un nuevo formulario en Somee
+
+        /// <summary>
+        /// Crea un nuevo formulario en Somee.
+        /// </summary>
+        /// <param name="formulario">Objeto FormularioDto con los datos del nuevo formulario.</param>
+        /// <returns>ID del formulario creado si es exitoso, de lo contrario un valor negativo indicando el error.</returns>
         public async Task<int> CreateFormulario(FormularioDto formulario)
         {
             try
@@ -129,12 +145,5 @@ namespace AppSalval.Services
                 return -2;  // ⬅️ Indicar error crítico
             }
         }
-
-
-
-
-
-
-
     }
 }

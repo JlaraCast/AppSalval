@@ -9,19 +9,27 @@ using AppSalval.DTOS_API;
 
 namespace AppSalval.Services
 {
+    /// <summary>
+    /// Servicio para interactuar con la API de opciones de respuesta.
+    /// </summary>
     public class ApiServiceOpcionRespuesta
     {
         // Cliente HTTP para conectar con la API
         private readonly HttpClient _httpClient;
 
-        // Constructor: Configura la URL base de la API
+        /// <summary>
+        /// Constructor: Configura la URL base de la API.
+        /// </summary>
         public ApiServiceOpcionRespuesta()
         {
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri("http://savalapi.somee.com/api/OpcionRespuesta"); // ⚠️ Cambia la URL si es diferente
         }
 
-        // ✅ Método para obtener la lista de opciones de respuesta desde la API
+        /// <summary>
+        /// Obtiene la lista de opciones de respuesta desde la API.
+        /// </summary>
+        /// <returns>Lista de opciones de respuesta.</returns>
         public async Task<List<OpcionRespuestaDto>> GetOpcionRespuestas()
         {
             try
@@ -51,8 +59,11 @@ namespace AppSalval.Services
             }
         }
 
-
-        // ✅ Método para obtener Varias opción de respuesta por su ID pregunta
+        /// <summary>
+        /// Obtiene varias opciones de respuesta por su ID de pregunta.
+        /// </summary>
+        /// <param name="id">ID de la pregunta.</param>
+        /// <returns>Lista de opciones de respuesta filtradas por ID de pregunta.</returns>
         public async Task<List<OpcionRespuestaDto>> GetOpcionRespuestaById(int id)
         {
             try
@@ -71,7 +82,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para obtener una opción de respuesta por su ID de opción
+        /// <summary>
+        /// Obtiene una opción de respuesta por su ID de opción.
+        /// </summary>
+        /// <param name="idOpcion">ID de la opción de respuesta.</param>
+        /// <returns>Opción de respuesta correspondiente al ID proporcionado.</returns>
         public async Task<OpcionRespuestaDto> GetOpcionRespuestaByIdOpcion(int idOpcion)
         {
             try
@@ -100,7 +115,12 @@ namespace AppSalval.Services
                 return null;
             }
         }
-        // ✅ Método para editar una opción de respuesta existente
+
+        /// <summary>
+        /// Edita una opción de respuesta existente.
+        /// </summary>
+        /// <param name="opcionRespuesta">Objeto de opción de respuesta a editar.</param>
+        /// <returns>Verdadero si la edición fue exitosa, falso en caso contrario.</returns>
         public async Task<bool> EditOpcionRespuesta(OpcionRespuestaDto opcionRespuesta)
         {
             try
@@ -138,7 +158,11 @@ namespace AppSalval.Services
             }
         }
 
-        // ✅ Método para eliminar una opción de respuesta
+        /// <summary>
+        /// Elimina una opción de respuesta.
+        /// </summary>
+        /// <param name="idOpcionRespuesta">ID de la opción de respuesta a eliminar.</param>
+        /// <returns>Verdadero si la eliminación fue exitosa, falso en caso contrario.</returns>
         public async Task<bool> DeleteOpcionRespuestaAsync(int idOpcionRespuesta)
         {
             try
@@ -160,7 +184,12 @@ namespace AppSalval.Services
                 return false;
             }
         }
-        // ✅ Método para agregar una nueva opción de respuesta
+
+        /// <summary>
+        /// Agrega una nueva opción de respuesta.
+        /// </summary>
+        /// <param name="nuevaOpcionRespuesta">Objeto de la nueva opción de respuesta a agregar.</param>
+        /// <returns>Objeto de la opción de respuesta agregada.</returns>
         public async Task<OpcionRespuestaDto> AddOpcionRespuesta(OpcionRespuestaDto nuevaOpcionRespuesta)
         {
             try
@@ -198,6 +227,12 @@ namespace AppSalval.Services
                 return null;
             }
         }
+
+        /// <summary>
+        /// Obtiene las opciones de respuesta por ID de pregunta.
+        /// </summary>
+        /// <param name="idPregunta">ID de la pregunta.</param>
+        /// <returns>Lista de opciones de respuesta correspondientes al ID de pregunta.</returns>
         public async Task<List<OpcionRespuestaDto>> GetOpcionRespuestasByPreguntaId(int idPregunta)
         {
             try
@@ -227,6 +262,11 @@ namespace AppSalval.Services
             }
         }
 
+        /// <summary>
+        /// Obtiene las opciones de respuesta válidas por ID de pregunta.
+        /// </summary>
+        /// <param name="idPregunta">ID de la pregunta.</param>
+        /// <returns>Lista de opciones de respuesta válidas correspondientes al ID de pregunta.</returns>
         public async Task<List<OpcionRespuestaDto>> GetValidOpcionRespuestasByPreguntaId(int idPregunta)
         {
             try
@@ -280,9 +320,5 @@ namespace AppSalval.Services
                 return new List<OpcionRespuestaDto>();
             }
         }
-
-
-
-
     }
 }

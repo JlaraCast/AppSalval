@@ -9,11 +9,20 @@ public class UserService
     private readonly HttpClient _httpClient;
     private const string BaseUrl = "http://savalapi.somee.com/api/";
 
+    /// <summary>
+    /// Constructor de la clase UserService.
+    /// Inicializa una nueva instancia de HttpClient con la URL base.
+    /// </summary>
     public UserService()
     {
         _httpClient = new HttpClient { BaseAddress = new Uri(BaseUrl) };
     }
 
+    /// <summary>
+    /// Agrega un nuevo usuario.
+    /// </summary>
+    /// <param name="newUser">El objeto Usuario que se va a agregar.</param>
+    /// <returns>True si el usuario se agregó correctamente, de lo contrario false.</returns>
     public async Task<bool> AddUserAsync(Usuario newUser)
     {
         try
@@ -36,6 +45,10 @@ public class UserService
         }
     }
 
+    /// <summary>
+    /// Obtiene la lista de usuarios.
+    /// </summary>
+    /// <returns>Una lista de objetos Usuario.</returns>
     public async Task<List<Usuario>> GetUsersAsync()
     {
         try
@@ -48,6 +61,11 @@ public class UserService
         }
     }
 
+    /// <summary>
+    /// Elimina un usuario por su ID.
+    /// </summary>
+    /// <param name="userId">El ID del usuario que se va a eliminar.</param>
+    /// <returns>True si el usuario se eliminó correctamente, de lo contrario false.</returns>
     public async Task<bool> DeleteUserAsync(int userId)
     {
         try
@@ -70,6 +88,11 @@ public class UserService
         }
     }
 
+    /// <summary>
+    /// Actualiza un usuario existente.
+    /// </summary>
+    /// <param name="usuario">El objeto Usuario con los datos actualizados.</param>
+    /// <returns>True si el usuario se actualizó correctamente, de lo contrario false.</returns>
     public async Task<bool> UpdateUserAsync(Usuario usuario)
     {
         try
@@ -85,6 +108,11 @@ public class UserService
         }
     }
 
+    /// <summary>
+    /// Obtiene un usuario por su ID.
+    /// </summary>
+    /// <param name="userId">El ID del usuario que se va a obtener.</param>
+    /// <returns>El objeto Usuario si se encuentra, de lo contrario null.</returns>
     public async Task<Usuario> GetUserByIdAsync(int userId)
     {
         try
@@ -105,6 +133,12 @@ public class UserService
         }
     }
 
+    /// <summary>
+    /// Cambia la contraseña de un usuario.
+    /// </summary>
+    /// <param name="userId">El ID del usuario cuya contraseña se va a cambiar.</param>
+    /// <param name="nuevaContrasena">La nueva contraseña.</param>
+    /// <returns>True si la contraseña se cambió correctamente, de lo contrario false.</returns>
     public async Task<bool> ChangePasswordAsync(int userId, string nuevaContrasena)
     {
         try
@@ -112,7 +146,7 @@ public class UserService
             // Crear el objeto que contiene los datos de la contraseña
             var data = new
             {
-                us= userId,
+                us = userId,
                 nuevaContrasena = nuevaContrasena
             };
 
