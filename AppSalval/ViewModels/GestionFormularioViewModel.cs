@@ -47,7 +47,18 @@ namespace AppSalval.ViewModels
 
             BtnAgregar = new Command(async () =>
             {
+<<<<<<< Updated upstream
                 await _navigation.PushAsync(new CrearFormulario());
+=======
+                if (LoginPage.UserRole == "3") // Si el usuario es Desarrollador (IdRol = 3)
+                {
+                    await _navigation.PushAsync(new InicioDesarrollador());
+                }
+                else
+                {
+                    await _navigation.PushAsync(new InicioAdmin());
+                }
+>>>>>>> Stashed changes
             });
         }
 

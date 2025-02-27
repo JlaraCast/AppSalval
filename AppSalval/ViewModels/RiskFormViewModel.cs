@@ -68,9 +68,16 @@ namespace AppSalval.ViewModels
         {
             try
             {
+                // 🔹 Validar que el campo no esté vacío
+                if (string.IsNullOrWhiteSpace(TextoFactor))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "El campo 'Tipo de Riesgo' es obligatorio.", "OK");
+                    return;
+                }
+
                 var nuevoFactor = new FactorRiesgo
                 {
-                    TextoFactor = TextoFactor, // 🔹 Asegurar que el binding es correcto
+                    TextoFactor = TextoFactor,
                     Habilitado = Habilitado
                 };
 

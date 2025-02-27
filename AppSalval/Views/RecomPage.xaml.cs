@@ -12,6 +12,13 @@ public partial class RecomPage : ContentPage
 
     private async void volver(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new InicioDesarrollador());
+        if (LoginPage.UserRole == "3") // Si el usuario es Desarrollador (IdRol = 3)
+        {
+            await Navigation.PushAsync(new InicioDesarrollador());
+        }
+        else
+        {
+            await Navigation.PushAsync(new InicioAdmin());
+        }
     }
 }

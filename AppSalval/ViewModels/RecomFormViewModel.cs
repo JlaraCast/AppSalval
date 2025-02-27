@@ -67,24 +67,39 @@ namespace AppSalval.ViewModels
 
         private async Task AgregarRecomendacionAsync()
         {
-            var nuevaRecomendacion = new Recomendacion
+            try
             {
-                TextoRecomendacion = Descripcion,
-                Habilitado = Habilitado
-            };
+                // 🔹 Validar que la descripción no esté vacía
+                if (string.IsNullOrWhiteSpace(Descripcion))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "El campo 'Descripción' es obligatorio.", "OK");
+                    return;
+                }
 
-            bool success = await _recomController.AddRecomendacionAsync(nuevaRecomendacion);
+                var nuevaRecomendacion = new Recomendacion
+                {
+                    TextoRecomendacion = Descripcion,
+                    Habilitado = Habilitado
+                };
 
-            await Application.Current.MainPage.DisplayAlert(
-                success ? "Éxito" : "Error",
-                success ? "Recomendación agregada correctamente" : "No se pudo agregar la recomendación",
-                "OK"
-            );
+                bool success = await _recomController.AddRecomendacionAsync(nuevaRecomendacion);
 
-            if (success)
+                await Application.Current.MainPage.DisplayAlert(
+                    success ? "Éxito" : "Error",
+                    success ? "Recomendación agregada correctamente" : "No se pudo agregar la recomendación",
+                    "OK"
+                );
+
+                if (success)
+                {
+                    // Usando Shell para regresar a la página anterior
+                    await Shell.Current.GoToAsync("..");
+                }
+            }
+            catch (Exception ex)
             {
-                // Usando Shell para regresar a la página anterior
-                await Shell.Current.GoToAsync("..");
+                Console.WriteLine($"Error en AgregarRecomendacionAsync: {ex.Message}");
+                await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo agregar la recomendación: {ex.Message}", "OK");
             }
         }
 
