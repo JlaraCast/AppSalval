@@ -18,11 +18,14 @@ public partial class GestionFormularios : ContentPage
 		InitializeComponent();
         _apiService = new ApiServiceFormularios();
         LoadFormularios(); // Llamamos a la API cuando se carga la p�gina
+
         this.Appearing += OnPageAppearing;
+
+        
     }
     private readonly ApiServiceFormularios _apiService; // Servicio para conectar con la API
- 
 
+    
     private void OnPageAppearing(object sender, EventArgs e)
     {
         LoadFormularios(); 
@@ -35,10 +38,14 @@ public partial class GestionFormularios : ContentPage
         BindingContext = ViewModel;
        
     }
+
+
+
 }
 
 
-    public class FormularioViewModel
+
+public class FormularioViewModel
     {
         public int Id { get; set; }
         public string NombreDescripcion { get; set; }

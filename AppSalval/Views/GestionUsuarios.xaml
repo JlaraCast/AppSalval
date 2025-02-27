@@ -6,21 +6,23 @@
 
     <Grid>
         <!-- Botón de volver en la parte superior derecha -->
-        <ImageButton Source="back_icon.png"
-                     WidthRequest="30"
-                     HeightRequest="30"
-                     BackgroundColor="Transparent"
-                     Clicked="OnBackButtonClicked"
-                     HorizontalOptions="Start"
-                     VerticalOptions="Start"
-                     Margin="10,-50,10,0"
-                     Grid.Row="0"/>
+        
         <ScrollView>
             
         <!-- Contenedor principal -->
         <VerticalStackLayout Padding="20">
 
-            <!-- Barra de búsqueda y botón -->
+                <ImageButton Source="back_icon.png"
+             WidthRequest="30"
+             HeightRequest="30"
+             BackgroundColor="Transparent"
+             Clicked="OnBackButtonClicked"
+             HorizontalOptions="Start"
+             VerticalOptions="Start"
+             Margin="10,0,10,0"
+             Grid.Row="0"/>
+
+                <!-- Barra de búsqueda y botón -->
             <HorizontalStackLayout Spacing="10" Padding="0,10,0,10">
                 <Entry x:Name="SearchEntry" Placeholder="Ingrese ID de usuario"
                    Keyboard="Numeric" WidthRequest="200"/>

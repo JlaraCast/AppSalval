@@ -21,8 +21,17 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Botón para desplegar opciones -->
-   
-              
+                <ImageButton Source="back_icon.png"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="10,10,10,0"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Clicked="cerrrarSesion"/>
+
 
                 <!-- Contenido principal de la página -->
                 <ContentView Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center">

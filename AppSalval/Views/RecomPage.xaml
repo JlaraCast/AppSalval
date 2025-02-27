@@ -5,7 +5,11 @@
              >
     <VerticalStackLayout Padding="20">
 
+        
         <Grid ColumnDefinitions="Auto, *, Auto" Padding="20">
+
+            
+            
             <!-- Imagen del usuario -->
             <Image Grid.Column="0" Source="user_icon.png" WidthRequest="40" HeightRequest="40"/>
 

@@ -12,16 +12,26 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid ColumnDefinitions="*,*" Grid.Row="0">
-                    <Label Text="Agregar" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" />
-                
-                <Button Text="Agregar" Grid.Column="1"
-                        Margin="10,10,10,0"
-                    Command="{Binding AgregarCommand}" 
-                     CommandParameter="{Binding .}" 
-                     BackgroundColor="Green" TextColor="White"
-                     FontSize="Small"
-                     HorizontalOptions="Start" VerticalOptions="Center" 
-                     IsEnabled="{Binding CanAdd}"
+
+                    <ImageButton Source="back_icon.png"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         BackgroundColor="Transparent"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         Margin="10,10,10,0"
+                         Grid.Row="0"
+                         Grid.Column="0"
+                         Clicked="cerrrarSesion"/>
+
+                    <Button Text="Agregar" Grid.Column="1"
+                         Margin="-65,0,0,0"
+                         Command="{Binding AgregarCommand}" 
+                         CommandParameter="{Binding .}" 
+                         BackgroundColor="Green" TextColor="White"
+                         FontSize="Small"
+                         HorizontalOptions="Start" VerticalOptions="Center" 
+                         IsEnabled="{Binding CanAdd}"
                         />
                 </Grid>
             

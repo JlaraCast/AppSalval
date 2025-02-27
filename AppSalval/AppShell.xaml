@@ -6,12 +6,11 @@
     xmlns:vista="clr-namespace:AppSalval.Views"
      xmlns:local="clr-namespace:AppSalval"
     xmlns:views="clr-namespace:AppSalval.Views" 
-    Shell.FlyoutBehavior="Flyout"
+    Shell.FlyoutBehavior="Disabled"
     Title="AppSalval"
     >
 
     <ShellContent Title="LoginPage" Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
-
     <ShellContent
         Title="Formularios"
         ContentTemplate="{DataTemplate views:Formularios}"

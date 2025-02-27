@@ -19,6 +19,17 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <ImageButton Source="back_icon.png"
+                  WidthRequest="30"
+                  HeightRequest="30"
+                  BackgroundColor="Transparent"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Start"
+                  Margin="10,10,10,0"
+                  Grid.Row="0"
+                  Grid.Column="0"
+                  Clicked="cerrrarSesion"/>
+
                 <!-- Botón para desplegar opciones -->
                 <Label Text="Gestión de Participantes"
                 FontSize="Medium"

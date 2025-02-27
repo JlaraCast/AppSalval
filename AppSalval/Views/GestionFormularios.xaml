@@ -17,11 +17,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Botón para desplegar opciones -->
-                <!-- Aquí puedes añadir un botón si es necesario -->
-
                 <!-- Contenido principal de la página -->
                 <ContentView Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center">
+                    
+                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -49,8 +48,18 @@
                             VerticalOptions="Center"
                             Margin="0,20,30,0"
                             Command="{Binding BtnAgregar}"
-                            IsEnabled="{Binding CanAdd}"
-                        />
+                            IsEnabled="{Binding CanAdd}"/>
+
+                        <ImageButton Source="back_icon.png"
+                          WidthRequest="30"
+                          HeightRequest="30"
+                          BackgroundColor="Transparent"
+                          HorizontalOptions="Start"
+                          VerticalOptions="Start"
+                          Margin="10,10,10,0"
+                          Grid.Row="0"
+                          Grid.Column="0"
+                          Command="{Binding BtnRegresar}"/>
                     </Grid>
                 </ContentView>
 

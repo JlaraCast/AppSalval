@@ -31,6 +31,8 @@ namespace AppSalval.ViewModels
         public ICommand BtnAgregar { get; }
         public ICommand BtnOpciones{ get; }
         public ICommand BtnMenuPrincipal{ get; }
+        public ICommand BtnRegresar { get; }
+
         public GestionFormularioViewModel(INavigation navigation, CollectionView listaFormularios) {
             
             _listaFormularios = listaFormularios;
@@ -45,9 +47,10 @@ namespace AppSalval.ViewModels
                 await _navigation.PushAsync(new CrearFormulario());
             });
 
-            BtnAgregar = new Command(async () =>
+           
+            BtnRegresar = new Command(async () =>
             {
-                await _navigation.PushAsync(new CrearFormulario());
+                await _navigation.PushAsync(new InicioAdmin());
             });
         }
 
