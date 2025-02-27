@@ -4,7 +4,19 @@
              x:Class="AppSalval.Views.CambioContrasenaCorreo"
              BackgroundColor="White">
 
-    <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
+    <Grid>
+
+        <ImageButton Source="back_icon.png"
+             WidthRequest="30"
+             HeightRequest="30"
+             BackgroundColor="Transparent"
+             Clicked="OnBackButtonClicked"
+             HorizontalOptions="Start"
+             VerticalOptions="Start"
+             Margin="10,-50,10,0"
+             Grid.Row="0"/>
+
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="Center">
 
         <!-- Icono de usuario -->
         <Image Source="user_icon.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
@@ -30,7 +42,7 @@
 
         <!-- Botón Siguiente -->
         <Button Text="Siguiente" 
-                BackgroundColor="#80ED99" 
+                BackgroundColor="#57CC99" 
                 TextColor="White"
                 FontSize="16"
                 CornerRadius="10"
@@ -39,7 +51,8 @@
                 HorizontalOptions="Center"
                 Clicked="OnRecoverPasswordClicked"/>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
 
 

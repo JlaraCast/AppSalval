@@ -27,7 +27,7 @@
 
             <!-- Botón para guardar la contraseña -->
             <Button Text="Guardar" 
-                    BackgroundColor="#80ED99" 
+                    BackgroundColor="#57CC99" 
                     TextColor="White"
                     FontSize="16"
                     CornerRadius="10"

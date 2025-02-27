@@ -4,7 +4,19 @@
              x:Class="AppSalval.Views.GestionUsuarios"
              >
 
-    <ScrollView>
+    <Grid>
+        <!-- Botón de volver en la parte superior derecha -->
+        <ImageButton Source="back_icon.png"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     BackgroundColor="Transparent"
+                     Clicked="OnBackButtonClicked"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Start"
+                     Margin="10,-50,10,0"
+                     Grid.Row="0"/>
+        <ScrollView>
+            
         <!-- Contenedor principal -->
         <VerticalStackLayout Padding="20">
 
@@ -16,23 +28,14 @@
                     BackgroundColor="#22577A" TextColor="White" 
                     Padding="5" CornerRadius="8"/>
             </HorizontalStackLayout>
-            
-            
+
+
             <!-- Espacio entre la barra de búsqueda y el resto -->
             <BoxView HeightRequest="10" BackgroundColor="Transparent" />
 
             <!-- Encabezado con botón de volver y botón de agregar -->
             <Grid ColumnDefinitions="*, Auto">
                 <!-- Botón de volver -->
-                <ImageButton Source="back_icon.png"
-                             WidthRequest="30"
-                             HeightRequest="30"
-                             BackgroundColor="Transparent"
-                             Clicked="OnBackButtonClicked"
-                             HorizontalOptions="End"
-                             VerticalOptions="Start"
-                             Margin="0,-100,0,0"/>
-
 
                 <!-- Contenedor para el texto "Ordenar por:" y el Picker -->
                 <VerticalStackLayout Spacing="5" HorizontalOptions="EndAndExpand">
@@ -85,7 +88,7 @@
 
                             <!-- Botones más pequeños -->
                             <HorizontalStackLayout Grid.Column="3" Spacing="5">
-                           
+
                                 <ImageButton Source="edit_icon.png" Clicked="OnEditUserClicked"
                                         BackgroundColor="Transparent"
                                         Padding="2" CornerRadius="5" WidthRequest="50" HeightRequest="30"/>
@@ -101,5 +104,5 @@
 
         </VerticalStackLayout>
     </ScrollView>
-
+    </Grid>
 </ContentPage>
