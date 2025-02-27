@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppSalval.Views.GestionFormularios"
+             x:Class="AppSalval.Views.GestionFormularios" x:Name="parentPage"
              Title="GestionFormularios">
     <ScrollView>
         <VerticalStackLayout>
@@ -49,6 +49,7 @@
                             VerticalOptions="Center"
                             Margin="0,20,30,0"
                             Command="{Binding BtnAgregar}"
+                            IsEnabled="{Binding CanAdd}"
                         />
                     </Grid>
                 </ContentView>
@@ -81,16 +82,17 @@
                                         <Button Command="{Binding VerCommand}" CommandParameter="{Binding Id}" Text="Ver" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#4682B4" TextColor="White" />
                                     </Frame>
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="4" Margin="0,0,5,0">
-                                        <Button Command="{Binding EditarCommand}" CommandParameter="{Binding Id}" Text="Editar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#DAA520" TextColor="White" />
+                                        <Button Command="{Binding EditarCommand}" CommandParameter="{Binding Id}" Text="Editar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#DAA520" TextColor="White" IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CanAdd}" />
                                     </Frame>
                                     <Frame BorderColor="Black" Padding="5" Grid.Column="5" Margin="0,0,5,0">
-                                        <Button Command="{Binding EliminarCommand}" CommandParameter="{Binding Id}" Text="Eliminar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#CD5C5C" TextColor="White" />
+                                        <Button Command="{Binding EliminarCommand}" CommandParameter="{Binding Id}" Text="Eliminar" WidthRequest="80" HeightRequest="40" Margin="0,0,10,0" HorizontalOptions="Center" BackgroundColor="#CD5C5C" TextColor="White" IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CanAdd}" />
                                     </Frame>
-                                 </Grid>
+                                </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

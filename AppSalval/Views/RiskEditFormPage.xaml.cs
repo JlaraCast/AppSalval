@@ -11,4 +11,9 @@ public partial class RiskEditFormPage : ContentPage
         InitializeComponent();
         BindingContext = new RiskEditViewModel(factor);
     }
+
+    private async void OnCancelClicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();  // Regresar a la vista anterior
+    }
 }

@@ -18,6 +18,17 @@ namespace AppSalval.ViewModels
         private readonly ApiServicePregunta _apiServicePregunta;
         private readonly ApiServiceOpcionRespuesta _apiServiceOpcionRespuesta;
         private readonly INavigation _navigation;
+        private bool _canAdd;
+
+        public bool CanAdd
+        {
+            get => _canAdd;
+            set
+            {
+                _canAdd = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand CargarPreguntasCommand { get; }
 
         public ICommand AgregarCommand { get; }
@@ -31,6 +42,8 @@ namespace AppSalval.ViewModels
             PreguntasDtos = new ObservableCollection<PreguntaViewModel>();
             AgregarCommand = new Command(async () =>  OnAgregarRespuestaClicked());
             CargarPreguntasCommand = new Command(async () => await CargarPreguntas());
+            // Verificar si el rol del usuario es Desarrollador (rol 3)
+            CanAdd = LoginPage.UserRole != "3"; // Si el rol es Desarrollador, no puede agregar
 
             // Cargar preguntas al iniciar
             Task.Run(async () => await CargarPreguntas());

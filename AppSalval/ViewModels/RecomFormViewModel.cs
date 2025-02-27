@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using AppSalval.Controllers;
 using AppSalval.DTOS_API;
+using AppSalval.Views;
 
 namespace AppSalval.ViewModels
 {
@@ -79,6 +80,12 @@ namespace AppSalval.ViewModels
                 success ? "Recomendación agregada correctamente" : "No se pudo agregar la recomendación",
                 "OK"
             );
+
+            if (success)
+            {
+                // Usando Shell para regresar a la página anterior
+                await Shell.Current.GoToAsync("..");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -9,4 +9,9 @@ public partial class RiskPage : ContentPage
         InitializeComponent();
         BindingContext = new RiskViewModel(Navigation);
     }
+
+    private async void volver(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new InicioDesarrollador());
+    }
 }
