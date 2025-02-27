@@ -60,18 +60,18 @@ namespace AppSalval.Views
         }
 
         // Método para buscar formularios según el texto ingresado en el cuadro de búsqueda
-        private void SearchFormularios(object sender, EventArgs e)
-        {
-            string query = SearchBox.Text?.ToLower();
-            if (!string.IsNullOrWhiteSpace(query))
-            {
-                // Filtrar formularios según el texto de búsqueda
-                FormularioPicker.ItemsSource = _formularios
-                    .Where(f => f.TituloFormulario.ToLower().Contains(query))
-                    .Select(f => f.TituloFormulario)
-                    .ToList();
-            }
-        }
+        //private void SearchFormularios(object sender, EventArgs e)
+        //{
+        //    string query = SearchBox.Text?.ToLower();
+        //    if (!string.IsNullOrWhiteSpace(query))
+        //    {
+        //        // Filtrar formularios según el texto de búsqueda
+        //        FormularioPicker.ItemsSource = _formularios
+        //            .Where(f => f.TituloFormulario.ToLower().Contains(query))
+        //            .Select(f => f.TituloFormulario)
+        //            .ToList();
+        //    }
+        //}
 
         // Método que se ejecuta cuando se selecciona un formulario en el Picker
         private async void FormularioPicker_SelectedIndexChanged(object sender, EventArgs e)

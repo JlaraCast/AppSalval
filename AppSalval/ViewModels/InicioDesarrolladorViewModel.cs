@@ -20,7 +20,7 @@ namespace AppSalval.ViewModels
             NavigateToRecomPageCommand = new Command(async () => await navigation.PushAsync(new Views.RecomPage()));
             NavigateToRiskPageCommand = new Command(async () => await navigation.PushAsync(new Views.RiskPage()));
             NavigateToFormulariosPageCommand = new Command(async () => await navigation.PushAsync(new Views.GestionFormularios()));
-            NavigateToPreguntasPageCommand = new Command(async () => await navigation.PushAsync(new Views.GestionPreguntas()));
+            NavigateToPreguntasPageCommand = new Command(async () => await navigation.PushAsync(new Views.GestionPreguntasDesarrollador()));
         }
     }
 }

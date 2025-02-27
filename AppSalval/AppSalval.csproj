@@ -131,6 +131,9 @@
 	  <MauiXaml Update="Views\GestionPreguntas.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\GestionPreguntasDesarrollador.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\GestionRespuesta.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

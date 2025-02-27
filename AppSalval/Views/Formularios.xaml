@@ -32,18 +32,6 @@
                     BackgroundColor="#25587b"
                     TextColor="White"
                     WidthRequest="200"/>
-
-            <Entry x:Name="SearchBox"
-                   Placeholder="Buscar..."
-                   BackgroundColor="#25587b"
-                   TextColor="White"
-                   WidthRequest="150"/>
-
-            <Button Text="🔍"
-                    Clicked="SearchFormularios"
-                    BackgroundColor="#25587b"
-                    TextColor="White"
-                    CornerRadius="8"/>
         </HorizontalStackLayout>
 
         <!-- Botón Aplicar -->
