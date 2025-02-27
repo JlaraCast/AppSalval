@@ -21,26 +21,17 @@
                 </Grid.ColumnDefinitions>
 
                 <Button 
-                    Text="opciones"
-                    ImageSource="opciones_usuario.png"
+                    Text="Cerrar sesión"
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalOptions="Start"
                     VerticalOptions="Start"
-                    BackgroundColor="#5ac1c0"
-                    Margin="0,0,10,0"/>
-
-                <Button 
-                    Text="Cerrar sesion"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
                     ImageSource="cerrar_sesion.png"
                     BackgroundColor="#5ac1c0"
-                    Margin="0,0,10,0">
-                    <!--Clicked="OnOpcionesClicked"-->
-                </Button>
+                    Margin="20,0,10,0"
+                    Clicked="cerrrarSesion"/>
+                <!--Clicked="OnOpcionesClicked"-->
+
 
             </Grid>
             <!-- Botón para desplegar opciones -->

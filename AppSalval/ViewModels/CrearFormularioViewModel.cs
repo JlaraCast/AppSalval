@@ -106,46 +106,49 @@ namespace AppSalval.ViewModels
 
         private async Task CargarPreguntas()
         {
-            var preguntas = await _apiServicePregunta.GetPreguntas();
-
-            if (preguntas == null || preguntas.Count == 0)
+            try
             {
-                await Application.Current.MainPage.DisplayAlert("Información", "No hay preguntas disponibles", "OK");
-                return;
-            }
+                var preguntas = await _apiServicePregunta.GetPreguntas();
 
-            PreguntasDtos.Clear(); // Limpiar antes de cargar nuevas preguntas
-
-            foreach (var pregunta in preguntas)
-            {
-                // Obtener las opciones de respuesta para cada pregunta
-                var opciones = await _apiServiceOpcionRespuesta.GetOpcionRespuestaById(pregunta.IdPregunta) ?? new List<OpcionRespuestaDto>();
-
-                // Convertir opciones a ViewModel
-                var opcionesViewModel = new ObservableCollection<OpcionRespuestaViewModel>();
-
-                foreach (var o in opciones)
+                if (preguntas == null)
                 {
-
-                    opcionesViewModel.Add(new OpcionRespuestaViewModel
-                    {
-
-                        OpcionId = o.IdOpcion,
-                        NombreOpcion = o.NombreOpcion,
-                        IdPregunta = o.IdPregunta,
-                        IsSelected = false
-                    });
+                    await Application.Current.MainPage.DisplayAlert("Información", "No se pudieron obtener las preguntas. Verifica tu conexión o intenta nuevamente.", "OK");
+                    return;
                 }
 
-                // Agregar la pregunta con sus opciones a la lista
-                PreguntasDtos.Add(new PreguntaViewModel
-                {
-                    PreguntaId = pregunta.IdPregunta,
-                    TextoPregunta = pregunta.TextoPregunta,
-                    Opciones = opcionesViewModel
-                });
-                
+                PreguntasDtos.Clear(); // Limpiar antes de cargar nuevas preguntas
 
+                foreach (var pregunta in preguntas)
+                {
+                    // Obtener las opciones de respuesta para cada pregunta
+                    var opciones = await _apiServiceOpcionRespuesta.GetOpcionRespuestaById(pregunta.IdPregunta) ?? new List<OpcionRespuestaDto>();
+
+                    // Convertir opciones a ViewModel
+                    var opcionesViewModel = new ObservableCollection<OpcionRespuestaViewModel>();
+
+                    foreach (var o in opciones)
+                    {
+                        opcionesViewModel.Add(new OpcionRespuestaViewModel
+                        {
+                            OpcionId = o.IdOpcion,
+                            NombreOpcion = o.NombreOpcion,
+                            IdPregunta = o.IdPregunta,
+                            IsSelected = false
+                        });
+                    }
+
+                    // Agregar la pregunta con sus opciones a la lista
+                    PreguntasDtos.Add(new PreguntaViewModel
+                    {
+                        PreguntaId = pregunta.IdPregunta,
+                        TextoPregunta = pregunta.TextoPregunta,
+                        Opciones = opcionesViewModel
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"No se pudo cargar las preguntas: {ex.Message}", "OK");
             }
         }
 
